@@ -2,9 +2,11 @@ import React from "react";
 import { Redirect } from "react-router";
 
 //choosen
+import Login from "../../views/pages/auth/login/login";
 import DashboardV3 from "../../views/pages/dashboard/dashboard-v3.js";
 import StockGlobalProduksi from "../../views/pages/laporan/stock-global-produksi";
-import LoginV3 from "../../views/pages/user/login-v3.js";
+import KirimSaldoTahunan from "../../views/pages/laporan/kirim-saldo-tahunan";
+import SaldoBahan from "../../views/pages/laporan/saldo-bahan";
 //notyet
 import EmailInbox from "../../views/pages/email/email-inbox.js";
 import EmailCompose from "../../views/pages/email/email-compose.js";
@@ -56,20 +58,26 @@ import ExtraError from "../../views/pages/extra/extra-error.js";
 import ExtraProfile from "../../views/pages/extra/extra-profile.js";
 import LoginV1 from "../../views/pages/user/login-v1.js";
 import LoginV2 from "../../views/pages/user/login-v2.js";
+import LoginV3 from "../../views/pages/user/login-v3.js";
 
 import RegisterV3 from "../../views/pages/user/register-v3.js";
 import HelperCSS from "../../views/pages/helper/helper-css.js";
 
 const routes = [
   //choosen
+  // {
+  //   path: "/",
+  //   exact: true,
+  //   component: () => <Redirect to="/user/login-v3" />,
+  // },
   {
     path: "/",
+    title: "Login",
     exact: true,
-    component: () => <Redirect to="/user/login-v3" />,
+    component: () => <Login />,
   },
   {
     path: "/dashboard",
-    exact: true,
     title: "Dashboard",
     component: () => <DashboardV3 />,
   },
@@ -77,6 +85,16 @@ const routes = [
     path: "/laporan/stock-global-produksi",
     title: "Laporan Stock Global Produksi",
     component: () => <StockGlobalProduksi />,
+  },
+  {
+    path: "/laporan/kirim-saldo-tahunan",
+    title: "Laporan Kirim dan Saldo per Tahun",
+    component: () => <KirimSaldoTahunan />,
+  },
+  {
+    path: "/laporan/saldo-bahan",
+    title: "Laporan Saldo Bahan",
+    component: () => <SaldoBahan />,
   },
   //notyet
   {
