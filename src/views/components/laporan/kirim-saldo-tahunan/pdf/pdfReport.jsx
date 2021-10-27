@@ -7,7 +7,7 @@ const pdfReport = (data = '') => {
   let tableColumn = [];
 
   let finalY = 30;
-  doc.text('Laporan Saldo Bahan', 14, 15);
+  doc.text('Laporan Kirim dan Saldo per Tahun', 14, 15);
   doc.setFontSize(20);
   doc.text('Nama Toko', 200, 15);
 

@@ -14,8 +14,8 @@ class ExcelReport extends Component {
           id="test-table-xls-button"
           className="ant-btn ant-btn-primary ant-btn-block ant-btn-success"
           table="table-to-xls"
-          filename="LAPORAN SALDO BAHAN"
-          sheet="LAPORAN SALDO BAHAN"
+          filename="LAPORAN KIRIM DAN SALDO PER TAHUN"
+          sheet="LAPORAN KIRIM DAN SALDO PER TAHUN"
           buttonText="Export Exel"
         />
         <table id="table-to-xls" style={{ display: 'none' }}>
