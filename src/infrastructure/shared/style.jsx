@@ -1,9 +1,9 @@
 import React from 'react';
 import { Alert, FloatingLabel, Form } from 'react-bootstrap';
 
-const inputStyle1 = ({ input, label, type, meta: { touched, error, warning } }) => (
+const inputStyle1 = ({ input, label, placeholder, type, meta: { touched, error, warning } }) => (
   <FloatingLabel controlId="floatingInput" label={label} className="mb-3">
-    <Form.Control type={type} placeholder={label} {...input} />
+    <Form.Control type={type} placeholder={placeholder} {...input} />
     {touched &&
       ((error && <Form.Control.Feedback type="invalid">{error}</Form.Control.Feedback>) ||
         (warning && <Form.Control.Feedback>{warning}</Form.Control.Feedback>))}

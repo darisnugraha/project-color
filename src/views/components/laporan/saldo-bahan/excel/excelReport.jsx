@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import ReactHTMLTableToExcel from 'react-html-table-to-excel';
+import React, { Component } from "react";
+import ReactHTMLTableToExcel from "react-html-table-to-excel";
 
 class ExcelReport extends Component {
   constructor(props) {
@@ -14,16 +14,16 @@ class ExcelReport extends Component {
           id="test-table-xls-button"
           className="ant-btn ant-btn-primary ant-btn-block ant-btn-success"
           table="table-to-xls"
-          filename="LAPORAN KIRIM DAN SALDO PER TAHUN"
-          sheet="LAPORAN KIRIM DAN SALDO PER TAHUN"
+          filename="LAPORAN SALDO BAHAN"
+          sheet="LAPORAN SALDO BAHAN"
           buttonText="Export Exel"
         />
-        <table id="table-to-xls" style={{ display: 'none' }}>
+        <table id="table-to-xls" style={{ display: "none" }}>
           <thead>
             <tr>
-              <th colSpan="14" style={{ textAlign: 'center' }}>
-                {' '}
-                LAPORAN KIRIM DAN SALDO PER TAHUN{' '}
+              <th colSpan="14" style={{ textAlign: "center" }}>
+                {" "}
+                LAPORAN SALDO BAHAN{" "}
               </th>
             </tr>
             <tr>
@@ -31,100 +31,152 @@ class ExcelReport extends Component {
             </tr>
             <tr>
               <td
-                style={{ backgroundColor: '#99CCFF', color: '#000', verticalAlign: 'middle' }}
-                rowSpan="2"
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
+                colSpan="12"
               >
-                BULAN
+                SALDO BAHAN
               </td>
               <td
-                style={{ backgroundColor: '#99CCFF', color: '#000', verticalAlign: 'middle' }}
-                rowSpan="2"
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
+                colSpan="2"
               >
-                KERJA HARI
+                BARU CAMPURAN
               </td>
+            </tr>
+            <tr>
               <td
-                style={{ backgroundColor: '#99CCFF', color: '#000', verticalAlign: 'middle' }}
-                rowSpan="2"
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
               >
                 JENIS
               </td>
               <td
-                style={{ backgroundColor: '#99CCFF', color: '#000', textAlign: 'center' }}
-                colSpan="2"
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
               >
-                FR1
+                BARU
               </td>
               <td
                 style={{
-                  backgroundColor: '#99CCFF',
-                  color: '#000',
-                  textAlign: 'center',
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
                 }}
-                colSpan="2"
               >
-                FR2
+                KARAT
               </td>
               <td
                 style={{
-                  backgroundColor: '#99CCFF',
-                  color: '#000',
-                  textAlign: 'center',
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
                 }}
-                colSpan="2"
               >
-                FR3
+                LAMA
               </td>
               <td
                 style={{
-                  backgroundColor: '#99CCFF',
-                  color: '#000',
-                  textAlign: 'center',
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
                 }}
-                colSpan="2"
               >
-                FR TOTAL
+                KARAT
               </td>
               <td
                 style={{
-                  backgroundColor: '#99CCFF',
-                  color: '#000',
-                  textAlign: 'center',
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
                 }}
-                colSpan="2"
               >
-                HAND STG
+                KALI
               </td>
-            </tr>
-            <tr>
-              <td style={{ backgroundColor: '#99CCFF', color: '#000', textAlign: 'center' }}>
-                SELESAI
+              <td
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
+              >
+                SPRU
               </td>
-              <td style={{ backgroundColor: '#99CCFF', color: '#000', textAlign: 'center' }}>
-                SALDO
+              <td
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
+              >
+                KARAT
               </td>
-              <td style={{ backgroundColor: '#99CCFF', color: '#000', textAlign: 'center' }}>
-                SELESAI
+              <td
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
+              >
+                KALI
               </td>
-              <td style={{ backgroundColor: '#99CCFF', color: '#000', textAlign: 'center' }}>
-                SALDO
+              <td
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
+              >
+                JEND. CASTING
               </td>
-              <td style={{ backgroundColor: '#99CCFF', color: '#000', textAlign: 'center' }}>
-                SELESAI
+              <td
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
+              >
+                TOTAL
               </td>
-              <td style={{ backgroundColor: '#99CCFF', color: '#000', textAlign: 'center' }}>
-                SALDO
+              <td
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
+              >
+                KARAT
               </td>
-              <td style={{ backgroundColor: '#99CCFF', color: '#000', textAlign: 'center' }}>
-                SELESAI
+              <td
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
+              >
+                BERAT
               </td>
-              <td style={{ backgroundColor: '#99CCFF', color: '#000', textAlign: 'center' }}>
-                SALDO
-              </td>
-              <td style={{ backgroundColor: '#99CCFF', color: '#000', textAlign: 'center' }}>
-                SELESAI
-              </td>
-              <td style={{ backgroundColor: '#99CCFF', color: '#000', textAlign: 'center' }}>
-                SALDO
+              <td
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
+              >
+                KARAT
               </td>
             </tr>
           </thead>

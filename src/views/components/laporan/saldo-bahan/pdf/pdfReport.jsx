@@ -7,81 +7,69 @@ const pdfReport = (data = '') => {
   let tableColumn = [];
 
   let finalY = 30;
-  doc.text('Laporan Kirim dan Saldo per Tahun', 14, 15);
+  doc.text('Laporan Saldo Bahan', 14, 15);
   doc.setFontSize(20);
   doc.text('Nama Toko', 200, 15);
 
   doc.setFontSize(10);
   doc.setProperties({
-    title: 'Kirim dan Saldo',
+    title: 'Saldo Bahan',
   });
   doc.text(`PERIODE : `, 14, 25);
 
   tableColumn = [
     [
       {
-        content: `BULAN`,
-        rowSpan: 2,
+        content: `SALDO BAHAN`,
+        colSpan: 12,
       },
       {
-        content: `KERJA HARI`,
-        rowSpan: 2,
-      },
-      {
-        content: `JENIS`,
-        rowSpan: 2,
-      },
-      {
-        content: `FR1`,
+        content: `BARU CAMPURAN`,
         colSpan: 2,
-      },
-      {
-        content: `FR2`,
-        colSpan: 2,
-      },
-      {
-        content: `FR3`,
-        colSpan: 2,
-      },
-      {
-        content: `FR TOTAL`,
-        colSpan: 2,
-      },
-      {
-        content: `HAND STG`,
-        colSpan: 2,
-      },
+      }
     ],
     [
       {
-        content: `SELESAI`,
+        content: `JENIS`,
       },
       {
-        content: `SALDO`,
+        content: `BARU`,
       },
       {
-        content: `SELESAI`,
+        content: `KARAT`,
       },
       {
-        content: `SALDO`,
+        content: `LAMA`,
       },
       {
-        content: `SELESAI`,
+        content: `KARAT`,
       },
       {
-        content: `SALDO`,
+        content: `KALI`,
       },
       {
-        content: `SELESAI`,
+        content: `SPRU`,
       },
       {
-        content: `SALDO`,
+        content: `KARAT`,
       },
       {
-        content: `SELESAI`,
+        content: `KALI`,
       },
       {
-        content: `SALDO`,
+        content: `JEND. CASTING`,
+      },
+      {
+        content: `TOTAL`,
+      },
+      {
+        content: `KARAT`,
+      },
+      {
+        content: `BERAT`,
+      },
+      {
+        content: `KARAT`,
       },
     ],
   ];
@@ -147,7 +135,7 @@ const pdfReport = (data = '') => {
   x.document.write(
     `<html>
     <head>
-    <title>Kirim dan Saldo</title>
+    <title>Saldo Bahan</title>
     </head>
     <body style='margin:0 !important'>
     <embed width='100%' height='100%'src='${string}'></embed>
