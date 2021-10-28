@@ -1,11 +1,14 @@
-import { Form, Button } from "antd";
 import React from "react";
+import { useSelector } from "react-redux";
+import { Form, Button } from "antd";
 import { Field, reduxForm } from "redux-form";
 import style from "../../../infrastructure/shared/style";
 import { sendLogin } from "../../../application/actions/login";
+import ui from "../../../application/selectors/ui";
 
 const LoginForm = (prop) => {
   const { handleSubmit, pristine, submitting } = prop;
+  const btnLoading = useSelector(ui.getBtnLoading);
   return (
     <Form onSubmit={handleSubmit}>
       <Field
@@ -26,8 +29,9 @@ const LoginForm = (prop) => {
         disabled={pristine || submitting}
         onClick={() => prop.dispatch(sendLogin)}
         block
+        loading={btnLoading}
       >
-        Submit
+        Log In
       </Button>
       <hr />
       <p className="text-center text-grey-darker">
