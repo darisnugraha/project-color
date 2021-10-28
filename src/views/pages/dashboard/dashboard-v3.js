@@ -447,17 +447,17 @@ class DashboardV2 extends React.Component {
 				<ol className="breadcrumb float-xl-right">
 					<li className="breadcrumb-item"><Link to="/dashboard/v3">Home</Link></li>
 					<li className="breadcrumb-item"><Link to="/dashboard/v3">Dashboard</Link></li>
-					<li className="breadcrumb-item active">Dashboard v3</li>
+					<li className="breadcrumb-item active">Dashboard</li>
 				</ol>
-				<h1 className="page-header mb-3">Dashboard v3</h1>
-				<div className="d-sm-flex align-items-center mb-3">
+				<h1 className="page-header mb-3">Dashboard</h1>
+				{/* <div className="d-sm-flex align-items-center mb-3">
 					<Link to="/dashboard/v3" className="btn btn-inverse mr-2 text-truncate" id="daterange-filter">
 						<i className="fa fa-calendar fa-fw text-white-transparent-5 ml-n1"></i> 
 						<span>1 Jun 2019 - 7 Jun 2019</span>
 						<b className="caret"></b>
 					</Link>
 					<div className="text-muted f-w-600 mt-2 mt-sm-0">compared to <span id="daterange-prev-date">24 Mar-30 Apr 2019</span></div>
-				</div>
+				</div> */}
 				<div className="row">
 					<div className="col-xl-6">
 						<div className="card border-0 bg-dark text-white mb-3 overflow-hidden">

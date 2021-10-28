@@ -56,7 +56,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build-local": "set REACT_APP_BACKEND_URL=http://localhost:5757/api/v1/&&  react-scripts build"
   },
   "eslintConfig": {
     "extends": "react-app"

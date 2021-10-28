@@ -25,12 +25,13 @@ const LoginForm = (prop) => {
         htmltype="button"
         disabled={pristine || submitting}
         onClick={() => prop.dispatch(sendLogin)}
+        block
       >
         Submit
       </Button>
       <hr />
       <p className="text-center text-grey-darker">
-        &copy; Color Admin All Right Reserved 2019
+        &copy; AMG All Right Reserved 2021
       </p>
     </Form>
   );
