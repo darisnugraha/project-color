@@ -6,6 +6,7 @@ import DashboardV3 from "../../views/pages/dashboard/dashboard-v3.js";
 import StockGlobalProduksi from "../../views/pages/laporan/stock-global-produksi";
 import KirimSaldoTahunan from "../../views/pages/laporan/kirim-saldo-tahunan";
 import SaldoBahan from "../../views/pages/laporan/saldo-bahan";
+import NotFound from "../../views/pages/notfound";
 
 const routes = [
   // {
@@ -38,6 +39,11 @@ const routes = [
     path: "/laporan/saldo-bahan",
     title: "Laporan Saldo Bahan",
     component: () => <SaldoBahan />,
+  },
+  {
+    path: "/notfound",
+    title: "404 Not Found Page",
+    component: () => <NotFound />,
   },
 ];
 

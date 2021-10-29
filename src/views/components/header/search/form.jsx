@@ -5,7 +5,7 @@ class SearchForm extends React.Component {
     const today = new Date();
     return (
       <li className="navbar-form">
-        <form action="" method="POST" name="search_form">
+        {/* <form action="" method="POST" name="search_form"> */}
           <div className="form-group mt-1">
             <input
               type="text"
@@ -17,7 +17,7 @@ class SearchForm extends React.Component {
               <i className="fa fa-calendar"></i>
             </button>
           </div>
-        </form>
+        {/* </form> */}
       </li>
     );
   }

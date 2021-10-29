@@ -1,5 +1,6 @@
 {
   "name": "amg-admin",
+  "homepage": "/amg-cadp-production",
   "version": "17.0.2",
   "private": true,
   "dependencies": {
