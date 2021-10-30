@@ -1,10 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
-import { Provider } from 'react-redux';
-import { configureStore } from './application/store';
-import services from './infrastructure/services';
+import { Provider } from "react-redux";
+import { configureStore } from "./application/store";
+import services from "./infrastructure/services";
 import App from "./app.jsx";
+import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
+import reportWebVitals from "./reportWebVitals";
 
 // css
 import "bootstrap/dist/css/bootstrap.css";
@@ -29,3 +31,20 @@ ReactDOM.render(
   </BrowserRouter>,
   document.getElementById("root")
 );
+
+serviceWorkerRegistration.register({
+  onUpdate: (registration) => {
+    const waitingServiceWorker = registration.waiting;
+
+    if (waitingServiceWorker) {
+      waitingServiceWorker.addEventListener("statechange", (event) => {
+        if (event.target.state === "activated") {
+          window.location.reload();
+        }
+      });
+      waitingServiceWorker.postMessage({ type: "SKIP_WAITING" });
+    }
+  },
+});
+
+reportWebVitals();

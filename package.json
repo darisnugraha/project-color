@@ -1,6 +1,6 @@
 {
   "name": "amg-admin",
-  "homepage": "/amg-cadp-production",
+  "homepage": ".",
   "version": "17.0.2",
   "private": true,
   "dependencies": {
@@ -46,13 +46,26 @@
     "react-router-dom": "^5.0.1",
     "react-scripts": "^4.0.3",
     "react-select": "^3.0.4",
+    "react-service-worker": "^0.1.1",
     "react-table": "^6.10.0",
     "react-tag-autocomplete": "^5.11.1",
     "reactstrap": "^8.0.1",
     "redux-form": "^8.3.7",
     "simple-line-icons": "^2.4.1",
-    "sweetalert2": "^11.1.9"
+    "sweetalert2": "^11.1.9",
+    "web-vitals": "^2.1.2"
   },
+  "build": {
+    "appId": "com.amg.cadp",
+    "productName": "AMG Cadp",
+    "win": {
+      "icon": "public/icons/win/icon.ico"
+    },
+    "mac": {
+      "icon": "./public/icons/mac/icon.icns"
+    }
+  },
+  "main": "public/electron.js",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
