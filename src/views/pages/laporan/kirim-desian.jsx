@@ -7,16 +7,16 @@ import {
   PanelHeader,
   PanelBody,
 } from "./../../components/panel/panel.jsx";
-import TableLaporanSaldoBahan from "../../components/laporan/saldo-bahan/table-saldo-bahan";
-import FormLaporanSaldoBahan from "../../components/laporan/saldo-bahan/form-saldo-bahan";
-import BtnPrint from "../../components/laporan/saldo-bahan/btn-print-saldo-bahan";
+import TableLaporanKirimDesian from "../../components/laporan/kirim-desian/table-kirim-desian";
+import FormLaporanKirimDesian from "../../components/laporan/kirim-desian/form-kirim-desian";
+import BtnPrint from "../../components/laporan/kirim-desian/btn-print-kirim-desian";
 import { pageLoadedLogin } from "../../../application/actions/ui";
 
-const SaldoBahan = () => {
+const KirimDesian = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(pageLoadedLogin);
-    document.title = "Laporan Saldo Bahan";
+    document.title = "Laporan Kirim per Desian";
   }, [dispatch]);
 
   return (
@@ -26,20 +26,20 @@ const SaldoBahan = () => {
           <Link to="/dashboard">Home</Link>
         </li>
         <li className="breadcrumb-item">
-          <Link to="/laporan/saldo-bahan">Laporan</Link>
+          <Link to="/laporan/kirim-desian">Laporan</Link>
         </li>
-        <li className="breadcrumb-item active">Saldo Bahan</li>
+        <li className="breadcrumb-item active">Kirim per Desian</li>
       </ol>
       <h1 className="page-header">
-        Laporan <small>Saldo Bahan</small>
+        Laporan <small>Kirim per Desian</small>
       </h1>
       <Panel>
-        <PanelHeader>Saldo Bahan</PanelHeader>
+        <PanelHeader>Kirim per Desian</PanelHeader>
         <PanelBody>
           <Card bordered={false}>
             <div className="row">
               <div className="col-12">
-                <FormLaporanSaldoBahan />
+                <FormLaporanKirimDesian />
               </div>
             </div>
             <div
@@ -54,7 +54,7 @@ const SaldoBahan = () => {
                 </Divider>
               </div>
               <div className="col-12">
-                <TableLaporanSaldoBahan />
+                <TableLaporanKirimDesian />
               </div>
             </div>
             <div
@@ -74,4 +74,4 @@ const SaldoBahan = () => {
   );
 };
 
-export default SaldoBahan;
+export default KirimDesian;

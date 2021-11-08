@@ -26,7 +26,7 @@ const KirimSaldoTahunan = () => {
           <Link to="/dashboard">Home</Link>
         </li>
         <li className="breadcrumb-item">
-          <Link to="/laporan/stock-global-produksi">Laporan</Link>
+          <Link to="/laporan/kirim-saldo-tahunan">Laporan</Link>
         </li>
         <li className="breadcrumb-item active">Kirim dan Saldo per Tahun</li>
       </ol>

@@ -6,6 +6,8 @@ import DashboardV3 from "../../views/pages/dashboard/dashboard-v3.js";
 import StockGlobalProduksi from "../../views/pages/laporan/stock-global-produksi";
 import KirimSaldoTahunan from "../../views/pages/laporan/kirim-saldo-tahunan";
 import SaldoBahan from "../../views/pages/laporan/saldo-bahan";
+import StockAdmin from "../../views/pages/laporan/stock-admin";
+import KirimDesian from "../../views/pages/laporan/kirim-desian";
 import NotFound from "../../views/pages/notfound";
 
 const routes = [
@@ -39,6 +41,16 @@ const routes = [
     path: "/laporan/saldo-bahan",
     title: "Laporan Saldo Bahan",
     component: () => <SaldoBahan />,
+  },
+  {
+    path: "/laporan/stock-admin",
+    title: "Laporan Stock Admin",
+    component: () => <StockAdmin />,
+  },
+  {
+    path: "/laporan/kirim-desian",
+    title: "Laporan Kirim per Desian",
+    component: () => <KirimDesian />,
   },
   {
     path: "/notfound",

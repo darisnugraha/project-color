@@ -44,9 +44,9 @@ class Login extends React.Component {
             <h4 className="caption-title">
               <b>AMG</b> CADP
             </h4>
-            {/* <p>
-							Download the Color Admin app for iPhone®, iPad®, and Android™. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-						</p> */}
+            <p>
+							AMG CADP PRODUCTION REPORT.
+						</p>
           </div>
         </div>
         <div className="right-content">

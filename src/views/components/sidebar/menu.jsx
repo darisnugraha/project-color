@@ -17,6 +17,14 @@ const Menu = [
         path: "/laporan/saldo-bahan",
         title: "Saldo Bahan",
       },
+      {
+        path: "/laporan/stock-admin",
+        title: "Stock Admin",
+      },
+      {
+        path: "/laporan/kirim-desian",
+        title: "Kirim per Desian",
+      },
     ],
   },
 ];

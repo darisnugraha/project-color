@@ -445,8 +445,7 @@ class DashboardV2 extends React.Component {
 		return (
 			<div>
 				<ol className="breadcrumb float-xl-right">
-					<li className="breadcrumb-item"><Link to="/dashboard/v3">Home</Link></li>
-					<li className="breadcrumb-item"><Link to="/dashboard/v3">Dashboard</Link></li>
+					<li className="breadcrumb-item"><Link to="/dashboard">Home</Link></li>
 					<li className="breadcrumb-item active">Dashboard</li>
 				</ol>
 				<h1 className="page-header mb-3">Dashboard</h1>

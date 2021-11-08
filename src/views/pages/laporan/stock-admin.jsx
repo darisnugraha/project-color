@@ -7,16 +7,16 @@ import {
   PanelHeader,
   PanelBody,
 } from "./../../components/panel/panel.jsx";
-import TableLaporanSaldoBahan from "../../components/laporan/saldo-bahan/table-saldo-bahan";
-import FormLaporanSaldoBahan from "../../components/laporan/saldo-bahan/form-saldo-bahan";
-import BtnPrint from "../../components/laporan/saldo-bahan/btn-print-saldo-bahan";
+import TableLaporanStockAdmin from "../../components/laporan/stock-admin/table-stock-admin";
+import FormLaporanStockAdmin from "../../components/laporan/stock-admin/form-stock-admin";
+import BtnPrint from "../../components/laporan/stock-admin/btn-print-stock-admin";
 import { pageLoadedLogin } from "../../../application/actions/ui";
 
-const SaldoBahan = () => {
+const StockAdmin = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(pageLoadedLogin);
-    document.title = "Laporan Saldo Bahan";
+    document.title = "Laporan Stock Admin";
   }, [dispatch]);
 
   return (
@@ -26,20 +26,20 @@ const SaldoBahan = () => {
           <Link to="/dashboard">Home</Link>
         </li>
         <li className="breadcrumb-item">
-          <Link to="/laporan/saldo-bahan">Laporan</Link>
+          <Link to="/laporan/stock-admin">Laporan</Link>
         </li>
-        <li className="breadcrumb-item active">Saldo Bahan</li>
+        <li className="breadcrumb-item active">Stock Admin</li>
       </ol>
       <h1 className="page-header">
-        Laporan <small>Saldo Bahan</small>
+        Laporan <small>Stock Admin</small>
       </h1>
       <Panel>
-        <PanelHeader>Saldo Bahan</PanelHeader>
+        <PanelHeader>Stock Admin</PanelHeader>
         <PanelBody>
           <Card bordered={false}>
             <div className="row">
               <div className="col-12">
-                <FormLaporanSaldoBahan />
+                <FormLaporanStockAdmin />
               </div>
             </div>
             <div
@@ -54,7 +54,7 @@ const SaldoBahan = () => {
                 </Divider>
               </div>
               <div className="col-12">
-                <TableLaporanSaldoBahan />
+                <TableLaporanStockAdmin />
               </div>
             </div>
             <div
@@ -74,4 +74,4 @@ const SaldoBahan = () => {
   );
 };
 
-export default SaldoBahan;
+export default StockAdmin;
