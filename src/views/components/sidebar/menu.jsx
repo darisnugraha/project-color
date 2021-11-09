@@ -25,6 +25,10 @@ const Menu = [
         path: "/laporan/kirim-desian",
         title: "Kirim per Desian",
       },
+      {
+        path: "/laporan/kirim-saldo-divisi",
+        title: "Kirim dan Saldo per Divisi",
+      },
     ],
   },
 ];

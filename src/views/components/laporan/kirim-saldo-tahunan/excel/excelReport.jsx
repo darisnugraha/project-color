@@ -16,7 +16,7 @@ class ExcelReport extends Component {
           table="table-to-xls"
           filename="LAPORAN KIRIM DAN SALDO PER TAHUN"
           sheet="LAPORAN KIRIM DAN SALDO PER TAHUN"
-          buttonText="Export Exel"
+          buttonText="Export Excel"
         />
         <table id="table-to-xls" style={{ display: 'none' }}>
           <thead>

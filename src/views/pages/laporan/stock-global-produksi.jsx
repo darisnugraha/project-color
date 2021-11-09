@@ -12,7 +12,7 @@ import FormLaporanGlobalProduksi from "../../components/laporan/stock-global-pro
 import BtnPrint from "../../components/laporan/stock-global-produksi/btn-print-global-produksi";
 import laporanStockSelector from "../../../application/selectors/laporanstockglobalproduksi";
 import ui from "../../../application/selectors/ui";
-import { pageLoadedLogin } from '../../../application/actions/ui';
+import { pageLoadedLogin } from "../../../application/actions/ui";
 
 const StockGlobalProduksi = () => {
   const dispatch = useDispatch();
@@ -77,7 +77,12 @@ const StockGlobalProduksi = () => {
                     display: datalapL.length === 0 ? "none" : "",
                   }}
                 >
-                  <div className="col-12">
+                  <div
+                    className="col-12"
+                    style={{
+                      display: datalapL.length === 0 ? "none" : "",
+                    }}
+                  >
                     <BtnPrint />
                   </div>
                 </div>
@@ -112,7 +117,12 @@ const StockGlobalProduksi = () => {
                   </div>
                 </div>
                 <div className="row">
-                  <div className="col-12">
+                  <div
+                    className="col-12"
+                    style={{
+                      display: datalapR.length === 0 ? "none" : "",
+                    }}
+                  >
                     <BtnPrint />
                   </div>
                 </div>

@@ -16,7 +16,7 @@ class ExcelReport extends Component {
           table="table-to-xls"
           filename="LAPORAN SALDO BAHAN"
           sheet="LAPORAN SALDO BAHAN"
-          buttonText="Export Exel"
+          buttonText="Export Excel"
         />
         <table id="table-to-xls" style={{ display: "none" }}>
           <thead>

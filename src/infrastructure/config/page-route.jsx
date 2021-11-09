@@ -8,6 +8,7 @@ import KirimSaldoTahunan from "../../views/pages/laporan/kirim-saldo-tahunan";
 import SaldoBahan from "../../views/pages/laporan/saldo-bahan";
 import StockAdmin from "../../views/pages/laporan/stock-admin";
 import KirimDesian from "../../views/pages/laporan/kirim-desian";
+import KirimSaldoDivisi from "../../views/pages/laporan/kirim-saldo-divisi";
 import NotFound from "../../views/pages/notfound";
 
 const routes = [
@@ -51,6 +52,11 @@ const routes = [
     path: "/laporan/kirim-desian",
     title: "Laporan Kirim per Desian",
     component: () => <KirimDesian />,
+  },
+  {
+    path: "/laporan/kirim-saldo-divisi",
+    title: "Laporan Kirim dan Saldo per Divisi",
+    component: () => <KirimSaldoDivisi />,
   },
   {
     path: "/notfound",

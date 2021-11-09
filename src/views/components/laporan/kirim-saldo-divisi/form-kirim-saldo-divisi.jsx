@@ -11,32 +11,23 @@ const dateFormat = "MM/YYYY";
 const today = new Date();
 const { Option } = Select;
 
-const FormLaporanKirimDesian = (prop) => {
+const FormLaporanKirimSaldoDivisi = (prop) => {
   const btnLoading = useSelector(ui.getBtnLoading);
   const dispatch = useDispatch();
   return (
     <Form layout="vertical">
       <Row>
         <Col>
-        {/* <Field
-            name="jenis_bahan"
-            label={<span style={{ fontSize: "13px" }}>Jenis Bahan</span>}
-            style={{ width: 250 }}
-            component={styleAntd.ASelect}
-            placeholder="Pilih Jenis Bahan"
-            defaultValue="all"
+          <Field
+            name="date"
+            type="date"
+            label={<span style={{ fontSize: "13px" }}>Bulan</span>}
+            component={styleAntd.ADatePick}
+            className="form-item-group"
             onBlur={(e) => e.preventDefault()}
-          >
-            <Option value="all">
-              <span style={{ fontSize: "13px" }}>EAY 18</span>
-            </Option>
-            <Option value="admin1">
-              <span style={{ fontSize: "13px" }}>EAY 14</span>
-            </Option>
-            <Option value="admin2">
-              <span style={{ fontSize: "13px" }}>EAY 10</span>
-            </Option>
-          </Field> */}
+            defaultValue={moment(today, dateFormat)}
+            picker="month"
+          />
         </Col>
         <Col offset={1}>
           <Button
@@ -55,8 +46,8 @@ const FormLaporanKirimDesian = (prop) => {
 };
 
 export default reduxForm({
-  form: "FormLaporanKirimDesian",
+  form: "FormLaporanKirimSaldoDivisi",
   initialValues: {
     date: moment(today, dateFormat),
   },
-})(FormLaporanKirimDesian);
+})(FormLaporanKirimSaldoDivisi);

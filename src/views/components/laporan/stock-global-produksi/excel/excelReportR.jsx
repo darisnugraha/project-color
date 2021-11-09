@@ -112,7 +112,7 @@ class ExcelReportR extends Component {
           table="table-to-xls"
           filename="LAPORAN STOCK GLOBAL PRODUKSI R"
           sheet="LAPORAN STOCK GLOBAL PRODUKSI R"
-          buttonText="Export Exel"
+          buttonText="Export Excel"
         />
         <table id="table-to-xls" style={{ display: 'none' }}>
           <thead>

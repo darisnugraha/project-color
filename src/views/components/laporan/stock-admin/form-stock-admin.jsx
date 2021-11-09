@@ -18,7 +18,7 @@ const FormLaporanStockAdmin = (prop) => {
     <Form layout="vertical">
       <Row>
         <Col>
-        {/* <Field
+        <Field
             name="jenis_bahan"
             label={<span style={{ fontSize: "13px" }}>Jenis Bahan</span>}
             style={{ width: 250 }}
@@ -36,7 +36,7 @@ const FormLaporanStockAdmin = (prop) => {
             <Option value="admin2">
               <span style={{ fontSize: "13px" }}>EAY 10</span>
             </Option>
-          </Field> */}
+          </Field>
         </Col>
         <Col offset={1}>
           <Button
