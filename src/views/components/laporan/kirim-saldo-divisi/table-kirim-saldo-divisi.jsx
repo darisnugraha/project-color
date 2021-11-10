@@ -46,7 +46,7 @@ const columns = [
         ],
       },
       {
-        title: "Filling",
+        title: "FILLING",
         align: "center",
         children: [
           {
@@ -118,7 +118,7 @@ const columns = [
         ],
       },
       {
-        title: "FR Total",
+        title: "FR TOTAL",
         align: "center",
         children: [
           {

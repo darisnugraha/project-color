@@ -9,7 +9,7 @@ const pdfReport = (data = "") => {
   let finalY = 30;
   doc.text("Laporan KIRIM DAN SALDO PER DIVISI", 14, 15);
   doc.setFontSize(20);
-  doc.text("Nama Toko", 200, 15);
+  doc.text("AMG", 200, 15);
 
   doc.setFontSize(10);
   doc.setProperties({
@@ -124,7 +124,7 @@ const pdfReport = (data = "") => {
   x.document.write(
     `<html>
     <head>
-    <title>Kirim per Desian</title>
+    <title>Kirim dan Saldo per Divisi</title>
     </head>
     <body style='margin:0 !important'>
     <embed width='100%' height='100%'src='${string}'></embed>

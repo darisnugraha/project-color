@@ -9,7 +9,7 @@ const pdfReport = (data = '') => {
   let finalY = 30;
   doc.text('Laporan Kirim dan Saldo per Tahun', 14, 15);
   doc.setFontSize(20);
-  doc.text('Nama Toko', 200, 15);
+  doc.text('AMG', 200, 15);
 
   doc.setFontSize(10);
   doc.setProperties({

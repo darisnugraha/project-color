@@ -28,12 +28,15 @@ const FormLaporanStockAdmin = (prop) => {
             onBlur={(e) => e.preventDefault()}
           >
             <Option value="all">
+              <span style={{ fontSize: "13px" }}>SEMUA</span>
+            </Option>
+            <Option value="eay18">
               <span style={{ fontSize: "13px" }}>EAY 18</span>
             </Option>
-            <Option value="admin1">
+            <Option value="eay14">
               <span style={{ fontSize: "13px" }}>EAY 14</span>
             </Option>
-            <Option value="admin2">
+            <Option value="eay10">
               <span style={{ fontSize: "13px" }}>EAY 10</span>
             </Option>
           </Field>
@@ -57,6 +60,6 @@ const FormLaporanStockAdmin = (prop) => {
 export default reduxForm({
   form: "FormLaporanStockAdmin",
   initialValues: {
-    date: moment(today, dateFormat),
+    jenis_bahan: 'all',
   },
 })(FormLaporanStockAdmin);

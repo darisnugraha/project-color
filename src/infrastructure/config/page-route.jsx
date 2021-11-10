@@ -1,5 +1,5 @@
 import React from "react";
-// import { Redirect } from "react-router";
+import { Redirect } from "react-router";
 
 import Login from "../../views/pages/auth/login/login";
 import DashboardV3 from "../../views/pages/dashboard/dashboard-v3.js";
@@ -13,9 +13,9 @@ import NotFound from "../../views/pages/notfound";
 
 const routes = [
   // {
-  //   path: "/",
+  //   path: "*",
   //   exact: true,
-  //   component: () => <Redirect to="/user/login-v3" />,
+  //   component: () => <Redirect to="/notfound" />,
   // },
   {
     path: "/",
