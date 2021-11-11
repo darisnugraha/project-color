@@ -1,8 +1,8 @@
 import React from "react";
-import { Redirect } from "react-router";
+// import { Redirect } from "react-router";
 
 import Login from "../../views/pages/auth/login/login";
-import DashboardV3 from "../../views/pages/dashboard/dashboard-v3.js";
+import Dashboard from "../../views/pages/dashboard/dashboard";
 import StockGlobalProduksi from "../../views/pages/laporan/stock-global-produksi";
 import KirimSaldoTahunan from "../../views/pages/laporan/kirim-saldo-tahunan";
 import SaldoBahan from "../../views/pages/laporan/saldo-bahan";
@@ -26,7 +26,7 @@ const routes = [
   {
     path: "/dashboard",
     title: "Dashboard",
-    component: () => <DashboardV3 />,
+    component: () => <Dashboard />,
   },
   {
     path: "/laporan/stock-global-produksi",

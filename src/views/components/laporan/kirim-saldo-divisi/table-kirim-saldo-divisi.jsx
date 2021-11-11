@@ -214,6 +214,7 @@ const columns = [
 const TableLaporanKirimSaldoDivisi = () => {
   return (
     <Table
+      size="small"
       dataSource={[]}
       columns={columns}
       scroll={{ x: 1500, y: 1000 }}

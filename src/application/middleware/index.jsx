@@ -7,7 +7,7 @@ import saldobahan from "./saldobahan";
 import kirimdesian from "./kirimdesian";
 import kirimsaldodivisi from "./kirimsaldodivisi";
 
-export default [
+const midd = [
   ...ui,
   ...login,
   ...laporanstockglobalproduksi,
@@ -17,3 +17,5 @@ export default [
   ...kirimdesian,
   ...kirimsaldodivisi,
 ];
+
+export default midd;
