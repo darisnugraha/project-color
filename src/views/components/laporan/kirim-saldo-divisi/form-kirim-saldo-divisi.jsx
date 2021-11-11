@@ -6,6 +6,7 @@ import moment from "moment";
 import styleAntd from "../../../../infrastructure/shared/styleAntd";
 import ui from "../../../../application/selectors/ui";
 import "antd/dist/antd.css";
+import { getAllKirimsaldodivisi } from "../../../../application/actions/kirimsaldodivisi";
 
 const dateFormat = "MM/YYYY";
 const today = new Date();
@@ -34,7 +35,7 @@ const FormLaporanKirimSaldoDivisi = (prop) => {
             type="primary"
             htmltype="button"
             loading={btnLoading}
-            // onClick={() => prop.dispatch()}
+            onClick={() => prop.dispatch(getAllKirimsaldodivisi)}
             style={{ marginTop: 29 }}
           >
             Lihat Laporan

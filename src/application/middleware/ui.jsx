@@ -13,7 +13,7 @@ const pageLoadedFlow =
   async (action) => {
     next(action);
     if (action.type === PAGE_LOADED_LOGIN) {
-      log('Page Login Loaded');
+      // log('Page Login Loaded');
       dispatch(setLoading(false));
     }
   };

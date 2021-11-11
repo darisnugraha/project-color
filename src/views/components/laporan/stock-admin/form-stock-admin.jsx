@@ -5,6 +5,7 @@ import { Field, reduxForm } from "redux-form";
 import moment from "moment";
 import styleAntd from "../../../../infrastructure/shared/styleAntd";
 import ui from "../../../../application/selectors/ui";
+import { getAllStockAdmin } from "../../../../application/actions/stockadmin";
 import "antd/dist/antd.css";
 
 const dateFormat = "MM/YYYY";
@@ -18,7 +19,7 @@ const FormLaporanStockAdmin = (prop) => {
     <Form layout="vertical">
       <Row>
         <Col>
-        <Field
+          <Field
             name="jenis_bahan"
             label={<span style={{ fontSize: "13px" }}>Jenis Bahan</span>}
             style={{ width: 250 }}
@@ -46,7 +47,7 @@ const FormLaporanStockAdmin = (prop) => {
             type="primary"
             htmltype="button"
             loading={btnLoading}
-            // onClick={() => prop.dispatch()}
+            onClick={() => prop.dispatch(getAllStockAdmin)}
             style={{ marginTop: 29 }}
           >
             Lihat Laporan
@@ -60,6 +61,6 @@ const FormLaporanStockAdmin = (prop) => {
 export default reduxForm({
   form: "FormLaporanStockAdmin",
   initialValues: {
-    jenis_bahan: 'all',
+    jenis_bahan: "all",
   },
 })(FormLaporanStockAdmin);

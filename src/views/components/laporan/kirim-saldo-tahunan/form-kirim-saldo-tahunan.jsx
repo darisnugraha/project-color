@@ -5,6 +5,7 @@ import { Field, reduxForm } from "redux-form";
 import moment from "moment";
 import styleAntd from "../../../../infrastructure/shared/styleAntd";
 import ui from "../../../../application/selectors/ui";
+import { getAllKirimsaldotahun } from "../../../../application/actions/kirimsaldotahun";
 import "antd/dist/antd.css";
 
 const dateFormat = "MM/YYYY";
@@ -33,7 +34,7 @@ const FormLaporanKirimSaldoTahun = (prop) => {
             type="primary"
             htmltype="button"
             loading={btnLoading}
-            // onClick={() => prop.dispatch()}
+            onClick={() => prop.dispatch(getAllKirimsaldotahun)}
             style={{ marginTop: 29 }}
           >
             Lihat Laporan

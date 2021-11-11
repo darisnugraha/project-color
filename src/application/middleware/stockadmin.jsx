@@ -1,4 +1,5 @@
-import { GET_ALL_STOCK_ADMIN } from '../actions/stockadmin';
+import { GET_ALL_STOCK_ADMIN } from "../actions/stockadmin";
+import { setLoadingButton } from "../actions/ui";
 
 const kirimsaldotahun =
   ({ api, log, writeLocal, getLocal, toast, sweetalert }) =>
@@ -7,7 +8,12 @@ const kirimsaldotahun =
   async (action) => {
     next(action);
     if (action.type === GET_ALL_STOCK_ADMIN) {
-      log('test');
+      dispatch(setLoadingButton(true));
+      const data = getState().form.FormLaporanStockAdmin.values;
+      log(data);
+      setTimeout(() => {
+        dispatch(setLoadingButton(false));
+      }, 1000);
     }
   };
 

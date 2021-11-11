@@ -25,8 +25,8 @@ import "bootstrap-social/bootstrap-social.css";
 
 ReactDOM.render(
   // <BrowserRouter basename="/project-color">
-  // <BrowserRouter>
-  <BrowserRouter basename="/amg-cadp-production">
+  // <BrowserRouter basename="/amg-cadp-production">
+  <BrowserRouter>
     <Provider store={configureStore(services)}>
       <App />
     </Provider>

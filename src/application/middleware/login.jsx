@@ -37,9 +37,9 @@ const handleLoginFlow =
         dispatch(setLoadingButton(false));
         writeLocal("isLogin", true);
         message.success({ content: "Login Berhasil!", key, duration: 2 });
-        window.history.pushState(null, "", "/amg-cadp-production/dashboard");
+        // window.history.pushState(null, "", "/amg-cadp-production/dashboard");
         // window.history.pushState(null, "", "/project-color/dashboard");
-        // window.history.pushState(null, "", "/dashboard");
+        window.history.pushState(null, "", "/dashboard");
         window.history.go(0);
       } else {
         dispatch(setLoadingButton(false));

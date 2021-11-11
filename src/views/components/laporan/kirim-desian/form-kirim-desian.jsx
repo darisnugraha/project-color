@@ -5,6 +5,7 @@ import { Field, reduxForm } from "redux-form";
 import moment from "moment";
 import styleAntd from "../../../../infrastructure/shared/styleAntd";
 import ui from "../../../../application/selectors/ui";
+import { getAllKirimdesian } from "../../../../application/actions/kirimdesian";
 import "antd/dist/antd.css";
 
 const dateFormat = "MM/YYYY";
@@ -18,7 +19,7 @@ const FormLaporanKirimDesian = (prop) => {
     <Form layout="vertical">
       <Row>
         <Col>
-        {/* <Field
+          {/* <Field
             name="jenis_bahan"
             label={<span style={{ fontSize: "13px" }}>Jenis Bahan</span>}
             style={{ width: 250 }}
@@ -43,7 +44,7 @@ const FormLaporanKirimDesian = (prop) => {
             type="primary"
             htmltype="button"
             loading={btnLoading}
-            // onClick={() => prop.dispatch()}
+            onClick={() => prop.dispatch(getAllKirimdesian)}
             style={{ marginTop: 29 }}
           >
             Lihat Laporan

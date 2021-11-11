@@ -1,4 +1,6 @@
-import { GET_ALL_KIRIM_SALDO_TAHUN } from '../actions/kirimsaldotahun';
+import { GET_ALL_KIRIM_SALDO_TAHUN } from "../actions/kirimsaldotahun";
+import { setLoadingButton } from "../actions/ui";
+import moment from "moment";
 
 const kirimsaldotahun =
   ({ api, log, writeLocal, getLocal, toast, sweetalert }) =>
@@ -7,7 +9,14 @@ const kirimsaldotahun =
   async (action) => {
     next(action);
     if (action.type === GET_ALL_KIRIM_SALDO_TAHUN) {
-      log('test');
+      dispatch(setLoadingButton(true));
+      const data = getState().form.FormLaporanKirimSaldoTahun.values;
+      const tgl = new Date(data.date);
+      data.date = moment.tz(tgl, "Asia/Jakarta").format("YYYY-MM");
+      log(data);
+      setTimeout(() => {
+        dispatch(setLoadingButton(false));
+      }, 1000);
     }
   };
 

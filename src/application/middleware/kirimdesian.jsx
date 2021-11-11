@@ -7,21 +7,24 @@
 // dispatch for dispactching action, like store data to reducer, and others
 // getState is FUNCTION for get current data in your state (reducer), just call getState().yourReducer.yourData
 
+import { GET_ALL_KIRIM_DESIAN } from "../actions/kirimdesian";
+import { setLoadingButton } from "../actions/ui";
 
-import {
-GET_ALL_KIRIM_DESIAN,
-} from "../actions/kirimdesian"
 const kirimdesian =
-  ({ api, log, writeLocal, getLocal, toast, sweetalert }) => 
+  ({ api, log, writeLocal, getLocal, toast, sweetalert }) =>
   ({ dispatch, getState }) =>
   (next) =>
   async (action) => {
-	next(action);
-	if (action.type === GET_ALL_KIRIM_DESIAN) {
-	
-	}
+    next(action);
+    if (action.type === GET_ALL_KIRIM_DESIAN) {
+      dispatch(setLoadingButton(true));
+      log("test");
+      setTimeout(() => {
+        dispatch(setLoadingButton(false));
+      }, 1000);
+    }
   };
 
-  const data = [kirimdesian];
+const data = [kirimdesian];
 
-  export default data;
+export default data;

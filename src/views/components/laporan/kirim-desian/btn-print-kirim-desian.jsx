@@ -23,7 +23,6 @@ const BtnPrint = () => {
         <Button
           type="primary"
           htmltype="button"
-          loading={btnLoading}
           block
           danger
           onClick={() => pdfExportHandle()}
