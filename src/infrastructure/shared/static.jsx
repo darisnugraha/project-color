@@ -8,7 +8,7 @@ const URL_DELETE_LAPORAN_STOCK_GLOBAL_PRODUKSI = `${baseurl}`;
 const URL_UPDATE_LAPORAN_STOCK_GLOBAL_PRODUKSI = `${baseurl}`;
 
 const URL_GET_ALL_KIRIM_SALDO_TAHUN = `${baseurl}`;
-const URL_ADD_KIRIM_SALDO_TAHUN = `${baseurl}`;
+const URL_ADD_KIRIM_SALDO_TAHUN = `${baseurl}report/kirim-saldo`;
 const URL_DELETE_KIRIM_SALDO_TAHUN = `${baseurl}`;
 const URL_UPDATE_KIRIM_SALDO_TAHUN = `${baseurl}`;
 
@@ -31,6 +31,8 @@ const URL_GET_ALL_KIRIM_SALDO_DIVISI = `${baseurl}`;
 const URL_ADD_KIRIM_SALDO_DIVISI = `${baseurl}`;
 const URL_DELETE_KIRIM_SALDO_DIVISI = `${baseurl}`;
 const URL_UPDATE_KIRIM_SALDO_DIVISI = `${baseurl}`;
+
+const URL_GET_ALL_JENIS_BAHAN = `${baseurl}report/get-kode-jenis-bahan`;
 
 const data = {
   URL_LOGIN,
@@ -58,6 +60,7 @@ const data = {
   URL_ADD_KIRIM_SALDO_DIVISI,
   URL_DELETE_KIRIM_SALDO_DIVISI,
   URL_UPDATE_KIRIM_SALDO_DIVISI,
+  URL_GET_ALL_JENIS_BAHAN,
 };
 
 export default data;

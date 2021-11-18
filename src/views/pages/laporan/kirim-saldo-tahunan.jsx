@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Divider, Card } from "antd";
 import {
@@ -11,11 +11,17 @@ import TableLaporanKirimSaldoTahun from "../../components/laporan/kirim-saldo-ta
 import FormLaporanKirimSaldoTahun from "../../components/laporan/kirim-saldo-tahunan/form-kirim-saldo-tahunan";
 import BtnPrint from "../../components/laporan/kirim-saldo-tahunan/btn-print-kirim-saldo-tahunan";
 import { pageLoadedLogin } from "../../../application/actions/ui";
+import { getAllJenisBahan } from "../../../application/actions/jenisbahan";
+import KirimSaldoTahun from "../../../application/selectors/kirimsaldotahun";
 
 const KirimSaldoTahunan = () => {
   const dispatch = useDispatch();
+  const dataKirimSaldoTahun = useSelector(
+    KirimSaldoTahun.getAllKirimsaldotahun
+  );
   useEffect(() => {
     dispatch(pageLoadedLogin);
+    dispatch(getAllJenisBahan);
     document.title = "Laporan Stock Global Produksi";
   }, [dispatch]);
 
@@ -42,7 +48,12 @@ const KirimSaldoTahunan = () => {
                 <FormLaporanKirimSaldoTahun />
               </div>
             </div>
-            <div className="row">
+            <div
+              className="row"
+              style={{
+                display: dataKirimSaldoTahun.length === 0 ? "none" : "",
+              }}
+            >
               <div className="col-12">
                 <Divider orientation="left" style={{ fontSize: "14px" }}>
                   Tabel Laporan
@@ -52,7 +63,12 @@ const KirimSaldoTahunan = () => {
                 <TableLaporanKirimSaldoTahun />
               </div>
             </div>
-            <div className="row">
+            <div
+              className="row"
+              style={{
+                display: dataKirimSaldoTahun.length === 0 ? "none" : "",
+              }}
+            >
               <div className="col-12">
                 <BtnPrint />
               </div>

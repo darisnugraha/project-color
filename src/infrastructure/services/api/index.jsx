@@ -5,6 +5,7 @@ import stockadmin from "./stockadmin";
 import saldobahan from "./saldobahan";
 import kirimdesian from "./kirimdesian";
 import kirimsaldodivisi from "./kirimsaldodivisi";
+import JenisBahan from "./jenisbahan";
 
 const api = {
   login,
@@ -14,6 +15,7 @@ const api = {
   saldobahan,
   kirimdesian,
   kirimsaldodivisi,
+  JenisBahan,
 };
 
 export default api;

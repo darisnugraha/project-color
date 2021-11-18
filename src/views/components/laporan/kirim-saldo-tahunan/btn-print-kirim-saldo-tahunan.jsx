@@ -6,18 +6,22 @@ import ExcelReport from "./excel/excelReport";
 import pdfReport from "./pdf/pdfReport";
 import "antd/dist/antd.css";
 import "antd-button-color/dist/css/style.css";
+import KirimSaldoTahun from '../../../../application/selectors/kirimsaldotahun';
 
 const BtnPrint = () => {
   const btnLoading = useSelector(ui.getBtnLoading);
+  const dataKirimSaldoTahun = useSelector(
+    KirimSaldoTahun.getAllKirimsaldotahun
+  );
 
   const pdfExportHandle = () => {
-    pdfReport([]);
+    pdfReport(dataKirimSaldoTahun);
   };
 
   return (
     <Row style={{ marginTop: 15 }}>
       <Col span={10} style={{ marginTop: 10 }}>
-        <ExcelReport dataExel={[]} />
+        <ExcelReport dataExel={dataKirimSaldoTahun} />
       </Col>
       <Col htmltype="button" span={10} style={{ marginTop: 10 }} offset={2}>
         <Button

@@ -1,19 +1,19 @@
-import { jsPDF } from 'jspdf';
-import 'jspdf-autotable';
+import { jsPDF } from "jspdf";
+import "jspdf-autotable";
 
-const pdfReport = (data = '') => {
-  const doc = new jsPDF('l', 'mm', [297, 210]);
+const pdfReport = (data = "") => {
+  const doc = new jsPDF("l", "mm", [297, 210]);
   let tableRows = [];
   let tableColumn = [];
 
   let finalY = 30;
-  doc.text('Laporan Kirim dan Saldo per Tahun', 14, 15);
+  doc.text("Laporan Kirim dan Saldo per Tahun", 14, 15);
   doc.setFontSize(20);
-  doc.text('AMG', 200, 15);
+  doc.text("AMG", 200, 15);
 
   doc.setFontSize(10);
   doc.setProperties({
-    title: 'Saldo Bahan',
+    title: "Saldo Bahan",
   });
   doc.text(`PERIODE : `, 14, 25);
 
@@ -86,10 +86,167 @@ const pdfReport = (data = '') => {
     ],
   ];
 
-  const row = [];
-  tableRows.push(row);
+  let totalFrSelesai = 0;
+  let totalFrSaldo = 0;
+  let totalFrTotalSelesai = 0;
+  let totalFrTotalSaldo = 0;
+  data.forEach((element) => {
+    totalFrSelesai =
+      element.fr_selesai + element.fr2_selesai + element.fr3_selesai;
+    totalFrSaldo = element.fr_saldo + element.fr2_saldo + element.fr3_saldo;
+    totalFrTotalSelesai += totalFrSelesai;
+    totalFrTotalSaldo += totalFrSaldo;
 
-  const footer = [];
+    const row = [
+      {
+        content: element.bulan,
+        styles: {
+          halign: "center",
+        },
+      },
+      {
+        content: element.kerja_hari,
+        styles: {
+          halign: "center",
+        },
+      },
+      {
+        content: element.jenis,
+        styles: {
+          halign: "center",
+        },
+      },
+      {
+        content: element.fr_selesai === 0 ? 0 : element.fr_selesai.toFixed(3),
+        styles: {
+          halign: "right",
+        },
+      },
+      {
+        content: element.fr_saldo === 0 ? 0 : element.fr_saldo.toFixed(3),
+        styles: {
+          halign: "right",
+        },
+      },
+      {
+        content: element.fr2_selesai === 0 ? 0 : element.fr2_selesai.toFixed(3),
+        styles: {
+          halign: "right",
+        },
+      },
+      {
+        content: element.fr2_saldo === 0 ? 0 : element.fr2_saldo.toFixed(3),
+        styles: {
+          halign: "right",
+        },
+      },
+      {
+        content: element.fr3_selesai === 0 ? 0 : element.fr3_selesai.toFixed(3),
+        styles: {
+          halign: "right",
+        },
+      },
+      {
+        content: element.fr3_saldo === 0 ? 0 : element.fr3_saldo.toFixed(3),
+        styles: {
+          halign: "right",
+        },
+      },
+      {
+        content: totalFrSelesai === 0 ? 0 : totalFrSelesai.toFixed(3),
+        styles: {
+          halign: "right",
+        },
+      },
+      {
+        content: totalFrSaldo === 0 ? 0 : totalFrSaldo.toFixed(3),
+        styles: {
+          halign: "right",
+        },
+      },
+      {
+        content:
+          element.handsetting1_selesai === 0
+            ? 0
+            : element.handsetting1_selesai.toFixed(3),
+        styles: {
+          halign: "right",
+        },
+      },
+      {
+        content:
+          element.handsetting1_saldo === 0
+            ? 0
+            : element.handsetting1_saldo.toFixed(3),
+        styles: {
+          halign: "right",
+        },
+      },
+      {
+        content:
+          element.handsetting2_selesai === 0
+            ? 0
+            : element.handsetting2_selesai.toFixed(3),
+        styles: {
+          halign: "right",
+        },
+      },
+      {
+        content:
+          element.handsetting2_saldo === 0
+            ? 0
+            : element.handsetting2_saldo.toFixed(3),
+        styles: {
+          halign: "right",
+        },
+      },
+    ];
+    tableRows.push(row);
+  });
+
+  const footer = [
+    {
+      content: "Total",
+      colSpan: 3,
+      styles: { halign: "center" },
+    },
+    {
+      content: data.reduce((a, b) => a + b.fr_selesai, 0).toFixed(3),
+    },
+    {
+      content: data.reduce((a, b) => a + b.fr_saldo, 0).toFixed(3),
+    },
+    {
+      content: data.reduce((a, b) => a + b.fr2_selesai, 0).toFixed(3),
+    },
+    {
+      content: data.reduce((a, b) => a + b.fr2_saldo, 0).toFixed(3),
+    },
+    {
+      content: data.reduce((a, b) => a + b.fr3_selesai, 0).toFixed(3),
+    },
+    {
+      content: data.reduce((a, b) => a + b.fr3_saldo, 0).toFixed(3),
+    },
+    {
+      content: totalFrTotalSelesai.toFixed(3),
+    },
+    {
+      content: totalFrTotalSaldo.toFixed(3),
+    },
+    {
+      content: data.reduce((a, b) => a + b.handsetting1_selesai, 0).toFixed(3),
+    },
+    {
+      content: data.reduce((a, b) => a + b.handsetting1_saldo, 0).toFixed(3),
+    },
+    {
+      content: data.reduce((a, b) => a + b.handsetting2_selesai, 0).toFixed(3),
+    },
+    {
+      content: data.reduce((a, b) => a + b.handsetting2_saldo, 0).toFixed(3),
+    },
+  ];
   tableRows.push(footer);
 
   const printed = [
@@ -97,9 +254,9 @@ const pdfReport = (data = '') => {
       content: `Printed By Admin`,
       colSpan: 12,
       styles: {
-        fontStyle: 'italic',
-        textColor: '#000',
-        halign: 'left',
+        fontStyle: "italic",
+        textColor: "#000",
+        halign: "left",
       },
     },
   ];
@@ -109,18 +266,18 @@ const pdfReport = (data = '') => {
     head: tableColumn,
     body: tableRows,
     startY: finalY,
-    theme: 'plain',
+    theme: "plain",
     margin: { top: 10 },
     bodyStyles: {
       fontSize: 8,
-      halign: 'right',
+      halign: "right",
     },
     headStyles: {
       fontSize: 8,
-      fillColor: '#E8E5E5',
-      textColor: '#000',
-      valign: 'middle',
-      halign: 'center',
+      fillColor: "#E8E5E5",
+      textColor: "#000",
+      valign: "middle",
+      halign: "center",
     },
     tableLineColor: [255, 255, 255],
     tableLineWidth: 1,
@@ -138,10 +295,10 @@ const pdfReport = (data = '') => {
     const verticalPos = pageHeight - 10;
     doc.setPage(j);
     doc.text(`${j} of ${pages}`, horizontalPos, verticalPos, {
-      align: 'center',
+      align: "center",
     });
   }
-  const string = doc.output('datauristring');
+  const string = doc.output("datauristring");
   const x = window.open();
   x.document.open();
   x.document.write(
@@ -152,7 +309,7 @@ const pdfReport = (data = '') => {
     <body style='margin:0 !important'>
     <embed width='100%' height='100%'src='${string}'></embed>
     </body>
-    </html>`,
+    </html>`
   );
 };
 

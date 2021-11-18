@@ -13,7 +13,8 @@ const AxiosGet = async ({ url }) => {
       },
       timeout: 4000,
     };
-    const response = await axios.get(url, config);
+    // const response = await axios.get(url, config);
+    const response = await axios.get(url);
     return {
       value: response.data,
       error: null,

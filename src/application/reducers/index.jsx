@@ -8,6 +8,7 @@ import stockadmin from "./stockadmin";
 import saldobahan from "./saldobahan";
 import kirimdesian from "./kirimdesian";
 import kirimsaldodivisi from "./kirimsaldodivisi";
+import jenisbahan from "./jenisbahan";
 
 export default combineReducers({
   login,
@@ -18,5 +19,6 @@ export default combineReducers({
   saldobahan,
   kirimdesian,
   kirimsaldodivisi,
+  jenisbahan,
   form: formReducer,
 });
