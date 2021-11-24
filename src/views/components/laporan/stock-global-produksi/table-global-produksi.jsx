@@ -1,9 +1,9 @@
 import React from "react";
 import "antd/dist/antd.css";
 import { Table, Col, Row } from "antd";
-import { useSelector } from 'react-redux';
-import laporanStockGlobalProduksi from '../../../../application/selectors/laporanstockglobalproduksi';
-import ui from '../../../../application/selectors/ui';
+import { useSelector } from "react-redux";
+import laporanStockGlobalProduksi from "../../../../application/selectors/laporanstockglobalproduksi";
+import ui from "../../../../application/selectors/ui";
 
 const columns = [
   {
@@ -238,19 +238,7 @@ const columns = [
     fixed: "right",
     render: (row) => {
       let total = 0;
-      total =
-        row.awh75_awal +
-        row.awh75_in +
-        row.awh75_out +
-        row.awh75_sld +
-        row.ayl70_awal +
-        row.ayl70_in +
-        row.ayl70_out +
-        row.ayl70_sld +
-        row.ayl75_awal +
-        row.ayl75_in +
-        row.ayl75_out +
-        row.ayl75_sld;
+      total = row.awh75_sld + row.ayl70_sld + row.ayl75_sld;
       // return Math.floor(total);
       // return total.toFixed(3);
       let textString = "";
@@ -745,29 +733,11 @@ const columnsR = [
     render: (row) => {
       let total = 0;
       total =
-        row.eay18_awal +
-        row.eay18_in +
-        row.eay18_out +
         row.eay18_sld +
-        row.eay14_awal +
-        row.eay14_in +
-        row.eay14_out +
         row.eay14_sld +
-        row.eay10_awal +
-        row.eay10_in +
-        row.eay10_out +
         row.eay10_sld +
-        row.eaw18_awal +
-        row.eaw18_in +
-        row.eaw18_out +
         row.eaw18_sld +
-        row.eaw14_awal +
-        row.eaw14_in +
-        row.eaw14_out +
         row.eaw14_sld +
-        row.eaw10_awal +
-        row.eaw10_in +
-        row.eaw10_out +
         row.eaw10_sld;
       // return Math.floor(total);
       // return total.toFixed(3);
@@ -785,9 +755,13 @@ const columnsR = [
 ];
 
 const TableLaporanStockGlobalProduksi = () => {
-    const datalapL = useSelector(laporanStockGlobalProduksi.getAllLaporanStockGlobalProduksiL);
-    const datalapR = useSelector(laporanStockGlobalProduksi.getAllLaporanStockGlobalProduksiR);
-    const typeTable = useSelector(ui.getTypeTableLayout);
+  const datalapL = useSelector(
+    laporanStockGlobalProduksi.getAllLaporanStockGlobalProduksiL
+  );
+  const datalapR = useSelector(
+    laporanStockGlobalProduksi.getAllLaporanStockGlobalProduksiR
+  );
+  const typeTable = useSelector(ui.getTypeTableLayout);
 
   return (
     <Row>

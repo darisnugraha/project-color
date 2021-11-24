@@ -4,18 +4,6 @@ import { PageSettings } from '../../infrastructure/config/page-settings';
 
 class ExtraError extends React.Component {
 	static contextType = PageSettings;
-	
-	componentDidMount() {
-		this.context.handleSetPageSidebar(false);
-		this.context.handleSetPageHeader(false);
-		this.context.handleSetPageContentFullWidth(true);
-	}
-
-	componentWillUnmount() {
-		this.context.handleSetPageSidebar(true);
-		this.context.handleSetPageHeader(true);
-		this.context.handleSetPageContentFullWidth(false);
-	}
   
 	render() {
 		return (
