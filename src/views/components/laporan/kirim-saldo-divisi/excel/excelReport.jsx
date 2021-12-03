@@ -8,6 +8,8 @@ class ExcelReport extends Component {
   }
 
   render() {
+    let total_selesai_all = 0;
+    let total_saldo_all = 0;
     return (
       <>
         <ReactHTMLTableToExcel
@@ -352,6 +354,189 @@ class ExcelReport extends Component {
               </td>
             </tr>
           </thead>
+          <tbody>
+            {this.props.dataExel.map((row) => {
+              let total_selesai = 0;
+              total_selesai =
+                row.fr_selesai +
+                row.fr2_selesai +
+                row.fr3_selesai +
+                row.frTotal_selesai +
+                row.handsetting1_selesai +
+                row.handsetting2_selesai +
+                row.casting_selesai +
+                row.filling_selesai +
+                row.polishing_selesai +
+                row.platting_selesai;
+
+              total_selesai_all +=
+                row.fr_selesai +
+                row.fr2_selesai +
+                row.fr3_selesai +
+                row.frTotal_selesai +
+                row.handsetting1_selesai +
+                row.handsetting2_selesai +
+                row.casting_selesai +
+                row.filling_selesai +
+                row.polishing_selesai +
+                row.platting_selesai;
+
+              let total_saldo = 0;
+              total_saldo =
+                row.fr_saldo +
+                row.fr2_saldo +
+                row.fr3_saldo +
+                row.frTotal_saldo +
+                row.handsetting1_saldo +
+                row.handsetting2_saldo +
+                row.casting_saldo +
+                row.filling_saldo +
+                row.polishing_saldo +
+                row.platting_saldo;
+
+              total_saldo_all +=
+                row.fr_saldo +
+                row.fr2_saldo +
+                row.fr3_saldo +
+                row.frTotal_saldo +
+                row.handsetting1_saldo +
+                row.handsetting2_saldo +
+                row.casting_saldo +
+                row.filling_saldo +
+                row.polishing_saldo +
+                row.platting_saldo;
+
+              return (
+                <tr>
+                  <td>{row.tanggal}</td>
+                  <td>{row.kerja_hari}</td>
+                  <td>{row.casting_selesai.toFixed(3)}</td>
+                  <td>{row.potong_spru_selesai.toFixed(3)}</td>
+                  <td>{row.potong_spru_saldo.toFixed(3)}</td>
+                  <td>{row.filling_selesai.toFixed(3)}</td>
+                  <td>{row.filling_saldo.toFixed(3)}</td>
+                  <td>{row.fr_selesai.toFixed(3)}</td>
+                  <td>{row.fr_saldo.toFixed(3)}</td>
+                  <td>{row.fr2_selesai.toFixed(3)}</td>
+                  <td>{row.fr2_saldo.toFixed(3)}</td>
+                  <td>{row.fr3_selesai.toFixed(3)}</td>
+                  <td>{row.fr3_saldo.toFixed(3)}</td>
+                  <td>{row.frTotal_selesai.toFixed(3)}</td>
+                  <td>{row.frTotal_saldo.toFixed(3)}</td>
+                  <td>{row.handsetting1_selesai.toFixed(3)}</td>
+                  <td>{row.handsetting1_saldo.toFixed(3)}</td>
+                  <td>{row.polishing_selesai.toFixed(3)}</td>
+                  <td>{row.polishing_saldo.toFixed(3)}</td>
+                  <td>{row.platting_selesai.toFixed(3)}</td>
+                  <td>{row.platting_saldo.toFixed(3)}</td>
+                  <td>{total_selesai.toFixed(3)}</td>
+                  <td>{total_saldo.toFixed(3)}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colSpan="2">Total</td>
+              <td>
+                {this.props.dataExel
+                  .reduce((a, b) => a + b.casting_selesai, 0)
+                  .toFixed(3)}
+              </td>
+              <td>
+                {this.props.dataExel
+                  .reduce((a, b) => a + b.potong_spru_selesai, 0)
+                  .toFixed(3)}
+              </td>
+              <td>
+                {this.props.dataExel
+                  .reduce((a, b) => a + b.potong_spru_saldo, 0)
+                  .toFixed(3)}
+              </td>
+              <td>
+                {this.props.dataExel
+                  .reduce((a, b) => a + b.filling_selesai, 0)
+                  .toFixed(3)}
+              </td>
+              <td>
+                {this.props.dataExel
+                  .reduce((a, b) => a + b.filling_saldo, 0)
+                  .toFixed(3)}
+              </td>
+              <td>
+                {this.props.dataExel
+                  .reduce((a, b) => a + b.fr_selesai, 0)
+                  .toFixed(3)}
+              </td>
+              <td>
+                {this.props.dataExel
+                  .reduce((a, b) => a + b.fr_saldo, 0)
+                  .toFixed(3)}
+              </td>
+              <td>
+                {this.props.dataExel
+                  .reduce((a, b) => a + b.fr2_selesai, 0)
+                  .toFixed(3)}
+              </td>
+              <td>
+                {this.props.dataExel
+                  .reduce((a, b) => a + b.fr2_saldo, 0)
+                  .toFixed(3)}
+              </td>
+              <td>
+                {this.props.dataExel
+                  .reduce((a, b) => a + b.fr3_selesai, 0)
+                  .toFixed(3)}
+              </td>
+              <td>
+                {this.props.dataExel
+                  .reduce((a, b) => a + b.fr3_saldo, 0)
+                  .toFixed(3)}
+              </td>
+              <td>
+                {this.props.dataExel
+                  .reduce((a, b) => a + b.frTotal_selesai, 0)
+                  .toFixed(3)}
+              </td>
+              <td>
+                {this.props.dataExel
+                  .reduce((a, b) => a + b.frTotal_saldo, 0)
+                  .toFixed(3)}
+              </td>
+              <td>
+                {this.props.dataExel
+                  .reduce((a, b) => a + b.handsetting1_selesai, 0)
+                  .toFixed(3)}
+              </td>
+              <td>
+                {this.props.dataExel
+                  .reduce((a, b) => a + b.handsetting1_saldo, 0)
+                  .toFixed(3)}
+              </td>
+              <td>
+                {this.props.dataExel
+                  .reduce((a, b) => a + b.polishing_selesai, 0)
+                  .toFixed(3)}
+              </td>
+              <td>
+                {this.props.dataExel
+                  .reduce((a, b) => a + b.polishing_saldo, 0)
+                  .toFixed(3)}
+              </td>
+              <td>
+                {this.props.dataExel
+                  .reduce((a, b) => a + b.platting_selesai, 0)
+                  .toFixed(3)}
+              </td>
+              <td>
+                {this.props.dataExel
+                  .reduce((a, b) => a + b.platting_saldo, 0)
+                  .toFixed(3)}
+              </td>
+              <td>{total_selesai_all.toFixed(3)}</td>
+              <td>{total_saldo_all.toFixed(3)}</td>
+            </tr>
+          </tfoot>
         </table>
       </>
     );

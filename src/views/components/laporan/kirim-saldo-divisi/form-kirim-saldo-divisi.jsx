@@ -5,6 +5,7 @@ import { Field, reduxForm } from "redux-form";
 import moment from "moment";
 import styleAntd from "../../../../infrastructure/shared/styleAntd";
 import ui from "../../../../application/selectors/ui";
+import jenisbahan from "../../../../application/selectors/jenisbahan";
 import "antd/dist/antd.css";
 import { getAllKirimsaldodivisi } from "../../../../application/actions/kirimsaldodivisi";
 
@@ -14,6 +15,7 @@ const { Option } = Select;
 
 const FormLaporanKirimSaldoDivisi = (prop) => {
   const btnLoading = useSelector(ui.getBtnLoading);
+  const datajenisbahan = useSelector(jenisbahan.getAllJenisbahan);
   const dispatch = useDispatch();
   return (
     <Form layout="vertical">
@@ -22,13 +24,38 @@ const FormLaporanKirimSaldoDivisi = (prop) => {
           <Field
             name="date"
             type="date"
-            label={<span style={{ fontSize: "13px" }}>Bulan</span>}
-            component={styleAntd.ADatePick}
+            label={<span style={{ fontSize: "13px" }}>Tanggal</span>}
+            component={styleAntd.ARangePick}
             className="form-item-group"
             onBlur={(e) => e.preventDefault()}
-            defaultValue={moment(today, dateFormat)}
-            picker="month"
+            defaultValue={[
+              moment(today, dateFormat),
+              moment(today, dateFormat),
+            ]}
           />
+        </Col>
+        <Col offset={1}>
+          <Field
+            name="kode_jenis_bahan"
+            label={<span style={{ fontSize: "13px" }}>Kode Jenis Bahan</span>}
+            style={{ width: 250 }}
+            component={styleAntd.ASelect}
+            placeholder="Pilih Kode Jenis Bahan"
+            defaultValue={"AWH75"}
+            onBlur={(e) => e.preventDefault()}
+          >
+            {datajenisbahan.map((item) => {
+              if (item.kode_jenis_bahan !== "ALLOY") {
+                return (
+                  <Option value={item.kode_jenis_bahan}>
+                    <span style={{ fontSize: "13px" }}>
+                      {item.nama_jenis_bahan}
+                    </span>
+                  </Option>
+                );
+              }
+            })}
+          </Field>
         </Col>
         <Col offset={1}>
           <Button
@@ -49,6 +76,7 @@ const FormLaporanKirimSaldoDivisi = (prop) => {
 export default reduxForm({
   form: "FormLaporanKirimSaldoDivisi",
   initialValues: {
-    date: moment(today, dateFormat),
+    date: [moment(today, dateFormat), moment(today, dateFormat)],
+    kode_jenis_bahan: "AWH75",
   },
 })(FormLaporanKirimSaldoDivisi);

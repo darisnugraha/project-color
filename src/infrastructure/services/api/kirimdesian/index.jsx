@@ -4,23 +4,32 @@ import deleteAxios from "../../../axios/delete";
 import put from "../../../axios/put";
 import word from "../../../shared/static";
 const kirimdesian = {
-  getAllKirimdesian: async () => {
-	const response = await get.AxiosGet(word.URL_GET_ALL_KIRIM_DESIAN);
-	return response;
+  getAllKirimdesian: async (data) => {
+    const response = await get({
+      url:
+        word.URL_GET_ALL_KIRIM_DESIAN +
+        "dateDari=" +
+        data.tgl_dari +
+        "&" +
+        "dateSampai=" +
+        data.tgl_sampai +
+        "&" +
+        "kode_jenis_bahan=" +
+        data.kode_jenis_bahan,
+    });
+    return response;
   },
   addKirimdesian: async (data) => {
-	const response = await post.AxiosPost(word.URL_ADD_KIRIM_DESIAN, data);
-	return response;
+    const response = await post.AxiosPost(word.URL_ADD_KIRIM_DESIAN, data);
+    return response;
   },
   deleteKirimdesian: async (data) => {
-	const response = await deleteAxios.AxiosDelete(
-	  word.URL_DELETE_KIRIM_DESIAN + data
-	);
-	return response;
+    const response = await deleteAxios(word.URL_DELETE_KIRIM_DESIAN + data);
+    return response;
   },
   editKirimdesian: async (url, data) => {
-	const response = await put.AxiosPut(word.URL_UPDATE_KIRIM_DESIAN + url, data);
-	return response;
+    const response = await put(word.URL_UPDATE_KIRIM_DESIAN + url, data);
+    return response;
   },
 };
 

@@ -22,8 +22,8 @@ const Menu = [
         title: "Stock Admin",
       },
       {
-        path: "/laporan/kirim-desian",
-        title: "Kirim per Desian",
+        path: "/laporan/kirim-desain",
+        title: "Kirim per Desain",
       },
       {
         path: "/laporan/kirim-saldo-divisi",

@@ -63,10 +63,202 @@ const pdfReport = (data = "") => {
     ],
   ];
 
-  const row = [];
-  tableRows.push(row);
+  let total_selesai = 0;
+  let total_selesai_all = 0;
+  let total_saldo = 0;
+  let total_saldo_all = 0;
+  data.forEach((element) => {
+    total_selesai =
+      element.fr_selesai +
+      element.fr2_selesai +
+      element.fr3_selesai +
+      element.frTotal_selesai +
+      element.handsetting1_selesai +
+      element.handsetting2_selesai +
+      element.casting_selesai +
+      element.filling_selesai +
+      element.polishing_selesai +
+      element.platting_selesai;
 
-  const footer = [];
+    total_selesai_all +=
+      element.fr_selesai +
+      element.fr2_selesai +
+      element.fr3_selesai +
+      element.frTotal_selesai +
+      element.handsetting1_selesai +
+      element.handsetting2_selesai +
+      element.casting_selesai +
+      element.filling_selesai +
+      element.polishing_selesai +
+      element.platting_selesai;
+
+    total_saldo =
+      element.fr_saldo +
+      element.fr2_saldo +
+      element.fr3_saldo +
+      element.frTotal_saldo +
+      element.handsetting1_saldo +
+      element.handsetting2_saldo +
+      element.casting_saldo +
+      element.filling_saldo +
+      element.polishing_saldo +
+      element.platting_saldo;
+
+    total_saldo_all +=
+      element.fr_saldo +
+      element.fr2_saldo +
+      element.fr3_saldo +
+      element.frTotal_saldo +
+      element.handsetting1_saldo +
+      element.handsetting2_saldo +
+      element.casting_saldo +
+      element.filling_saldo +
+      element.polishing_saldo +
+      element.platting_saldo;
+
+    const row = [
+      {
+        content: element.tanggal,
+      },
+      {
+        content: element.kerja_hari,
+      },
+      {
+        content: element.casting_selesai.toFixed(3),
+      },
+      {
+        content: element.potong_spru_selesai.toFixed(3),
+      },
+      {
+        content: element.potong_spru_saldo.toFixed(3),
+      },
+      {
+        content: element.filling_selesai.toFixed(3),
+      },
+      {
+        content: element.filling_saldo.toFixed(3),
+      },
+      {
+        content: element.fr_selesai.toFixed(3),
+      },
+      {
+        content: element.fr_saldo.toFixed(3),
+      },
+      {
+        content: element.fr2_selesai.toFixed(3),
+      },
+      {
+        content: element.fr2_saldo.toFixed(3),
+      },
+      {
+        content: element.fr3_selesai.toFixed(3),
+      },
+      {
+        content: element.fr3_saldo.toFixed(3),
+      },
+      {
+        content: element.frTotal_selesai.toFixed(3),
+      },
+      {
+        content: element.frTotal_saldo.toFixed(3),
+      },
+      {
+        content: element.handsetting1_selesai.toFixed(3),
+      },
+      {
+        content: element.handsetting1_saldo.toFixed(3),
+      },
+      {
+        content: element.polishing_selesai.toFixed(3),
+      },
+      {
+        content: element.polishing_saldo.toFixed(3),
+      },
+      {
+        content: element.platting_selesai.toFixed(3),
+      },
+      {
+        content: element.platting_saldo.toFixed(3),
+      },
+      {
+        content: total_selesai.toFixed(3),
+      },
+      {
+        content: total_saldo.toFixed(3),
+      },
+    ];
+    tableRows.push(row);
+  });
+
+  const footer = [
+    {
+      content: "Total",
+      colSpan: 2,
+    },
+    {
+      content: data.reduce((a, b) => a + b.casting_selesai, 0).toFixed(3),
+    },
+    {
+      content: data.reduce((a, b) => a + b.potong_spru_selesai, 0).toFixed(3),
+    },
+    {
+      content: data.reduce((a, b) => a + b.potong_spru_saldo, 0).toFixed(3),
+    },
+    {
+      content: data.reduce((a, b) => a + b.filling_selesai, 0).toFixed(3),
+    },
+    {
+      content: data.reduce((a, b) => a + b.filling_saldo, 0).toFixed(3),
+    },
+    {
+      content: data.reduce((a, b) => a + b.fr_selesai, 0).toFixed(3),
+    },
+    {
+      content: data.reduce((a, b) => a + b.fr_saldo, 0).toFixed(3),
+    },
+    {
+      content: data.reduce((a, b) => a + b.fr2_selesai, 0).toFixed(3),
+    },
+    {
+      content: data.reduce((a, b) => a + b.fr2_saldo, 0).toFixed(3),
+    },
+    {
+      content: data.reduce((a, b) => a + b.fr3_selesai, 0).toFixed(3),
+    },
+    {
+      content: data.reduce((a, b) => a + b.fr3_saldo, 0).toFixed(3),
+    },
+    {
+      content: data.reduce((a, b) => a + b.frTotal_selesai, 0).toFixed(3),
+    },
+    {
+      content: data.reduce((a, b) => a + b.frTotal_saldo, 0).toFixed(3),
+    },
+    {
+      content: data.reduce((a, b) => a + b.handsetting1_selesai, 0).toFixed(3),
+    },
+    {
+      content: data.reduce((a, b) => a + b.handsetting1_saldo, 0).toFixed(3),
+    },
+    {
+      content: data.reduce((a, b) => a + b.polishing_selesai, 0).toFixed(3),
+    },
+    {
+      content: data.reduce((a, b) => a + b.polishing_saldo, 0).toFixed(3),
+    },
+    {
+      content: data.reduce((a, b) => a + b.platting_selesai, 0).toFixed(3),
+    },
+    {
+      content: data.reduce((a, b) => a + b.platting_saldo, 0).toFixed(3),
+    },
+    {
+      content: total_selesai_all.toFixed(3),
+    },
+    {
+      content: total_saldo_all.toFixed(3),
+    },
+  ];
   tableRows.push(footer);
 
   const printed = [
@@ -89,11 +281,11 @@ const pdfReport = (data = "") => {
     theme: "plain",
     margin: { top: 10 },
     bodyStyles: {
-      fontSize: 7,
+      fontSize: 5,
       halign: "right",
     },
     headStyles: {
-      fontSize: 7,
+      fontSize: 5,
       fillColor: "#E8E5E5",
       textColor: "#000",
       valign: "middle",

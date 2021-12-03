@@ -12,8 +12,6 @@ const getJenisBahan =
     next(action);
     if (action.type === GET_ALL_JENIS_BAHAN) {
       const response = await api.JenisBahan.getAllJenisBahan();
-      log(response);
-    //   const response = [];
       if (response?.value !== null) {
         dispatch(setDataJenisBahanSuccess(response?.value));
       } else {

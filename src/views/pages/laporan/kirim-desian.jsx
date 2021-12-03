@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Divider, Card } from "antd";
 import {
@@ -11,13 +11,17 @@ import TableLaporanKirimDesian from "../../components/laporan/kirim-desian/table
 import FormLaporanKirimDesian from "../../components/laporan/kirim-desian/form-kirim-desian";
 import BtnPrint from "../../components/laporan/kirim-desian/btn-print-kirim-desian";
 import { pageLoadedLogin } from "../../../application/actions/ui";
+import { getAllJenisBahan } from "../../../application/actions/jenisbahan";
+import kirimDesain from "../../../application/selectors/kirimdesian";
 
 const KirimDesian = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(pageLoadedLogin);
-    document.title = "Laporan Kirim per Desian";
+    dispatch(getAllJenisBahan);
+    document.title = "Laporan Kirim per Desain";
   }, [dispatch]);
+  const dataKirimDesain = useSelector(kirimDesain.getAllKirimdesian);
 
   return (
     <div>
@@ -28,13 +32,13 @@ const KirimDesian = () => {
         <li className="breadcrumb-item">
           <Link to="/laporan/kirim-desian">Laporan</Link>
         </li>
-        <li className="breadcrumb-item active">Kirim per Desian</li>
+        <li className="breadcrumb-item active">Kirim per Desain</li>
       </ol>
       <h1 className="page-header">
-        Laporan <small>Kirim per Desian</small>
+        Laporan <small>Kirim per Desain</small>
       </h1>
       <Panel>
-        <PanelHeader>Kirim per Desian</PanelHeader>
+        <PanelHeader>Kirim per Desain</PanelHeader>
         <PanelBody>
           <Card bordered={false}>
             <div className="row">
@@ -46,6 +50,7 @@ const KirimDesian = () => {
               className="row"
               style={{
                 marginTop: 10,
+                display: dataKirimDesain.length === 0 ? "none" : "",
               }}
             >
               <div className="col-12">
@@ -61,6 +66,7 @@ const KirimDesian = () => {
               className="row"
               style={{
                 marginTop: 10,
+                display: dataKirimDesain.length === 0 ? "none" : "",
               }}
             >
               <div className="col-12">

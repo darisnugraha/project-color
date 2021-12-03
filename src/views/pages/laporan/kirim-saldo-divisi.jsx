@@ -11,11 +11,13 @@ import TableLaporanKirimSaldoDivisi from "../../components/laporan/kirim-saldo-d
 import FormLaporanKirimSaldoDivisi from "../../components/laporan/kirim-saldo-divisi/form-kirim-saldo-divisi";
 import BtnPrint from "../../components/laporan/kirim-saldo-divisi/btn-print-kirim-saldo-divisi";
 import { pageLoadedLogin } from "../../../application/actions/ui";
+import { getAllJenisBahan } from "../../../application/actions/jenisbahan";
 
 const KirimSaldoDivisi = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(pageLoadedLogin);
+    dispatch(getAllJenisBahan);
     document.title = "Laporan Kirim dan Saldo per Divisi";
   }, [dispatch]);
 

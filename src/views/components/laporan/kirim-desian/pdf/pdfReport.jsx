@@ -6,16 +6,20 @@ const pdfReport = (data = "") => {
   let tableRows = [];
   let tableColumn = [];
 
+  let data_head = JSON.parse(localStorage.getItem("kirim_desain_head"));
+  let tgl_dari_string = data_head.tgl_dari;
+  let tgl_sampai_string = data_head.tgl_sampai;
+
   let finalY = 30;
-  doc.text("Laporan Kirim per Desian", 14, 15);
+  doc.text("Laporan Kirim per Desain", 14, 15);
   doc.setFontSize(20);
   doc.text("AMG", 200, 15);
 
   doc.setFontSize(10);
   doc.setProperties({
-    title: "Kirim per Desian",
+    title: "Kirim per Desain",
   });
-  doc.text(`PERIODE : `, 14, 25);
+  doc.text(`PERIODE : ${tgl_dari_string} s/d ${tgl_sampai_string}`, 14, 25);
 
   tableColumn = [
     [
@@ -29,11 +33,11 @@ const pdfReport = (data = "") => {
       },
       {
         content: `P.spru`,
-        colSpan: 4,
+        colSpan: 5,
       },
       {
         content: `TOTAL`,
-        colSpan: 4,
+        colSpan: 5,
       },
     ],
     [
@@ -50,6 +54,9 @@ const pdfReport = (data = "") => {
         content: `E`,
       },
       {
+        content: `LAIN - LAIN`,
+      },
+      {
         content: `BG`,
       },
       {
@@ -61,11 +68,188 @@ const pdfReport = (data = "") => {
       {
         content: `E`,
       },
+      {
+        content: `LAIN - LAIN`,
+      },
     ],
   ];
 
-  const row = [];
-  tableRows.push(row);
+  let BG = 0;
+  let R = 0;
+  let P = 0;
+  let E = 0;
+
+  let BG_NOTA = 0;
+  let R_NOTA = 0;
+  let P_NOTA = 0;
+  let E_NOTA = 0;
+
+  let lain_lain = 0;
+  let lain_lain_nota = 0;
+
+  data.forEach((element) => {
+    if (element.jenis === "BG") {
+      BG = parseFloat(element.berat_kirim);
+      BG_NOTA = parseFloat(element.nota);
+    } else if (element.jenis === "R") {
+      R = parseFloat(element.berat_kirim);
+      R_NOTA = parseFloat(element.nota);
+    } else if (element.jenis === "P") {
+      P = parseFloat(element.berat_kirim);
+      P_NOTA = parseFloat(element.nota);
+    } else if (element.jenis === "E") {
+      E = parseFloat(element.berat_kirim);
+      E_NOTA = parseFloat(element.nota);
+    } else {
+      lain_lain += parseFloat(element.berat_kirim);
+      lain_lain_nota += parseFloat(element.nota);
+    }
+
+    const row = [
+      {
+        content: element.tanggal,
+        styles: {
+          halign: "center",
+        },
+        rowSpan: 2,
+      },
+      {
+        content: "Nota",
+        styles: {
+          halign: "center",
+        },
+      },
+      {
+        content: BG_NOTA.toFixed(3),
+        styles: {
+          halign: "center",
+        },
+      },
+      {
+        content: R_NOTA.toFixed(3),
+        styles: {
+          halign: "center",
+        },
+      },
+      {
+        content: P_NOTA.toFixed(3),
+        styles: {
+          halign: "center",
+        },
+      },
+      {
+        content: E_NOTA.toFixed(3),
+        styles: {
+          halign: "center",
+        },
+      },
+      {
+        content: lain_lain_nota.toFixed(3),
+        styles: {
+          halign: "center",
+        },
+      },
+      {
+        content: BG_NOTA.toFixed(3),
+        styles: {
+          halign: "center",
+        },
+      },
+      {
+        content: R_NOTA.toFixed(3),
+        styles: {
+          halign: "center",
+        },
+      },
+      {
+        content: P_NOTA.toFixed(3),
+        styles: {
+          halign: "center",
+        },
+      },
+      {
+        content: E_NOTA.toFixed(3),
+        styles: {
+          halign: "center",
+        },
+      },
+      {
+        content: lain_lain_nota.toFixed(3),
+        styles: {
+          halign: "center",
+        },
+      },
+    ];
+    const row_dua = [
+      {
+        content: "Berat",
+        styles: {
+          halign: "center",
+        },
+      },
+      {
+        content: BG.toFixed(3),
+        styles: {
+          halign: "center",
+        },
+      },
+      {
+        content: R.toFixed(3),
+        styles: {
+          halign: "center",
+        },
+      },
+      {
+        content: P.toFixed(3),
+        styles: {
+          halign: "center",
+        },
+      },
+      {
+        content: E.toFixed(3),
+        styles: {
+          halign: "center",
+        },
+      },
+      {
+        content: lain_lain.toFixed(3),
+        styles: {
+          halign: "center",
+        },
+      },
+      {
+        content: BG.toFixed(3),
+        styles: {
+          halign: "center",
+        },
+      },
+      {
+        content: R.toFixed(3),
+        styles: {
+          halign: "center",
+        },
+      },
+      {
+        content: P.toFixed(3),
+        styles: {
+          halign: "center",
+        },
+      },
+      {
+        content: E.toFixed(3),
+        styles: {
+          halign: "center",
+        },
+      },
+      {
+        content: lain_lain.toFixed(3),
+        styles: {
+          halign: "center",
+        },
+      },
+    ];
+    tableRows.push(row, row_dua);
+  });
 
   const footer = [];
   tableRows.push(footer);
@@ -125,7 +309,7 @@ const pdfReport = (data = "") => {
   x.document.write(
     `<html>
     <head>
-    <title>Kirim per Desian</title>
+    <title>Kirim per Desain</title>
     </head>
     <body style='margin:0 !important'>
     <embed width='100%' height='100%'src='${string}'></embed>

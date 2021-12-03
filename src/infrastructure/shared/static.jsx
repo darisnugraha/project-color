@@ -22,12 +22,12 @@ const URL_ADD_SALDO_BAHAN = `${baseurl}`;
 const URL_DELETE_SALDO_BAHAN = `${baseurl}`;
 const URL_UPDATE_SALDO_BAHAN = `${baseurl}`;
 
-const URL_GET_ALL_KIRIM_DESIAN = `${baseurl}`;
+const URL_GET_ALL_KIRIM_DESIAN = `${baseurl}report-desain/kirim-desain?`;
 const URL_ADD_KIRIM_DESIAN = `${baseurl}`;
 const URL_DELETE_KIRIM_DESIAN = `${baseurl}`;
 const URL_UPDATE_KIRIM_DESIAN = `${baseurl}`;
 
-const URL_GET_ALL_KIRIM_SALDO_DIVISI = `${baseurl}`;
+const URL_GET_ALL_KIRIM_SALDO_DIVISI = `${baseurl}report/kirim-saldo-divisi?`;
 const URL_ADD_KIRIM_SALDO_DIVISI = `${baseurl}`;
 const URL_DELETE_KIRIM_SALDO_DIVISI = `${baseurl}`;
 const URL_UPDATE_KIRIM_SALDO_DIVISI = `${baseurl}`;

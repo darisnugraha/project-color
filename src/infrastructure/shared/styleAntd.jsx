@@ -1,8 +1,9 @@
-import React from 'react';
-import { Form, Input, DatePicker, Radio, Checkbox, Select } from 'antd';
+import React from "react";
+import { Form, Input, DatePicker, Radio, Checkbox, Select } from "antd";
 
 const FormItem = Form.Item;
 const RadioGroup = Radio.Group;
+const { RangePicker } = DatePicker;
 
 const makeField =
   (Component) =>
@@ -12,7 +13,7 @@ const makeField =
       <FormItem
         // {...formItemLayout}
         label={label}
-        validateStatus={hasError ? 'error' : 'success'}
+        validateStatus={hasError ? "error" : "success"}
         hasFeedback={hasFeedback && hasError}
         help={hasError && meta.error}
         {...input}
@@ -24,9 +25,10 @@ const makeField =
 
 const AInput = makeField(Input);
 const ADatePick = makeField(DatePicker);
+const ARangePick = makeField(RangePicker);
 const ARadioGroup = makeField(RadioGroup);
 const ACheckBox = makeField(Checkbox);
 const ASelect = makeField(Select);
 
-const data = { AInput, ADatePick, ARadioGroup, ACheckBox, ASelect };
+const data = { AInput, ADatePick, ARadioGroup, ACheckBox, ASelect, ARangePick };
 export default data;

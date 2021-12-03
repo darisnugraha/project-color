@@ -49,8 +49,8 @@ const routes = [
     component: () => <StockAdmin />,
   },
   {
-    path: "/laporan/kirim-desian",
-    title: "Laporan Kirim per Desian",
+    path: "/laporan/kirim-desain",
+    title: "Laporan Kirim per Desain",
     component: () => <KirimDesian />,
   },
   {

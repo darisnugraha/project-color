@@ -6,7 +6,7 @@ import word from "../../../shared/static";
 
 const kirimsaldotahun = {
   getAllKirimsaldotahun: async () => {
-    const response = await get.AxiosGet(word.URL_GET_ALL_KIRIM_SALDO_TAHUN);
+    const response = await get(word.URL_GET_ALL_KIRIM_SALDO_TAHUN);
     return response;
   },
   addKirimsaldotahun: async (datakirim) => {
@@ -17,13 +17,13 @@ const kirimsaldotahun = {
     return response;
   },
   deleteKirimsaldotahun: async (data) => {
-    const response = await deleteAxios.AxiosDelete(
+    const response = await deleteAxios(
       word.URL_DELETE_KIRIM_SALDO_TAHUN + data
     );
     return response;
   },
   editKirimsaldotahun: async (url, data) => {
-    const response = await put.AxiosPut(
+    const response = await put(
       word.URL_UPDATE_KIRIM_SALDO_TAHUN + url,
       data
     );

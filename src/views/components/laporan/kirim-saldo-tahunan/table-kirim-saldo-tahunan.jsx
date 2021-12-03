@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import { Table } from "antd";
 import "antd/dist/antd.css";
 import KirimSaldoTahun from '../../../../application/selectors/kirimsaldotahun';
-import ui from '../../../../application/selectors/ui';
 
 const columns = [
   {
