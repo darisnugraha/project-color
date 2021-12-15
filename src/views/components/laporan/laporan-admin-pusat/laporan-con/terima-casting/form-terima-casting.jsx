@@ -7,20 +7,20 @@ import styleAntd from "../../../../../../infrastructure/shared/styleAntd";
 import ui from "../../../../../../application/selectors/ui";
 import jenisbahan from "../../../../../../application/selectors/jenisbahan";
 import "antd/dist/antd.css";
-import { getAllKirimCasting } from "../../../../../../application/actions/kirimcasting";
+import { getAllTerimaCasting } from "../../../../../../application/actions/terimacasting";
 
 const dateFormat = "MM/YYYY";
 const today = new Date();
 const { Option } = Select;
 
 const maptostate = (state) => {
-  if (state.form.FormLaporanKirimCasting?.values !== undefined) {
+  if (state.form.FormLaporanTerimaCasting?.values !== undefined) {
     return {
       initialValues: {
-        date: state.form.FormLaporanKirimCasting.values.date,
+        date: state.form.FormLaporanTerimaCasting.values.date,
         kode_jenis_bahan:
-          state.form.FormLaporanKirimCasting.values.kode_jenis_bahan,
-        kriteria: state.form.FormLaporanKirimCasting.values.kriteria,
+          state.form.FormLaporanTerimaCasting.values.kode_jenis_bahan,
+        kriteria: state.form.FormLaporanTerimaCasting.values.kriteria,
       },
     };
   } else {
@@ -34,7 +34,7 @@ const maptostate = (state) => {
   }
 };
 
-let FormLaporanKirimCasting = (prop) => {
+let FormLaporanTerimaCasting = (prop) => {
   // eslint-disable-next-line
   const dispatch = useDispatch();
   const btnLoading = useSelector(ui.getBtnLoading);
@@ -105,7 +105,7 @@ let FormLaporanKirimCasting = (prop) => {
             type="primary"
             htmltype="button"
             loading={btnLoading}
-            onClick={() => prop.dispatch(getAllKirimCasting)}
+            onClick={() => prop.dispatch(getAllTerimaCasting)}
             style={{ marginTop: 29 }}
           >
             Lihat Laporan
@@ -116,8 +116,8 @@ let FormLaporanKirimCasting = (prop) => {
   );
 };
 
-FormLaporanKirimCasting = reduxForm({
-  form: "FormLaporanKirimCasting",
+FormLaporanTerimaCasting = reduxForm({
+  form: "FormLaporanTerimaCasting",
   enableReinitialize: true,
-})(FormLaporanKirimCasting);
-export default connect(maptostate, null)(FormLaporanKirimCasting);
+})(FormLaporanTerimaCasting);
+export default connect(maptostate, null)(FormLaporanTerimaCasting);

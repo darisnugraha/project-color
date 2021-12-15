@@ -11,6 +11,8 @@ import KirimDesian from "../../views/pages/laporan/kirim-desian";
 import KirimSaldoDivisi from "../../views/pages/laporan/kirim-saldo-divisi";
 import NotFound from "../../views/pages/notfound";
 import KirimCasting from "../../views/pages/laporan-admin-pusat/laporan-CON/kirim-casting";
+import TerimaCasting from "../../views/pages/laporan-admin-pusat/laporan-CON/terima-casting";
+import KirimBarangProduksi from "../../views/pages/laporan-admin-pusat/laporan-CON/kirim-barang-produksi";
 
 const routes = [
   // {
@@ -64,6 +66,16 @@ const routes = [
     path: "/laporan-admin-pusat/con/kirim-casting",
     title: "Laporan Kirim Casting",
     component: () => <KirimCasting />,
+  },
+  {
+    path: "/laporan-admin-pusat/con/terima-casting",
+    title: "Laporan Terima Casting",
+    component: () => <TerimaCasting />,
+  },
+  {
+    path: "/laporan-admin-pusat/con/kirim-barang-produksi",
+    title: "Laporan Kirim Barang Produksi",
+    component: () => <KirimBarangProduksi />,
   },
   {
     path: "/notfound",

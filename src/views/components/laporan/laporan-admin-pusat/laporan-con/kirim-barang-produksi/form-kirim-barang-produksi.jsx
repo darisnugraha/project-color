@@ -7,20 +7,22 @@ import styleAntd from "../../../../../../infrastructure/shared/styleAntd";
 import ui from "../../../../../../application/selectors/ui";
 import jenisbahan from "../../../../../../application/selectors/jenisbahan";
 import "antd/dist/antd.css";
-import { getAllKirimCasting } from "../../../../../../application/actions/kirimcasting";
+import { getAllKirimBarangProduksi } from "../../../../../../application/actions/kirimbarangproduksi";
 
 const dateFormat = "MM/YYYY";
 const today = new Date();
 const { Option } = Select;
 
 const maptostate = (state) => {
-  if (state.form.FormLaporanKirimCasting?.values !== undefined) {
+  if (state.form.FormLaporanKirimBarangProduksi?.values !== undefined) {
     return {
       initialValues: {
-        date: state.form.FormLaporanKirimCasting.values.date,
+        date: state.form.FormLaporanKirimBarangProduksi.values.date,
         kode_jenis_bahan:
-          state.form.FormLaporanKirimCasting.values.kode_jenis_bahan,
-        kriteria: state.form.FormLaporanKirimCasting.values.kriteria,
+          state.form.FormLaporanKirimBarangProduksi.values.kode_jenis_bahan,
+        divisi: state.form.FormLaporanKirimBarangProduksi.values.divisi,
+        alloy: state.form.FormLaporanKirimBarangProduksi.values.alloy,
+        no_con: state.form.FormLaporanKirimBarangProduksi.values.no_con,
       },
     };
   } else {
@@ -28,13 +30,15 @@ const maptostate = (state) => {
       initialValues: {
         date: [moment(today, dateFormat), moment(today, dateFormat)],
         kode_jenis_bahan: state.jenisbahan.feedback[0]?.kode_jenis_bahan,
-        kriteria: "semua",
+        divisi: "FILLING",
+        alloy: false,
+        no_con: "",
       },
     };
   }
 };
 
-let FormLaporanKirimCasting = (prop) => {
+let FormLaporanKirimBarangProduksi = (prop) => {
   // eslint-disable-next-line
   const dispatch = useDispatch();
   const btnLoading = useSelector(ui.getBtnLoading);
@@ -82,30 +86,46 @@ let FormLaporanKirimCasting = (prop) => {
         </Col>
         <Col offset={1}>
           <Field
-            name="kriteria"
-            label={<span style={{ fontSize: "13px" }}>Kriteria</span>}
+            name="divisi"
+            label={<span style={{ fontSize: "13px" }}>Divisi</span>}
             style={{ width: 250 }}
             component={styleAntd.ASelect}
-            placeholder="Pilih Kriteria"
+            placeholder="Pilih Divisi"
             onBlur={(e) => e.preventDefault()}
           >
-            <Option value="semua" key="1">
-              <span style={{ fontSize: "13px" }}>Semua</span>
+            <Option value="FILLING" key="1">
+              <span style={{ fontSize: "13px" }}>FILLING</span>
             </Option>
-            <Option value="emas" key="2">
-              <span style={{ fontSize: "13px" }}>Emas</span>
-            </Option>
-            <Option value="batu" key="3">
-              <span style={{ fontSize: "13px" }}>Batu</span>
+            <Option value="POTONG SPRU" key="2">
+              <span style={{ fontSize: "13px" }}>POTONG SPRU</span>
             </Option>
           </Field>
+        </Col>
+        <Col offset={1}>
+          <Field
+            label={<span style={{ fontSize: "13px" }}>Alloy</span>}
+            name="alloy"
+            id="alloy"
+            component={styleAntd.ACheckBox}
+            type="checkbox"
+          />
+        </Col>
+        <Col offset={1}>
+          <Field
+            name="no_con"
+            type="text"
+            label={<span style={{ fontSize: "13px" }}>No Transaksi</span>}
+            component={styleAntd.AInput}
+            className="form-item-group"
+            placeholder="Masukkan No Transaksi"
+          />
         </Col>
         <Col offset={1}>
           <Button
             type="primary"
             htmltype="button"
             loading={btnLoading}
-            onClick={() => prop.dispatch(getAllKirimCasting)}
+            onClick={() => prop.dispatch(getAllKirimBarangProduksi)}
             style={{ marginTop: 29 }}
           >
             Lihat Laporan
@@ -116,8 +136,8 @@ let FormLaporanKirimCasting = (prop) => {
   );
 };
 
-FormLaporanKirimCasting = reduxForm({
-  form: "FormLaporanKirimCasting",
+FormLaporanKirimBarangProduksi = reduxForm({
+  form: "FormLaporanKirimBarangProduksi",
   enableReinitialize: true,
-})(FormLaporanKirimCasting);
-export default connect(maptostate, null)(FormLaporanKirimCasting);
+})(FormLaporanKirimBarangProduksi);
+export default connect(maptostate, null)(FormLaporanKirimBarangProduksi);

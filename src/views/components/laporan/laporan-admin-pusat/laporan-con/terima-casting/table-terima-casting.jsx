@@ -1,0 +1,57 @@
+import React from "react";
+import { Table } from "antd";
+import "antd/dist/antd.css";
+import { useSelector } from "react-redux";
+import TerimaCasting from "../../../../../../application/selectors/terimacasting";
+
+const TabelLaporanTerimaCasting = () => {
+  const dataTerimaCasting = useSelector(TerimaCasting.getAllTerimaCasting);
+  const columns = [
+    {
+      title: "Tanggal",
+      dataIndex: "tgl_terima",
+      key: "tgl_terima",
+      align: "center",
+    },
+    {
+      title: "No Terima",
+      dataIndex: "no_terima",
+      key: "no_terima",
+      align: "center",
+    },
+    {
+      title: "Jenis",
+      dataIndex: "jenis_saldo",
+      key: "jenis_saldo",
+      align: "center",
+    },
+    {
+      title: "Jenis Bahan",
+      dataIndex: "kode_jenis_bahan",
+      key: "kode_jenis_bahan",
+      align: "center",
+    },
+    {
+      title: "Stock",
+      dataIndex: "stock",
+      key: "stock",
+      align: "center",
+    },
+    {
+      title: "Berat",
+      dataIndex: "berat",
+      key: "berat",
+      align: "center",
+    },
+  ];
+
+  return (
+    <Table
+      dataSource={dataTerimaCasting}
+      columns={columns}
+      scroll={{ x: 1500, y: 1000 }}
+    />
+  );
+};
+
+export default TabelLaporanTerimaCasting;

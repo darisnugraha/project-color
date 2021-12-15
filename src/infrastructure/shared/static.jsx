@@ -7,6 +7,8 @@ const URL_GET_ALL_KIRIM_DESIAN = `${baseurl}report-desain/kirim-desain?`;
 const URL_GET_ALL_KIRIM_SALDO_DIVISI = `${baseurl}report/kirim-saldo-divisi?`;
 const URL_GET_ALL_JENIS_BAHAN = `${baseurl}report/get-kode-jenis-bahan`;
 const URL_GET_ALL_KIRIM_CASTING = `${baseurl}adminpusat/report/con/kirim-casting?`;
+const URL_GET_ALL_TERIMA_CASTING = `${baseurl}adminpusat/report/con/terima-casting?`;
+const URL_GET_ALL_KIRIM_BARANG_PRODUKSI = `${baseurl}adminpusat/report/con/kirim-barang-produksi?`;
 
 const data = {
   URL_LOGIN,
@@ -16,6 +18,8 @@ const data = {
   URL_GET_ALL_KIRIM_SALDO_DIVISI,
   URL_GET_ALL_JENIS_BAHAN,
   URL_GET_ALL_KIRIM_CASTING,
+  URL_GET_ALL_TERIMA_CASTING,
+  URL_GET_ALL_KIRIM_BARANG_PRODUKSI,
 };
 
 export default data;

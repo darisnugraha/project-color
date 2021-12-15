@@ -10,6 +10,8 @@ import kirimdesian from "./kirimdesian";
 import kirimsaldodivisi from "./kirimsaldodivisi";
 import jenisbahan from "./jenisbahan";
 import kirimcasting from "./kirimcasting";
+import terimacasting from "./terimacasting";
+import kirimbarangproduksi from "./kirimbarangproduksi";
 
 export default combineReducers({
   login,
@@ -22,5 +24,7 @@ export default combineReducers({
   kirimsaldodivisi,
   jenisbahan,
   kirimcasting,
+  terimacasting,
+  kirimbarangproduksi,
   form: formReducer,
 });
