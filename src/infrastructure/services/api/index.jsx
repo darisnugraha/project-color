@@ -6,6 +6,7 @@ import saldobahan from "./saldobahan";
 import kirimdesian from "./kirimdesian";
 import kirimsaldodivisi from "./kirimsaldodivisi";
 import JenisBahan from "./jenisbahan";
+import KirimCasting from "./kirimcasting";
 
 const api = {
   login,
@@ -16,6 +17,7 @@ const api = {
   kirimdesian,
   kirimsaldodivisi,
   JenisBahan,
+  KirimCasting,
 };
 
 export default api;

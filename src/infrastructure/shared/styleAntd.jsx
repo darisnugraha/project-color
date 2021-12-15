@@ -16,9 +16,8 @@ const makeField =
         validateStatus={hasError ? "error" : "success"}
         hasFeedback={hasFeedback && hasError}
         help={hasError && meta.error}
-        {...input}
       >
-        <Component {...rest} {...input} children={children} />
+        <Component {...input} {...rest} children={children} />
       </FormItem>
     );
   };

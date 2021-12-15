@@ -131,6 +131,7 @@ const pdfReportR = (data = "") => {
 
   let total = 0;
   let textString = "";
+  // eslint-disable-next-line 
   let textDisplay = 0;
 
   let eay18Awal = 0;

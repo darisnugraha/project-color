@@ -2,19 +2,17 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Form, Button, Row, Col, Select } from "antd";
 import { Field, reduxForm } from "redux-form";
-import moment from "moment";
 import styleAntd from "../../../../infrastructure/shared/styleAntd";
 import ui from "../../../../application/selectors/ui";
 import { getAllStockAdmin } from "../../../../application/actions/stockadmin";
 import "antd/dist/antd.css";
 
-const dateFormat = "MM/YYYY";
-const today = new Date();
 const { Option } = Select;
 
 const FormLaporanStockAdmin = (prop) => {
-  const btnLoading = useSelector(ui.getBtnLoading);
+  // eslint-disable-next-line
   const dispatch = useDispatch();
+  const btnLoading = useSelector(ui.getBtnLoading);
   return (
     <Form layout="vertical">
       <Row>

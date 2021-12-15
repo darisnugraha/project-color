@@ -3,23 +3,24 @@ import { connect, useDispatch, useSelector } from "react-redux";
 import { Form, Button, Row, Col, Select } from "antd";
 import { Field, reduxForm } from "redux-form";
 import moment from "moment";
-import styleAntd from "../../../../infrastructure/shared/styleAntd";
-import ui from "../../../../application/selectors/ui";
-import jenisbahan from "../../../../application/selectors/jenisbahan";
-import { getAllKirimdesian } from "../../../../application/actions/kirimdesian";
+import styleAntd from "../../../../../../infrastructure/shared/styleAntd";
+import ui from "../../../../../../application/selectors/ui";
+import jenisbahan from "../../../../../../application/selectors/jenisbahan";
 import "antd/dist/antd.css";
+import { getAllKirimCasting } from "../../../../../../application/actions/kirimcasting";
 
-const dateFormat = "DD/MM/YYYY";
+const dateFormat = "MM/YYYY";
 const today = new Date();
 const { Option } = Select;
 
 const maptostate = (state) => {
-  if (state.form.FormLaporanKirimDesian?.values !== undefined) {
+  if (state.form.FormLaporanKirimCasting?.values !== undefined) {
     return {
       initialValues: {
-        date: state.form.FormLaporanKirimDesian?.values.date,
+        date: state.form.FormLaporanKirimCasting.values.date,
         kode_jenis_bahan:
-          state.form.FormLaporanKirimDesian?.values.kode_jenis_bahan,
+          state.form.FormLaporanKirimCasting.values.kode_jenis_bahan,
+        kriteria: state.form.FormLaporanKirimCasting.values.kriteria,
       },
     };
   } else {
@@ -27,21 +28,22 @@ const maptostate = (state) => {
       initialValues: {
         date: [moment(today, dateFormat), moment(today, dateFormat)],
         kode_jenis_bahan: state.jenisbahan.feedback[0]?.kode_jenis_bahan,
+        kriteria: "semua",
       },
     };
   }
 };
 
-let FormLaporanKirimDesian = (prop) => {
-  const btnLoading = useSelector(ui.getBtnLoading);
-  const datajenisbahan = useSelector(jenisbahan.getAllJenisbahan);
+let FormLaporanKirimCasting = (prop) => {
   // eslint-disable-next-line
   const dispatch = useDispatch();
+  const btnLoading = useSelector(ui.getBtnLoading);
+  const datajenisbahan = useSelector(jenisbahan.getAllJenisbahan);
 
   return (
     <Form layout="vertical">
       <Row>
-        <Col offset={1}>
+        <Col>
           <Field
             name="date"
             type="date"
@@ -79,11 +81,31 @@ let FormLaporanKirimDesian = (prop) => {
           </Field>
         </Col>
         <Col offset={1}>
+          <Field
+            name="kriteria"
+            label={<span style={{ fontSize: "13px" }}>Kode Jenis Bahan</span>}
+            style={{ width: 250 }}
+            component={styleAntd.ASelect}
+            placeholder="Pilih Kode Jenis Bahan"
+            onBlur={(e) => e.preventDefault()}
+          >
+            <Option value="semua" key="1">
+              <span style={{ fontSize: "13px" }}>Semua</span>
+            </Option>
+            <Option value="emas" key="2">
+              <span style={{ fontSize: "13px" }}>Emas</span>
+            </Option>
+            <Option value="batu" key="3">
+              <span style={{ fontSize: "13px" }}>Batu</span>
+            </Option>
+          </Field>
+        </Col>
+        <Col offset={1}>
           <Button
             type="primary"
             htmltype="button"
             loading={btnLoading}
-            onClick={() => prop.dispatch(getAllKirimdesian)}
+            onClick={() => prop.dispatch(getAllKirimCasting)}
             style={{ marginTop: 29 }}
           >
             Lihat Laporan
@@ -94,8 +116,8 @@ let FormLaporanKirimDesian = (prop) => {
   );
 };
 
-FormLaporanKirimDesian = reduxForm({
-  form: "FormLaporanKirimDesian",
+FormLaporanKirimCasting = reduxForm({
+  form: "FormLaporanKirimCasting",
   enableReinitialize: true,
-})(FormLaporanKirimDesian);
-export default connect(maptostate, null)(FormLaporanKirimDesian);
+})(FormLaporanKirimCasting);
+export default connect(maptostate, null)(FormLaporanKirimCasting);

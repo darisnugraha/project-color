@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 import { Form, Button, Row, Col, Select } from "antd";
 import { Field, reduxForm } from "redux-form";
 import moment from "moment";
@@ -13,16 +13,38 @@ const dateFormat = "MM/YYYY";
 const today = new Date();
 const { Option } = Select;
 
-const FormLaporanKirimSaldoTahun = (prop) => {
+const maptostate = (state) => {
+  if (state.form.FormLaporanKirimSaldoTahun?.values !== undefined) {
+    return {
+      initialValues: {
+        tanggal: state.form.FormLaporanKirimSaldoTahun?.values.tanggal,
+        kode_jenis_bahan:
+          state.form.FormLaporanKirimSaldoTahun?.values.kode_jenis_bahan,
+      },
+    };
+  } else {
+    if (state.jenisbahan.feedback[0]?.kode_jenis_bahan !== undefined) {
+      return {
+        initialValues: {
+          tanggal: moment(today, dateFormat),
+          kode_jenis_bahan: state.jenisbahan.feedback[0].kode_jenis_bahan,
+        },
+      };
+    }
+  }
+};
+
+let FormLaporanKirimSaldoTahun = (prop) => {
+  // eslint-disable-next-line
+  const dispatch = useDispatch();
   const datajenisbahan = useSelector(jenisbahan.getAllJenisbahan);
   const btnLoading = useSelector(ui.getBtnLoading);
-  const dispatch = useDispatch();
   return (
     <Form layout="vertical">
       <Row>
         <Col>
           <Field
-            name="date"
+            name="tanggal"
             type="date"
             label={<span style={{ fontSize: "13px" }}>Bulan</span>}
             component={styleAntd.ADatePick}
@@ -45,12 +67,17 @@ const FormLaporanKirimSaldoTahun = (prop) => {
             {datajenisbahan.map((item) => {
               if (item.kode_jenis_bahan !== "ALLOY") {
                 return (
-                  <Option value={item.kode_jenis_bahan}>
+                  <Option
+                    value={item.kode_jenis_bahan}
+                    key={item.kode_jenis_bahan}
+                  >
                     <span style={{ fontSize: "13px" }}>
                       {item.nama_jenis_bahan}
                     </span>
                   </Option>
                 );
+              } else {
+                return false;
               }
             })}
           </Field>
@@ -71,10 +98,8 @@ const FormLaporanKirimSaldoTahun = (prop) => {
   );
 };
 
-export default reduxForm({
+FormLaporanKirimSaldoTahun = reduxForm({
   form: "FormLaporanKirimSaldoTahun",
-  initialValues: {
-    date: moment(today, dateFormat),
-    kode_jenis_bahan: "AWH75",
-  },
+  enableReinitialize: true,
 })(FormLaporanKirimSaldoTahun);
+export default connect(maptostate, null)(FormLaporanKirimSaldoTahun);

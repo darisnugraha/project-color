@@ -9,6 +9,7 @@ import "antd-button-color/dist/css/style.css";
 import KirimDesain from "../../../../application/selectors/kirimdesian";
 
 const BtnPrint = () => {
+  // eslint-disable-next-line 
   const btnLoading = useSelector(ui.getBtnLoading);
   const dataKirimDesain = useSelector(KirimDesain.getAllKirimdesian);
 

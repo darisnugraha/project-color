@@ -9,6 +9,7 @@ import saldobahan from "./saldobahan";
 import kirimdesian from "./kirimdesian";
 import kirimsaldodivisi from "./kirimsaldodivisi";
 import jenisbahan from "./jenisbahan";
+import kirimcasting from "./kirimcasting";
 
 export default combineReducers({
   login,
@@ -20,5 +21,6 @@ export default combineReducers({
   kirimdesian,
   kirimsaldodivisi,
   jenisbahan,
+  kirimcasting,
   form: formReducer,
 });

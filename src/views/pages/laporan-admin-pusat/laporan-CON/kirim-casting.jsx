@@ -1,30 +1,27 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Divider, Card } from "antd";
 import {
   Panel,
   PanelHeader,
   PanelBody,
-} from "../../components/panel/panel.jsx";
-import TableLaporanKirimSaldoDivisi from "../../components/laporan/kirim-saldo-divisi/table-kirim-saldo-divisi";
-import FormLaporanKirimSaldoDivisi from "../../components/laporan/kirim-saldo-divisi/form-kirim-saldo-divisi";
-import BtnPrint from "../../components/laporan/kirim-saldo-divisi/btn-print-kirim-saldo-divisi";
-import { pageLoadedLogin } from "../../../application/actions/ui";
-import { getAllJenisBahan } from "../../../application/actions/jenisbahan";
-import KirimSaldoDivisiSelector from "../../../application/selectors/kirimsaldodivisi";
-import { useSelector } from "react-redux";
+} from "../../../components/panel/panel.jsx";
+import TableLaporanKirimCasting from "../../../components/laporan/laporan-admin-pusat/laporan-con/kirim-casting/table-kirim-casting";
+import FormLaporanKirimCasting from "../../../components/laporan/laporan-admin-pusat/laporan-con/kirim-casting/form-kirim-casting";
+import BtnPrint from "../../../components/laporan/laporan-admin-pusat/laporan-con/kirim-casting/btn-print-kirim-casting";
+import { pageLoadedLogin } from "../../../../application/actions/ui";
+import { getAllJenisBahan } from "../../../../application/actions/jenisbahan.jsx";
+import DataKirimCasting from "../../../../application/selectors/kirimcasting";
 
-const KirimSaldoDivisi = () => {
+const KirimCasting = () => {
   const dispatch = useDispatch();
+  const dataKirimCasting = useSelector(DataKirimCasting.getAllKirimCasting);
   useEffect(() => {
     dispatch(pageLoadedLogin);
     dispatch(getAllJenisBahan);
-    document.title = "Laporan Kirim dan Saldo per Divisi";
+    document.title = "Laporan Kirim Casting";
   }, [dispatch]);
-  const dataKirimSaldoDivisi = useSelector(
-    KirimSaldoDivisiSelector.getAllKirimsaldodivisi
-  );
 
   return (
     <div>
@@ -33,27 +30,29 @@ const KirimSaldoDivisi = () => {
           <Link to="/dashboard">Home</Link>
         </li>
         <li className="breadcrumb-item">
-          <Link to="/laporan/kirim-desian">Laporan</Link>
+          <Link to="/laporan-admin-pusat/con/kirim-casting">
+            Laporan Admin Pusat
+          </Link>
         </li>
-        <li className="breadcrumb-item active">Kirim dan Saldo per Divisi</li>
+        <li className="breadcrumb-item active">Kirim Casting</li>
       </ol>
       <h1 className="page-header">
-        Laporan <small>Kirim dan Saldo per Divisi</small>
+        Laporan Admin Pusat <small>Kirim Casting</small>
       </h1>
       <Panel>
-        <PanelHeader>Kirim dan Saldo per Divisi</PanelHeader>
+        <PanelHeader>Kirim Casting</PanelHeader>
         <PanelBody>
           <Card bordered={false}>
             <div className="row">
               <div className="col-12">
-                <FormLaporanKirimSaldoDivisi />
+                <FormLaporanKirimCasting />
               </div>
             </div>
             <div
               className="row"
               style={{
                 marginTop: 10,
-                display: dataKirimSaldoDivisi.length === 0 ? "none" : "",
+                display: dataKirimCasting.length === 0 ? "none" : "",
               }}
             >
               <div className="col-12">
@@ -62,14 +61,14 @@ const KirimSaldoDivisi = () => {
                 </Divider>
               </div>
               <div className="col-12">
-                <TableLaporanKirimSaldoDivisi />
+                <TableLaporanKirimCasting />
               </div>
             </div>
             <div
               className="row"
               style={{
                 marginTop: 10,
-                display: dataKirimSaldoDivisi.length === 0 ? "none" : "",
+                display: dataKirimCasting.length === 0 ? "none" : "",
               }}
             >
               <div className="col-12">
@@ -83,4 +82,4 @@ const KirimSaldoDivisi = () => {
   );
 };
 
-export default KirimSaldoDivisi;
+export default KirimCasting;

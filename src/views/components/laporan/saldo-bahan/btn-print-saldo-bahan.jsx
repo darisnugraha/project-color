@@ -8,6 +8,7 @@ import "antd/dist/antd.css";
 import "antd-button-color/dist/css/style.css";
 
 const BtnPrint = () => {
+  // eslint-disable-next-line 
   const btnLoading = useSelector(ui.getBtnLoading);
 
   const pdfExportHandle = () => {

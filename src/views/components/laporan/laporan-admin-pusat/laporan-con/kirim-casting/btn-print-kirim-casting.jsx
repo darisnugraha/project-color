@@ -1,28 +1,26 @@
 import React from "react";
 import { useSelector, connect } from "react-redux";
 import { Button, Row, Col } from "antd";
-import ui from "../../../../application/selectors/ui";
-import ExcelReport from "./excel/excelReport";
-import pdfReport from "./pdf/pdfReport";
 import "antd/dist/antd.css";
 import "antd-button-color/dist/css/style.css";
-import KirimSaldoDivisi from "../../../../application/selectors/kirimsaldodivisi";
+import ui from "../../../../../../application/selectors/ui";
+import KirimCasting from "../../../../../../application/selectors/kirimcasting";
+import ExcelReport from "./excel/excelReport";
+import pdfReport from "./pdf/pdfReport";
 
 const BtnPrint = () => {
-  // eslint-disable-next-line 
+  // eslint-disable-next-line
   const btnLoading = useSelector(ui.getBtnLoading);
-  const dataTabaleKirimSaldoDivisi = useSelector(
-    KirimSaldoDivisi.getAllKirimsaldodivisi
-  );
+  const dataKirimCasting = useSelector(KirimCasting.getAllKirimCasting);
 
   const pdfExportHandle = () => {
-    pdfReport(dataTabaleKirimSaldoDivisi);
+    pdfReport(dataKirimCasting);
   };
 
   return (
     <Row style={{ marginTop: 15 }}>
       <Col span={10} style={{ marginTop: 10 }}>
-        <ExcelReport dataExel={dataTabaleKirimSaldoDivisi} />
+        <ExcelReport dataExel={dataKirimCasting} />
       </Col>
       <Col htmltype="button" span={10} style={{ marginTop: 10 }} offset={2}>
         <Button

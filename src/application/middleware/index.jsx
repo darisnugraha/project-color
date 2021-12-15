@@ -7,6 +7,7 @@ import saldobahan from "./saldobahan";
 import kirimdesian from "./kirimdesian";
 import kirimsaldodivisi from "./kirimsaldodivisi";
 import jenisbahan from "./jenisbahan";
+import kirimcasting from "./kirimcasting";
 
 const midd = [
   ...ui,
@@ -18,6 +19,7 @@ const midd = [
   ...kirimdesian,
   ...kirimsaldodivisi,
   ...jenisbahan,
+  ...kirimcasting,
 ];
 
 export default midd;

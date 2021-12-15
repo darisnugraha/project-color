@@ -16,10 +16,11 @@ const kirimsaldotahun =
     if (action.type === GET_ALL_KIRIM_SALDO_TAHUN) {
       dispatch(setLoadingButton(true));
       const data = getState().form.FormLaporanKirimSaldoTahun.values;
-      const tgl = new Date(data.date);
-      data.date = moment.tz(tgl, "Asia/Jakarta").format("YYYY-MM");
+      const tgl = new Date(data.tanggal);
+      const tgl_kirim = moment.tz(tgl, "Asia/Jakarta").format("YYYY-MM");
+      delete data.tanggal;
+      data.date = tgl_kirim;
       const response = await api.kirimsaldotahun.addKirimsaldotahun(data);
-      log(response);
       if (response?.value !== null) {
         if (response?.value.length === 0) {
           sweetalert.default.Failed("Data Laporan Kosong !");

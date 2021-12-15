@@ -7,16 +7,16 @@
 // dispatch for dispactching action, like store data to reducer, and others
 // getState is FUNCTION for get current data in your state (reducer), just call getState().yourReducer.yourData
 
-import { reset } from 'redux-form';
-import moment from 'moment-timezone';
+import { reset } from "redux-form";
+import moment from "moment-timezone";
 import {
   GET_ALL_LAPORAN_STOCK_GLOBAL_PRODUKSI,
   setDataLaporanStockGlobalProduksiLSuccess,
   setDataLaporanStockGlobalProduksiLFailed,
   setDataLaporanStockGlobalProduksiRSuccess,
-} from '../actions/laporanstockglobalproduksi';
-import * as sweetalert from '../../infrastructure/shared/sweetalert';
-import { setLoadingButton } from '../actions/ui';
+} from "../actions/laporanstockglobalproduksi";
+import * as sweetalert from "../../infrastructure/shared/sweetalert";
+import { setLoadingButton } from "../actions/ui";
 
 const laporanStockGlobalProduksi =
   ({ api, log, writeLocal, getLocal, toast }) =>
@@ -27,23 +27,28 @@ const laporanStockGlobalProduksi =
     if (action.type === GET_ALL_LAPORAN_STOCK_GLOBAL_PRODUKSI) {
       dispatch(setLoadingButton(true));
       const data = getState().form.FormLaporanGlobalProduksi.values;
-      const tgl = new Date(data.date);
-      data.date = moment.tz(tgl, 'Asia/Jakarta').format('YYYY-MM-DD');
+      const tgl = new Date(data.tanggal);
+      const tgl_kirim = moment.tz(tgl, "Asia/Jakarta").format("YYYY-MM-DD");
       delete data.repair;
-      const response = await api.laporanStockGlobalProduksi.addLaporanStockGlobalProduksi(data);
+      delete data.tanggal;
+      data.date = tgl_kirim;
+      const response =
+        await api.laporanStockGlobalProduksi.addLaporanStockGlobalProduksi(
+          data
+        );
       if (response?.value !== null) {
-        sweetalert.default.Success('Berhasil Melihat Laporan !');
-        writeLocal('tanggal_lap', tgl.toLocaleDateString());
-        if (data.tipe_laporan === 'L') {
+        sweetalert.default.Success("Berhasil Melihat Laporan !");
+        writeLocal("tanggal_lap", tgl.toLocaleDateString());
+        if (data.tipe_laporan === "L") {
           dispatch(setDataLaporanStockGlobalProduksiLSuccess(response?.value));
         } else {
           dispatch(setDataLaporanStockGlobalProduksiRSuccess(response?.value));
         }
-        dispatch(reset('FormLaporanGlobalProduksi'));
+        dispatch(reset("FormLaporanGlobalProduksi"));
         dispatch(setLoadingButton(false));
       } else {
         dispatch(setDataLaporanStockGlobalProduksiLFailed(response?.error));
-        sweetalert.default.Failed('Gagal Melihat Laporan');
+        sweetalert.default.Failed("Gagal Melihat Laporan");
         dispatch(setLoadingButton(false));
       }
     }

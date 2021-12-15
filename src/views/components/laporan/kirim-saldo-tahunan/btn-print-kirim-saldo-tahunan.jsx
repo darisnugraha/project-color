@@ -9,6 +9,7 @@ import "antd-button-color/dist/css/style.css";
 import KirimSaldoTahun from '../../../../application/selectors/kirimsaldotahun';
 
 const BtnPrint = () => {
+  // eslint-disable-next-line 
   const btnLoading = useSelector(ui.getBtnLoading);
   const dataKirimSaldoTahun = useSelector(
     KirimSaldoTahun.getAllKirimsaldotahun

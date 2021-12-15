@@ -1,9 +1,10 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Form, Button, Row, Col } from "antd";
+// eslint-disable-next-line
 import { Field, reduxForm } from "redux-form";
 import moment from "moment";
-import styleAntd from "../../../../infrastructure/shared/styleAntd";
+// import styleAntd from "../../../../infrastructure/shared/styleAntd";
 import ui from "../../../../application/selectors/ui";
 import { getAllSaldobahan } from "../../../../application/actions/saldobahan";
 import "antd/dist/antd.css";
@@ -12,8 +13,9 @@ const dateFormat = "MM/YYYY";
 const today = new Date();
 
 const FormLaporanSaldoBahan = (prop) => {
-  const btnLoading = useSelector(ui.getBtnLoading);
+  // eslint-disable-next-line
   const dispatch = useDispatch();
+  const btnLoading = useSelector(ui.getBtnLoading);
   return (
     <Form layout="vertical">
       <Row>
