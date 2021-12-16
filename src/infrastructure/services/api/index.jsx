@@ -9,6 +9,7 @@ import JenisBahan from "./jenisbahan";
 import KirimCasting from "./kirimcasting";
 import TerimaCasting from "./terimacasting";
 import KirimBarangProduksi from "./kirimbarangproduksi";
+import TerimaBarangProduksi from "./terimabarangproduksi";
 
 const api = {
   login,
@@ -22,6 +23,7 @@ const api = {
   KirimCasting,
   TerimaCasting,
   KirimBarangProduksi,
+  TerimaBarangProduksi,
 };
 
 export default api;
