@@ -17,20 +17,15 @@ class ExcelReport extends Component {
       }, {});
     };
 
-    const dataGroup = groupBy(this.props.dataExel, "no_kirim");
+    const dataGroup = groupBy(this.props.dataExel, "no_tambah");
     const dataGroupArr = Object.values(dataGroup);
 
-    let jmlkirimAll = 0;
-    let brtkirimAll = 0;
-    let jmlrusakAll = 0;
-    let brtrusakAll = 0;
-    let susutAll = 0;
+    let jmltambahAll = 0;
+    let brttambahAll = 0;
+
     this.props.dataExel.forEach((element) => {
-      jmlkirimAll = jmlkirimAll + parseFloat(element.stock_out);
-      brtkirimAll = brtkirimAll + parseFloat(element.berat_out);
-      jmlrusakAll = jmlrusakAll + parseFloat(element.stock_rusak);
-      brtrusakAll = brtrusakAll + parseFloat(element.berat_rusak);
-      susutAll = susutAll + parseFloat(element.susut);
+      jmltambahAll = jmltambahAll + parseFloat(element.stock);
+      brttambahAll = brttambahAll + parseFloat(element.berat);
     });
 
     return (
@@ -39,8 +34,8 @@ class ExcelReport extends Component {
           id="test-table-xls-button"
           className="ant-btn ant-btn-primary ant-btn-block ant-btn-success"
           table="table-to-xls"
-          filename="LAPORAN KIRIM BARANG PRODUKSI"
-          sheet="LAPORAN KIRIM BARANG PRODUKSI"
+          filename="LAPORAN TAMBAH JOB ORDER"
+          sheet="LAPORAN TAMBAH JOB ORDER"
           buttonText="Export Excel"
         />
         <table id="table-to-xls" style={{ display: "none" }}>
@@ -48,7 +43,7 @@ class ExcelReport extends Component {
             <tr>
               <th colSpan="10" style={{ textAlign: "center" }}>
                 {" "}
-                LAPORAN KIRIM BARANG PRODUKSI{" "}
+                LAPORAN TAMBAH JOB ORDER{" "}
               </th>
             </tr>
             <tr>
@@ -80,7 +75,7 @@ class ExcelReport extends Component {
                   textAlign: "center",
                 }}
               >
-                KODE BARANG
+                NO KIRIM
               </td>
               <td
                 style={{
@@ -89,7 +84,7 @@ class ExcelReport extends Component {
                   textAlign: "center",
                 }}
               >
-                NAMA BARANG
+                KODE BARANG
               </td>
               <td
                 style={{
@@ -107,7 +102,7 @@ class ExcelReport extends Component {
                   textAlign: "center",
                 }}
               >
-                JML KIRIM
+                JML TERIMA
               </td>
               <td
                 style={{
@@ -116,104 +111,51 @@ class ExcelReport extends Component {
                   textAlign: "center",
                 }}
               >
-                BRT KIRIM
-              </td>
-              <td
-                style={{
-                  backgroundColor: "#99CCFF",
-                  color: "#000",
-                  textAlign: "center",
-                }}
-              >
-                JML RUSAK
-              </td>
-              <td
-                style={{
-                  backgroundColor: "#99CCFF",
-                  color: "#000",
-                  textAlign: "center",
-                }}
-              >
-                BRT RUSAK
-              </td>
-              <td
-                style={{
-                  backgroundColor: "#99CCFF",
-                  color: "#000",
-                  textAlign: "center",
-                }}
-              >
-                SUSUT
+                BRT TERIMA
               </td>
             </tr>
           </thead>
           <tbody>
             {dataGroupArr.map((element) => {
-              let jmlkirim = 0;
-              let brtkirim = 0;
-              let jmlrusak = 0;
-              let brtrusak = 0;
-              let susut = 0;
+              let jmltambah = 0;
+              let brttambah = 0;
+
               return (
                 <>
                   <tr>
                     <td
-                      colSpan="10"
+                      colSpan="7"
                       style={{
                         backgroundColor: "#bbbbbb",
                         textAlign: "left",
                       }}
                     >
-                      No Kirim : {element[0].no_kirim}
+                      No Terima : {element[0].no_tambah}
                     </td>
                   </tr>
                   {element.map((item) => {
-                    jmlkirim = jmlkirim + parseFloat(item.stock_out);
-                    brtkirim = brtkirim + parseFloat(item.berat_out);
-                    jmlrusak = jmlrusak + parseFloat(item.stock_rusak);
-                    brtrusak = brtrusak + parseFloat(item.berat_rusak);
-                    susut = susut + parseFloat(item.susut);
+                    jmltambah = jmltambah + parseFloat(item.stock);
+                    brttambah = brttambah + parseFloat(item.berat);
                     return (
                       <tr>
-                        <td>{item.tgl_kirim}</td>
+                        <td>{item.tgl_tambah}</td>
                         <td>{item.no_job_order}</td>
+                        <td>{item.no_kirim}</td>
                         <td>{item.kode_barang}</td>
-                        <td>{item.nama_barang}</td>
                         <td>{item.kode_jenis_bahan}</td>
                         <td
                           style={{
                             textAlign: "right",
                           }}
                         >
-                          {item.stock_out}
+                          {item.stock}
                         </td>
                         <td
                           style={{
                             textAlign: "right",
                           }}
                         >
-                          {item.berat_out}
-                        </td>
-                        <td
-                          style={{
-                            textAlign: "right",
-                          }}
-                        >
-                          {item.stock_rusak}
-                        </td>
-                        <td
-                          style={{
-                            textAlign: "right",
-                          }}
-                        >
-                          {item.berat_rusak}
-                        </td>
-                        <td
-                          style={{
-                            textAlign: "right",
-                          }}
-                        >
-                          {item.susut}
+                          {item.berat}
                         </td>
                       </tr>
                     );
@@ -234,7 +176,7 @@ class ExcelReport extends Component {
                         textAlign: "right",
                       }}
                     >
-                      {jmlkirim}
+                      {jmltambah.toFixed(3)}
                     </td>
                     <td
                       style={{
@@ -242,31 +184,7 @@ class ExcelReport extends Component {
                         textAlign: "right",
                       }}
                     >
-                      {brtkirim}
-                    </td>
-                    <td
-                      style={{
-                        backgroundColor: "#dddddd",
-                        textAlign: "right",
-                      }}
-                    >
-                      {jmlrusak}
-                    </td>
-                    <td
-                      style={{
-                        backgroundColor: "#dddddd",
-                        textAlign: "right",
-                      }}
-                    >
-                      {brtrusak}
-                    </td>
-                    <td
-                      style={{
-                        backgroundColor: "#dddddd",
-                        textAlign: "right",
-                      }}
-                    >
-                      {susut}
+                      {brttambah.toFixed(3)}
                     </td>
                   </tr>
                 </>
@@ -288,35 +206,14 @@ class ExcelReport extends Component {
                   textAlign: "right",
                 }}
               >
-                {jmlkirimAll.toFixed(3)}
+                {jmltambahAll.toFixed(3)}
               </td>
               <td
                 style={{
                   textAlign: "right",
                 }}
               >
-                {brtkirimAll.toFixed(3)}
-              </td>
-              <td
-                style={{
-                  textAlign: "right",
-                }}
-              >
-                {jmlrusakAll.toFixed(3)}
-              </td>
-              <td
-                style={{
-                  textAlign: "right",
-                }}
-              >
-                {brtrusakAll.toFixed(3)}
-              </td>
-              <td
-                style={{
-                  textAlign: "right",
-                }}
-              >
-                {susutAll.toFixed(3)}
+                {brttambahAll.toFixed(3)}
               </td>
             </tr>
           </tfoot>

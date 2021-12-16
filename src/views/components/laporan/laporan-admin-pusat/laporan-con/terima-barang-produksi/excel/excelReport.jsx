@@ -142,7 +142,7 @@ class ExcelReport extends Component {
                         <td>{item.no_job_order}</td>
                         <td>{item.kode_barang}</td>
                         <td>{item.nama_barang}</td>
-                        <td>{item.kode_jenis_barang}</td>
+                        <td>{item.kode_jenis_bahan}</td>
                         <td
                           style={{
                             textAlign: "right",

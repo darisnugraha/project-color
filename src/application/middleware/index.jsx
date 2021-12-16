@@ -11,6 +11,7 @@ import kirimcasting from "./kirimcasting";
 import terimacasting from "./terimacasting";
 import kirimbarangproduksi from "./kirimbarangproduksi";
 import terimabarangproduksi from "./terimabarangproduksi";
+import tambahjoborder from "./tambahjoborder";
 
 const midd = [
   ...ui,
@@ -26,6 +27,7 @@ const midd = [
   ...terimacasting,
   ...kirimbarangproduksi,
   ...terimabarangproduksi,
+  ...tambahjoborder,
 ];
 
 export default midd;

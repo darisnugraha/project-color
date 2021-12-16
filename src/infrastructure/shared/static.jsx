@@ -10,6 +10,7 @@ const URL_GET_ALL_KIRIM_CASTING = `${baseurl}adminpusat/report/con/kirim-casting
 const URL_GET_ALL_TERIMA_CASTING = `${baseurl}adminpusat/report/con/terima-casting?`;
 const URL_GET_ALL_KIRIM_BARANG_PRODUKSI = `${baseurl}adminpusat/report/con/kirim-barang-produksi?`;
 const URL_GET_ALL_TERIMA_BARANG_PRODUKSI = `${baseurl}adminpusat/report/con/terima-barang-produksi?`;
+const URL_GET_ALL_TAMBAH_JOB_ORDER = `${baseurl}adminpusat/report/con/tambah-job-order?`;
 
 const data = {
   URL_LOGIN,
@@ -22,6 +23,7 @@ const data = {
   URL_GET_ALL_TERIMA_CASTING,
   URL_GET_ALL_KIRIM_BARANG_PRODUKSI,
   URL_GET_ALL_TERIMA_BARANG_PRODUKSI,
+  URL_GET_ALL_TAMBAH_JOB_ORDER,
 };
 
 export default data;
