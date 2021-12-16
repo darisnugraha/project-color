@@ -23,9 +23,6 @@ const pdfReport = (data = "") => {
         content: `TANGGAL`,
       },
       {
-        content: `NO TERIMA`,
-      },
-      {
         content: `NO JOB ORDER`,
       },
       {
@@ -35,10 +32,7 @@ const pdfReport = (data = "") => {
         content: `NAMA BARANG`,
       },
       {
-        content: `BAHAN`,
-      },
-      {
-        content: `DESIGN`,
+        content: `JENIS BAHAN`,
       },
       {
         content: `JML TERIMA`,
@@ -53,106 +47,224 @@ const pdfReport = (data = "") => {
         content: `BRT RUSAK`,
       },
       {
-        content: `SUSUT`,
+        content: `BRT SPRU`,
+      },
+      {
+        content: `BUBUK`,
+      },
+      {
+        content: `ASAL DIVISI`,
+      },
+      {
+        content: `DESIGN`,
       },
     ],
   ];
 
-  data.forEach((element) => {
-    const row = [
+  const groupBy = (array, key) => {
+    return array.reduce((result, currentValue) => {
+      (result[currentValue[key]] = result[currentValue[key]] || []).push(
+        currentValue
+      );
+      return result;
+    }, {});
+  };
+
+  const dataGroup = groupBy(data, "no_terima");
+  const dataGroupArr = Object.values(dataGroup);
+
+  dataGroupArr.forEach((element) => {
+    let jmlterima = 0;
+    let brtterima = 0;
+    let jmlrusak = 0;
+    let brtrusak = 0;
+    let brtspru = 0;
+    let bubuk = 0;
+
+    const rowKirim = [
       {
-        content: element.tgl_terima,
+        content: "No Terima : " + element[0].no_terima,
         styles: {
-          halign: "center",
+          halign: "left",
+          fillColor: "#bbbbbb",
         },
-      },
-      {
-        content: element.no_terima,
-        styles: {
-          halign: "center",
-        },
-      },
-      {
-        content: element.no_job_order,
-        styles: {
-          halign: "center",
-        },
-      },
-      {
-        content: element.kode_barang,
-        styles: {
-          halign: "center",
-        },
-      },
-      {
-        content: element.nama_barang,
-        styles: {
-          halign: "center",
-        },
-      },
-      {
-        content: element.kode_jenis_bahan,
-        styles: {
-          halign: "center",
-        },
-      },
-      {
-        content: element.design,
-        styles: {
-          halign: "center",
-        },
-      },
-      {
-        content: element.stock_in,
-      },
-      {
-        content: element.berat_in,
-      },
-      {
-        content: element.stock_rusak,
-      },
-      {
-        content: element.berat_rusak,
-      },
-      {
-        content: element.susut,
+        colSpan: 13,
       },
     ];
-    tableRows.push(row);
+    tableRows.push(rowKirim);
+    element.forEach((item) => {
+      jmlterima = jmlterima + parseFloat(item.stock_in);
+      brtterima = brtterima + parseFloat(item.berat_in);
+      jmlrusak = jmlrusak + parseFloat(item.stock_rusak);
+      brtrusak = brtrusak + parseFloat(item.berat_rusak);
+      brtspru = brtspru + parseFloat(item.berat_spru);
+      bubuk = bubuk + parseFloat(item.bubuk);
+
+      const row = [
+        {
+          content: item.tgl_terima,
+          styles: {
+            halign: "center",
+          },
+        },
+        {
+          content: item.no_job_order,
+          styles: {
+            halign: "center",
+          },
+        },
+        {
+          content: item.kode_barang,
+          styles: {
+            halign: "center",
+          },
+        },
+        {
+          content: item.nama_barang,
+          styles: {
+            halign: "center",
+          },
+        },
+        {
+          content: item.kode_jenis_bahan,
+          styles: {
+            halign: "center",
+          },
+        },
+        {
+          content: item.stock_in,
+        },
+        {
+          content: item.berat_in,
+        },
+        {
+          content: item.stock_rusak,
+        },
+        {
+          content: item.berat_rusak,
+        },
+        {
+          content: item.berat_spru,
+        },
+        {
+          content: item.bubuk,
+        },
+        {
+          content: item.asal_divisi,
+        },
+        {
+          content: item.design,
+        },
+      ];
+      tableRows.push(row);
+    });
+    const rowFoot = [
+      {
+        content: "Sub Total :",
+        styles: {
+          halign: "right",
+          fillColor: "#dddddd",
+        },
+        colSpan: 5,
+      },
+      {
+        content: jmlterima,
+        styles: {
+          halign: "right",
+          fillColor: "#dddddd",
+        },
+      },
+      {
+        content: brtterima,
+        styles: {
+          halign: "right",
+          fillColor: "#dddddd",
+        },
+      },
+      {
+        content: jmlrusak,
+        styles: {
+          halign: "right",
+          fillColor: "#dddddd",
+        },
+      },
+      {
+        content: brtrusak,
+        styles: {
+          halign: "right",
+          fillColor: "#dddddd",
+        },
+      },
+      {
+        content: brtspru,
+        styles: {
+          halign: "right",
+          fillColor: "#dddddd",
+        },
+      },
+      {
+        content: bubuk,
+        styles: {
+          halign: "right",
+          fillColor: "#dddddd",
+        },
+      },
+      {
+        content: "",
+        styles: {
+          halign: "right",
+          fillColor: "#dddddd",
+        },
+      },
+      {
+        content: "",
+        styles: {
+          halign: "right",
+          fillColor: "#dddddd",
+        },
+      },
+    ];
+    tableRows.push(rowFoot);
   });
 
-  let jmlterimaall = 0;
-  let brtterimaall = 0;
-  let jmlrusakall = 0;
-  let brtrusakall = 0;
-  let susutall = 0;
+  let jmlterimaAll = 0;
+  let brtterimaAll = 0;
+  let jmlrusakAll = 0;
+  let brtrusakAll = 0;
+  let brtspruAll = 0;
+  let bubukAll = 0;
 
   data.forEach((element) => {
-    jmlterimaall = jmlterimaall + parseFloat(element.stock_in);
-    brtterimaall = brtterimaall + parseFloat(element.berat_in);
-    jmlrusakall = jmlrusakall + parseFloat(element.stock_rusak);
-    brtrusakall = brtrusakall + parseFloat(element.berat_rusak);
-    susutall = susutall + parseFloat(element.susut);
+    jmlterimaAll = jmlterimaAll + parseFloat(element.stock_in);
+    brtterimaAll = brtterimaAll + parseFloat(element.berat_in);
+    jmlrusakAll = jmlrusakAll + parseFloat(element.stock_rusak);
+    brtrusakAll = brtrusakAll + parseFloat(element.berat_rusak);
+    brtspruAll = brtspruAll + parseFloat(element.berat_spru);
+    bubukAll = bubukAll + parseFloat(element.berat_spru);
   });
+
   const footer = [
     {
       content: "Grand Total :",
-      colSpan: 7,
+      colSpan: 5,
     },
     {
-      content: jmlterimaall.toFixed(3),
+      content: jmlterimaAll.toFixed(3),
     },
     {
-      content: brtterimaall.toFixed(3),
+      content: brtterimaAll.toFixed(3),
     },
     {
-      content: jmlrusakall.toFixed(3),
+      content: jmlrusakAll.toFixed(3),
     },
     {
-      content: brtrusakall.toFixed(3),
+      content: brtrusakAll.toFixed(3),
     },
     {
-      content: susutall.toFixed(3),
+      content: brtspruAll.toFixed(3),
+    },
+    {
+      content: bubukAll.toFixed(3),
     },
   ];
   tableRows.push(footer);

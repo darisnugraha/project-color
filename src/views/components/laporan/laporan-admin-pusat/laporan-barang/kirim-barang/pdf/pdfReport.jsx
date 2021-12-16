@@ -23,9 +23,6 @@ const pdfReport = (data = "") => {
         content: `TANGGAL`,
       },
       {
-        content: `NO KIRIM`,
-      },
-      {
         content: `NO JOB ORDER`,
       },
       {
@@ -35,13 +32,7 @@ const pdfReport = (data = "") => {
         content: `NAMA BARANG`,
       },
       {
-        content: `BAHAN`,
-      },
-      {
-        content: `DESIGN`,
-      },
-      {
-        content: `TUJUAN DIVISI`,
+        content: `JENIS BAHAN`,
       },
       {
         content: `JML KIRIM`,
@@ -49,67 +40,125 @@ const pdfReport = (data = "") => {
       {
         content: `BRT KIRIM`,
       },
+      {
+        content: `DESIGN`,
+      },
     ],
   ];
 
-  data.forEach((element) => {
-    const row = [
+  const groupBy = (array, key) => {
+    return array.reduce((result, currentValue) => {
+      (result[currentValue[key]] = result[currentValue[key]] || []).push(
+        currentValue
+      );
+      return result;
+    }, {});
+  };
+
+  const dataGroup = groupBy(data, "no_kirim");
+  const dataGroupArr = Object.values(dataGroup);
+
+  dataGroupArr.forEach((element) => {
+    let jmlkirim = 0;
+    let brtkirim = 0;
+
+    const rowKirim = [
       {
-        content: element.tgl_kirim,
+        content: "No Kirim : " + element[0].no_kirim,
         styles: {
-          halign: "center",
+          halign: "left",
+          fillColor: "#bbbbbb",
         },
+        colSpan: 4,
       },
       {
-        content: element.no_kirim,
+        content: "Tujuan Divisi : " + element[0].tujuan_divisi,
         styles: {
-          halign: "center",
+          halign: "left",
+          fillColor: "#bbbbbb",
         },
-      },
-      {
-        content: element.no_job_order,
-        styles: {
-          halign: "center",
-        },
-      },
-      {
-        content: element.kode_barang,
-        styles: {
-          halign: "center",
-        },
-      },
-      {
-        content: element.nama_barang,
-        styles: {
-          halign: "center",
-        },
-      },
-      {
-        content: element.kode_jenis_bahan,
-        styles: {
-          halign: "center",
-        },
-      },
-      {
-        content: element.design,
-        styles: {
-          halign: "center",
-        },
-      },
-      {
-        content: element.tujuan_divisi,
-        styles: {
-          halign: "center",
-        },
-      },
-      {
-        content: element.stock_out,
-      },
-      {
-        content: element.berat_out,
+        colSpan: 4,
       },
     ];
-    tableRows.push(row);
+    tableRows.push(rowKirim);
+    element.forEach((item) => {
+      jmlkirim = jmlkirim + parseFloat(item.stock_out);
+      brtkirim = brtkirim + parseFloat(item.berat_out);
+      const row = [
+        {
+          content: item.tgl_kirim,
+          styles: {
+            halign: "center",
+          },
+        },
+        {
+          content: item.no_job_order,
+          styles: {
+            halign: "center",
+          },
+        },
+        {
+          content: item.kode_barang,
+          styles: {
+            halign: "center",
+          },
+        },
+        {
+          content: item.nama_barang,
+          styles: {
+            halign: "center",
+          },
+        },
+        {
+          content: item.kode_jenis_bahan,
+          styles: {
+            halign: "center",
+          },
+        },
+        {
+          content: item.stock_out,
+        },
+        {
+          content: item.berat_out,
+        },
+        {
+          content: item.design,
+        },
+      ];
+      tableRows.push(row);
+    });
+    const rowFoot = [
+      {
+        content: "Sub Total :",
+        styles: {
+          halign: "right",
+          fillColor: "#dddddd",
+        },
+        colSpan: 5,
+      },
+      {
+        content: jmlkirim,
+        styles: {
+          halign: "right",
+          fillColor: "#dddddd",
+        },
+      },
+      {
+        content: brtkirim,
+        styles: {
+          halign: "right",
+          fillColor: "#dddddd",
+        },
+      },
+      {
+        content: "",
+        styles: {
+          halign: "right",
+          fillColor: "#dddddd",
+        },
+      },
+    ];
+    tableRows.push(rowFoot);
   });
 
   let jmlkirimAll = 0;
@@ -119,10 +168,11 @@ const pdfReport = (data = "") => {
     jmlkirimAll = jmlkirimAll + parseFloat(element.stock_out);
     brtkirimAll = brtkirimAll + parseFloat(element.berat_out);
   });
+
   const footer = [
     {
       content: "Grand Total :",
-      colSpan: 8,
+      colSpan: 5,
     },
     {
       content: jmlkirimAll.toFixed(3),

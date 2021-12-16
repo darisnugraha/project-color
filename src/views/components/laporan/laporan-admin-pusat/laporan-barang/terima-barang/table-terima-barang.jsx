@@ -44,6 +44,12 @@ const TabelLaporanTerimaBarang = () => {
       align: "center",
     },
     {
+      title: "Asal Divisi",
+      dataIndex: "asal_divisi",
+      key: "asal_divisi",
+      align: "center",
+    },
+    {
       title: "Design",
       dataIndex: "design",
       key: "design",
