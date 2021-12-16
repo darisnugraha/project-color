@@ -14,7 +14,7 @@ const TabelLaporanTambahJobOrder = () => {
       align: "center",
     },
     {
-      title: "No terima",
+      title: "No Tambah",
       dataIndex: "no_tambah",
       key: "no_tambah",
       align: "center",

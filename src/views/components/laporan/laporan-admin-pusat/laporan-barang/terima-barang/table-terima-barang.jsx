@@ -2,12 +2,10 @@ import React from "react";
 import { Table } from "antd";
 import "antd/dist/antd.css";
 import { useSelector } from "react-redux";
-import TerimaBarangProduksi from "../../../../../../application/selectors/terimabarangproduksi";
+import TerimaBarang from "../../../../../../application/selectors/terimabarang";
 
-const TabelLaporanTerimaBarangProduksi = () => {
-  const dataTerimaBarangProduksi = useSelector(
-    TerimaBarangProduksi.getAllTerimaBarangProduksi
-  );
+const TabelLaporanTerimaBarang = () => {
+  const dataTerimaBarang = useSelector(TerimaBarang.getAllTerimaBarang);
   const columns = [
     {
       title: "Tanggal",
@@ -46,8 +44,14 @@ const TabelLaporanTerimaBarangProduksi = () => {
       align: "center",
     },
     {
+      title: "Design",
+      dataIndex: "design",
+      key: "design",
+      align: "center",
+    },
+    {
       title: "Jml Terima",
-      dataIndex: "stock_in",
+      dataIndex: "stock_rusak",
       key: "stock_in",
       align: "center",
     },
@@ -57,15 +61,33 @@ const TabelLaporanTerimaBarangProduksi = () => {
       key: "berat_in",
       align: "center",
     },
+    {
+      title: "Jml Rusak",
+      dataIndex: "stock_rusak",
+      key: "stock_rusak",
+      align: "center",
+    },
+    {
+      title: "Brt Rusak",
+      dataIndex: "berat_rusak",
+      key: "berat_rusak",
+      align: "center",
+    },
+    {
+      title: "Susut",
+      dataIndex: "susut",
+      key: "susut",
+      align: "center",
+    },
   ];
 
   return (
     <Table
-      dataSource={dataTerimaBarangProduksi}
+      dataSource={dataTerimaBarang}
       columns={columns}
       scroll={{ x: 1500, y: 1000 }}
     />
   );
 };
 
-export default TabelLaporanTerimaBarangProduksi;
+export default TabelLaporanTerimaBarang;

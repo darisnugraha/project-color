@@ -14,6 +14,9 @@ import terimacasting from "./terimacasting";
 import kirimbarangproduksi from "./kirimbarangproduksi";
 import terimabarangproduksi from "./terimabarangproduksi";
 import tambahjoborder from "./tambahjoborder";
+import kirimbarang from "./kirimbarang";
+import design from "./design";
+import terimabarang from "./terimabarang";
 
 export default combineReducers({
   login,
@@ -30,5 +33,8 @@ export default combineReducers({
   kirimbarangproduksi,
   terimabarangproduksi,
   tambahjoborder,
+  kirimbarang,
+  design,
+  terimabarang,
   form: formReducer,
 });

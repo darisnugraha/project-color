@@ -2,23 +2,21 @@ import React from "react";
 import { Table } from "antd";
 import "antd/dist/antd.css";
 import { useSelector } from "react-redux";
-import TerimaBarangProduksi from "../../../../../../application/selectors/terimabarangproduksi";
+import KirimBarang from "../../../../../../application/selectors/kirimbarang";
 
-const TabelLaporanTerimaBarangProduksi = () => {
-  const dataTerimaBarangProduksi = useSelector(
-    TerimaBarangProduksi.getAllTerimaBarangProduksi
-  );
+const TabelLaporanKirimBarang = () => {
+  const dataKirimBarang = useSelector(KirimBarang.getAllKirimBarang);
   const columns = [
     {
       title: "Tanggal",
-      dataIndex: "tgl_terima",
-      key: "tgl_terima",
+      dataIndex: "tgl_kirim",
+      key: "tgl_kirim",
       align: "center",
     },
     {
-      title: "No Terima",
-      dataIndex: "no_terima",
-      key: "no_terima",
+      title: "No Kirim",
+      dataIndex: "no_kirim",
+      key: "no_kirim",
       align: "center",
     },
     {
@@ -46,26 +44,38 @@ const TabelLaporanTerimaBarangProduksi = () => {
       align: "center",
     },
     {
-      title: "Jml Terima",
-      dataIndex: "stock_in",
-      key: "stock_in",
+      title: "Design",
+      dataIndex: "design",
+      key: "design",
       align: "center",
     },
     {
-      title: "Brt Terima",
-      dataIndex: "berat_in",
-      key: "berat_in",
+      title: "Tujuan Divisi",
+      dataIndex: "tujuan_divisi",
+      key: "tujuan_divisi",
+      align: "center",
+    },
+    {
+      title: "Jml Kirim",
+      dataIndex: "stock_out",
+      key: "stock_out",
+      align: "center",
+    },
+    {
+      title: "Brt Kirim",
+      dataIndex: "berat_out",
+      key: "berat_out",
       align: "center",
     },
   ];
 
   return (
     <Table
-      dataSource={dataTerimaBarangProduksi}
+      dataSource={dataKirimBarang}
       columns={columns}
       scroll={{ x: 1500, y: 1000 }}
     />
   );
 };
 
-export default TabelLaporanTerimaBarangProduksi;
+export default TabelLaporanKirimBarang;
