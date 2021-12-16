@@ -1,6 +1,6 @@
 {
   "name": "amg-admin",
-  "homepage": ".",
+  "homepage": "https://cadp-production.netlify.app/",
   "version": "16.9.0",
   "private": true,
   "dependencies": {

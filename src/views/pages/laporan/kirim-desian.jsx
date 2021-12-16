@@ -19,7 +19,7 @@ const KirimDesian = () => {
   useEffect(() => {
     dispatch(pageLoadedLogin);
     dispatch(getAllJenisBahan);
-    document.title = "Laporan Kirim per Desain";
+    document.title = "Laporan Kirim per Design";
   }, [dispatch]);
   const dataKirimDesain = useSelector(kirimDesain.getAllKirimdesian);
 
@@ -32,13 +32,13 @@ const KirimDesian = () => {
         <li className="breadcrumb-item">
           <Link to="/laporan/kirim-desian">Laporan</Link>
         </li>
-        <li className="breadcrumb-item active">Kirim per Desain</li>
+        <li className="breadcrumb-item active">Kirim per Design</li>
       </ol>
       <h1 className="page-header">
-        Laporan <small>Kirim per Desain</small>
+        Laporan <small>Kirim per Design</small>
       </h1>
       <Panel>
-        <PanelHeader>Kirim per Desain</PanelHeader>
+        <PanelHeader>Kirim per Design</PanelHeader>
         <PanelBody>
           <Card bordered={false}>
             <div className="row">

@@ -13,17 +13,17 @@ const Menu = [
         path: "/laporan/kirim-saldo-tahunan",
         title: "Kirim dan Saldo per Tahun",
       },
-      {
-        path: "/laporan/saldo-bahan",
-        title: "Saldo Bahan",
-      },
-      {
-        path: "/laporan/stock-admin",
-        title: "Stock Admin",
-      },
+      // {
+      //   path: "/laporan/saldo-bahan",
+      //   title: "Saldo Bahan",
+      // },
+      // {
+      //   path: "/laporan/stock-admin",
+      //   title: "Stock Admin",
+      // },
       {
         path: "/laporan/kirim-desain",
-        title: "Kirim per Desain",
+        title: "Kirim per Design",
       },
       {
         path: "/laporan/kirim-saldo-divisi",
