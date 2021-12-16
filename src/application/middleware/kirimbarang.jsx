@@ -35,6 +35,7 @@ const kirimbarang =
       );
       data.tgl_dari = tgl_dari_string;
       data.tgl_sampai = tgl_sampai_string;
+      writeLocal("kirim_barang_head", data);
       if (data.kode_jenis_bahan === undefined) {
         dispatch(setLoadingButton(false));
         sweetalert.default.Failed("Lengkapi Form Terlebih Dahulu !");

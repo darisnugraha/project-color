@@ -31,7 +31,10 @@ class ExcelReport extends Component {
               </th>
             </tr>
             <tr>
-              <th colSpan="14"> Tanggal : </th>
+              <th colSpan="14">
+                {" "}
+                Tanggal : {localStorage.getItem("tanggal_lap")}
+              </th>
             </tr>
             <tr>
               <td

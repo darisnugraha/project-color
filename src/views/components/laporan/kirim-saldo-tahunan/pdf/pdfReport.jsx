@@ -15,7 +15,7 @@ const pdfReport = (data = "") => {
   doc.setProperties({
     title: "Saldo Bahan",
   });
-  doc.text(`PERIODE : `, 14, 25);
+  doc.text(`PERIODE : ${localStorage.getItem("tanggal_lap")}`, 14, 25);
 
   tableColumn = [
     [

@@ -4,7 +4,16 @@ import ReactHTMLTableToExcel from "react-html-table-to-excel";
 class ExcelReport extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { tgl_dari_string: "", tgl_sampai_string: "" };
+  }
+
+  componentDidMount() {
+    let data =
+      JSON.parse(localStorage.getItem("kirim_saldo_divisi_head")) || [];
+    this.setState({
+      tgl_dari_string: data.tgl_dari,
+      tgl_sampai_string: data.tgl_sampai,
+    });
   }
 
   render() {
@@ -22,6 +31,15 @@ class ExcelReport extends Component {
         />
         <table id="table-to-xls" style={{ display: "none" }}>
           <thead>
+            <tr>
+              <th colSpan="23">
+                {" "}
+                Tanggal :{" "}
+                {this.state.tgl_dari_string +
+                  " s/d " +
+                  this.state.tgl_sampai_string}
+              </th>
+            </tr>
             <tr>
               <th
                 colSpan="23"

@@ -35,16 +35,17 @@ const kirimbahanproduksi =
       );
       data.tgl_dari = tgl_dari_string;
       data.tgl_sampai = tgl_sampai_string;
+      writeLocal("kirim_barang_produksi_head", data);
+
       if (data.kode_jenis_bahan === undefined) {
         dispatch(setLoadingButton(false));
         sweetalert.default.Failed("Lengkapi Form Terlebih Dahulu !");
       } else {
         dispatch(setLoadingButton(false));
-        const response = await api.KirimBarangProduksi.getAllKirimBarangProduksi(
-          {
+        const response =
+          await api.KirimBarangProduksi.getAllKirimBarangProduksi({
             params: data,
-          }
-        );
+          });
         if (response?.value !== null) {
           dispatch(setLoadingButton(false));
           if (response?.value.length === 0) {

@@ -30,11 +30,16 @@ const laporanStockGlobalProduksi =
       const tgl = new Date(data.tanggal);
       const tgl_kirim = moment.tz(tgl, "Asia/Jakarta").format("YYYY-MM-DD");
       delete data.repair;
-      delete data.tanggal;
       data.date = tgl_kirim;
+      const dataKirim = {
+        date: data.date,
+        divisi: data.divisi,
+        tipe_laporan: data.tipe_laporan,
+        user: data.user,
+      };
       const response =
         await api.laporanStockGlobalProduksi.addLaporanStockGlobalProduksi(
-          data
+          dataKirim
         );
       if (response?.value !== null) {
         sweetalert.default.Success("Berhasil Melihat Laporan !");
