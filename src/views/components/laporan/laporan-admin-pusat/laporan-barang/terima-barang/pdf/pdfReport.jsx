@@ -2,6 +2,7 @@ import { jsPDF } from "jspdf";
 import "jspdf-autotable";
 
 const pdfReport = (data = "") => {
+  console.log(data.length);
   let data_head = JSON.parse(localStorage.getItem("terima_barang_head"));
   let tgl_dari_string = data_head.tgl_dari;
   let tgl_sampai_string = data_head.tgl_sampai;
@@ -171,42 +172,42 @@ const pdfReport = (data = "") => {
         colSpan: 5,
       },
       {
-        content: jmlterima,
+        content: jmlterima.toFixed(3),
         styles: {
           halign: "right",
           fillColor: "#dddddd",
         },
       },
       {
-        content: brtterima,
+        content: brtterima.toFixed(3),
         styles: {
           halign: "right",
           fillColor: "#dddddd",
         },
       },
       {
-        content: jmlrusak,
+        content: jmlrusak.toFixed(3),
         styles: {
           halign: "right",
           fillColor: "#dddddd",
         },
       },
       {
-        content: brtrusak,
+        content: brtrusak.toFixed(3),
         styles: {
           halign: "right",
           fillColor: "#dddddd",
         },
       },
       {
-        content: brtspru,
+        content: brtspru.toFixed(3),
         styles: {
           halign: "right",
           fillColor: "#dddddd",
         },
       },
       {
-        content: bubuk,
+        content: bubuk.toFixed(3),
         styles: {
           halign: "right",
           fillColor: "#dddddd",
@@ -321,7 +322,7 @@ const pdfReport = (data = "") => {
       align: "center",
     });
   }
-  const string = doc.output("datauristring");
+  const string = doc.output("bloburl");
   const x = window.open();
   x.document.open();
   x.document.write(

@@ -140,14 +140,14 @@ const pdfReport = (data = "") => {
         colSpan: 5,
       },
       {
-        content: jmlkirim,
+        content: jmlkirim.toFixed(3),
         styles: {
           halign: "right",
           fillColor: "#dddddd",
         },
       },
       {
-        content: brtkirim,
+        content: brtkirim.toFixed(3),
         styles: {
           halign: "right",
           fillColor: "#dddddd",
@@ -235,7 +235,7 @@ const pdfReport = (data = "") => {
       align: "center",
     });
   }
-  const string = doc.output("datauristring");
+  const string = doc.output("bloburl");
   const x = window.open();
   x.document.open();
   x.document.write(

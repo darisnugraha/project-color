@@ -600,7 +600,7 @@ const pdfReportR = (data = "") => {
       align: "center",
     });
   }
-  const string = doc.output("datauristring");
+  const string = doc.output("bloburl");
   const x = window.open();
   x.document.open();
   x.document.write(
