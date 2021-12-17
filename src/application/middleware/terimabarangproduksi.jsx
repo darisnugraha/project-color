@@ -40,7 +40,6 @@ const terimabahanproduksi =
         dispatch(setLoadingButton(false));
         sweetalert.default.Failed("Lengkapi Form Terlebih Dahulu !");
       } else {
-        dispatch(setLoadingButton(false));
         const response =
           await api.TerimaBarangProduksi.getAllTerimaBarangProduksi({
             params: data,

@@ -41,7 +41,6 @@ const kirimbahanproduksi =
         dispatch(setLoadingButton(false));
         sweetalert.default.Failed("Lengkapi Form Terlebih Dahulu !");
       } else {
-        dispatch(setLoadingButton(false));
         const response =
           await api.KirimBarangProduksi.getAllKirimBarangProduksi({
             params: data,

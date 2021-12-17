@@ -40,7 +40,6 @@ const kirimbarang =
         dispatch(setLoadingButton(false));
         sweetalert.default.Failed("Lengkapi Form Terlebih Dahulu !");
       } else {
-        dispatch(setLoadingButton(false));
         const response = await api.TerimaBarang.getAllTerimaBarang({
           params: data,
         });
