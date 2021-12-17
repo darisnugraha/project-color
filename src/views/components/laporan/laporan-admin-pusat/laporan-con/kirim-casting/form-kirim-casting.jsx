@@ -27,8 +27,8 @@ const maptostate = (state) => {
     return {
       initialValues: {
         date: [moment(today, dateFormat), moment(today, dateFormat)],
-        kode_jenis_bahan: state.jenisbahan.feedback[0]?.kode_jenis_bahan,
-        kriteria: "semua",
+        kode_jenis_bahan: "SEMUA",
+        kriteria: "SEMUA",
       },
     };
   }
@@ -62,6 +62,9 @@ let FormLaporanKirimCasting = (prop) => {
             placeholder="Pilih Kode Jenis Bahan"
             onBlur={(e) => e.preventDefault()}
           >
+            <Option value="SEMUA" key="SEMUA">
+              <span style={{ fontSize: "13px" }}>Semua</span>
+            </Option>
             {datajenisbahan.map((item) => {
               if (item.kode_jenis_bahan !== "ALLOY") {
                 return (
@@ -89,13 +92,13 @@ let FormLaporanKirimCasting = (prop) => {
             placeholder="Pilih Kriteria"
             onBlur={(e) => e.preventDefault()}
           >
-            <Option value="semua" key="1">
+            <Option value="SEMUA" key="1">
               <span style={{ fontSize: "13px" }}>Semua</span>
             </Option>
-            <Option value="emas" key="2">
+            <Option value="EMAS" key="2">
               <span style={{ fontSize: "13px" }}>Emas</span>
             </Option>
-            <Option value="batu" key="3">
+            <Option value="BATU" key="3">
               <span style={{ fontSize: "13px" }}>Batu</span>
             </Option>
           </Field>

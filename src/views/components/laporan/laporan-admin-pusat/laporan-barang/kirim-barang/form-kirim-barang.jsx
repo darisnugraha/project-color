@@ -33,8 +33,8 @@ const maptostate = (state) => {
       initialValues: {
         date: [moment(today, dateFormat), moment(today, dateFormat)],
         sample: false,
-        kode_jenis_bahan: state.jenisbahan.feedback[0]?.kode_jenis_bahan,
-        design: state.design.feedback[0]?.design,
+        kode_jenis_bahan: "SEMUA",
+        design: "SEMUA",
         no_job_order: undefined,
         alloy: false,
         reparasi: false,
@@ -81,6 +81,9 @@ let FormLaporanKirimBarang = (prop) => {
             placeholder="Pilih Kode Jenis Bahan"
             onBlur={(e) => e.preventDefault()}
           >
+            <Option value="SEMUA" key="SEMUA">
+              <span style={{ fontSize: "13px" }}>Semua</span>
+            </Option>
             {datajenisbahan.map((item) => {
               if (item.kode_jenis_bahan !== "ALLOY") {
                 return (
@@ -108,6 +111,9 @@ let FormLaporanKirimBarang = (prop) => {
             placeholder="Pilih Design"
             onBlur={(e) => e.preventDefault()}
           >
+            <Option value="SEMUA" key="SEMUA">
+              <span style={{ fontSize: "13px" }}>Semua</span>
+            </Option>
             {datadesign.map((item) => {
               if (item.design !== "ALLOY") {
                 return (

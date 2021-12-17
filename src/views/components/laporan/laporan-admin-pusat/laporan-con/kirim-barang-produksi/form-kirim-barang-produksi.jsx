@@ -29,7 +29,7 @@ const maptostate = (state) => {
     return {
       initialValues: {
         date: [moment(today, dateFormat), moment(today, dateFormat)],
-        kode_jenis_bahan: state.jenisbahan.feedback[0]?.kode_jenis_bahan,
+        kode_jenis_bahan: "SEMUA",
         divisi: "FILLING",
         alloy: false,
         no_con: "",
@@ -66,6 +66,9 @@ let FormLaporanKirimBarangProduksi = (prop) => {
             placeholder="Pilih Kode Jenis Bahan"
             onBlur={(e) => e.preventDefault()}
           >
+            <Option value="SEMUA" key="SEMUA">
+              <span style={{ fontSize: "13px" }}>Semua</span>
+            </Option>
             {datajenisbahan.map((item) => {
               if (item.kode_jenis_bahan !== "ALLOY") {
                 return (
