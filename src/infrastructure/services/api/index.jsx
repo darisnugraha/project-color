@@ -17,6 +17,8 @@ import TerimaBarang from "./terimabarang";
 import KirimPlatting from "./kirimplatting";
 import Divisi from "./divisi";
 import KirimByDivisi from "./kirimbydivisi";
+import KirimPolishing from "./kirimpolishing";
+import KodeJenis from "./kodejenis";
 
 const api = {
   login,
@@ -38,6 +40,8 @@ const api = {
   KirimPlatting,
   Divisi,
   KirimByDivisi,
+  KirimPolishing,
+  KodeJenis,
 };
 
 export default api;

@@ -8,26 +8,28 @@ import ui from "../../../../../../application/selectors/ui";
 import jenisbahan from "../../../../../../application/selectors/jenisbahan";
 import design from "../../../../../../application/selectors/design";
 import divisi from "../../../../../../application/selectors/divisi";
+import kodejenis from "../../../../../../application/selectors/kodejenis";
 import "antd/dist/antd.css";
-import { getAllKirimPlatting } from "../../../../../../application/actions/kirimplatting";
+import { getAllKirimPolishing } from "../../../../../../application/actions/kirimpolishing";
 
 const dateFormat = "MM/YYYY";
 const today = new Date();
 const { Option } = Select;
 
 const maptostate = (state) => {
-  if (state.form.FormLaporanKirimPlatting?.values !== undefined) {
+  if (state.form.FormLaporanKirimPolishing?.values !== undefined) {
     return {
       initialValues: {
-        date: state.form.FormLaporanKirimPlatting.values.date,
-        tujuan: state.form.FormLaporanKirimPlatting.values.tujuan,
+        date: state.form.FormLaporanKirimPolishing.values.date,
+        tujuan: state.form.FormLaporanKirimPolishing.values.tujuan,
         kode_jenis_bahan:
-          state.form.FormLaporanKirimPlatting.values.kode_jenis_bahan,
-        design: state.form.FormLaporanKirimPlatting.values.design,
-        no_job_order: state.form.FormLaporanKirimPlatting.values.no_job_order,
-        alloy: state.form.FormLaporanKirimPlatting.values.alloy,
-        reparasi: state.form.FormLaporanKirimPlatting.values.reparasi,
-        ekspor: state.form.FormLaporanKirimPlatting.values.ekspor,
+          state.form.FormLaporanKirimPolishing.values.kode_jenis_bahan,
+        design: state.form.FormLaporanKirimPolishing.values.design,
+        jenis: state.form.FormLaporanKirimPolishing.values.jenis,
+        no_job_order: state.form.FormLaporanKirimPolishing.values.no_job_order,
+        alloy: state.form.FormLaporanKirimPolishing.values.alloy,
+        reparasi: state.form.FormLaporanKirimPolishing.values.reparasi,
+        ekspor: state.form.FormLaporanKirimPolishing.values.ekspor,
       },
     };
   } else {
@@ -37,6 +39,7 @@ const maptostate = (state) => {
         tujuan: "SEMUA",
         kode_jenis_bahan: "SEMUA",
         design: "SEMUA",
+        jenis: "SEMUA",
         no_job_order: undefined,
         alloy: false,
         reparasi: false,
@@ -46,13 +49,14 @@ const maptostate = (state) => {
   }
 };
 
-let FormLaporanKirimPlatting = (prop) => {
+let FormLaporanKirimPolishing = (prop) => {
   // eslint-disable-next-line
   const dispatch = useDispatch();
   const btnLoading = useSelector(ui.getBtnLoading);
   const datajenisbahan = useSelector(jenisbahan.getAllJenisbahan);
   const datadesign = useSelector(design.getAllDesign);
   const datadivisi = useSelector(divisi.getAllDivisi);
+  const datakodejenis = useSelector(kodejenis.getAllKodeJenis);
 
   return (
     <Form layout="vertical">
@@ -141,6 +145,27 @@ let FormLaporanKirimPlatting = (prop) => {
         </Col>
         <Col offset={1}>
           <Field
+            name="jenis"
+            label={<span style={{ fontSize: "13px" }}>Kode Jenis</span>}
+            style={{ width: 250 }}
+            component={styleAntd.ASelect}
+            placeholder="Pilih Kode Jenis"
+            onBlur={(e) => e.preventDefault()}
+          >
+            <Option value="SEMUA" key="SEMUA">
+              <span style={{ fontSize: "13px" }}>Semua</span>
+            </Option>
+            {datakodejenis.map((item) => {
+              return (
+                <Option value={item.kode_jenis} key={item.kode_jenis}>
+                  <span style={{ fontSize: "13px" }}>{item.kode_jenis}</span>
+                </Option>
+              );
+            })}
+          </Field>
+        </Col>
+        <Col offset={1}>
+          <Field
             name="no_job_order"
             type="text"
             label={<span style={{ fontSize: "13px" }}>No Job Order</span>}
@@ -181,7 +206,7 @@ let FormLaporanKirimPlatting = (prop) => {
             type="primary"
             htmltype="button"
             loading={btnLoading}
-            onClick={() => prop.dispatch(getAllKirimPlatting)}
+            onClick={() => prop.dispatch(getAllKirimPolishing)}
             style={{ marginTop: 29 }}
           >
             Lihat Laporan
@@ -192,8 +217,8 @@ let FormLaporanKirimPlatting = (prop) => {
   );
 };
 
-FormLaporanKirimPlatting = reduxForm({
-  form: "FormLaporanKirimPlatting",
+FormLaporanKirimPolishing = reduxForm({
+  form: "FormLaporanKirimPolishing",
   enableReinitialize: true,
-})(FormLaporanKirimPlatting);
-export default connect(maptostate, null)(FormLaporanKirimPlatting);
+})(FormLaporanKirimPolishing);
+export default connect(maptostate, null)(FormLaporanKirimPolishing);

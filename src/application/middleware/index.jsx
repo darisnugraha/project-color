@@ -18,6 +18,8 @@ import terimabarang from "./terimabarang";
 import kirimplatting from "./kirimplatting";
 import divisi from "./divisi";
 import kirimbydivisi from "./kirimbydivisi";
+import kirimpolishing from "./kirimpolishing";
+import kodejenis from "./kodejenis";
 
 const midd = [
   ...ui,
@@ -40,6 +42,8 @@ const midd = [
   ...kirimplatting,
   ...divisi,
   ...kirimbydivisi,
+  ...kirimpolishing,
+  ...kodejenis,
 ];
 
 export default midd;
