@@ -6,25 +6,25 @@ import {
   Panel,
   PanelHeader,
   PanelBody,
-} from "../../../components/panel/panel.jsx";
-import TableKirimPlatting from "../../../components/laporan/laporan-produksi/platting/kirim-platting/table-kirim-platting";
-import FormKirimPlatting from "../../../components/laporan/laporan-produksi/platting/kirim-platting/form-kirim-platting";
-import BtnPrint from "../../../components/laporan/laporan-produksi/platting/kirim-platting/btn-print-kirim-platting";
-import { pageLoadedLogin } from "../../../../application/actions/ui";
-import { getAllJenisBahan } from "../../../../application/actions/jenisbahan.jsx";
-import DataKirimPlatting from "../../../../application/selectors/kirimplatting";
-import { getAllDesign } from "../../../../application/actions/design.jsx";
-import { getAllDivisi } from "../../../../application/actions/divisi.jsx";
+} from "./../../components/panel/panel.jsx";
+import TableLaporanKirimByDivisi from "../../components/laporan/laporan-produksi/kirim-by-divisi/table-kirim-by-divisi";
+import FormLaporanKirimByDivisi from "../../components/laporan/laporan-produksi/kirim-by-divisi/form-kirim-by-divisi";
+import BtnPrint from "../../components/laporan/laporan-produksi/kirim-by-divisi/btn-print-kirim-by-divisi";
+import { pageLoadedLogin } from "../../../application/actions/ui";
+import { getAllJenisBahan } from "../../../application/actions/jenisbahan.jsx";
+import { getAllDesign } from "../../../application/actions/design.jsx";
+import { getAllDivisi } from "../../../application/actions/divisi.jsx";
+import DataKirimByDivisi from "../../../application/selectors/kirimbydivisi";
 
-const KirimPlatting = () => {
+const KirimByDivisi = () => {
+  const dataKirimByDivisi = useSelector(DataKirimByDivisi.getAllKirimByDivisi);
   const dispatch = useDispatch();
-  const dataKirimPlatting = useSelector(DataKirimPlatting.getAllKirimPlatting);
   useEffect(() => {
     dispatch(pageLoadedLogin);
     dispatch(getAllJenisBahan);
     dispatch(getAllDesign);
     dispatch(getAllDivisi);
-    document.title = "Laporan Kirim Platting";
+    document.title = "Laporan Kirim By Divisi";
   }, [dispatch]);
 
   return (
@@ -34,29 +34,27 @@ const KirimPlatting = () => {
           <Link to="/dashboard">Home</Link>
         </li>
         <li className="breadcrumb-item">
-          <Link to="/laporan-produksi/platting/kirim-platting">
-            Laporan Produksi
-          </Link>
+          <Link to="/laporan-produksi/kirim-by-divisi">Laporan Produksi</Link>
         </li>
-        <li className="breadcrumb-item active">Kirim Platting</li>
+        <li className="breadcrumb-item active">Kirim By Divisi</li>
       </ol>
       <h1 className="page-header">
-        Laporan Produksi <small>Kirim Platting</small>
+        Laporan Produksi <small>Kirim By Divisi</small>
       </h1>
       <Panel>
-        <PanelHeader>Kirim Platting</PanelHeader>
+        <PanelHeader>Kirim By Divisi</PanelHeader>
         <PanelBody>
           <Card bordered={false}>
             <div className="row">
               <div className="col-12">
-                <FormKirimPlatting />
+                <FormLaporanKirimByDivisi />
               </div>
             </div>
             <div
               className="row"
               style={{
                 marginTop: 10,
-                display: dataKirimPlatting.length === 0 ? "none" : "",
+                display: dataKirimByDivisi.length === 0 ? "none" : "",
               }}
             >
               <div className="col-12">
@@ -65,14 +63,14 @@ const KirimPlatting = () => {
                 </Divider>
               </div>
               <div className="col-12">
-                <TableKirimPlatting />
+                <TableLaporanKirimByDivisi />
               </div>
             </div>
             <div
               className="row"
               style={{
                 marginTop: 10,
-                display: dataKirimPlatting.length === 0 ? "none" : "",
+                display: dataKirimByDivisi.length === 0 ? "none" : "",
               }}
             >
               <div className="col-12">
@@ -86,4 +84,4 @@ const KirimPlatting = () => {
   );
 };
 
-export default KirimPlatting;
+export default KirimByDivisi;

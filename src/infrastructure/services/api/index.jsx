@@ -14,6 +14,9 @@ import TambahJobOrder from "./tambahjoborder";
 import KirimBarang from "./kirimbarang";
 import Design from "./design";
 import TerimaBarang from "./terimabarang";
+import KirimPlatting from "./kirimplatting";
+import Divisi from "./divisi";
+import KirimByDivisi from "./kirimbydivisi";
 
 const api = {
   login,
@@ -32,6 +35,9 @@ const api = {
   KirimBarang,
   Design,
   TerimaBarang,
+  KirimPlatting,
+  Divisi,
+  KirimByDivisi,
 };
 
 export default api;

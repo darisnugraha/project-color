@@ -15,6 +15,9 @@ import tambahjoborder from "./tambahjoborder";
 import kirimbarang from "./kirimbarang";
 import design from "./design";
 import terimabarang from "./terimabarang";
+import kirimplatting from "./kirimplatting";
+import divisi from "./divisi";
+import kirimbydivisi from "./kirimbydivisi";
 
 const midd = [
   ...ui,
@@ -34,6 +37,9 @@ const midd = [
   ...kirimbarang,
   ...design,
   ...terimabarang,
+  ...kirimplatting,
+  ...divisi,
+  ...kirimbydivisi,
 ];
 
 export default midd;

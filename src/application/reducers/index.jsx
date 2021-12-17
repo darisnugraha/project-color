@@ -17,6 +17,9 @@ import tambahjoborder from "./tambahjoborder";
 import kirimbarang from "./kirimbarang";
 import design from "./design";
 import terimabarang from "./terimabarang";
+import kirimplatting from "./kirimplatting";
+import divisi from "./divisi";
+import kirimbydivisi from "./kirimbydivisi";
 
 export default combineReducers({
   login,
@@ -36,5 +39,8 @@ export default combineReducers({
   kirimbarang,
   design,
   terimabarang,
+  kirimplatting,
+  divisi,
+  kirimbydivisi,
   form: formReducer,
 });
