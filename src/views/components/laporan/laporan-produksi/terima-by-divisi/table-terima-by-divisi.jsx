@@ -6,6 +6,7 @@ import TerimaByDivisi from "../../../../../application/selectors/terimabydivisi"
 
 const TabelLaporanTerimaDivisi = () => {
   const dataTerimaByDivisi = useSelector(TerimaByDivisi.getAllTerimaByDivisi);
+  
   const columns = [
     {
       title: "Tanggal",
@@ -45,9 +46,16 @@ const TabelLaporanTerimaDivisi = () => {
     },
     {
       title: "Jml Terima",
-      dataIndex: "jumlah_terima",
+      dataIndex: null,
       key: "jumlah_terima",
       align: "center",
+      render: (text) => {
+        if (text.jumlah_terima !== undefined) {
+          return text.jumlah_terima;
+        } else {
+          return text.sample_terima;
+        }
+      },
     },
     {
       title: "Brt Terima",

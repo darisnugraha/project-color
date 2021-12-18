@@ -86,7 +86,13 @@ const pdfReport = (data = "") => {
     ];
     tableRows.push(rowKirim);
     element.forEach((item) => {
-      jmlterima = jmlterima + parseFloat(item.jumlah_terima);
+      jmlterima =
+        jmlterima +
+        parseFloat(
+          item.jumlah_terima !== undefined
+            ? item.jumlah_terima
+            : item.sample_terima
+        );
       brtterima = brtterima + parseFloat(item.berat_terima);
 
       const row = [
@@ -121,7 +127,10 @@ const pdfReport = (data = "") => {
           },
         },
         {
-          content: item.jumlah_terima,
+          content:
+            item.jumlah_terima !== undefined
+              ? item.jumlah_terima
+              : item.sample_terima,
         },
         {
           content: item.berat_terima,
@@ -170,7 +179,13 @@ const pdfReport = (data = "") => {
   let brtterimaAll = 0;
 
   data.forEach((element) => {
-    jmlterimaAll = jmlterimaAll + parseFloat(element.jumlah_terima);
+    jmlterimaAll =
+      jmlterimaAll +
+      parseFloat(
+        element.jumlah_terima !== undefined
+          ? element.jumlah_terima
+          : element.sample_terima
+      );
     brtterimaAll = brtterimaAll + parseFloat(element.berat_terima);
   });
 
