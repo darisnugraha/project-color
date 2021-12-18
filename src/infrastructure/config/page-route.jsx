@@ -20,6 +20,7 @@ import TerimaBarang from "../../views/pages/laporan-admin-pusat/laporan-barang/t
 import KirimPlatting from "../../views/pages/laporan-produksi/platting/kirim-platting";
 import KirimByDivisi from "../../views/pages/laporan-produksi/kirim-by-divisi";
 import KirimPolishing from "../../views/pages/laporan-produksi/polishing/kirim-polishing";
+import TerimaByDivisi from "../../views/pages/laporan-produksi/terima-by-divisi";
 
 const routes = [
   // {
@@ -118,6 +119,11 @@ const routes = [
     path: "/laporan-produksi/polishing/kirim-polishing",
     title: "Laporan Kirim Polishing",
     component: () => <KirimPolishing />,
+  },
+  {
+    path: "/laporan-produksi/terima-by-divisi",
+    title: "Laporan Terima By Divisi",
+    component: () => <TerimaByDivisi />,
   },
   {
     path: "/notfound",

@@ -22,6 +22,7 @@ import divisi from "./divisi";
 import kirimbydivisi from "./kirimbydivisi";
 import kirimpolishing from "./kirimpolishing";
 import kodejenis from "./kodejenis";
+import terimabydivisi from "./terimabydivisi";
 
 export default combineReducers({
   login,
@@ -46,5 +47,6 @@ export default combineReducers({
   kirimbydivisi,
   kirimpolishing,
   kodejenis,
+  terimabydivisi,
   form: formReducer,
 });

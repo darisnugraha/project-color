@@ -19,6 +19,7 @@ const URL_GET_ALL_TERIMA_BARANG = `${baseurl}adminpusat/report/barang/terima-bar
 const URL_GET_ALL_KIRIM_PLATTING = `${baseurl}produksi/report/kirim-platting?`;
 const URL_GET_ALL_KIRIM_POLISHING = `${baseurl}produksi/report/kirim-polishing?`;
 const URL_GET_ALL_KIRIM_BY_DIVISI = `${baseurl}produksi/report/kirim-barang?`;
+const URL_GET_ALL_TERIMA_BY_DIVISI = `${baseurl}produksi/report/terima-barang?`;
 
 const data = {
   URL_LOGIN,
@@ -40,6 +41,7 @@ const data = {
   URL_GET_ALL_KIRIM_BY_DIVISI,
   URL_GET_ALL_KIRIM_POLISHING,
   URL_GET_ALL_KODE_JENIS,
+  URL_GET_ALL_TERIMA_BY_DIVISI,
 };
 
 export default data;

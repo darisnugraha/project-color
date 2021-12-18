@@ -111,6 +111,10 @@ const Menu = [
           },
         ],
       },
+      {
+        path: "/laporan-produksi/terima-by-divisi",
+        title: "Terima By Divisi",
+      },
     ],
   },
 ];
