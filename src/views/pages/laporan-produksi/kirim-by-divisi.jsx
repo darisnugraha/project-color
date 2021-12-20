@@ -30,6 +30,7 @@ const KirimByDivisi = () => {
     dispatch(getAllDivisi);
     document.title = "Laporan Kirim By Divisi";
   }, [dispatch]);
+  const divisipilih = useSelector(DataKirimByDivisi.getDivisi);
 
   return (
     <div>
@@ -67,9 +68,9 @@ const KirimByDivisi = () => {
                 </Divider>
               </div>
               <div className="col-12">
-                {localStorage.getItem("divisi") === "POLISHING" ? (
+                {divisipilih === "POLISHING" ? (
                   <TableLaporanKirimByDivisiPolishing />
-                ) : localStorage.getItem("divisi") === "PLATTING" ? (
+                ) : divisipilih === "PLATTING" ? (
                   <TableLaporanKirimByDivisiPlatting />
                 ) : (
                   <TableLaporanKirimByDivisi />
@@ -84,9 +85,9 @@ const KirimByDivisi = () => {
               }}
             >
               <div className="col-12">
-                {localStorage.getItem("divisi") === "POLISHING" ? (
+                {divisipilih === "POLISHING" ? (
                   <BtnPrintPolishing />
-                ) : localStorage.getItem("divisi") === "PLATTING" ? (
+                ) : divisipilih === "PLATTING" ? (
                   <BtnPrintPlatting />
                 ) : (
                   <BtnPrint />
