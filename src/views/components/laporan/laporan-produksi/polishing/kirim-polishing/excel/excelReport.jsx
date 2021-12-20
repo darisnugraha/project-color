@@ -8,7 +8,7 @@ class ExcelReport extends Component {
   }
 
   componentDidMount() {
-    let data = JSON.parse(localStorage.getItem("kirim_polishing_head")) || [];
+    let data = JSON.parse(localStorage.getItem("kirim_by_divisi_head")) || [];
     this.setState({
       tgl_dari_string: data.tgl_dari,
       tgl_sampai_string: data.tgl_sampai,
