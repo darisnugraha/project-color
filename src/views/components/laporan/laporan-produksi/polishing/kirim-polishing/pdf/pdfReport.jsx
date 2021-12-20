@@ -115,7 +115,7 @@ const pdfReport = (data = "") => {
 
       const row = [
         {
-          content: item.tanggal_kirim,
+          content: item.tgl_kirim,
           styles: {
             halign: "center",
           },

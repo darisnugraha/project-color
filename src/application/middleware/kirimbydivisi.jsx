@@ -41,25 +41,79 @@ const kirimbydivisi =
         dispatch(setLoadingButton(false));
         sweetalert.default.Failed("Lengkapi Form Terlebih Dahulu !");
       } else {
-        const response = await api.KirimByDivisi.getAllKirimByDivisi({
-          params: data,
-        });
-        if (response?.value !== null) {
-          dispatch(setLoadingButton(false));
-          if (response?.value.length === 0) {
+        if (data.divisi === "POLISHING") {
+          const response = await api.KirimByDivisi.getAllKirimByDivisiPolishing(
+            {
+              params: data,
+            }
+          );
+          if (response?.value !== null) {
             dispatch(setLoadingButton(false));
-            sweetalert.default.Failed("Data Laporan Kosong !");
+            if (response?.value.length === 0) {
+              dispatch(setLoadingButton(false));
+              sweetalert.default.Failed("Data Laporan Kosong !");
+            } else {
+              dispatch(setLoadingButton(false));
+              sweetalert.default.Success("Berhasil Mengambil Data !");
+              dispatch(
+                setDataKirimByDivisiSuccess({ feedback: response?.value })
+              );
+            }
           } else {
             dispatch(setLoadingButton(false));
-            sweetalert.default.Success("Berhasil Mengambil Data !");
-            dispatch(
-              setDataKirimByDivisiSuccess({ feedback: response?.value })
+            sweetalert.default.Failed(
+              "Terjadi Kesalahan Saat Mengambil Data !"
             );
+            dispatch(setDataKirimByDivisiFailed({ error: response.error }));
+          }
+        } else if (data.divisi === "PLATTING") {
+          const response = await api.KirimByDivisi.getAllKirimByDivisiPolishing(
+            {
+              params: data,
+            }
+          );
+          if (response?.value !== null) {
+            dispatch(setLoadingButton(false));
+            if (response?.value.length === 0) {
+              dispatch(setLoadingButton(false));
+              sweetalert.default.Failed("Data Laporan Kosong !");
+            } else {
+              dispatch(setLoadingButton(false));
+              sweetalert.default.Success("Berhasil Mengambil Data !");
+              dispatch(
+                setDataKirimByDivisiSuccess({ feedback: response?.value })
+              );
+            }
+          } else {
+            dispatch(setLoadingButton(false));
+            sweetalert.default.Failed(
+              "Terjadi Kesalahan Saat Mengambil Data !"
+            );
+            dispatch(setDataKirimByDivisiFailed({ error: response.error }));
           }
         } else {
-          dispatch(setLoadingButton(false));
-          sweetalert.default.Failed("Terjadi Kesalahan Saat Mengambil Data !");
-          dispatch(setDataKirimByDivisiFailed({ error: response.error }));
+          const response = await api.KirimByDivisi.getAllKirimByDivisi({
+            params: data,
+          });
+          if (response?.value !== null) {
+            dispatch(setLoadingButton(false));
+            if (response?.value.length === 0) {
+              dispatch(setLoadingButton(false));
+              sweetalert.default.Failed("Data Laporan Kosong !");
+            } else {
+              dispatch(setLoadingButton(false));
+              sweetalert.default.Success("Berhasil Mengambil Data !");
+              dispatch(
+                setDataKirimByDivisiSuccess({ feedback: response?.value })
+              );
+            }
+          } else {
+            dispatch(setLoadingButton(false));
+            sweetalert.default.Failed(
+              "Terjadi Kesalahan Saat Mengambil Data !"
+            );
+            dispatch(setDataKirimByDivisiFailed({ error: response.error }));
+          }
         }
       }
     }

@@ -92,26 +92,6 @@ const Menu = [
         title: "Kirim By Divisi",
       },
       {
-        path: "/laporan-produksi/platting",
-        title: "Platting",
-        children: [
-          {
-            path: "/laporan-produksi/platting/kirim-platting",
-            title: "Kirim Platting",
-          },
-        ],
-      },
-      {
-        path: "/laporan-produksi/polishing",
-        title: "Polishing",
-        children: [
-          {
-            path: "/laporan-produksi/polishing/kirim-polishing",
-            title: "Kirim Polishing",
-          },
-        ],
-      },
-      {
         path: "/laporan-produksi/terima-by-divisi",
         title: "Terima By Divisi",
       },

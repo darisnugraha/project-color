@@ -4,14 +4,14 @@ import { Button, Row, Col } from "antd";
 import "antd/dist/antd.css";
 import "antd-button-color/dist/css/style.css";
 import ui from "../../../../../../application/selectors/ui";
-import KirimPolishing from "../../../../../../application/selectors/kirimpolishing";
+import KirimPolishing from "../../../../../../application/selectors/kirimbydivisi";
 import ExcelReport from "./excel/excelReport";
 import pdfReport from "./pdf/pdfReport";
 
 const BtnPrint = () => {
   // eslint-disable-next-line
   const btnLoading = useSelector(ui.getBtnLoading);
-  const dataKirimPolishing = useSelector(KirimPolishing.getAllKirimPolishing);
+  const dataKirimPolishing = useSelector(KirimPolishing.getAllKirimByDivisi);
 
   const pdfExportHandle = () => {
     pdfReport(dataKirimPolishing);

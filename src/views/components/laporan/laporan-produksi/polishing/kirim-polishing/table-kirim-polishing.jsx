@@ -2,15 +2,17 @@ import React from "react";
 import { Table } from "antd";
 import "antd/dist/antd.css";
 import { useSelector } from "react-redux";
-import KirimPolishing from "../../../../../../application/selectors/kirimpolishing";
+import KirimByDivisiPolishing from "../../../../../../application/selectors/kirimbydivisi";
 
 const TabelLaporanKirimPolishing = () => {
-  const dataKirimPolishing = useSelector(KirimPolishing.getAllKirimPolishing);
+  const dataKirimPolishing = useSelector(
+    KirimByDivisiPolishing.getAllKirimByDivisi
+  );
   const columns = [
     {
       title: "Tanggal",
-      dataIndex: "tanggal_kirim",
-      key: "tanggal_kirim",
+      dataIndex: "tgl_kirim",
+      key: "tgl_kirim",
       align: "center",
     },
     {

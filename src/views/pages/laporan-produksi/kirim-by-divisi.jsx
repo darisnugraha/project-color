@@ -8,6 +8,10 @@ import {
   PanelBody,
 } from "./../../components/panel/panel.jsx";
 import TableLaporanKirimByDivisi from "../../components/laporan/laporan-produksi/kirim-by-divisi/table-kirim-by-divisi";
+import TableLaporanKirimByDivisiPolishing from "../../components/laporan/laporan-produksi/polishing/kirim-polishing/table-kirim-polishing";
+import TableLaporanKirimByDivisiPlatting from "../../components/laporan/laporan-produksi/platting/kirim-platting/table-kirim-platting";
+import BtnPrintPolishing from "../../components/laporan/laporan-produksi/polishing/kirim-polishing/btn-print-kirim-polishing";
+import BtnPrintPlatting from "../../components/laporan/laporan-produksi/platting/kirim-platting/btn-print-kirim-platting";
 import FormLaporanKirimByDivisi from "../../components/laporan/laporan-produksi/kirim-by-divisi/form-kirim-by-divisi";
 import BtnPrint from "../../components/laporan/laporan-produksi/kirim-by-divisi/btn-print-kirim-by-divisi";
 import { pageLoadedLogin } from "../../../application/actions/ui";
@@ -63,7 +67,13 @@ const KirimByDivisi = () => {
                 </Divider>
               </div>
               <div className="col-12">
-                <TableLaporanKirimByDivisi />
+                {localStorage.getItem("divisi") === "POLISHING" ? (
+                  <TableLaporanKirimByDivisiPolishing />
+                ) : localStorage.getItem("divisi") === "PLATTING" ? (
+                  <TableLaporanKirimByDivisiPlatting />
+                ) : (
+                  <TableLaporanKirimByDivisi />
+                )}
               </div>
             </div>
             <div
@@ -74,7 +84,13 @@ const KirimByDivisi = () => {
               }}
             >
               <div className="col-12">
-                <BtnPrint />
+                {localStorage.getItem("divisi") === "POLISHING" ? (
+                  <BtnPrintPolishing />
+                ) : localStorage.getItem("divisi") === "PLATTING" ? (
+                  <BtnPrintPlatting />
+                ) : (
+                  <BtnPrint />
+                )}
               </div>
             </div>
           </Card>

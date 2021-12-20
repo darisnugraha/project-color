@@ -2,11 +2,13 @@
 import {
   SET_DATA_KIRIM_BY_DIVISI_SUCCESS,
   SET_DATA_KIRIM_BY_DIVISI_FAILED,
+  SET_DIVISI,
 } from "../actions/kirimbydivisi";
 const initialState = {
   feedback: [],
   error: null,
   isEdit: false,
+  divisi: "-",
 };
 
 const kirimbydivisi = (state = initialState, action) => {
@@ -20,6 +22,11 @@ const kirimbydivisi = (state = initialState, action) => {
       return {
         ...state,
         error: action.payload.data,
+      };
+    case SET_DIVISI:
+      return {
+        ...state,
+        divisi: action.payload.data,
       };
     default:
       return state;

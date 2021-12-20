@@ -8,8 +8,14 @@ import ui from "../../../../../application/selectors/ui";
 import jenisbahan from "../../../../../application/selectors/jenisbahan";
 import design from "../../../../../application/selectors/design";
 import divisi from "../../../../../application/selectors/divisi";
+import kodejenis from "../../../../../application/selectors/kodejenis";
+import kirimbydivisi from "../../../../../application/selectors/kirimbydivisi";
 import "antd/dist/antd.css";
-import { getAllKirimByDivisi } from "../../../../../application/actions/kirimbydivisi";
+import {
+  getAllKirimByDivisi,
+  getDivisi,
+  setDataKirimByDivisiSuccess,
+} from "../../../../../application/actions/kirimbydivisi";
 
 const dateFormat = "MM/YYYY";
 const today = new Date();
@@ -24,10 +30,12 @@ const maptostate = (state) => {
         kode_jenis_bahan:
           state.form.FormLaporanKirimByDivisi.values.kode_jenis_bahan,
         design: state.form.FormLaporanKirimByDivisi.values.design,
+        tujuan: state.form.FormLaporanKirimByDivisi.values.tujuan,
+        jenis: state.form.FormLaporanKirimByDivisi.values.jenis,
         no_job_order: state.form.FormLaporanKirimByDivisi.values.no_job_order,
         alloy: state.form.FormLaporanKirimByDivisi.values.alloy,
         reparasi: state.form.FormLaporanKirimByDivisi.values.reparasi,
-        // ekspor: state.form.FormLaporanKirimByDivisi.values.ekspor,
+        ekspor: state.form.FormLaporanKirimByDivisi.values.ekspor,
       },
     };
   } else {
@@ -37,6 +45,8 @@ const maptostate = (state) => {
         divisi: state.divisi.feedback[0]?.Divisi,
         kode_jenis_bahan: "SEMUA",
         design: "SEMUA",
+        tujuan: "SEMUA",
+        jenis: "SEMUA",
         no_job_order: undefined,
         alloy: false,
         reparasi: false,
@@ -53,6 +63,8 @@ let FormLaporanKirimByDivisi = (prop) => {
   const datajenisbahan = useSelector(jenisbahan.getAllJenisbahan);
   const datadesign = useSelector(design.getAllDesign);
   const datadivisi = useSelector(divisi.getAllDivisi);
+  const datakodejenis = useSelector(kodejenis.getAllKodeJenis);
+  const divisipilih = useSelector(kirimbydivisi.getDivisi);
 
   return (
     <Form layout="vertical">
@@ -75,6 +87,10 @@ let FormLaporanKirimByDivisi = (prop) => {
             component={styleAntd.ASelect}
             placeholder="Pilih Divisi"
             onBlur={(e) => e.preventDefault()}
+            onChange={(val) => {
+              dispatch(getDivisi({ divisi: val }));
+              dispatch(setDataKirimByDivisiSuccess({ feedback: [] }));
+            }}
           >
             {datadivisi.map((item) => {
               return (
@@ -146,6 +162,61 @@ let FormLaporanKirimByDivisi = (prop) => {
             placeholder="Masukkan No Job Order"
           />
         </Col>
+        <Col
+          offset={1}
+          style={{
+            display:
+              divisipilih === "POLISHING" || divisipilih === "PLATTING"
+                ? ""
+                : "none",
+          }}
+        >
+          <Field
+            name="tujuan"
+            label={<span style={{ fontSize: "13px" }}>Tujuan Divisi</span>}
+            style={{ width: 250 }}
+            component={styleAntd.ASelect}
+            placeholder="Pilih Tujuan Divisi"
+            onBlur={(e) => e.preventDefault()}
+          >
+            <Option value="SEMUA" key="SEMUA">
+              <span style={{ fontSize: "13px" }}>Semua</span>
+            </Option>
+            <Option value="SAMPLE" key="SAMPLE">
+              <span style={{ fontSize: "13px" }}>Sample</span>
+            </Option>
+            <Option value="POLISHING" key="POLISHING">
+              <span style={{ fontSize: "13px" }}>Polishing</span>
+            </Option>
+            <Option value="PLATTING" key="PLATTING">
+              <span style={{ fontSize: "13px" }}>PLatting</span>
+            </Option>
+          </Field>
+        </Col>
+        <Col
+          offset={1}
+          style={{ display: divisipilih === "POLISHING" ? "" : "none" }}
+        >
+          <Field
+            name="jenis"
+            label={<span style={{ fontSize: "13px" }}>Kode Jenis</span>}
+            style={{ width: 250 }}
+            component={styleAntd.ASelect}
+            placeholder="Pilih Kode Jenis"
+            onBlur={(e) => e.preventDefault()}
+          >
+            <Option value="SEMUA" key="SEMUA">
+              <span style={{ fontSize: "13px" }}>Semua</span>
+            </Option>
+            {datakodejenis.map((item) => {
+              return (
+                <Option value={item.kode_jenis} key={item.kode_jenis}>
+                  <span style={{ fontSize: "13px" }}>{item.kode_jenis}</span>
+                </Option>
+              );
+            })}
+          </Field>
+        </Col>
         <Col offset={1}>
           <Field
             label={<span style={{ fontSize: "13px" }}>Alloy</span>}
@@ -164,7 +235,15 @@ let FormLaporanKirimByDivisi = (prop) => {
             type="checkbox"
           />
         </Col>
-        {/* <Col offset={1}>
+        <Col
+          offset={1}
+          style={{
+            display:
+              divisipilih === "POLISHING" || divisipilih === "PLATTING"
+                ? ""
+                : "none",
+          }}
+        >
           <Field
             label={<span style={{ fontSize: "13px" }}>Ekspor</span>}
             name="ekspor"
@@ -172,7 +251,7 @@ let FormLaporanKirimByDivisi = (prop) => {
             component={styleAntd.ACheckBox}
             type="checkbox"
           />
-        </Col> */}
+        </Col>
         <Col offset={1}>
           <Button
             type="primary"
