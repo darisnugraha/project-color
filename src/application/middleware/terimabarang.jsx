@@ -24,6 +24,7 @@ const kirimbarang =
     next(action);
     if (action.type === GET_ALL_TERIMA_BARANG) {
       dispatch(setLoadingButton(true));
+      dispatch(setDataTerimaBarangSuccess({ feedback: [] }));
       const data = getState().form.FormLaporanTerimaBarang.values;
       const tgl_dari = new Date(data.date[0]);
       const tgl_dari_string = Moment.tz(tgl_dari, "Asia/Jakarta").format(
@@ -48,6 +49,7 @@ const kirimbarang =
           if (response?.value.length === 0) {
             dispatch(setLoadingButton(false));
             sweetalert.default.Failed("Data Laporan Kosong !");
+            dispatch(setDataTerimaBarangSuccess({ feedback: [] }));
           } else {
             dispatch(setLoadingButton(false));
             sweetalert.default.Success("Berhasil Mengambil Data !");

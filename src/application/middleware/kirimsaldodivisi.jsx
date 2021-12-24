@@ -24,7 +24,7 @@ const kirimsaldodivisi =
     next(action);
     if (action.type === GET_ALL_KIRIM_SALDO_DIVISI) {
       dispatch(setLoadingButton(true));
-
+      dispatch(setDataKirimsaldodivisiFailed({ feedback: [] }));
       const data = getState().form.FormLaporanKirimSaldoDivisi.values;
       const tgl_dari = new Date(data.date[0]);
       const tgl_dari_string = Moment.tz(tgl_dari, "Asia/Jakarta").format(
@@ -43,9 +43,7 @@ const kirimsaldodivisi =
       if (response?.value !== null) {
         if (response?.value.length === 0) {
           sweetalert.default.Failed("Data Laporan Kosong!");
-          dispatch(
-            setDataKirimsaldodivisiFailed({ feedback: response?.value })
-          );
+          dispatch(setDataKirimsaldodivisiFailed({ feedback: [] }));
         } else {
           dispatch(
             setDataKirimsaldodivisiSuccess({ feedback: response?.value })

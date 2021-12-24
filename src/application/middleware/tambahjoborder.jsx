@@ -24,6 +24,7 @@ const tambahjoborder =
     next(action);
     if (action.type === GET_ALL_TAMBAH_JOB_ORDER) {
       dispatch(setLoadingButton(true));
+      dispatch(setDataTambahJobOrderSuccess({ feedback: [] }));
       const data = getState().form.FormLaporanTambahJobOrder.values;
       const tgl_dari = new Date(data.date[0]);
       const tgl_dari_string = Moment.tz(tgl_dari, "Asia/Jakarta").format(
@@ -48,6 +49,7 @@ const tambahjoborder =
           if (response?.value.length === 0) {
             dispatch(setLoadingButton(false));
             sweetalert.default.Failed("Data Laporan Kosong !");
+            dispatch(setDataTambahJobOrderSuccess({ feedback: [] }));
           } else {
             dispatch(setLoadingButton(false));
             sweetalert.default.Success("Berhasil Mengambil Data !");

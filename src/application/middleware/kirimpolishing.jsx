@@ -24,6 +24,7 @@ const kirimpolishing =
     next(action);
     if (action.type === GET_ALL_KIRIM_POLISHING) {
       dispatch(setLoadingButton(true));
+      dispatch(setDataKirimPolishingSuccess({ feedback: [] }));
       const data = getState().form.FormLaporanKirimPolishing.values;
       const tgl_dari = new Date(data.date[0]);
       const tgl_dari_string = Moment.tz(tgl_dari, "Asia/Jakarta").format(
@@ -49,6 +50,7 @@ const kirimpolishing =
           if (response?.value.length === 0) {
             dispatch(setLoadingButton(false));
             sweetalert.default.Failed("Data Laporan Kosong !");
+            dispatch(setDataKirimPolishingSuccess({ feedback: [] }));
           } else {
             dispatch(setLoadingButton(false));
             sweetalert.default.Success("Berhasil Mengambil Data !");

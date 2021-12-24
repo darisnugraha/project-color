@@ -24,6 +24,7 @@ const kirimbahanproduksi =
     next(action);
     if (action.type === GET_ALL_KIRIM_BARANG_PRODUKSI) {
       dispatch(setLoadingButton(true));
+      dispatch(setDataKirimBarangProduksiSuccess({ feedback: [] }));
       const data = getState().form.FormLaporanKirimBarangProduksi.values;
       const tgl_dari = new Date(data.date[0]);
       const tgl_dari_string = Moment.tz(tgl_dari, "Asia/Jakarta").format(
@@ -50,6 +51,7 @@ const kirimbahanproduksi =
           if (response?.value.length === 0) {
             dispatch(setLoadingButton(false));
             sweetalert.default.Failed("Data Laporan Kosong !");
+            dispatch(setDataKirimBarangProduksiSuccess({ feedback: [] }));
           } else {
             dispatch(setLoadingButton(false));
             sweetalert.default.Success("Berhasil Mengambil Data !");
@@ -59,7 +61,7 @@ const kirimbahanproduksi =
           }
         } else {
           dispatch(setLoadingButton(false));
-          sweetalert.default.Failed("Terjadi Kesalahan Saat Mengambil Data !");
+          sweetalert.default.Failed(response.error.data);
           dispatch(setDataKirimBarangProduksiFailed({ error: response.error }));
         }
       }

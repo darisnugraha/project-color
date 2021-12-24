@@ -24,7 +24,7 @@ const kirimdesian =
     next(action);
     if (action.type === GET_ALL_KIRIM_DESIAN) {
       dispatch(setLoadingButton(true));
-
+      dispatch(setDataKirimdesianSuccess({ feedback: [] }));
       const data = getState().form.FormLaporanKirimDesian.values;
       const tgl_dari = new Date(data.date[0]);
       const tgl_dari_string = Moment.tz(tgl_dari, "Asia/Jakarta").format(
@@ -43,7 +43,7 @@ const kirimdesian =
       if (response?.value !== null) {
         if (response?.value.length === 0) {
           sweetalert.default.Failed("Data Laporan Kosong!");
-          dispatch(setDataKirimdesianSuccess({ feedback: response?.value }));
+          dispatch(setDataKirimdesianSuccess({ feedback: [] }));
         } else {
           dispatch(setDataKirimdesianSuccess({ feedback: response?.value }));
           sweetalert.default.Success("Berhasil Melihat Laporan !");

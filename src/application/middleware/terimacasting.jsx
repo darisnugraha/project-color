@@ -24,6 +24,7 @@ const terimacasting =
     next(action);
     if (action.type === GET_ALL_TERIMA_CASTING) {
       dispatch(setLoadingButton(true));
+      dispatch(setDataTerimaCastingSuccess({ feedback: [] }));
       const data = getState().form.FormLaporanTerimaCasting.values;
       const tgl_dari = new Date(data.date[0]);
       const tgl_dari_string = Moment.tz(tgl_dari, "Asia/Jakarta").format(
@@ -49,6 +50,7 @@ const terimacasting =
           if (response?.value.length === 0) {
             dispatch(setLoadingButton(false));
             sweetalert.default.Failed("Data Laporan Kosong !");
+            dispatch(setDataTerimaCastingSuccess({ feedback: [] }));
           } else {
             dispatch(setLoadingButton(false));
             sweetalert.default.Success("Berhasil Mengambil Data !");

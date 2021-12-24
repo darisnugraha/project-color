@@ -24,6 +24,7 @@ const kirimbydivisi =
     next(action);
     if (action.type === GET_ALL_KIRIM_BY_DIVISI) {
       dispatch(setLoadingButton(true));
+      dispatch(setDataKirimByDivisiSuccess({ feedback: [] }));
       const data = getState().form.FormLaporanKirimByDivisi.values;
       const tgl_dari = new Date(data.date[0]);
       const tgl_dari_string = Moment.tz(tgl_dari, "Asia/Jakarta").format(
@@ -52,6 +53,7 @@ const kirimbydivisi =
             if (response?.value.length === 0) {
               dispatch(setLoadingButton(false));
               sweetalert.default.Failed("Data Laporan Kosong !");
+              dispatch(setDataKirimByDivisiSuccess({ feedback: [] }));
             } else {
               dispatch(setLoadingButton(false));
               sweetalert.default.Success("Berhasil Mengambil Data !");
@@ -77,6 +79,7 @@ const kirimbydivisi =
             if (response?.value.length === 0) {
               dispatch(setLoadingButton(false));
               sweetalert.default.Failed("Data Laporan Kosong !");
+              dispatch(setDataKirimByDivisiSuccess({ feedback: [] }));
             } else {
               dispatch(setLoadingButton(false));
               sweetalert.default.Success("Berhasil Mengambil Data !");
@@ -95,11 +98,13 @@ const kirimbydivisi =
           const response = await api.KirimByDivisi.getAllKirimByDivisi({
             params: data,
           });
+          log(response);
           if (response?.value !== null) {
             dispatch(setLoadingButton(false));
             if (response?.value.length === 0) {
               dispatch(setLoadingButton(false));
               sweetalert.default.Failed("Data Laporan Kosong !");
+              dispatch(setDataKirimByDivisiSuccess({ feedback: [] }));
             } else {
               dispatch(setLoadingButton(false));
               sweetalert.default.Success("Berhasil Mengambil Data !");

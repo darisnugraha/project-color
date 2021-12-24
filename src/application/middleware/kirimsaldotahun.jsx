@@ -15,6 +15,7 @@ const kirimsaldotahun =
     next(action);
     if (action.type === GET_ALL_KIRIM_SALDO_TAHUN) {
       dispatch(setLoadingButton(true));
+      dispatch(setDataKirimsaldotahunSuccess([]));
       const data = getState().form.FormLaporanKirimSaldoTahun.values;
       const tgl = new Date(data.tanggal);
       const tgl_kirim = moment.tz(tgl, "Asia/Jakarta").format("YYYY-MM");

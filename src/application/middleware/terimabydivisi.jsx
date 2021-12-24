@@ -24,6 +24,7 @@ const terimabydivisi =
     next(action);
     if (action.type === GET_ALL_TERIMA_BY_DIVISI) {
       dispatch(setLoadingButton(true));
+      dispatch(setDataTerimaByDivisiSuccess({ feedback: [] }));
       const data = getState().form.FormLaporanTerimaByDivisi.values;
       const tgl_dari = new Date(data.date[0]);
       const tgl_dari_string = Moment.tz(tgl_dari, "Asia/Jakarta").format(
@@ -49,6 +50,7 @@ const terimabydivisi =
           if (response?.value.length === 0) {
             dispatch(setLoadingButton(false));
             sweetalert.default.Failed("Data Laporan Kosong !");
+            dispatch(setDataTerimaByDivisiSuccess({ feedback: [] }));
           } else {
             dispatch(setLoadingButton(false));
             sweetalert.default.Success("Berhasil Mengambil Data !");
