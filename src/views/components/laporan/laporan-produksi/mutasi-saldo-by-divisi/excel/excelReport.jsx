@@ -18,13 +18,13 @@ class ExcelReport extends Component {
   }
   render() {
     if (
-      this.state.divisi === "TUMBLING" ||
-      this.state.divisi === "BOOM" ||
-      this.state.divisi === "AMPLAS" ||
-      this.state.divisi === "EPOXY" ||
-      this.state.divisi === "LASER" ||
-      this.state.divisi === "MARKING" ||
-      this.state.divisi === "PLATTING"
+      this.props.dataHead?.divisi === "TUMBLING" ||
+      this.props.dataHead?.divisi === "BOOM" ||
+      this.props.dataHead?.divisi === "AMPLAS" ||
+      this.props.dataHead?.divisi === "EPOXY" ||
+      this.props.dataHead?.divisi === "LASER" ||
+      this.props.dataHead?.divisi === "MARKING" ||
+      this.props.dataHead?.divisi === "PLATTING"
     ) {
       return (
         <>
@@ -32,8 +32,8 @@ class ExcelReport extends Component {
             id="test-table-xls-button"
             className="ant-btn ant-btn-primary ant-btn-block ant-btn-success"
             table="table-to-xls"
-            filename={`LAPORAN MUTASI SALDO BY DIVISI (${this.state.divisi})`}
-            sheet={`LAPORAN MUTASI SALDO BY DIVISI (${this.state.divisi})`}
+            filename={`LAPORAN MUTASI SALDO BY DIVISI (${this.props.dataHead?.divisi})`}
+            sheet={`LAPORAN MUTASI SALDO BY DIVISI (${this.props.dataHead?.divisi})`}
             buttonText="Export Excel"
           />
           <table id="table-to-xls" style={{ display: "none" }}>
@@ -41,7 +41,7 @@ class ExcelReport extends Component {
               <tr>
                 <th colSpan="10" style={{ textAlign: "center" }}>
                   {" "}
-                  LAPORAN MUTASI SALDO BY DIVISI {this.state.divisi}
+                  LAPORAN MUTASI SALDO BY DIVISI {this.props.dataHead?.divisi}
                 </th>
               </tr>
               <tr>
@@ -269,15 +269,15 @@ class ExcelReport extends Component {
           </table>
         </>
       );
-    } else if (this.state.divisi === "FILLING") {
+    } else if (this.props.dataHead?.divisi === "FILLING") {
       return (
         <>
           <ReactHTMLTableToExcel
             id="test-table-xls-button"
             className="ant-btn ant-btn-primary ant-btn-block ant-btn-success"
             table="table-to-xls"
-            filename={`LAPORAN MUTASI SALDO BY DIVISI (${this.state.divisi})`}
-            sheet={`LAPORAN MUTASI SALDO BY DIVISI (${this.state.divisi})`}
+            filename={`LAPORAN MUTASI SALDO BY DIVISI (${this.props.dataHead?.divisi})`}
+            sheet={`LAPORAN MUTASI SALDO BY DIVISI (${this.props.dataHead?.divisi})`}
             buttonText="Export Excel"
           />
           <table id="table-to-xls" style={{ display: "none" }}>
@@ -285,7 +285,7 @@ class ExcelReport extends Component {
               <tr>
                 <th colSpan="10" style={{ textAlign: "center" }}>
                   {" "}
-                  LAPORAN MUTASI SALDO BY DIVISI {this.state.divisi}
+                  LAPORAN MUTASI SALDO BY DIVISI {this.props.dataHead?.divisi}
                 </th>
               </tr>
               <tr>
@@ -544,9 +544,9 @@ class ExcelReport extends Component {
         </>
       );
     } else if (
-      this.state.divisi === "FR1" ||
-      this.state.divisi === "FR2" ||
-      this.state.divisi === "FR3"
+      this.props.dataHead?.divisi === "FR1" ||
+      this.props.dataHead?.divisi === "FR2" ||
+      this.props.dataHead?.divisi === "FR3"
     ) {
       return (
         <>
@@ -554,8 +554,8 @@ class ExcelReport extends Component {
             id="test-table-xls-button"
             className="ant-btn ant-btn-primary ant-btn-block ant-btn-success"
             table="table-to-xls"
-            filename={`LAPORAN MUTASI SALDO BY DIVISI (${this.state.divisi})`}
-            sheet={`LAPORAN MUTASI SALDO BY DIVISI (${this.state.divisi})`}
+            filename={`LAPORAN MUTASI SALDO BY DIVISI (${this.props.dataHead?.divisi})`}
+            sheet={`LAPORAN MUTASI SALDO BY DIVISI (${this.props.dataHead?.divisi})`}
             buttonText="Export Excel"
           />
           <table id="table-to-xls" style={{ display: "none" }}>
@@ -563,7 +563,7 @@ class ExcelReport extends Component {
               <tr>
                 <th colSpan="10" style={{ textAlign: "center" }}>
                   {" "}
-                  LAPORAN MUTASI SALDO BY DIVISI {this.state.divisi}
+                  LAPORAN MUTASI SALDO BY DIVISI {this.props.dataHead?.divisi}
                 </th>
               </tr>
               <tr>
@@ -822,9 +822,9 @@ class ExcelReport extends Component {
         </>
       );
     } else if (
-      this.state.divisi === "FR EPOXY" ||
-      this.state.divisi === "AMPLAS EPOXY" ||
-      this.state.divisi === "KULIT KERAMIK"
+      this.props.dataHead?.divisi === "FR EPOXY" ||
+      this.props.dataHead?.divisi === "AMPLAS EPOXY" ||
+      this.props.dataHead?.divisi === "KULIT KERAMIK"
     ) {
       return (
         <>
@@ -832,8 +832,8 @@ class ExcelReport extends Component {
             id="test-table-xls-button"
             className="ant-btn ant-btn-primary ant-btn-block ant-btn-success"
             table="table-to-xls"
-            filename={`LAPORAN MUTASI SALDO BY DIVISI (${this.state.divisi})`}
-            sheet={`LAPORAN MUTASI SALDO BY DIVISI (${this.state.divisi})`}
+            filename={`LAPORAN MUTASI SALDO BY DIVISI (${this.props.dataHead?.divisi})`}
+            sheet={`LAPORAN MUTASI SALDO BY DIVISI (${this.props.dataHead?.divisi})`}
             buttonText="Export Excel"
           />
           <table id="table-to-xls" style={{ display: "none" }}>
@@ -841,7 +841,7 @@ class ExcelReport extends Component {
               <tr>
                 <th colSpan="10" style={{ textAlign: "center" }}>
                   {" "}
-                  LAPORAN MUTASI SALDO BY DIVISI {this.state.divisi}
+                  LAPORAN MUTASI SALDO BY DIVISI {this.props.dataHead?.divisi}
                 </th>
               </tr>
               <tr>
@@ -1080,15 +1080,15 @@ class ExcelReport extends Component {
           </table>
         </>
       );
-    } else if (this.state.divisi === "POLISHING") {
+    } else if (this.props.dataHead?.divisi === "POLISHING") {
       return (
         <>
           <ReactHTMLTableToExcel
             id="test-table-xls-button"
             className="ant-btn ant-btn-primary ant-btn-block ant-btn-success"
             table="table-to-xls"
-            filename={`LAPORAN MUTASI SALDO BY DIVISI (${this.state.divisi})`}
-            sheet={`LAPORAN MUTASI SALDO BY DIVISI (${this.state.divisi})`}
+            filename={`LAPORAN MUTASI SALDO BY DIVISI (${this.props.dataHead?.divisi})`}
+            sheet={`LAPORAN MUTASI SALDO BY DIVISI (${this.props.dataHead?.divisi})`}
             buttonText="Export Excel"
           />
           <table id="table-to-xls" style={{ display: "none" }}>
@@ -1096,7 +1096,7 @@ class ExcelReport extends Component {
               <tr>
                 <th colSpan="10" style={{ textAlign: "center" }}>
                   {" "}
-                  LAPORAN MUTASI SALDO BY DIVISI {this.state.divisi}
+                  LAPORAN MUTASI SALDO BY DIVISI {this.props.dataHead?.divisi}
                 </th>
               </tr>
               <tr>
@@ -1313,15 +1313,15 @@ class ExcelReport extends Component {
           </table>
         </>
       );
-    } else if (this.state.divisi === "SAMPLE") {
+    } else if (this.props.dataHead?.divisi === "SAMPLE") {
       return (
         <>
           <ReactHTMLTableToExcel
             id="test-table-xls-button"
             className="ant-btn ant-btn-primary ant-btn-block ant-btn-success"
             table="table-to-xls"
-            filename={`LAPORAN MUTASI SALDO BY DIVISI (${this.state.divisi})`}
-            sheet={`LAPORAN MUTASI SALDO BY DIVISI (${this.state.divisi})`}
+            filename={`LAPORAN MUTASI SALDO BY DIVISI (${this.props.dataHead?.divisi})`}
+            sheet={`LAPORAN MUTASI SALDO BY DIVISI (${this.props.dataHead?.divisi})`}
             buttonText="Export Excel"
           />
           <table id="table-to-xls" style={{ display: "none" }}>
@@ -1329,7 +1329,7 @@ class ExcelReport extends Component {
               <tr>
                 <th colSpan="10" style={{ textAlign: "center" }}>
                   {" "}
-                  LAPORAN MUTASI SALDO BY DIVISI {this.state.divisi}
+                  LAPORAN MUTASI SALDO BY DIVISI {this.props.dataHead?.divisi}
                 </th>
               </tr>
               <tr>
@@ -1532,8 +1532,8 @@ class ExcelReport extends Component {
             id="test-table-xls-button"
             className="ant-btn ant-btn-primary ant-btn-block ant-btn-success"
             table="table-to-xls"
-            filename={`LAPORAN MUTASI SALDO BY DIVISI (${this.state.divisi})`}
-            sheet={`LAPORAN MUTASI SALDO BY DIVISI (${this.state.divisi})`}
+            filename={`LAPORAN MUTASI SALDO BY DIVISI (${this.props.dataHead?.divisi})`}
+            sheet={`LAPORAN MUTASI SALDO BY DIVISI (${this.props.dataHead?.divisi})`}
             buttonText="Export Excel"
           />
           <table id="table-to-xls" style={{ display: "none" }}>
@@ -1541,7 +1541,7 @@ class ExcelReport extends Component {
               <tr>
                 <th colSpan="10" style={{ textAlign: "center" }}>
                   {" "}
-                  LAPORAN MUTASI SALDO BY DIVISI {this.state.divisi}
+                  LAPORAN MUTASI SALDO BY DIVISI {this.props.dataHead?.divisi}
                 </th>
               </tr>
               <tr>

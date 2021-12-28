@@ -209,7 +209,7 @@ class ExcelReport extends Component {
                         textAlign: "right",
                       }}
                     >
-                      {jmlkirim.toFixed(3)}
+                      {jmlkirim}
                     </td>
                     <td
                       style={{
@@ -247,7 +247,7 @@ class ExcelReport extends Component {
                   textAlign: "right",
                 }}
               >
-                {jmlkirimAll.toFixed(3)}
+                {jmlkirimAll}
               </td>
               <td
                 style={{

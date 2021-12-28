@@ -190,7 +190,7 @@ class ExcelReport extends Component {
                         textAlign: "right",
                       }}
                     >
-                      {jmltambah.toFixed(3)}
+                      {jmltambah}
                     </td>
                     <td
                       style={{
@@ -220,7 +220,7 @@ class ExcelReport extends Component {
                   textAlign: "right",
                 }}
               >
-                {jmltambahAll.toFixed(3)}
+                {jmltambahAll}
               </td>
               <td
                 style={{

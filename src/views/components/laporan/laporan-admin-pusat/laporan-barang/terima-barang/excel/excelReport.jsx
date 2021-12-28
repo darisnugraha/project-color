@@ -291,7 +291,7 @@ class ExcelReport extends Component {
                         textAlign: "right",
                       }}
                     >
-                      {jmlterima.toFixed(3)}
+                      {jmlterima}
                     </td>
                     <td
                       style={{
@@ -307,7 +307,7 @@ class ExcelReport extends Component {
                         textAlign: "right",
                       }}
                     >
-                      {jmlrusak.toFixed(3)}
+                      {jmlrusak}
                     </td>
                     <td
                       style={{
@@ -369,7 +369,7 @@ class ExcelReport extends Component {
                   textAlign: "right",
                 }}
               >
-                {jmlterimaAll.toFixed(3)}
+                {jmlterimaAll}
               </td>
               <td
                 style={{
@@ -383,7 +383,7 @@ class ExcelReport extends Component {
                   textAlign: "right",
                 }}
               >
-                {jmlrusakAll.toFixed(3)}
+                {jmlrusakAll}
               </td>
               <td
                 style={{

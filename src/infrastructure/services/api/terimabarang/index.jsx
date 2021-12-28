@@ -10,8 +10,6 @@ const TerimaBarang = {
         params.tgl_dari +
         "&endDate=" +
         params.tgl_sampai +
-        "&sample=" +
-        params.sample +
         "&design=" +
         params.design +
         "&bahan=" +

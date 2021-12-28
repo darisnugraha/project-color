@@ -199,7 +199,7 @@ class ExcelReport extends Component {
                         textAlign: "right",
                       }}
                     >
-                      {brtterima}
+                      {brtterima.toFixed(3)}
                     </td>
                   </tr>
                 </>
@@ -221,7 +221,7 @@ class ExcelReport extends Component {
                   textAlign: "right",
                 }}
               >
-                {jmlterimaAll.toFixed(3)}
+                {jmlterimaAll}
               </td>
               <td
                 style={{

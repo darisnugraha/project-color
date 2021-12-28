@@ -137,7 +137,7 @@ const pdfReport = (data = "") => {
         },
       },
       {
-        content: brtterima,
+        content: brtterima.toFixed(3),
         styles: {
           halign: "right",
           fillColor: "#dddddd",
@@ -161,7 +161,7 @@ const pdfReport = (data = "") => {
       colSpan: 5,
     },
     {
-      content: jmlterimaAll.toFixed(3),
+      content: jmlterimaAll,
     },
     {
       content: brtterimaAll.toFixed(3),

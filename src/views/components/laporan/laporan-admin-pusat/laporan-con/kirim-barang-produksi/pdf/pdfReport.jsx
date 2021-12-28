@@ -159,7 +159,7 @@ const pdfReport = (data = "") => {
         },
       },
       {
-        content: brtkirim,
+        content: brtkirim.toFixed(3),
         styles: {
           halign: "right",
           fillColor: "#dddddd",
@@ -173,14 +173,14 @@ const pdfReport = (data = "") => {
         },
       },
       {
-        content: brtrusak,
+        content: brtrusak.toFixed(3),
         styles: {
           halign: "right",
           fillColor: "#dddddd",
         },
       },
       {
-        content: susut,
+        content: susut.toFixed(3),
         styles: {
           halign: "right",
           fillColor: "#dddddd",
@@ -209,13 +209,13 @@ const pdfReport = (data = "") => {
       colSpan: 5,
     },
     {
-      content: jmlkirimAll.toFixed(3),
+      content: jmlkirimAll,
     },
     {
       content: brtkirimAll.toFixed(3),
     },
     {
-      content: jmlrusakAll.toFixed(3),
+      content: jmlrusakAll,
     },
     {
       content: brtrusakAll.toFixed(3),

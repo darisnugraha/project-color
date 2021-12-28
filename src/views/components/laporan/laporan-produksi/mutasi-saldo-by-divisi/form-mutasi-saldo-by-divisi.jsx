@@ -84,6 +84,7 @@ let FormLaporanMutasiSaldoByDivisi = (prop) => {
             onChange={(val) => {
               dispatch(getDivisi({ divisi: val }));
               dispatch(setDataMutasiSaldoByDivisiSuccess({ feedback: [] }));
+              localStorage.removeItem("mutasi_saldo_by_divisi_head");
             }}
           >
             {datadivisi.map((item) => {

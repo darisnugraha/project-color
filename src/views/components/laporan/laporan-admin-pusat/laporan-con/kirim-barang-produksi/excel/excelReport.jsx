@@ -257,7 +257,7 @@ class ExcelReport extends Component {
                         textAlign: "right",
                       }}
                     >
-                      {brtkirim}
+                      {brtkirim.toFixed(3)}
                     </td>
                     <td
                       style={{
@@ -273,7 +273,7 @@ class ExcelReport extends Component {
                         textAlign: "right",
                       }}
                     >
-                      {brtrusak}
+                      {brtrusak.toFixed(3)}
                     </td>
                     <td
                       style={{
@@ -281,7 +281,7 @@ class ExcelReport extends Component {
                         textAlign: "right",
                       }}
                     >
-                      {susut}
+                      {susut.toFixed(3)}
                     </td>
                   </tr>
                 </>
@@ -303,7 +303,7 @@ class ExcelReport extends Component {
                   textAlign: "right",
                 }}
               >
-                {jmlkirimAll.toFixed(3)}
+                {jmlkirimAll}
               </td>
               <td
                 style={{
@@ -317,7 +317,7 @@ class ExcelReport extends Component {
                   textAlign: "right",
                 }}
               >
-                {jmlrusakAll.toFixed(3)}
+                {jmlrusakAll}
               </td>
               <td
                 style={{

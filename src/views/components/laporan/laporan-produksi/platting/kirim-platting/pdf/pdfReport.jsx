@@ -182,7 +182,7 @@ const pdfReport = (data = "") => {
         colSpan: 5,
       },
       {
-        content: jmlkirim.toFixed(3),
+        content: jmlkirim,
         styles: {
           halign: "right",
           fillColor: "#dddddd",
@@ -196,7 +196,7 @@ const pdfReport = (data = "") => {
         },
       },
       {
-        content: jmlrusak.toFixed(3),
+        content: jmlrusak,
         styles: {
           halign: "right",
           fillColor: "#dddddd",
@@ -210,7 +210,7 @@ const pdfReport = (data = "") => {
         },
       },
       {
-        content: jmlsparepart.toFixed(3),
+        content: jmlsparepart,
         styles: {
           halign: "right",
           fillColor: "#dddddd",
@@ -265,19 +265,19 @@ const pdfReport = (data = "") => {
       colSpan: 5,
     },
     {
-      content: jmlkirimAll.toFixed(3),
+      content: jmlkirimAll,
     },
     {
       content: brtkirimAll.toFixed(3),
     },
     {
-      content: jmlrusakAll.toFixed(3),
+      content: jmlrusakAll,
     },
     {
       content: brtrusakAll.toFixed(3),
     },
     {
-      content: jmlsparepartAll.toFixed(3),
+      content: jmlsparepartAll,
     },
     {
       content: brtsparepartAll.toFixed(3),

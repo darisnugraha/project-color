@@ -19,7 +19,6 @@ const maptostate = (state) => {
     return {
       initialValues: {
         date: state.form.FormLaporanTerimaBarang.values.date,
-        sample: state.form.FormLaporanTerimaBarang.values.sample,
         kode_jenis_bahan:
           state.form.FormLaporanTerimaBarang.values.kode_jenis_bahan,
         design: state.form.FormLaporanTerimaBarang.values.design,
@@ -31,7 +30,6 @@ const maptostate = (state) => {
     return {
       initialValues: {
         date: [moment(today, dateFormat), moment(today, dateFormat)],
-        sample: false,
         kode_jenis_bahan: "SEMUA",
         design: "SEMUA",
         no_job_order: undefined,
@@ -59,15 +57,6 @@ let FormLaporanTerimaBarang = (prop) => {
             component={styleAntd.ARangePick}
             className="form-item-group"
             onBlur={(e) => e.preventDefault()}
-          />
-        </Col>
-        <Col offset={1}>
-          <Field
-            label={<span style={{ fontSize: "13px" }}>Sample</span>}
-            name="sample"
-            id="sample"
-            component={styleAntd.ACheckBox}
-            type="checkbox"
           />
         </Col>
         <Col offset={1}>

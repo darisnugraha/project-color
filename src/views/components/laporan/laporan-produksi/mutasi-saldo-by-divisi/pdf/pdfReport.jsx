@@ -110,21 +110,39 @@ const pdfReport = (data = "") => {
       const row = [
         {
           content: element.tanggal,
+          styles: {
+            halign: "center",
+          },
         },
         {
           content: element.jam,
+          styles: {
+            halign: "center",
+          },
         },
         {
           content: element.no_job_order,
+          styles: {
+            halign: "center",
+          },
         },
         {
           content: element.kode_barang,
+          styles: {
+            halign: "center",
+          },
         },
         {
           content: element.nama_barang,
+          styles: {
+            halign: "center",
+          },
         },
         {
           content: element.jenis_bahan,
+          styles: {
+            halign: "center",
+          },
         },
         {
           content: element.jumlah_terima,
@@ -155,6 +173,9 @@ const pdfReport = (data = "") => {
         },
         {
           content: element.keterangan,
+          styles: {
+            halign: "center",
+          },
         },
       ];
       tableRows.push(row);
@@ -250,21 +271,39 @@ const pdfReport = (data = "") => {
       const row = [
         {
           content: element.tanggal,
+          styles: {
+            halign: "center",
+          },
         },
         {
           content: element.jam,
+          styles: {
+            halign: "center",
+          },
         },
         {
           content: element.no_job_order,
+          styles: {
+            halign: "center",
+          },
         },
         {
           content: element.kode_barang,
+          styles: {
+            halign: "center",
+          },
         },
         {
           content: element.nama_barang,
+          styles: {
+            halign: "center",
+          },
         },
         {
           content: element.jenis_bahan,
+          styles: {
+            halign: "center",
+          },
         },
         {
           content: element.jumlah_terima,
@@ -301,6 +340,9 @@ const pdfReport = (data = "") => {
         },
         {
           content: element.keterangan,
+          styles: {
+            halign: "center",
+          },
         },
       ];
       tableRows.push(row);
@@ -394,21 +436,39 @@ const pdfReport = (data = "") => {
       const row = [
         {
           content: element.tanggal,
+          styles: {
+            halign: "center",
+          },
         },
         {
           content: element.jam,
+          styles: {
+            halign: "center",
+          },
         },
         {
           content: element.no_job_order,
+          styles: {
+            halign: "center",
+          },
         },
         {
           content: element.kode_barang,
+          styles: {
+            halign: "center",
+          },
         },
         {
           content: element.nama_barang,
+          styles: {
+            halign: "center",
+          },
         },
         {
           content: element.jenis_bahan,
+          styles: {
+            halign: "center",
+          },
         },
         {
           content: element.jumlah_terima,
@@ -442,6 +502,9 @@ const pdfReport = (data = "") => {
         },
         {
           content: element.keterangan,
+          styles: {
+            halign: "center",
+          },
         },
       ];
       tableRows.push(row);
@@ -541,21 +604,39 @@ const pdfReport = (data = "") => {
       const row = [
         {
           content: element.tanggal,
+          styles: {
+            halign: "center",
+          },
         },
         {
           content: element.jam,
+          styles: {
+            halign: "center",
+          },
         },
         {
           content: element.no_job_order,
+          styles: {
+            halign: "center",
+          },
         },
         {
           content: element.kode_barang,
+          styles: {
+            halign: "center",
+          },
         },
         {
           content: element.nama_barang,
+          styles: {
+            halign: "center",
+          },
         },
         {
           content: element.jenis_bahan,
+          styles: {
+            halign: "center",
+          },
         },
         {
           content: element.jumlah_terima,
@@ -592,6 +673,9 @@ const pdfReport = (data = "") => {
         },
         {
           content: element.keterangan,
+          styles: {
+            halign: "center",
+          },
         },
       ];
       tableRows.push(row);
@@ -673,21 +757,39 @@ const pdfReport = (data = "") => {
       const row = [
         {
           content: element.tanggal,
+          styles: {
+            halign: "center",
+          },
         },
         {
           content: element.jam,
+          styles: {
+            halign: "center",
+          },
         },
         {
           content: element.no_job_order,
+          styles: {
+            halign: "center",
+          },
         },
         {
           content: element.kode_barang,
+          styles: {
+            halign: "center",
+          },
         },
         {
           content: element.nama_barang,
+          styles: {
+            halign: "center",
+          },
         },
         {
           content: element.jenis_bahan,
+          styles: {
+            halign: "center",
+          },
         },
         {
           content: element.jumlah_terima,
@@ -715,11 +817,14 @@ const pdfReport = (data = "") => {
         },
         {
           content: element.keterangan,
+          styles: {
+            halign: "center",
+          },
         },
       ];
       tableRows.push(row);
     });
-  } else if (data_head.divisi === "POLISHING") {
+  } else if (data_head.divisi === "SAMPLE") {
     tableColumn = [
       [
         {
@@ -752,7 +857,7 @@ const pdfReport = (data = "") => {
         },
         {
           content: `KIRIM`,
-          colSpan: 3,
+          colSpan: 2,
         },
         {
           content: `KETERANGAN`,
@@ -779,21 +884,39 @@ const pdfReport = (data = "") => {
       const row = [
         {
           content: element.tanggal,
+          styles: {
+            halign: "center",
+          },
         },
         {
           content: element.jam,
+          styles: {
+            halign: "center",
+          },
         },
         {
           content: element.no_job_order,
+          styles: {
+            halign: "center",
+          },
         },
         {
           content: element.kode_barang,
+          styles: {
+            halign: "center",
+          },
         },
         {
           content: element.nama_barang,
+          styles: {
+            halign: "center",
+          },
         },
         {
           content: element.jenis_bahan,
+          styles: {
+            halign: "center",
+          },
         },
         {
           content: element.jumlah_terima,
@@ -809,6 +932,9 @@ const pdfReport = (data = "") => {
         },
         {
           content: element.keterangan,
+          styles: {
+            halign: "center",
+          },
         },
       ];
       tableRows.push(row);
@@ -908,21 +1034,39 @@ const pdfReport = (data = "") => {
       const row = [
         {
           content: element.tanggal,
+          styles: {
+            halign: "center",
+          },
         },
         {
           content: element.jam,
+          styles: {
+            halign: "center",
+          },
         },
         {
           content: element.no_job_order,
+          styles: {
+            halign: "center",
+          },
         },
         {
           content: element.kode_barang,
+          styles: {
+            halign: "center",
+          },
         },
         {
           content: element.nama_barang,
+          styles: {
+            halign: "center",
+          },
         },
         {
           content: element.jenis_bahan,
+          styles: {
+            halign: "center",
+          },
         },
         {
           content: element.jumlah_terima,
@@ -962,6 +1106,9 @@ const pdfReport = (data = "") => {
         },
         {
           content: element.keterangan,
+          styles: {
+            halign: "center",
+          },
         },
       ];
       tableRows.push(row);

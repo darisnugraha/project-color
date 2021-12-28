@@ -172,7 +172,7 @@ const pdfReport = (data = "") => {
         colSpan: 5,
       },
       {
-        content: jmlterima.toFixed(3),
+        content: jmlterima,
         styles: {
           halign: "right",
           fillColor: "#dddddd",
@@ -186,7 +186,7 @@ const pdfReport = (data = "") => {
         },
       },
       {
-        content: jmlrusak.toFixed(3),
+        content: jmlrusak,
         styles: {
           halign: "right",
           fillColor: "#dddddd",
@@ -253,13 +253,13 @@ const pdfReport = (data = "") => {
       colSpan: 5,
     },
     {
-      content: jmlterimaAll.toFixed(3),
+      content: jmlterimaAll,
     },
     {
       content: brtterimaAll.toFixed(3),
     },
     {
-      content: jmlrusakAll.toFixed(3),
+      content: jmlrusakAll,
     },
     {
       content: brtrusakAll.toFixed(3),

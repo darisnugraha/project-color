@@ -127,7 +127,7 @@ const pdfReport = (data = "") => {
         colSpan: 5,
       },
       {
-        content: jmltambah.toFixed(3),
+        content: jmltambah,
         styles: {
           halign: "right",
           fillColor: "#dddddd",
@@ -158,7 +158,7 @@ const pdfReport = (data = "") => {
       colSpan: 5,
     },
     {
-      content: jmltambahAll.toFixed(3),
+      content: jmltambahAll,
     },
     {
       content: brttambahAll.toFixed(3),

@@ -140,7 +140,7 @@ const pdfReport = (data = "") => {
         colSpan: 5,
       },
       {
-        content: jmlkirim.toFixed(3),
+        content: jmlkirim,
         styles: {
           halign: "right",
           fillColor: "#dddddd",
@@ -178,7 +178,7 @@ const pdfReport = (data = "") => {
       colSpan: 5,
     },
     {
-      content: jmlkirimAll.toFixed(3),
+      content: jmlkirimAll,
     },
     {
       content: brtkirimAll.toFixed(3),

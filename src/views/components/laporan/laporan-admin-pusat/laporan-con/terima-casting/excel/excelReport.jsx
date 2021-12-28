@@ -16,6 +16,17 @@ class ExcelReport extends Component {
   }
 
   render() {
+    const groupBy = (array, key) => {
+      return array.reduce((result, currentValue) => {
+        (result[currentValue[key]] = result[currentValue[key]] || []).push(
+          currentValue
+        );
+        return result;
+      }, {});
+    };
+
+    const dataGroup = groupBy(this.props.dataExel, "no_kirim");
+    const dataGroupArr = Object.values(dataGroup);
     return (
       <>
         <ReactHTMLTableToExcel
@@ -69,7 +80,7 @@ class ExcelReport extends Component {
                   textAlign: "center",
                 }}
               >
-                JENIS
+                KODE BAHAN
               </td>
               <td
                 style={{
@@ -101,19 +112,52 @@ class ExcelReport extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.props.dataExel.map((item) => {
+            {dataGroupArr.map((element) => {
               return (
-                <tr>
-                  <td>{item.tgl_terima}</td>
-                  <td>{item.no_terima}</td>
-                  <td>{item.jenis_saldo}</td>
-                  <td>{item.kode_jenis_bahan}</td>
-                  <td>{item.stock}</td>
-                  <td>{item.berat}</td>
-                </tr>
+                <>
+                  <tr>
+                    <td
+                      colSpan="6"
+                      style={{
+                        backgroundColor: "#bbbbbb",
+                        textAlign: "left",
+                      }}
+                    >
+                      No Terima : {element[0].no_terima}
+                    </td>
+                  </tr>
+                  {element.map((item) => {
+                    return (
+                      <tr>
+                        <td>{item.tgl_terima}</td>
+                        <td>{item.no_terima}</td>
+                        <td>{item.jenis_saldo}</td>
+                        <td>{item.kode_jenis_bahan}</td>
+                        <td>{item.stock}</td>
+                        <td>{item.berat}</td>
+                      </tr>
+                    );
+                  })}
+                </>
               );
             })}
           </tbody>
+          <tfoot>
+            <tr>
+              <td colSpan="4">Grand Total</td>
+              <td>
+                {this.props.dataExel.reduce(
+                  (a, b) => a + parseFloat(b.stock),
+                  0
+                )}
+              </td>
+              <td>
+                {this.props.dataExel
+                  .reduce((a, b) => a + parseFloat(b.berat), 0)
+                  .toFixed(3)}
+              </td>
+            </tr>
+          </tfoot>
         </table>
       </>
     );

@@ -12,6 +12,7 @@ const BtnPrint = () => {
   // eslint-disable-next-line
   const btnLoading = useSelector(ui.getBtnLoading);
   const dataMutasiSaldo = useSelector(MutasiSaldo.getAllMutasiSaldo);
+  const data = JSON.parse(localStorage.getItem("mutasi_saldo_by_divisi_head"));
 
   const pdfExportHandle = () => {
     pdfReport(dataMutasiSaldo);
@@ -20,7 +21,7 @@ const BtnPrint = () => {
   return (
     <Row style={{ marginTop: 15 }}>
       <Col span={10} style={{ marginTop: 10 }}>
-        <ExcelReport dataExel={dataMutasiSaldo} />
+        <ExcelReport dataExel={dataMutasiSaldo} dataHead={data} />
       </Col>
       <Col htmltype="button" span={10} style={{ marginTop: 10 }} offset={2}>
         <Button

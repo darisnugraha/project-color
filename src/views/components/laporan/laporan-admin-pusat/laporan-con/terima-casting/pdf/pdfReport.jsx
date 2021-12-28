@@ -30,7 +30,7 @@ const pdfReport = (data = "") => {
         content: `NO TERIMA`,
       },
       {
-        content: `JENIS`,
+        content: `KODE BAHAN`,
       },
       {
         content: `JENIS BAHAN`,
@@ -44,43 +44,79 @@ const pdfReport = (data = "") => {
     ],
   ];
 
-  data.forEach((element) => {
-    const row = [
+  const groupBy = (array, key) => {
+    return array.reduce((result, currentValue) => {
+      (result[currentValue[key]] = result[currentValue[key]] || []).push(
+        currentValue
+      );
+      return result;
+    }, {});
+  };
+
+  const dataGroup = groupBy(data, "no_terima");
+  const dataGroupArr = Object.values(dataGroup);
+
+  dataGroupArr.forEach((item) => {
+    const rowKirim = [
       {
-        content: element.tgl_terima,
+        content: "No Terima : " + item[0].no_terima,
         styles: {
-          halign: "center",
+          halign: "left",
+          fillColor: "#bbbbbb",
         },
-      },
-      {
-        content: element.no_terima,
-        styles: {
-          halign: "center",
-        },
-      },
-      {
-        content: element.jenis_saldo,
-        styles: {
-          halign: "center",
-        },
-      },
-      {
-        content: element.kode_jenis_bahan,
-        styles: {
-          halign: "center",
-        },
-      },
-      {
-        content: element.stock,
-      },
-      {
-        content: element.berat,
+        colSpan: 6,
       },
     ];
-    tableRows.push(row);
+    tableRows.push(rowKirim);
+    item.forEach((element) => {
+      const row = [
+        {
+          content: element.tgl_terima,
+          styles: {
+            halign: "center",
+          },
+        },
+        {
+          content: element.no_terima,
+          styles: {
+            halign: "center",
+          },
+        },
+        {
+          content: element.jenis_saldo,
+          styles: {
+            halign: "center",
+          },
+        },
+        {
+          content: element.kode_jenis_bahan,
+          styles: {
+            halign: "center",
+          },
+        },
+        {
+          content: element.stock,
+        },
+        {
+          content: element.berat,
+        },
+      ];
+      tableRows.push(row);
+    });
   });
 
-  const footer = [];
+  const footer = [
+    {
+      content: "Grand Total :",
+      colSpan: 4,
+    },
+    {
+      content: data.reduce((a, b) => a + parseFloat(b.stock), 0),
+    },
+    {
+      content: data.reduce((a, b) => a + parseFloat(b.berat), 0).toFixed(3),
+    },
+  ];
   tableRows.push(footer);
 
   const printed = [

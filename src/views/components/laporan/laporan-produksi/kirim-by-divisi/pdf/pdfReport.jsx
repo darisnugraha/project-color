@@ -21,232 +21,1000 @@ const pdfReport = (data = "") => {
   });
   doc.text(`PERIODE : ${tgl_dari_string} s/d ${tgl_sampai_string}`, 14, 25);
 
-  tableColumn = [
-    [
-      {
-        content: `TANGGAL`,
-      },
-      {
-        content: `NO JOB ORDER`,
-      },
-      {
-        content: `KODE BARANG`,
-      },
-      {
-        content: `NAMA BARANG`,
-      },
-      {
-        content: `JENIS BAHAN`,
-      },
-      {
-        content: `JML KIRIM`,
-      },
-      {
-        content: `BRT KIRIM`,
-      },
-      {
-        content: `JML RUSAK`,
-      },
-      {
-        content: `BRT RUSAK`,
-      },
-      {
-        content: `SUSUT`,
-      },
-      {
-        content: `DESIGN`,
-      },
-    ],
-  ];
-
-  const groupBy = (array, key) => {
-    return array.reduce((result, currentValue) => {
-      (result[currentValue[key]] = result[currentValue[key]] || []).push(
-        currentValue
-      );
-      return result;
-    }, {});
-  };
-
-  const dataGroup = groupBy(data, "kode_jenis");
-  const dataGroupArr = Object.values(dataGroup);
-
-  dataGroupArr.forEach((element) => {
-    let jmlkirim = 0;
-    let brtkirim = 0;
-    let jmlrusak = 0;
-    let brtrusak = 0;
-    let susut = 0;
-
-    const rowKirim = [
-      {
-        content: "Kode Jenis : " + element[0].kode_jenis,
-        styles: {
-          halign: "left",
-          fillColor: "#bbbbbb",
+  if (data_head.divisi === "SAMPLE") {
+    tableColumn = [
+      [
+        {
+          content: `TANGGAL`,
         },
-        colSpan: 5,
-      },
-      {
-        content: "",
-        styles: {
-          halign: "left",
-          fillColor: "#bbbbbb",
+        {
+          content: `NO KIRIM`,
         },
-        colSpan: 6,
-      },
+        {
+          content: `NO JOB ORDER`,
+        },
+        {
+          content: `KODE BARANG`,
+        },
+        {
+          content: `NAMA BARANG`,
+        },
+        {
+          content: `JENIS BAHAN`,
+        },
+        {
+          content: `JML KIRIM`,
+        },
+        {
+          content: `BRT KIRIM`,
+        },
+        {
+          content: `DESIGN`,
+        },
+      ],
     ];
-    tableRows.push(rowKirim);
-    element.forEach((item) => {
-      jmlkirim = jmlkirim + parseFloat(item.stock_out);
-      brtkirim = brtkirim + parseFloat(item.berat_out);
-      jmlrusak = jmlrusak + parseFloat(item.stock_rusak);
-      brtrusak = brtrusak + parseFloat(item.berat_rusak);
-      susut = susut + parseFloat(item.susut);
 
-      const row = [
+    const groupBy = (array, key) => {
+      return array.reduce((result, currentValue) => {
+        (result[currentValue[key]] = result[currentValue[key]] || []).push(
+          currentValue
+        );
+        return result;
+      }, {});
+    };
+
+    const dataGroup = groupBy(data, "kode_jenis");
+    const dataGroupArr = Object.values(dataGroup);
+
+    dataGroupArr.forEach((element) => {
+      let jmlkirim = 0;
+      let brtkirim = 0;
+
+      const rowKirim = [
         {
-          content: item.tgl_kirim,
+          content: "Kode Jenis : " + element[0].kode_jenis,
           styles: {
-            halign: "center",
+            halign: "left",
+            fillColor: "#bbbbbb",
           },
+          colSpan: 6,
         },
         {
-          content: item.no_job_order,
+          content: "",
           styles: {
-            halign: "center",
+            halign: "left",
+            fillColor: "#bbbbbb",
           },
-        },
-        {
-          content: item.kode_barang,
-          styles: {
-            halign: "center",
-          },
-        },
-        {
-          content: item.nama_barang,
-          styles: {
-            halign: "center",
-          },
-        },
-        {
-          content: item.kode_jenis_bahan,
-          styles: {
-            halign: "center",
-          },
-        },
-        {
-          content: item.stock_out,
-        },
-        {
-          content: item.berat_out,
-        },
-        {
-          content: item.stock_rusak,
-        },
-        {
-          content: item.berat_rusak,
-        },
-        {
-          content: item.susut,
-        },
-        {
-          content: item.design,
+          colSpan: 6,
         },
       ];
-      tableRows.push(row);
-    });
-    const rowFoot = [
-      {
-        content: "Sub Total :",
-        styles: {
-          halign: "right",
-          fillColor: "#dddddd",
+      tableRows.push(rowKirim);
+      element.forEach((item) => {
+        jmlkirim = jmlkirim + parseFloat(item.stock_out);
+        brtkirim = brtkirim + parseFloat(item.berat_out);
+
+        const row = [
+          {
+            content: item.tgl_kirim,
+            styles: {
+              halign: "center",
+            },
+          },
+          {
+            content: item.no_kirim,
+            styles: {
+              halign: "center",
+            },
+          },
+          {
+            content: item.no_job_order,
+            styles: {
+              halign: "center",
+            },
+          },
+          {
+            content: item.kode_barang,
+            styles: {
+              halign: "center",
+            },
+          },
+          {
+            content: item.nama_barang,
+            styles: {
+              halign: "center",
+            },
+          },
+          {
+            content: item.kode_jenis_bahan,
+            styles: {
+              halign: "center",
+            },
+          },
+          {
+            content: item.stock_out,
+          },
+          {
+            content: item.berat_out,
+          },
+          {
+            content: item.design,
+          },
+        ];
+        tableRows.push(row);
+      });
+      const rowFoot = [
+        {
+          content: "Sub Total :",
+          styles: {
+            halign: "right",
+            fillColor: "#dddddd",
+          },
+          colSpan: 5,
         },
+        {
+          content: jmlkirim,
+          styles: {
+            halign: "right",
+            fillColor: "#dddddd",
+          },
+        },
+        {
+          content: brtkirim.toFixed(3),
+          styles: {
+            halign: "right",
+            fillColor: "#dddddd",
+          },
+        },
+        {
+          content: "",
+          styles: {
+            halign: "right",
+            fillColor: "#dddddd",
+          },
+        },
+      ];
+      tableRows.push(rowFoot);
+    });
+
+    let jmlkirimAll = 0;
+    let brtkirimAll = 0;
+
+    data.forEach((element) => {
+      jmlkirimAll = jmlkirimAll + parseFloat(element.stock_out);
+      brtkirimAll = brtkirimAll + parseFloat(element.berat_out);
+    });
+
+    const footer = [
+      {
+        content: "Grand Total :",
         colSpan: 5,
       },
       {
-        content: jmlkirim.toFixed(3),
-        styles: {
-          halign: "right",
-          fillColor: "#dddddd",
-        },
+        content: jmlkirimAll,
       },
       {
-        content: brtkirim.toFixed(3),
-        styles: {
-          halign: "right",
-          fillColor: "#dddddd",
-        },
-      },
-      {
-        content: jmlrusak.toFixed(3),
-        styles: {
-          halign: "right",
-          fillColor: "#dddddd",
-        },
-      },
-      {
-        content: brtrusak.toFixed(3),
-        styles: {
-          halign: "right",
-          fillColor: "#dddddd",
-        },
-      },
-      {
-        content: susut.toFixed(3),
-        styles: {
-          halign: "right",
-          fillColor: "#dddddd",
-        },
-      },
-      {
-        content: "",
-        styles: {
-          halign: "right",
-          fillColor: "#dddddd",
-        },
+        content: brtkirimAll.toFixed(3),
       },
     ];
-    tableRows.push(rowFoot);
-  });
+    tableRows.push(footer);
+  } else if (
+    data_head.divisi === "MASTER" ||
+    data_head.divisi === "HANDSETTING1" ||
+    data_head.divisi === "HANDSETTING2" ||
+    data_head.divisi === "HANDSETTING3"
+  ) {
+    tableColumn = [
+      [
+        {
+          content: `TANGGAL`,
+        },
+        {
+          content: `NO KIRIM`,
+        },
+        {
+          content: `NO JOB ORDER`,
+        },
+        {
+          content: `KODE BARANG`,
+        },
+        {
+          content: `NAMA BARANG`,
+        },
+        {
+          content: `JENIS BAHAN`,
+        },
+        {
+          content: `JML KIRIM`,
+        },
+        {
+          content: `BRT KIRIM`,
+        },
+        {
+          content: `JML RUSAK`,
+        },
+        {
+          content: `BRT RUSAK`,
+        },
+        {
+          content: `BUBUK`,
+        },
+        {
+          content: `BATU RUSAK`,
+        },
+        {
+          content: `SUSUT`,
+        },
+        {
+          content: `DESIGN`,
+        },
+      ],
+    ];
 
-  let jmlkirimAll = 0;
-  let brtkirimAll = 0;
-  let jmlrusakAll = 0;
-  let brtrusakAll = 0;
-  let susutAll = 0;
+    const groupBy = (array, key) => {
+      return array.reduce((result, currentValue) => {
+        (result[currentValue[key]] = result[currentValue[key]] || []).push(
+          currentValue
+        );
+        return result;
+      }, {});
+    };
 
-  data.forEach((element) => {
-    jmlkirimAll = jmlkirimAll + parseFloat(element.stock_out);
-    brtkirimAll = brtkirimAll + parseFloat(element.berat_out);
-    jmlrusakAll = jmlrusakAll + parseFloat(element.stock_rusak);
-    brtrusakAll = brtrusakAll + parseFloat(element.berat_rusak);
-    susutAll = susutAll + parseFloat(element.susut);
-  });
+    const dataGroup = groupBy(data, "kode_jenis");
+    const dataGroupArr = Object.values(dataGroup);
 
-  const footer = [
-    {
-      content: "Grand Total :",
-      colSpan: 5,
-    },
-    {
-      content: jmlkirimAll.toFixed(3),
-    },
-    {
-      content: brtkirimAll.toFixed(3),
-    },
-    {
-      content: jmlrusakAll.toFixed(3),
-    },
-    {
-      content: brtrusakAll.toFixed(3),
-    },
-    {
-      content: susutAll.toFixed(3),
-    },
-  ];
-  tableRows.push(footer);
+    dataGroupArr.forEach((element) => {
+      let jmlkirim = 0;
+      let brtkirim = 0;
+      let jmlrusak = 0;
+      let brtrusak = 0;
+      let susut = 0;
+      let bubuk = 0;
+      let baturusak = 0;
+
+      const rowKirim = [
+        {
+          content: "Kode Jenis : " + element[0].kode_jenis,
+          styles: {
+            halign: "left",
+            fillColor: "#bbbbbb",
+          },
+          colSpan: 6,
+        },
+        {
+          content: "",
+          styles: {
+            halign: "left",
+            fillColor: "#bbbbbb",
+          },
+          colSpan: 8,
+        },
+      ];
+      tableRows.push(rowKirim);
+      element.forEach((item) => {
+        jmlkirim = jmlkirim + parseFloat(item.stock_out);
+        brtkirim = brtkirim + parseFloat(item.berat_out);
+        jmlrusak = jmlrusak + parseFloat(item.stock_rusak);
+        brtrusak = brtrusak + parseFloat(item.berat_rusak);
+        susut = susut + parseFloat(item.susut);
+        bubuk = bubuk + parseFloat(item.bubuk);
+        baturusak = baturusak + parseFloat(item.batu_rusak);
+
+        const row = [
+          {
+            content: item.tgl_kirim,
+            styles: {
+              halign: "center",
+            },
+          },
+          {
+            content: item.no_kirim,
+            styles: {
+              halign: "center",
+            },
+          },
+          {
+            content: item.no_job_order,
+            styles: {
+              halign: "center",
+            },
+          },
+          {
+            content: item.kode_barang,
+            styles: {
+              halign: "center",
+            },
+          },
+          {
+            content: item.nama_barang,
+            styles: {
+              halign: "center",
+            },
+          },
+          {
+            content: item.kode_jenis_bahan,
+            styles: {
+              halign: "center",
+            },
+          },
+          {
+            content: item.stock_out,
+          },
+          {
+            content: item.berat_out,
+          },
+          {
+            content: item.stock_rusak,
+          },
+          {
+            content: item.berat_rusak,
+          },
+          {
+            content: item.bubuk,
+          },
+          {
+            content: item.batu_rusak,
+          },
+          {
+            content: item.susut,
+          },
+          {
+            content: item.design,
+          },
+        ];
+        tableRows.push(row);
+      });
+      const rowFoot = [
+        {
+          content: "Sub Total :",
+          styles: {
+            halign: "right",
+            fillColor: "#dddddd",
+          },
+          colSpan: 6,
+        },
+        {
+          content: jmlkirim,
+          styles: {
+            halign: "right",
+            fillColor: "#dddddd",
+          },
+        },
+        {
+          content: brtkirim.toFixed(3),
+          styles: {
+            halign: "right",
+            fillColor: "#dddddd",
+          },
+        },
+        {
+          content: jmlrusak,
+          styles: {
+            halign: "right",
+            fillColor: "#dddddd",
+          },
+        },
+        {
+          content: brtrusak.toFixed(3),
+          styles: {
+            halign: "right",
+            fillColor: "#dddddd",
+          },
+        },
+        {
+          content: bubuk.toFixed(3),
+          styles: {
+            halign: "right",
+            fillColor: "#dddddd",
+          },
+        },
+        {
+          content: baturusak.toFixed(3),
+          styles: {
+            halign: "right",
+            fillColor: "#dddddd",
+          },
+        },
+        {
+          content: susut.toFixed(3),
+          styles: {
+            halign: "right",
+            fillColor: "#dddddd",
+          },
+        },
+        {
+          content: "",
+          styles: {
+            halign: "right",
+            fillColor: "#dddddd",
+          },
+        },
+      ];
+      tableRows.push(rowFoot);
+    });
+
+    let jmlkirimAll = 0;
+    let brtkirimAll = 0;
+    let jmlrusakAll = 0;
+    let brtrusakAll = 0;
+    let susutAll = 0;
+    let bubukAll = 0;
+    let baturusakAll = 0;
+
+    data.forEach((element) => {
+      jmlkirimAll = jmlkirimAll + parseFloat(element.stock_out);
+      brtkirimAll = brtkirimAll + parseFloat(element.berat_out);
+      jmlrusakAll = jmlrusakAll + parseFloat(element.stock_rusak);
+      brtrusakAll = brtrusakAll + parseFloat(element.berat_rusak);
+      susutAll = susutAll + parseFloat(element.susut);
+      bubukAll = bubukAll + parseFloat(element.bubuk);
+      baturusakAll = baturusakAll + parseFloat(element.batu_rusak);
+    });
+
+    const footer = [
+      {
+        content: "Grand Total :",
+        colSpan: 6,
+      },
+      {
+        content: jmlkirimAll,
+      },
+      {
+        content: brtkirimAll.toFixed(3),
+      },
+      {
+        content: jmlrusakAll,
+      },
+      {
+        content: brtrusakAll.toFixed(3),
+      },
+      {
+        content: bubukAll.toFixed(3),
+      },
+      {
+        content: baturusakAll.toFixed(3),
+      },
+      {
+        content: susutAll.toFixed(3),
+      },
+    ];
+    tableRows.push(footer);
+  } else if (
+    data_head.divisi === "FR1" ||
+    data_head.divisi === "FR2" ||
+    data_head.divisi === "FR3"
+  ) {
+    tableColumn = [
+      [
+        {
+          content: `TANGGAL`,
+        },
+        {
+          content: `NO KIRIM`,
+        },
+        {
+          content: `NO JOB ORDER`,
+        },
+        {
+          content: `KODE BARANG`,
+        },
+        {
+          content: `NAMA BARANG`,
+        },
+        {
+          content: `JENIS BAHAN`,
+        },
+        {
+          content: `JML KIRIM`,
+        },
+        {
+          content: `BRT KIRIM`,
+        },
+        {
+          content: `JML RUSAK`,
+        },
+        {
+          content: `BRT RUSAK`,
+        },
+        {
+          content: `BERAT SPRU`,
+        },
+        {
+          content: `BUBUK`,
+        },
+        {
+          content: `BATU RUSAK`,
+        },
+        {
+          content: `SUSUT`,
+        },
+        {
+          content: `DESIGN`,
+        },
+      ],
+    ];
+
+    const groupBy = (array, key) => {
+      return array.reduce((result, currentValue) => {
+        (result[currentValue[key]] = result[currentValue[key]] || []).push(
+          currentValue
+        );
+        return result;
+      }, {});
+    };
+
+    const dataGroup = groupBy(data, "kode_jenis");
+    const dataGroupArr = Object.values(dataGroup);
+
+    dataGroupArr.forEach((element) => {
+      let jmlkirim = 0;
+      let brtkirim = 0;
+      let jmlrusak = 0;
+      let brtrusak = 0;
+      let brtspru = 0;
+      let susut = 0;
+      let bubuk = 0;
+      let baturusak = 0;
+
+      const rowKirim = [
+        {
+          content: "Kode Jenis : " + element[0].kode_jenis,
+          styles: {
+            halign: "left",
+            fillColor: "#bbbbbb",
+          },
+          colSpan: 6,
+        },
+        {
+          content: "",
+          styles: {
+            halign: "left",
+            fillColor: "#bbbbbb",
+          },
+          colSpan: 9,
+        },
+      ];
+      tableRows.push(rowKirim);
+      element.forEach((item) => {
+        jmlkirim = jmlkirim + parseFloat(item.stock_out);
+        brtkirim = brtkirim + parseFloat(item.berat_out);
+        jmlrusak = jmlrusak + parseFloat(item.stock_rusak);
+        brtrusak = brtrusak + parseFloat(item.berat_rusak);
+        brtspru = brtspru + parseFloat(item.berat_spru);
+        susut = susut + parseFloat(item.susut);
+        bubuk = bubuk + parseFloat(item.bubuk);
+        baturusak = baturusak + parseFloat(item.baturusak);
+
+        const row = [
+          {
+            content: item.tgl_kirim,
+            styles: {
+              halign: "center",
+            },
+          },
+          {
+            content: item.no_kirim,
+            styles: {
+              halign: "center",
+            },
+          },
+          {
+            content: item.no_job_order,
+            styles: {
+              halign: "center",
+            },
+          },
+          {
+            content: item.kode_barang,
+            styles: {
+              halign: "center",
+            },
+          },
+          {
+            content: item.nama_barang,
+            styles: {
+              halign: "center",
+            },
+          },
+          {
+            content: item.kode_jenis_bahan,
+            styles: {
+              halign: "center",
+            },
+          },
+          {
+            content: item.stock_out,
+          },
+          {
+            content: item.berat_out,
+          },
+          {
+            content: item.stock_rusak,
+          },
+          {
+            content: item.berat_rusak,
+          },
+          {
+            content: item.berat_spru,
+          },
+          {
+            content: item.bubuk,
+          },
+          {
+            content: item.batu_rusak,
+          },
+          {
+            content: item.susut,
+          },
+          {
+            content: item.design,
+          },
+        ];
+        tableRows.push(row);
+      });
+      const rowFoot = [
+        {
+          content: "Sub Total :",
+          styles: {
+            halign: "right",
+            fillColor: "#dddddd",
+          },
+          colSpan: 5,
+        },
+        {
+          content: jmlkirim,
+          styles: {
+            halign: "right",
+            fillColor: "#dddddd",
+          },
+        },
+        {
+          content: brtkirim.toFixed(3),
+          styles: {
+            halign: "right",
+            fillColor: "#dddddd",
+          },
+        },
+        {
+          content: jmlrusak,
+          styles: {
+            halign: "right",
+            fillColor: "#dddddd",
+          },
+        },
+        {
+          content: brtrusak.toFixed(3),
+          styles: {
+            halign: "right",
+            fillColor: "#dddddd",
+          },
+        },
+        {
+          content: brtspru.toFixed(3),
+          styles: {
+            halign: "right",
+            fillColor: "#dddddd",
+          },
+        },
+        {
+          content: bubuk.toFixed(3),
+          styles: {
+            halign: "right",
+            fillColor: "#dddddd",
+          },
+        },
+        {
+          content: baturusak.toFixed(3),
+          styles: {
+            halign: "right",
+            fillColor: "#dddddd",
+          },
+        },
+        {
+          content: susut.toFixed(3),
+          styles: {
+            halign: "right",
+            fillColor: "#dddddd",
+          },
+        },
+        {
+          content: "",
+          styles: {
+            halign: "right",
+            fillColor: "#dddddd",
+          },
+        },
+      ];
+      tableRows.push(rowFoot);
+    });
+
+    let jmlkirimAll = 0;
+    let brtkirimAll = 0;
+    let jmlrusakAll = 0;
+    let brtrusakAll = 0;
+    let brtspruAll = 0;
+    let susutAll = 0;
+    let bubukAll = 0;
+    let baturusakAll = 0;
+
+    data.forEach((element) => {
+      jmlkirimAll = jmlkirimAll + parseFloat(element.stock_out);
+      brtkirimAll = brtkirimAll + parseFloat(element.berat_out);
+      jmlrusakAll = jmlrusakAll + parseFloat(element.stock_rusak);
+      brtrusakAll = brtrusakAll + parseFloat(element.berat_rusak);
+      brtspruAll = brtspruAll + parseFloat(element.berat_spru);
+      susutAll = susutAll + parseFloat(element.susut);
+      bubukAll = bubukAll + parseFloat(element.bubuk);
+      baturusakAll = baturusakAll + parseFloat(element.baturusak);
+    });
+
+    const footer = [
+      {
+        content: "Grand Total :",
+        colSpan: 5,
+      },
+      {
+        content: jmlkirimAll,
+      },
+      {
+        content: brtkirimAll.toFixed(3),
+      },
+      {
+        content: jmlrusakAll,
+      },
+      {
+        content: brtrusakAll.toFixed(3),
+      },
+      {
+        content: brtspruAll.toFixed(3),
+      },
+      {
+        content: bubukAll.toFixed(3),
+      },
+      {
+        content: baturusakAll.toFixed(3),
+      },
+      {
+        content: susutAll.toFixed(3),
+      },
+    ];
+    tableRows.push(footer);
+  } else {
+    tableColumn = [
+      [
+        {
+          content: `TANGGAL`,
+        },
+        {
+          content: `NO KIRIM`,
+        },
+        {
+          content: `NO JOB ORDER`,
+        },
+        {
+          content: `KODE BARANG`,
+        },
+        {
+          content: `NAMA BARANG`,
+        },
+        {
+          content: `JENIS BAHAN`,
+        },
+        {
+          content: `JML KIRIM`,
+        },
+        {
+          content: `BRT KIRIM`,
+        },
+        {
+          content: `JML RUSAK`,
+        },
+        {
+          content: `BRT RUSAK`,
+        },
+        {
+          content: `SUSUT`,
+        },
+        {
+          content: `DESIGN`,
+        },
+      ],
+    ];
+
+    const groupBy = (array, key) => {
+      return array.reduce((result, currentValue) => {
+        (result[currentValue[key]] = result[currentValue[key]] || []).push(
+          currentValue
+        );
+        return result;
+      }, {});
+    };
+
+    const dataGroup = groupBy(data, "kode_jenis");
+    const dataGroupArr = Object.values(dataGroup);
+
+    dataGroupArr.forEach((element) => {
+      let jmlkirim = 0;
+      let brtkirim = 0;
+      let jmlrusak = 0;
+      let brtrusak = 0;
+      let susut = 0;
+
+      const rowKirim = [
+        {
+          content: "Kode Jenis : " + element[0].kode_jenis,
+          styles: {
+            halign: "left",
+            fillColor: "#bbbbbb",
+          },
+          colSpan: 6,
+        },
+        {
+          content: "",
+          styles: {
+            halign: "left",
+            fillColor: "#bbbbbb",
+          },
+          colSpan: 6,
+        },
+      ];
+      tableRows.push(rowKirim);
+      element.forEach((item) => {
+        jmlkirim = jmlkirim + parseFloat(item.stock_out);
+        brtkirim = brtkirim + parseFloat(item.berat_out);
+        jmlrusak = jmlrusak + parseFloat(item.stock_rusak);
+        brtrusak = brtrusak + parseFloat(item.berat_rusak);
+        susut = susut + parseFloat(item.susut);
+
+        const row = [
+          {
+            content: item.tgl_kirim,
+            styles: {
+              halign: "center",
+            },
+          },
+          {
+            content: item.no_kirim,
+            styles: {
+              halign: "center",
+            },
+          },
+          {
+            content: item.no_job_order,
+            styles: {
+              halign: "center",
+            },
+          },
+          {
+            content: item.kode_barang,
+            styles: {
+              halign: "center",
+            },
+          },
+          {
+            content: item.nama_barang,
+            styles: {
+              halign: "center",
+            },
+          },
+          {
+            content: item.kode_jenis_bahan,
+            styles: {
+              halign: "center",
+            },
+          },
+          {
+            content: item.stock_out,
+          },
+          {
+            content: item.berat_out,
+          },
+          {
+            content: item.stock_rusak,
+          },
+          {
+            content: item.berat_rusak,
+          },
+          {
+            content: item.susut,
+          },
+          {
+            content: item.design,
+          },
+        ];
+        tableRows.push(row);
+      });
+      const rowFoot = [
+        {
+          content: "Sub Total :",
+          styles: {
+            halign: "right",
+            fillColor: "#dddddd",
+          },
+          colSpan: 5,
+        },
+        {
+          content: jmlkirim,
+          styles: {
+            halign: "right",
+            fillColor: "#dddddd",
+          },
+        },
+        {
+          content: brtkirim.toFixed(3),
+          styles: {
+            halign: "right",
+            fillColor: "#dddddd",
+          },
+        },
+        {
+          content: jmlrusak,
+          styles: {
+            halign: "right",
+            fillColor: "#dddddd",
+          },
+        },
+        {
+          content: brtrusak.toFixed(3),
+          styles: {
+            halign: "right",
+            fillColor: "#dddddd",
+          },
+        },
+        {
+          content: susut.toFixed(3),
+          styles: {
+            halign: "right",
+            fillColor: "#dddddd",
+          },
+        },
+        {
+          content: "",
+          styles: {
+            halign: "right",
+            fillColor: "#dddddd",
+          },
+        },
+      ];
+      tableRows.push(rowFoot);
+    });
+
+    let jmlkirimAll = 0;
+    let brtkirimAll = 0;
+    let jmlrusakAll = 0;
+    let brtrusakAll = 0;
+    let susutAll = 0;
+
+    data.forEach((element) => {
+      jmlkirimAll = jmlkirimAll + parseFloat(element.stock_out);
+      brtkirimAll = brtkirimAll + parseFloat(element.berat_out);
+      jmlrusakAll = jmlrusakAll + parseFloat(element.stock_rusak);
+      brtrusakAll = brtrusakAll + parseFloat(element.berat_rusak);
+      susutAll = susutAll + parseFloat(element.susut);
+    });
+
+    const footer = [
+      {
+        content: "Grand Total :",
+        colSpan: 5,
+      },
+      {
+        content: jmlkirimAll,
+      },
+      {
+        content: brtkirimAll.toFixed(3),
+      },
+      {
+        content: jmlrusakAll,
+      },
+      {
+        content: brtrusakAll.toFixed(3),
+      },
+      {
+        content: susutAll.toFixed(3),
+      },
+    ];
+    tableRows.push(footer);
+  }
 
   const printed = [
     {
