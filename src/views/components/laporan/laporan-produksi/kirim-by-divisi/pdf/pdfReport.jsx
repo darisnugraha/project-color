@@ -149,7 +149,7 @@ const pdfReport = (data = "") => {
             halign: "right",
             fillColor: "#dddddd",
           },
-          colSpan: 5,
+          colSpan: 6,
         },
         {
           content: jmlkirim,
@@ -187,7 +187,7 @@ const pdfReport = (data = "") => {
     const footer = [
       {
         content: "Grand Total :",
-        colSpan: 5,
+        colSpan: 6,
       },
       {
         content: jmlkirimAll,
@@ -658,7 +658,7 @@ const pdfReport = (data = "") => {
             halign: "right",
             fillColor: "#dddddd",
           },
-          colSpan: 5,
+          colSpan: 6,
         },
         {
           content: jmlkirim,
@@ -750,7 +750,7 @@ const pdfReport = (data = "") => {
     const footer = [
       {
         content: "Grand Total :",
-        colSpan: 5,
+        colSpan: 6,
       },
       {
         content: jmlkirimAll,
@@ -930,7 +930,7 @@ const pdfReport = (data = "") => {
             halign: "right",
             fillColor: "#dddddd",
           },
-          colSpan: 5,
+          colSpan: 6,
         },
         {
           content: jmlkirim,
@@ -995,7 +995,7 @@ const pdfReport = (data = "") => {
     const footer = [
       {
         content: "Grand Total :",
-        colSpan: 5,
+        colSpan: 6,
       },
       {
         content: jmlkirimAll,
