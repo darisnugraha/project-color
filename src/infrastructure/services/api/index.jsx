@@ -20,6 +20,7 @@ import KirimByDivisi from "./kirimbydivisi";
 import KirimPolishing from "./kirimpolishing";
 import KodeJenis from "./kodejenis";
 import TerimaByDivisi from "./terimabydivisi";
+import MutasiSaldo from "./mutasisaldo";
 
 const api = {
   login,
@@ -44,6 +45,7 @@ const api = {
   KirimPolishing,
   KodeJenis,
   TerimaByDivisi,
+  MutasiSaldo,
 };
 
 export default api;

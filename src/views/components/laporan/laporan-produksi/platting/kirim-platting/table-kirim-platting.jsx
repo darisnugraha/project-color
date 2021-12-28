@@ -2,15 +2,15 @@ import React from "react";
 import { Table } from "antd";
 import "antd/dist/antd.css";
 import { useSelector } from "react-redux";
-import KirimPlatting from "../../../../../../application/selectors/kirimplatting";
+import KirimPlatting from "../../../../../../application/selectors/kirimbydivisi";
 
 const TabelLaporanKirimPlatting = () => {
-  const dataKirimPlatting = useSelector(KirimPlatting.getAllKirimPlatting);
+  const dataKirimPlatting = useSelector(KirimPlatting.getAllKirimByDivisi);
   const columns = [
     {
       title: "Tanggal",
-      dataIndex: "tanggal_kirim",
-      key: "tanggal_kirim",
+      dataIndex: "tgl_kirim",
+      key: "tgl_kirim",
       align: "center",
     },
     {

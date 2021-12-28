@@ -2,7 +2,8 @@ import { jsPDF } from "jspdf";
 import "jspdf-autotable";
 
 const pdfReport = (data = "") => {
-  let data_head = JSON.parse(localStorage.getItem("kirim_by_divisi_head")) || [];
+  let data_head =
+    JSON.parse(localStorage.getItem("kirim_by_divisi_head")) || [];
   let tgl_dari_string = data_head.tgl_dari;
   let tgl_sampai_string = data_head.tgl_sampai;
   const doc = new jsPDF("l", "mm", [297, 210]);
@@ -115,7 +116,7 @@ const pdfReport = (data = "") => {
 
       const row = [
         {
-          content: item.tanggal_kirim,
+          content: item.tgl_kirim,
           styles: {
             halign: "center",
           },

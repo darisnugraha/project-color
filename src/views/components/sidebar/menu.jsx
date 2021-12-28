@@ -95,6 +95,18 @@ const Menu = [
         path: "/laporan-produksi/terima-by-divisi",
         title: "Terima By Divisi",
       },
+      {
+        path: "/laporan-produksi/mutasi-saldo-by-divisi",
+        title: "Mutasi Saldo By Divisi",
+      },
+      {
+        path: "/laporan-produksi/mutasi-outstand-by-divisi",
+        title: "Mutasi Outstand By Divisi",
+      },
+      {
+        path: "/laporan-produksi/mutasi-history-by-divisi",
+        title: "Mutasi Histroy By Divisi",
+      },
     ],
   },
 ];

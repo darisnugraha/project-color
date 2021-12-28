@@ -21,6 +21,7 @@ import KirimPlatting from "../../views/pages/laporan-produksi/platting/kirim-pla
 import KirimByDivisi from "../../views/pages/laporan-produksi/kirim-by-divisi";
 import KirimPolishing from "../../views/pages/laporan-produksi/polishing/kirim-polishing";
 import TerimaByDivisi from "../../views/pages/laporan-produksi/terima-by-divisi";
+import MutasiSaldo from "../../views/pages/laporan-produksi/mutasi-saldo-by-divisi";
 
 const routes = [
   // {
@@ -124,6 +125,11 @@ const routes = [
     path: "/laporan-produksi/terima-by-divisi",
     title: "Laporan Terima By Divisi",
     component: () => <TerimaByDivisi />,
+  },
+  {
+    path: "/laporan-produksi/mutasi-saldo-by-divisi",
+    title: "Laporan Mutasi Saldo By Divisi",
+    component: () => <MutasiSaldo />,
   },
   {
     path: "/notfound",

@@ -23,6 +23,7 @@ import kirimbydivisi from "./kirimbydivisi";
 import kirimpolishing from "./kirimpolishing";
 import kodejenis from "./kodejenis";
 import terimabydivisi from "./terimabydivisi";
+import mutasisaldo from "./mutasisaldo";
 
 export default combineReducers({
   login,
@@ -48,5 +49,6 @@ export default combineReducers({
   kirimpolishing,
   kodejenis,
   terimabydivisi,
+  mutasisaldo,
   form: formReducer,
 });
