@@ -75,6 +75,9 @@ const pdfReport = (data = "") => {
         {
           content: `SUSUT`,
           rowSpan: 2,
+          styles: {
+            textColor: "#FF0000",
+          },
         },
         {
           content: `KETERANGAN`,
@@ -170,6 +173,9 @@ const pdfReport = (data = "") => {
         },
         {
           content: element.susut,
+          styles: {
+            textColor: "#FF0000",
+          },
         },
         {
           content: element.keterangan,
@@ -180,6 +186,119 @@ const pdfReport = (data = "") => {
       ];
       tableRows.push(row);
     });
+
+    const totalSaldo =
+      data.reduce((a, b) => a + parseFloat(b.berat_terima || 0), 0) -
+      (data.reduce((a, b) => a + parseFloat(b.berat_rusak || 0), 0) +
+        data.reduce((a, b) => a + parseFloat(b.spru || 0), 0) +
+        data.reduce((a, b) => a + parseFloat(b.bubuk || 0), 0) +
+        data.reduce((a, b) => a + parseFloat(b.berat_kirim || 0), 0) +
+        data.reduce((a, b) => a + parseFloat(b.sisa_kirim || 0), 0) +
+        data.reduce((a, b) => a + parseFloat(b.batu_rusak || 0), 0));
+
+    const footer = [
+      {
+        content: "Saldo : ",
+        styles: {
+          textColor: "#FF0000",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: totalSaldo.toFixed(3),
+        colSpan: 4,
+        styles: {
+          halign: "left",
+          textColor: "#FF0000",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: "Total : ",
+        styles: {
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data.reduce((a, b) => a + parseFloat(b.jumlah_terima), 0),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data
+          .reduce((a, b) => a + parseFloat(b.berat_terima), 0)
+          .toFixed(3),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data.reduce((a, b) => a + parseFloat(b.jumlah_rusak), 0),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data
+          .reduce((a, b) => a + parseFloat(b.berat_rusak), 0)
+          .toFixed(3),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data.reduce((a, b) => a + parseFloat(b.jumlah_kirim), 0),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data
+          .reduce((a, b) => a + parseFloat(b.berat_kirim), 0)
+          .toFixed(3),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data
+          .reduce((a, b) => a + parseFloat(b.sisa_kirim), 0)
+          .toFixed(3),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data.reduce((a, b) => a + parseFloat(b.spru), 0).toFixed(3),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data.reduce((a, b) => a + parseFloat(b.susut), 0).toFixed(3),
+        styles: {
+          halign: "right",
+          textColor: "#FF0000",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: "",
+        styles: {
+          fillColor: "#bbbbbb",
+        },
+      },
+    ];
+    tableRows.push(footer);
   } else if (data_head.divisi === "FILLING") {
     tableColumn = [
       [
@@ -230,6 +349,9 @@ const pdfReport = (data = "") => {
         {
           content: `SUSUT`,
           rowSpan: 2,
+          styles: {
+            textColor: "#FF0000",
+          },
         },
         {
           content: `KETERANGAN`,
@@ -337,6 +459,9 @@ const pdfReport = (data = "") => {
         },
         {
           content: element.susut,
+          styles: {
+            textColor: "#FF0000",
+          },
         },
         {
           content: element.keterangan,
@@ -347,6 +472,137 @@ const pdfReport = (data = "") => {
       ];
       tableRows.push(row);
     });
+
+    const totalSaldo =
+      data.reduce((a, b) => a + parseFloat(b.berat_terima || 0), 0) -
+      (data.reduce((a, b) => a + parseFloat(b.berat_rusak || 0), 0) +
+        data.reduce((a, b) => a + parseFloat(b.spru || 0), 0) +
+        data.reduce((a, b) => a + parseFloat(b.bubuk || 0), 0) +
+        data.reduce((a, b) => a + parseFloat(b.berat_kirim || 0), 0) +
+        data.reduce((a, b) => a + parseFloat(b.sisa_kirim || 0), 0) +
+        data.reduce((a, b) => a + parseFloat(b.batu_rusak || 0), 0));
+
+    const footer = [
+      {
+        content: "Saldo : ",
+        styles: {
+          textColor: "#FF0000",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: totalSaldo.toFixed(3),
+        colSpan: 4,
+        styles: {
+          halign: "left",
+          textColor: "#FF0000",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: "Total : ",
+        styles: {
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data.reduce((a, b) => a + parseFloat(b.jumlah_terima), 0),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data
+          .reduce((a, b) => a + parseFloat(b.berat_terima), 0)
+          .toFixed(3),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data.reduce((a, b) => a + parseFloat(b.jumlah_rusak), 0),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data
+          .reduce((a, b) => a + parseFloat(b.berat_rusak), 0)
+          .toFixed(3),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data
+          .reduce((a, b) => a + parseFloat(b.batu_rusak), 0)
+          .toFixed(3),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data
+          .reduce((a, b) => a + parseFloat(b.batu_sisa), 0)
+          .toFixed(3),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data.reduce((a, b) => a + parseFloat(b.jumlah_kirim), 0),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data
+          .reduce((a, b) => a + parseFloat(b.berat_kirim), 0)
+          .toFixed(3),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data
+          .reduce((a, b) => a + parseFloat(b.sisa_kirim), 0)
+          .toFixed(3),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data.reduce((a, b) => a + parseFloat(b.spru), 0).toFixed(3),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data.reduce((a, b) => a + parseFloat(b.susut), 0).toFixed(3),
+        styles: {
+          halign: "right",
+          textColor: "#FF0000",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: "",
+        styles: {
+          fillColor: "#bbbbbb",
+        },
+      },
+    ];
+    tableRows.push(footer);
   } else if (
     data_head.divisi === "FR EPOXY" ||
     data_head.divisi === "AMPLAS EPOXY" ||
@@ -401,6 +657,9 @@ const pdfReport = (data = "") => {
         {
           content: `SUSUT`,
           rowSpan: 2,
+          styles: {
+            textColor: "#FF0000",
+          },
         },
         {
           content: `KETERANGAN`,
@@ -499,6 +758,9 @@ const pdfReport = (data = "") => {
         },
         {
           content: element.susut,
+          styles: {
+            textColor: "#FF0000",
+          },
         },
         {
           content: element.keterangan,
@@ -509,6 +771,126 @@ const pdfReport = (data = "") => {
       ];
       tableRows.push(row);
     });
+
+    const totalSaldo =
+      data.reduce((a, b) => a + parseFloat(b.berat_terima || 0), 0) -
+      (data.reduce((a, b) => a + parseFloat(b.berat_rusak || 0), 0) +
+        data.reduce((a, b) => a + parseFloat(b.spru || 0), 0) +
+        data.reduce((a, b) => a + parseFloat(b.bubuk || 0), 0) +
+        data.reduce((a, b) => a + parseFloat(b.berat_kirim || 0), 0) +
+        data.reduce((a, b) => a + parseFloat(b.sisa_kirim || 0), 0) +
+        data.reduce((a, b) => a + parseFloat(b.batu_rusak || 0), 0));
+
+    const footer = [
+      {
+        content: "Saldo : ",
+        styles: {
+          textColor: "#FF0000",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: totalSaldo.toFixed(3),
+        colSpan: 4,
+        styles: {
+          halign: "left",
+          textColor: "#FF0000",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: "Total : ",
+        styles: {
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data.reduce((a, b) => a + parseFloat(b.jumlah_terima), 0),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data
+          .reduce((a, b) => a + parseFloat(b.berat_terima), 0)
+          .toFixed(3),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data.reduce((a, b) => a + parseFloat(b.jumlah_rusak), 0),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data
+          .reduce((a, b) => a + parseFloat(b.berat_rusak), 0)
+          .toFixed(3),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data.reduce((a, b) => a + parseFloat(b.jumlah_kirim), 0),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data
+          .reduce((a, b) => a + parseFloat(b.berat_kirim), 0)
+          .toFixed(3),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data
+          .reduce((a, b) => a + parseFloat(b.sisa_kirim), 0)
+          .toFixed(3),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data.reduce((a, b) => a + parseFloat(b.spru), 0).toFixed(3),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data.reduce((a, b) => a + parseFloat(b.bubuk), 0).toFixed(3),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data.reduce((a, b) => a + parseFloat(b.susut), 0).toFixed(3),
+        styles: {
+          halign: "right",
+          textColor: "#FF0000",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: "",
+        styles: {
+          fillColor: "#bbbbbb",
+        },
+      },
+    ];
+    tableRows.push(footer);
   } else if (
     data_head.divisi === "FR1" ||
     data_head.divisi === "FR2" ||
@@ -566,6 +948,9 @@ const pdfReport = (data = "") => {
         {
           content: `SUSUT`,
           rowSpan: 2,
+          styles: {
+            textColor: "#FF0000",
+          },
         },
         {
           content: `KETERANGAN`,
@@ -670,6 +1055,9 @@ const pdfReport = (data = "") => {
         },
         {
           content: element.susut,
+          styles: {
+            textColor: "#FF0000",
+          },
         },
         {
           content: element.keterangan,
@@ -680,6 +1068,135 @@ const pdfReport = (data = "") => {
       ];
       tableRows.push(row);
     });
+
+    const totalSaldo =
+      data.reduce((a, b) => a + parseFloat(b.berat_terima || 0), 0) -
+      (data.reduce((a, b) => a + parseFloat(b.berat_rusak || 0), 0) +
+        data.reduce((a, b) => a + parseFloat(b.spru || 0), 0) +
+        data.reduce((a, b) => a + parseFloat(b.bubuk || 0), 0) +
+        data.reduce((a, b) => a + parseFloat(b.berat_kirim || 0), 0) +
+        data.reduce((a, b) => a + parseFloat(b.sisa_kirim || 0), 0) +
+        data.reduce((a, b) => a + parseFloat(b.batu_rusak || 0), 0));
+
+    const footer = [
+      {
+        content: "Saldo : ",
+        styles: {
+          textColor: "#FF0000",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: totalSaldo.toFixed(3),
+        colSpan: 4,
+        styles: {
+          halign: "left",
+          textColor: "#FF0000",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: "Total : ",
+        styles: {
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data.reduce((a, b) => a + parseFloat(b.jumlah_terima), 0),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data
+          .reduce((a, b) => a + parseFloat(b.berat_terima), 0)
+          .toFixed(3),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data.reduce((a, b) => a + parseFloat(b.jumlah_rusak), 0),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data
+          .reduce((a, b) => a + parseFloat(b.berat_rusak), 0)
+          .toFixed(3),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data.reduce((a, b) => a + parseFloat(b.jumlah_kirim), 0),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data
+          .reduce((a, b) => a + parseFloat(b.berat_kirim), 0)
+          .toFixed(3),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data
+          .reduce((a, b) => a + parseFloat(b.sisa_kirim), 0)
+          .toFixed(3),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data
+          .reduce((a, b) => a + parseFloat(b.batu_rusak), 0)
+          .toFixed(3),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data.reduce((a, b) => a + parseFloat(b.spru), 0).toFixed(3),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data.reduce((a, b) => a + parseFloat(b.bubuk), 0).toFixed(3),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data.reduce((a, b) => a + parseFloat(b.susut), 0).toFixed(3),
+        styles: {
+          halign: "right",
+          textColor: "#FF0000",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: "",
+        styles: {
+          fillColor: "#bbbbbb",
+        },
+      },
+    ];
+    tableRows.push(footer);
   } else if (data_head.divisi === "POLISHING") {
     tableColumn = [
       [
@@ -722,6 +1239,9 @@ const pdfReport = (data = "") => {
         {
           content: `SUSUT`,
           rowSpan: 2,
+          styles: {
+            textColor: "#FF0000",
+          },
         },
         {
           content: `KETERANGAN`,
@@ -814,6 +1334,9 @@ const pdfReport = (data = "") => {
         },
         {
           content: element.susut,
+          styles: {
+            textColor: "#FF0000",
+          },
         },
         {
           content: element.keterangan,
@@ -824,6 +1347,112 @@ const pdfReport = (data = "") => {
       ];
       tableRows.push(row);
     });
+
+    const totalSaldo =
+      data.reduce((a, b) => a + parseFloat(b.berat_terima || 0), 0) -
+      (data.reduce((a, b) => a + parseFloat(b.berat_rusak || 0), 0) +
+        data.reduce((a, b) => a + parseFloat(b.spru || 0), 0) +
+        data.reduce((a, b) => a + parseFloat(b.bubuk || 0), 0) +
+        data.reduce((a, b) => a + parseFloat(b.berat_kirim || 0), 0) +
+        data.reduce((a, b) => a + parseFloat(b.sisa_kirim || 0), 0) +
+        data.reduce((a, b) => a + parseFloat(b.batu_rusak || 0), 0));
+
+    const footer = [
+      {
+        content: "Saldo : ",
+        styles: {
+          textColor: "#FF0000",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: totalSaldo.toFixed(3),
+        colSpan: 4,
+        styles: {
+          halign: "left",
+          textColor: "#FF0000",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: "Total : ",
+        styles: {
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data.reduce((a, b) => a + parseFloat(b.jumlah_terima), 0),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data
+          .reduce((a, b) => a + parseFloat(b.berat_terima), 0)
+          .toFixed(3),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data.reduce((a, b) => a + parseFloat(b.jumlah_rusak), 0),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data
+          .reduce((a, b) => a + parseFloat(b.berat_rusak), 0)
+          .toFixed(3),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data.reduce((a, b) => a + parseFloat(b.jumlah_kirim), 0),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data
+          .reduce((a, b) => a + parseFloat(b.berat_kirim), 0)
+          .toFixed(3),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data
+          .reduce((a, b) => a + parseFloat(b.sisa_kirim), 0)
+          .toFixed(3),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data.reduce((a, b) => a + parseFloat(b.susut), 0).toFixed(3),
+        styles: {
+          halign: "right",
+          textColor: "#FF0000",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: "",
+        styles: {
+          fillColor: "#bbbbbb",
+        },
+      },
+    ];
+    tableRows.push(footer);
   } else if (data_head.divisi === "SAMPLE") {
     tableColumn = [
       [
@@ -939,6 +1568,79 @@ const pdfReport = (data = "") => {
       ];
       tableRows.push(row);
     });
+
+    const totalSaldo =
+      data.reduce((a, b) => a + parseFloat(b.berat_terima || 0), 0) -
+      (data.reduce((a, b) => a + parseFloat(b.berat_rusak || 0), 0) +
+        data.reduce((a, b) => a + parseFloat(b.spru || 0), 0) +
+        data.reduce((a, b) => a + parseFloat(b.bubuk || 0), 0) +
+        data.reduce((a, b) => a + parseFloat(b.berat_kirim || 0), 0) +
+        data.reduce((a, b) => a + parseFloat(b.sisa_kirim || 0), 0) +
+        data.reduce((a, b) => a + parseFloat(b.batu_rusak || 0), 0));
+
+    const footer = [
+      {
+        content: "Saldo : ",
+        styles: {
+          textColor: "#FF0000",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: totalSaldo.toFixed(3),
+        colSpan: 4,
+        styles: {
+          halign: "left",
+          textColor: "#FF0000",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: "Total : ",
+        styles: {
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data.reduce((a, b) => a + parseFloat(b.jumlah_terima), 0),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data
+          .reduce((a, b) => a + parseFloat(b.berat_terima), 0)
+          .toFixed(3),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data.reduce((a, b) => a + parseFloat(b.jumlah_kirim), 0),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data
+          .reduce((a, b) => a + parseFloat(b.berat_kirim), 0)
+          .toFixed(3),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: "",
+        styles: {
+          fillColor: "#bbbbbb",
+        },
+      },
+    ];
+    tableRows.push(footer);
   } else {
     tableColumn = [
       [
@@ -993,6 +1695,9 @@ const pdfReport = (data = "") => {
         {
           content: `SUSUT`,
           rowSpan: 2,
+          styles: {
+            textColor: "#FF0000",
+          },
         },
         {
           content: `KETERANGAN`,
@@ -1103,6 +1808,9 @@ const pdfReport = (data = "") => {
         },
         {
           content: element.susut,
+          styles: {
+            textColor: "#FF0000",
+          },
         },
         {
           content: element.keterangan,
@@ -1113,10 +1821,145 @@ const pdfReport = (data = "") => {
       ];
       tableRows.push(row);
     });
-  }
 
-  const footer = [];
-  tableRows.push(footer);
+    const totalSaldo =
+      data.reduce((a, b) => a + parseFloat(b.berat_terima || 0), 0) -
+      (data.reduce((a, b) => a + parseFloat(b.berat_rusak || 0), 0) +
+        data.reduce((a, b) => a + parseFloat(b.spru || 0), 0) +
+        data.reduce((a, b) => a + parseFloat(b.bubuk || 0), 0) +
+        data.reduce((a, b) => a + parseFloat(b.berat_kirim || 0), 0) +
+        data.reduce((a, b) => a + parseFloat(b.sisa_kirim || 0), 0) +
+        data.reduce((a, b) => a + parseFloat(b.batu_rusak || 0), 0));
+
+    const footer = [
+      {
+        content: "Saldo : ",
+        styles: {
+          textColor: "#FF0000",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: totalSaldo.toFixed(3),
+        colSpan: 4,
+        styles: {
+          halign: "left",
+          textColor: "#FF0000",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: "Total : ",
+        styles: {
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data.reduce((a, b) => a + parseFloat(b.jumlah_terima), 0),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data
+          .reduce((a, b) => a + parseFloat(b.berat_terima), 0)
+          .toFixed(3),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data.reduce((a, b) => a + parseFloat(b.jumlah_rusak), 0),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data
+          .reduce((a, b) => a + parseFloat(b.berat_rusak), 0)
+          .toFixed(3),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data
+          .reduce((a, b) => a + parseFloat(b.batu_rusak), 0)
+          .toFixed(3),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data
+          .reduce((a, b) => a + parseFloat(b.batu_sisa), 0)
+          .toFixed(3),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data.reduce((a, b) => a + parseFloat(b.jumlah_kirim), 0),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data
+          .reduce((a, b) => a + parseFloat(b.berat_kirim), 0)
+          .toFixed(3),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data
+          .reduce((a, b) => a + parseFloat(b.sisa_kirim), 0)
+          .toFixed(3),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data.reduce((a, b) => a + parseFloat(b.spru), 0).toFixed(3),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data.reduce((a, b) => a + parseFloat(b.bubuk), 0).toFixed(3),
+        styles: {
+          halign: "right",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: data.reduce((a, b) => a + parseFloat(b.susut), 0).toFixed(3),
+        styles: {
+          halign: "right",
+          textColor: "#FF0000",
+          fillColor: "#bbbbbb",
+        },
+      },
+      {
+        content: "",
+        styles: {
+          fillColor: "#bbbbbb",
+        },
+      },
+    ];
+    tableRows.push(footer);
+  }
 
   const printed = [
     {

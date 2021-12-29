@@ -17,6 +17,30 @@ class ExcelReport extends Component {
     });
   }
   render() {
+    const totalSaldo =
+      this.props.dataExel.reduce(
+        (a, b) => a + parseFloat(b.berat_terima || 0),
+        0
+      ) -
+      (this.props.dataExel.reduce(
+        (a, b) => a + parseFloat(b.berat_rusak || 0),
+        0
+      ) +
+        this.props.dataExel.reduce((a, b) => a + parseFloat(b.spru || 0), 0) +
+        this.props.dataExel.reduce((a, b) => a + parseFloat(b.bubuk || 0), 0) +
+        this.props.dataExel.reduce(
+          (a, b) => a + parseFloat(b.berat_kirim || 0),
+          0
+        ) +
+        this.props.dataExel.reduce(
+          (a, b) => a + parseFloat(b.sisa_kirim || 0),
+          0
+        ) +
+        this.props.dataExel.reduce(
+          (a, b) => a + parseFloat(b.batu_rusak || 0),
+          0
+        ));
+
     if (
       this.props.dataHead?.divisi === "TUMBLING" ||
       this.props.dataHead?.divisi === "BOOM" ||
@@ -157,7 +181,7 @@ class ExcelReport extends Component {
                 <td
                   style={{
                     backgroundColor: "#99CCFF",
-                    color: "#000",
+                    color: "red",
                     textAlign: "center",
                   }}
                   rowSpan="2"
@@ -259,13 +283,70 @@ class ExcelReport extends Component {
                     <td>{item.berat_kirim}</td>
                     <td>{item.sisa_kirim}</td>
                     <td>{item.spru}</td>
-                    <td>{item.susut}</td>
+                    <td style={{ color: "red" }}>{item.susut}</td>
                     <td>{item.keterangan}</td>
                   </tr>
                 );
               })}
             </tbody>
-            <tfoot></tfoot>
+            <tfoot>
+              <tr>
+                <td style={{ color: "red" }}>Saldo : </td>
+                <td colSpan="4" style={{ textAlign: "left" }}>
+                  {totalSaldo}
+                </td>
+                <td>Total : </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel.reduce(
+                    (a, b) => a + parseFloat(b.jumlah_terima),
+                    0
+                  )}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel
+                    .reduce((a, b) => a + parseFloat(b.berat_terima), 0)
+                    .toFixed(3)}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel.reduce(
+                    (a, b) => a + parseFloat(b.jumlah_rusak),
+                    0
+                  )}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel
+                    .reduce((a, b) => a + parseFloat(b.berat_rusak), 0)
+                    .toFixed(3)}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel.reduce(
+                    (a, b) => a + parseFloat(b.jumlah_kirim),
+                    0
+                  )}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel.reduce(
+                    (a, b) => a + parseFloat(b.berat_kirim),
+                    0
+                  )}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel
+                    .reduce((a, b) => a + parseFloat(b.sisa_kirim), 0)
+                    .toFixed(3)}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel
+                    .reduce((a, b) => a + parseFloat(b.spru), 0)
+                    .toFixed(3)}
+                </td>
+                <td style={{ color: "red", textAlign: "right" }}>
+                  {this.props.dataExel
+                    .reduce((a, b) => a + parseFloat(b.susut), 0)
+                    .toFixed(3)}
+                </td>
+              </tr>
+            </tfoot>
           </table>
         </>
       );
@@ -411,7 +492,7 @@ class ExcelReport extends Component {
                 <td
                   style={{
                     backgroundColor: "#99CCFF",
-                    color: "#000",
+                    color: "red",
                     textAlign: "center",
                   }}
                   rowSpan="2"
@@ -533,13 +614,80 @@ class ExcelReport extends Component {
                     <td>{item.berat_kirim}</td>
                     <td>{item.sisa_kirim}</td>
                     <td>{item.spru}</td>
-                    <td>{item.susut}</td>
+                    <td style={{ color: "red" }}>{item.susut}</td>
                     <td>{item.keterangan}</td>
                   </tr>
                 );
               })}
             </tbody>
-            <tfoot></tfoot>
+            <tfoot>
+              <tr>
+                <td style={{ color: "red" }}>Saldo : </td>
+                <td colSpan="4" style={{ textAlign: "left" }}>
+                  {totalSaldo}
+                </td>
+                <td>Total : </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel.reduce(
+                    (a, b) => a + parseFloat(b.jumlah_terima),
+                    0
+                  )}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel
+                    .reduce((a, b) => a + parseFloat(b.berat_terima), 0)
+                    .toFixed(3)}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel.reduce(
+                    (a, b) => a + parseFloat(b.jumlah_rusak),
+                    0
+                  )}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel
+                    .reduce((a, b) => a + parseFloat(b.berat_rusak), 0)
+                    .toFixed(3)}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel
+                    .reduce((a, b) => a + parseFloat(b.batu_rusak), 0)
+                    .toFixed(3)}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel
+                    .reduce((a, b) => a + parseFloat(b.batu_sisa), 0)
+                    .toFixed(3)}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel.reduce(
+                    (a, b) => a + parseFloat(b.jumlah_kirim),
+                    0
+                  )}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel.reduce(
+                    (a, b) => a + parseFloat(b.berat_kirim),
+                    0
+                  )}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel
+                    .reduce((a, b) => a + parseFloat(b.sisa_kirim), 0)
+                    .toFixed(3)}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel
+                    .reduce((a, b) => a + parseFloat(b.spru), 0)
+                    .toFixed(3)}
+                </td>
+                <td style={{ color: "red", textAlign: "right" }}>
+                  {this.props.dataExel
+                    .reduce((a, b) => a + parseFloat(b.susut), 0)
+                    .toFixed(3)}
+                </td>
+              </tr>
+            </tfoot>
           </table>
         </>
       );
@@ -698,7 +846,7 @@ class ExcelReport extends Component {
                 <td
                   style={{
                     backgroundColor: "#99CCFF",
-                    color: "#000",
+                    color: "red",
                     textAlign: "center",
                   }}
                   rowSpan="2"
@@ -811,13 +959,80 @@ class ExcelReport extends Component {
                     <td>{item.batu_rusak}</td>
                     <td>{item.spru}</td>
                     <td>{item.bubuk}</td>
-                    <td>{item.susut}</td>
+                    <td style={{ color: "red" }}>{item.susut}</td>
                     <td>{item.keterangan}</td>
                   </tr>
                 );
               })}
             </tbody>
-            <tfoot></tfoot>
+            <tfoot>
+              <tr>
+                <td style={{ color: "red" }}>Saldo : </td>
+                <td colSpan="4" style={{ textAlign: "left" }}>
+                  {totalSaldo}
+                </td>
+                <td>Total : </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel.reduce(
+                    (a, b) => a + parseFloat(b.jumlah_terima),
+                    0
+                  )}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel
+                    .reduce((a, b) => a + parseFloat(b.berat_terima), 0)
+                    .toFixed(3)}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel.reduce(
+                    (a, b) => a + parseFloat(b.jumlah_rusak),
+                    0
+                  )}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel
+                    .reduce((a, b) => a + parseFloat(b.berat_rusak), 0)
+                    .toFixed(3)}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel.reduce(
+                    (a, b) => a + parseFloat(b.jumlah_kirim),
+                    0
+                  )}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel.reduce(
+                    (a, b) => a + parseFloat(b.berat_kirim),
+                    0
+                  )}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel
+                    .reduce((a, b) => a + parseFloat(b.sisa_kirim), 0)
+                    .toFixed(3)}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel
+                    .reduce((a, b) => a + parseFloat(b.batu_rusak), 0)
+                    .toFixed(3)}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel
+                    .reduce((a, b) => a + parseFloat(b.spru), 0)
+                    .toFixed(3)}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel
+                    .reduce((a, b) => a + parseFloat(b.bubuk), 0)
+                    .toFixed(3)}
+                </td>
+                <td style={{ color: "red", textAlign: "right" }}>
+                  {this.props.dataExel
+                    .reduce((a, b) => a + parseFloat(b.susut), 0)
+                    .toFixed(3)}
+                </td>
+              </tr>
+            </tfoot>
           </table>
         </>
       );
@@ -967,7 +1182,7 @@ class ExcelReport extends Component {
                 <td
                   style={{
                     backgroundColor: "#99CCFF",
-                    color: "#000",
+                    color: "red",
                     textAlign: "center",
                   }}
                   rowSpan="2"
@@ -1070,13 +1285,75 @@ class ExcelReport extends Component {
                     <td>{item.sisa_kirim}</td>
                     <td>{item.spru}</td>
                     <td>{item.bubuk}</td>
-                    <td>{item.susut}</td>
+                    <td style={{ color: "red" }}>{item.susut}</td>
                     <td>{item.keterangan}</td>
                   </tr>
                 );
               })}
             </tbody>
-            <tfoot></tfoot>
+            <tfoot>
+              <tr>
+                <td style={{ color: "red" }}>Saldo : </td>
+                <td colSpan="4" style={{ textAlign: "left" }}>
+                  {totalSaldo}
+                </td>
+                <td>Total : </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel.reduce(
+                    (a, b) => a + parseFloat(b.jumlah_terima),
+                    0
+                  )}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel
+                    .reduce((a, b) => a + parseFloat(b.berat_terima), 0)
+                    .toFixed(3)}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel.reduce(
+                    (a, b) => a + parseFloat(b.jumlah_rusak),
+                    0
+                  )}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel
+                    .reduce((a, b) => a + parseFloat(b.berat_rusak), 0)
+                    .toFixed(3)}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel.reduce(
+                    (a, b) => a + parseFloat(b.jumlah_kirim),
+                    0
+                  )}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel.reduce(
+                    (a, b) => a + parseFloat(b.berat_kirim),
+                    0
+                  )}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel
+                    .reduce((a, b) => a + parseFloat(b.sisa_kirim), 0)
+                    .toFixed(3)}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel
+                    .reduce((a, b) => a + parseFloat(b.spru), 0)
+                    .toFixed(3)}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel
+                    .reduce((a, b) => a + parseFloat(b.bubuk), 0)
+                    .toFixed(3)}
+                </td>
+                <td style={{ color: "red", textAlign: "right" }}>
+                  {this.props.dataExel
+                    .reduce((a, b) => a + parseFloat(b.susut), 0)
+                    .toFixed(3)}
+                </td>
+              </tr>
+            </tfoot>
           </table>
         </>
       );
@@ -1202,7 +1479,7 @@ class ExcelReport extends Component {
                 <td
                   style={{
                     backgroundColor: "#99CCFF",
-                    color: "#000",
+                    color: "red",
                     textAlign: "center",
                   }}
                   rowSpan="2"
@@ -1303,13 +1580,65 @@ class ExcelReport extends Component {
                     <td>{item.jumlah_kirim}</td>
                     <td>{item.berat_kirim}</td>
                     <td>{item.sisa_kirim}</td>
-                    <td>{item.susut}</td>
+                    <td style={{ color: "red" }}>{item.susut}</td>
                     <td>{item.keterangan}</td>
                   </tr>
                 );
               })}
             </tbody>
-            <tfoot></tfoot>
+            <tfoot>
+              <tr>
+                <td style={{ color: "red" }}>Saldo : </td>
+                <td colSpan="4" style={{ textAlign: "left" }}>
+                  {totalSaldo}
+                </td>
+                <td>Total : </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel.reduce(
+                    (a, b) => a + parseFloat(b.jumlah_terima),
+                    0
+                  )}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel
+                    .reduce((a, b) => a + parseFloat(b.berat_terima), 0)
+                    .toFixed(3)}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel.reduce(
+                    (a, b) => a + parseFloat(b.jumlah_rusak),
+                    0
+                  )}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel
+                    .reduce((a, b) => a + parseFloat(b.berat_rusak), 0)
+                    .toFixed(3)}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel.reduce(
+                    (a, b) => a + parseFloat(b.jumlah_kirim),
+                    0
+                  )}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel.reduce(
+                    (a, b) => a + parseFloat(b.berat_kirim),
+                    0
+                  )}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel
+                    .reduce((a, b) => a + parseFloat(b.sisa_kirim), 0)
+                    .toFixed(3)}
+                </td>
+                <td style={{ color: "red", textAlign: "right" }}>
+                  {this.props.dataExel
+                    .reduce((a, b) => a + parseFloat(b.susut), 0)
+                    .toFixed(3)}
+                </td>
+              </tr>
+            </tfoot>
           </table>
         </>
       );
@@ -1521,7 +1850,38 @@ class ExcelReport extends Component {
                 );
               })}
             </tbody>
-            <tfoot></tfoot>
+            <tfoot>
+              <tr>
+                <td style={{ color: "red" }}>Saldo : </td>
+                <td colSpan="4" style={{ textAlign: "left" }}>
+                  {totalSaldo}
+                </td>
+                <td>Total : </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel.reduce(
+                    (a, b) => a + parseFloat(b.jumlah_terima),
+                    0
+                  )}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel
+                    .reduce((a, b) => a + parseFloat(b.berat_terima), 0)
+                    .toFixed(3)}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel.reduce(
+                    (a, b) => a + parseFloat(b.jumlah_kirim),
+                    0
+                  )}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel.reduce(
+                    (a, b) => a + parseFloat(b.berat_kirim),
+                    0
+                  )}
+                </td>
+              </tr>
+            </tfoot>
           </table>
         </>
       );
@@ -1677,7 +2037,7 @@ class ExcelReport extends Component {
                 <td
                   style={{
                     backgroundColor: "#99CCFF",
-                    color: "#000",
+                    color: "red",
                     textAlign: "center",
                   }}
                   rowSpan="2"
@@ -1800,13 +2160,85 @@ class ExcelReport extends Component {
                     <td>{item.sisa_kirim}</td>
                     <td>{item.spru}</td>
                     <td>{item.bubuk}</td>
-                    <td>{item.susut}</td>
+                    <td style={{ color: "red" }}>{item.susut}</td>
                     <td>{item.keterangan}</td>
                   </tr>
                 );
               })}
             </tbody>
-            <tfoot></tfoot>
+            <tfoot>
+              <tr>
+                <td style={{ color: "red" }}>Saldo : </td>
+                <td colSpan="4" style={{ textAlign: "left" }}>
+                  {totalSaldo}
+                </td>
+                <td>Total : </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel.reduce(
+                    (a, b) => a + parseFloat(b.jumlah_terima),
+                    0
+                  )}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel
+                    .reduce((a, b) => a + parseFloat(b.berat_terima), 0)
+                    .toFixed(3)}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel.reduce(
+                    (a, b) => a + parseFloat(b.jumlah_rusak),
+                    0
+                  )}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel
+                    .reduce((a, b) => a + parseFloat(b.berat_rusak), 0)
+                    .toFixed(3)}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel
+                    .reduce((a, b) => a + parseFloat(b.batu_rusak), 0)
+                    .toFixed(3)}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel
+                    .reduce((a, b) => a + parseFloat(b.batu_sisa), 0)
+                    .toFixed(3)}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel.reduce(
+                    (a, b) => a + parseFloat(b.jumlah_kirim),
+                    0
+                  )}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel.reduce(
+                    (a, b) => a + parseFloat(b.berat_kirim),
+                    0
+                  )}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel
+                    .reduce((a, b) => a + parseFloat(b.sisa_kirim), 0)
+                    .toFixed(3)}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel
+                    .reduce((a, b) => a + parseFloat(b.spru), 0)
+                    .toFixed(3)}
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  {this.props.dataExel
+                    .reduce((a, b) => a + parseFloat(b.bubuk), 0)
+                    .toFixed(3)}
+                </td>
+                <td style={{ color: "red", textAlign: "right" }}>
+                  {this.props.dataExel
+                    .reduce((a, b) => a + parseFloat(b.susut), 0)
+                    .toFixed(3)}
+                </td>
+              </tr>
+            </tfoot>
           </table>
         </>
       );
