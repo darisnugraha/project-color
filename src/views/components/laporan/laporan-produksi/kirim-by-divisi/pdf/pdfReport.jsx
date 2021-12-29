@@ -582,7 +582,7 @@ const pdfReport = (data = "") => {
         brtspru = brtspru + parseFloat(item.berat_spru);
         susut = susut + parseFloat(item.susut);
         bubuk = bubuk + parseFloat(item.bubuk);
-        baturusak = baturusak + parseFloat(item.baturusak);
+        baturusak = baturusak + parseFloat(item.batu_rusak);
 
         const row = [
           {
@@ -744,7 +744,7 @@ const pdfReport = (data = "") => {
       brtspruAll = brtspruAll + parseFloat(element.berat_spru);
       susutAll = susutAll + parseFloat(element.susut);
       bubukAll = bubukAll + parseFloat(element.bubuk);
-      baturusakAll = baturusakAll + parseFloat(element.baturusak);
+      baturusakAll = baturusakAll + parseFloat(element.batu_rusak);
     });
 
     const footer = [
