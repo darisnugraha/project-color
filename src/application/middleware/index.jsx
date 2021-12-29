@@ -22,6 +22,7 @@ import kirimpolishing from "./kirimpolishing";
 import kodejenis from "./kodejenis";
 import terimabydivisi from "./terimabydivisi";
 import mutasisaldo from "./mutasisaldo";
+import mutasioutstand from "./mutasioutstand";
 
 const midd = [
   ...ui,
@@ -48,6 +49,7 @@ const midd = [
   ...kodejenis,
   ...terimabydivisi,
   ...mutasisaldo,
+  ...mutasioutstand,
 ];
 
 export default midd;

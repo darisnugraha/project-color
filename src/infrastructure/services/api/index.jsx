@@ -21,6 +21,7 @@ import KirimPolishing from "./kirimpolishing";
 import KodeJenis from "./kodejenis";
 import TerimaByDivisi from "./terimabydivisi";
 import MutasiSaldo from "./mutasisaldo";
+import MutasiOutstand from "./mutasioutstand";
 
 const api = {
   login,
@@ -46,6 +47,7 @@ const api = {
   KodeJenis,
   TerimaByDivisi,
   MutasiSaldo,
+  MutasiOutstand,
 };
 
 export default api;
