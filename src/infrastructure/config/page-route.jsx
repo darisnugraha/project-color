@@ -23,6 +23,7 @@ import KirimPolishing from "../../views/pages/laporan-produksi/polishing/kirim-p
 import TerimaByDivisi from "../../views/pages/laporan-produksi/terima-by-divisi";
 import MutasiSaldo from "../../views/pages/laporan-produksi/mutasi-saldo-by-divisi";
 import MutasiOutstand from "../../views/pages/laporan-produksi/mutasi-outstand-by-divisi";
+import MutasiHistory from "../../views/pages/laporan-produksi/mutasi-history-by-divisi";
 
 const routes = [
   // {
@@ -136,6 +137,11 @@ const routes = [
     path: "/laporan-produksi/mutasi-outstand-by-divisi",
     title: "Laporan Mutasi Outstand By Divisi",
     component: () => <MutasiOutstand />,
+  },
+  {
+    path: "/laporan-produksi/mutasi-history-by-divisi",
+    title: "Laporan Mutasi History By Divisi",
+    component: () => <MutasiHistory />,
   },
   {
     path: "/notfound",

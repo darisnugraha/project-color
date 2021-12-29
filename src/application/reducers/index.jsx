@@ -25,6 +25,7 @@ import kodejenis from "./kodejenis";
 import terimabydivisi from "./terimabydivisi";
 import mutasisaldo from "./mutasisaldo";
 import mutasioutstand from "./mutasioutstand";
+import mutasihistory from "./mutasihistory";
 
 export default combineReducers({
   login,
@@ -52,5 +53,6 @@ export default combineReducers({
   terimabydivisi,
   mutasisaldo,
   mutasioutstand,
+  mutasihistory,
   form: formReducer,
 });

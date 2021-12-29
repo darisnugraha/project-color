@@ -11,6 +11,7 @@ import {
   GET_ALL_MUTASI_SALDO_BY_DIVISI,
   setDataMutasiSaldoByDivisiSuccess,
   setDataMutasiSaldoByDivisiFailed,
+  getDivisi,
 } from "../actions/mutasisaldo";
 import { setLoadingButton } from "../actions/ui";
 import Moment from "moment";
@@ -26,6 +27,7 @@ const mutasisaldo =
       dispatch(setLoadingButton(true));
       dispatch(setDataMutasiSaldoByDivisiSuccess({ feedback: [] }));
       const data = getState().form.FormLaporanMutasiSaldoByDivisi.values;
+      dispatch(getDivisi({ divisi: data.divisi }));
       const tgl_dari = new Date(data.date[0]);
       const tgl_dari_string = Moment.tz(tgl_dari, "Asia/Jakarta").format(
         "YYYY-MM-DD"

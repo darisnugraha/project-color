@@ -23,6 +23,7 @@ import kodejenis from "./kodejenis";
 import terimabydivisi from "./terimabydivisi";
 import mutasisaldo from "./mutasisaldo";
 import mutasioutstand from "./mutasioutstand";
+import mutasihistory from "./mutasihistory";
 
 const midd = [
   ...ui,
@@ -50,6 +51,7 @@ const midd = [
   ...terimabydivisi,
   ...mutasisaldo,
   ...mutasioutstand,
+  ...mutasihistory,
 ];
 
 export default midd;

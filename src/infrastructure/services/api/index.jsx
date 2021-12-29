@@ -22,6 +22,7 @@ import KodeJenis from "./kodejenis";
 import TerimaByDivisi from "./terimabydivisi";
 import MutasiSaldo from "./mutasisaldo";
 import MutasiOutstand from "./mutasioutstand";
+import MutasiHistory from "./mutasihistory";
 
 const api = {
   login,
@@ -48,6 +49,7 @@ const api = {
   TerimaByDivisi,
   MutasiSaldo,
   MutasiOutstand,
+  MutasiHistory,
 };
 
 export default api;

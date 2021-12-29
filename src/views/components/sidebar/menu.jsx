@@ -105,7 +105,7 @@ const Menu = [
       },
       {
         path: "/laporan-produksi/mutasi-history-by-divisi",
-        title: "Mutasi Histroy By Divisi",
+        title: "Mutasi History By Divisi",
       },
     ],
   },
