@@ -111,6 +111,10 @@ const Menu = [
         path: "/laporan-produksi/analysis-stock-by-divisi",
         title: "Analysis Stock By Divisi",
       },
+      {
+        path: "/laporan-produksi/terima-batu-by-divisi",
+        title: "Terima Batu By Divisi",
+      },
     ],
   },
 ];

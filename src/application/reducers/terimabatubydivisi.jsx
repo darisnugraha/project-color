@@ -1,0 +1,37 @@
+// Type your data here, it can be string, or any type of data, just write your variable
+import {
+  SET_DATA_TERIMA_BATU_BY_DIVISI_SUCCESS,
+  SET_DATA_TERIMA_BATU_BY_DIVISI_FAILED,
+  SET_DIVISI,
+} from "../actions/terimabatubydivisi";
+
+const initialState = {
+  feedback: [],
+  error: null,
+  isEdit: false,
+  divisi: "-",
+};
+
+const terimabatubydivisi = (state = initialState, action) => {
+  switch (action.type) {
+    case SET_DATA_TERIMA_BATU_BY_DIVISI_SUCCESS:
+      return {
+        ...state,
+        feedback: action.payload.data,
+      };
+    case SET_DATA_TERIMA_BATU_BY_DIVISI_FAILED:
+      return {
+        ...state,
+        error: action.payload.data,
+      };
+    case SET_DIVISI:
+      return {
+        ...state,
+        divisi: action.payload.data,
+      };
+    default:
+      return state;
+  }
+};
+
+export default terimabatubydivisi;

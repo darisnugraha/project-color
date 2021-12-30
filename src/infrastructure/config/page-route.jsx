@@ -25,6 +25,7 @@ import MutasiSaldo from "../../views/pages/laporan-produksi/mutasi-saldo-by-divi
 import MutasiOutstand from "../../views/pages/laporan-produksi/mutasi-outstand-by-divisi";
 import MutasiHistory from "../../views/pages/laporan-produksi/mutasi-history-by-divisi";
 import AnalysisStock from "../../views/pages/laporan-produksi/analysis-stock-by-divisi";
+import TerimaBatuByDivisi from "../../views/pages/laporan-produksi/terima-batu-by-divisi";
 
 const routes = [
   // {
@@ -148,6 +149,11 @@ const routes = [
     path: "/laporan-produksi/analysis-stock-by-divisi",
     title: "Laporan Analysis Stock By Divisi",
     component: () => <AnalysisStock />,
+  },
+  {
+    path: "/laporan-produksi/terima-batu-by-divisi",
+    title: "Laporan Terima Batu By Divisi",
+    component: () => <TerimaBatuByDivisi />,
   },
   {
     path: "/notfound",
