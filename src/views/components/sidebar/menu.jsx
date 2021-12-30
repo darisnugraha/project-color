@@ -115,6 +115,10 @@ const Menu = [
         path: "/laporan-produksi/terima-batu-by-divisi",
         title: "Terima Batu By Divisi",
       },
+      {
+        path: "/laporan-produksi/sample-terima-bahan",
+        title: "Sample Terima Bahan",
+      },
     ],
   },
 ];

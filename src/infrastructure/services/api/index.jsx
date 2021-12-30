@@ -24,6 +24,7 @@ import MutasiSaldo from "./mutasisaldo";
 import MutasiOutstand from "./mutasioutstand";
 import MutasiHistory from "./mutasihistory";
 import AnalysisStock from "./analysisstock";
+import SampleTerimaBahan from "./sampleterimabahan";
 
 const api = {
   login,
@@ -52,6 +53,7 @@ const api = {
   MutasiOutstand,
   MutasiHistory,
   AnalysisStock,
+  SampleTerimaBahan,
 };
 
 export default api;

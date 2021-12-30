@@ -11,13 +11,13 @@ const pdfReport = (data = "") => {
   let tableColumn = [];
 
   let finalY = 30;
-  doc.text(`Laporan MUTASI OUTSTAND (${data_head.divisi})`, 14, 15);
+  doc.text(`Laporan ANALYSIS STOCK (${data_head.divisi})`, 14, 15);
   doc.setFontSize(20);
   doc.text("AMG", 200, 15);
 
   doc.setFontSize(10);
   doc.setProperties({
-    title: "MUTASI OUTSTAND",
+    title: "ANALYSIS STOCK",
   });
   doc.text(`PERIODE : ${tgl_dari_string} s/d ${tgl_sampai_string}`, 14, 25);
 
@@ -243,7 +243,7 @@ const pdfReport = (data = "") => {
   x.document.write(
     `<html>
     <head>
-    <title>MUTASI OUTSTAND</title>
+    <title>ANALYSIS STOCK</title>
     </head>
     <body style='margin:0 !important'>
     <embed width='100%' height='100%'src='${string}'></embed>

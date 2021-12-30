@@ -25,6 +25,7 @@ import mutasisaldo from "./mutasisaldo";
 import mutasioutstand from "./mutasioutstand";
 import mutasihistory from "./mutasihistory";
 import analysisstock from "./analysisstock";
+import sampleterimabahan from "./sampleterimabahan";
 
 const midd = [
   ...ui,
@@ -54,6 +55,7 @@ const midd = [
   ...mutasioutstand,
   ...mutasihistory,
   ...analysisstock,
+  ...sampleterimabahan,
 ];
 
 export default midd;
