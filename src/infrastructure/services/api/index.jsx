@@ -23,6 +23,7 @@ import TerimaByDivisi from "./terimabydivisi";
 import MutasiSaldo from "./mutasisaldo";
 import MutasiOutstand from "./mutasioutstand";
 import MutasiHistory from "./mutasihistory";
+import AnalysisStock from "./analysisstock";
 
 const api = {
   login,
@@ -50,6 +51,7 @@ const api = {
   MutasiSaldo,
   MutasiOutstand,
   MutasiHistory,
+  AnalysisStock,
 };
 
 export default api;

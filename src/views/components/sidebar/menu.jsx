@@ -107,6 +107,10 @@ const Menu = [
         path: "/laporan-produksi/mutasi-history-by-divisi",
         title: "Mutasi History By Divisi",
       },
+      {
+        path: "/laporan-produksi/analysis-stock-by-divisi",
+        title: "Analysis Stock By Divisi",
+      },
     ],
   },
 ];

@@ -23,6 +23,7 @@ const URL_GET_ALL_TERIMA_BY_DIVISI = `${baseurl}produksi/report/terima-barang?`;
 const URL_GET_ALL_MUTASI_SALDO_BY_DIVISI = `${baseurl}produksi/report/mutasi-saldo-by-divisi?`;
 const URL_GET_ALL_MUTASI_OUTSTAND_BY_DIVISI = `${baseurl}produksi/report/mutasi-outstand-by-divisi?`;
 const URL_GET_ALL_MUTASI_HISTORY_BY_DIVISI = `${baseurl}produksi/report/mutasi-history-by-divisi?`;
+const URL_GET_ALL_ANALYSIS_STOCK_BY_DIVISI = `${baseurl}produksi/report/analysis-stock-by-divisi?`;
 
 const data = {
   URL_LOGIN,
@@ -48,6 +49,7 @@ const data = {
   URL_GET_ALL_MUTASI_SALDO_BY_DIVISI,
   URL_GET_ALL_MUTASI_OUTSTAND_BY_DIVISI,
   URL_GET_ALL_MUTASI_HISTORY_BY_DIVISI,
+  URL_GET_ALL_ANALYSIS_STOCK_BY_DIVISI,
 };
 
 export default data;
