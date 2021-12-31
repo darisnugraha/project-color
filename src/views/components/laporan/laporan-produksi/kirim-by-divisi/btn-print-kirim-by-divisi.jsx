@@ -12,7 +12,7 @@ const BtnPrint = () => {
   // eslint-disable-next-line
   const btnLoading = useSelector(ui.getBtnLoading);
   const dataKirimByDivisi = useSelector(KirimByDivisi.getAllKirimByDivisi);
-  const data = JSON.parse(localStorage.getItem("kirim_by_divisi_head"));
+  const data = JSON.parse(localStorage.getItem("kirim_by_divisi_head")) || [];
 
   const pdfExportHandle = () => {
     pdfReport(dataKirimByDivisi);
