@@ -11,7 +11,7 @@ import divisi from "../../../../../application/selectors/divisi";
 import "antd/dist/antd.css";
 import { getAllTerimaByDivisi } from "../../../../../application/actions/terimabydivisi";
 
-const dateFormat = "MM/YYYY";
+const dateFormat = "DD/MM/YYYY";
 const today = new Date();
 const { Option } = Select;
 

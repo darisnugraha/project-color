@@ -14,7 +14,7 @@ import {
   setDataAnalysisStockByDivisiSuccess,
 } from "../../../../../application/actions/analysisstock";
 
-const dateFormat = "MM/YYYY";
+const dateFormat = "DD/MM/YYYY";
 const today = new Date();
 const { Option } = Select;
 

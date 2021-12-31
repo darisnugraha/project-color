@@ -9,7 +9,7 @@ import jenisbahan from "../../../../application/selectors/jenisbahan";
 import "antd/dist/antd.css";
 import { getAllKirimsaldodivisi } from "../../../../application/actions/kirimsaldodivisi";
 
-const dateFormat = "MM/YYYY";
+const dateFormat = "DD/MM/YYYY";
 const today = new Date();
 const { Option } = Select;
 

@@ -16,7 +16,7 @@ import {
   getAllMutasiOutstandByDivisi,
 } from "../../../../../application/actions/mutasioutstand";
 
-const dateFormat = "MM/YYYY";
+const dateFormat = "DD/MM/YYYY";
 const today = new Date();
 const { Option } = Select;
 

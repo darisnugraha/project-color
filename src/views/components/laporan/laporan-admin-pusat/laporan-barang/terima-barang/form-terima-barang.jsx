@@ -10,7 +10,7 @@ import design from "../../../../../../application/selectors/design";
 import "antd/dist/antd.css";
 import { getAllTerimaBarang } from "../../../../../../application/actions/terimabarang";
 
-const dateFormat = "MM/YYYY";
+const dateFormat = "DD/MM/YYYY";
 const today = new Date();
 const { Option } = Select;
 

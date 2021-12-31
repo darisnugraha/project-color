@@ -9,7 +9,7 @@ import ui from "../../../../application/selectors/ui";
 import { getAllSaldobahan } from "../../../../application/actions/saldobahan";
 import "antd/dist/antd.css";
 
-const dateFormat = "MM/YYYY";
+const dateFormat = "DD/MM/YYYY";
 const today = new Date();
 
 const FormLaporanSaldoBahan = (prop) => {
