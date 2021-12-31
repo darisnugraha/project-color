@@ -8,8 +8,7 @@ class ExcelReport extends Component {
   }
 
   componentDidMount() {
-    let data =
-      JSON.parse(localStorage.getItem("analysis_stock_by_divisi_head")) || [];
+    let data = JSON.parse(localStorage.getItem("terima_by_divisi_head")) || [];
     this.setState({
       tgl_dari_string: data.tgl_dari,
       tgl_sampai_string: data.tgl_sampai,
@@ -17,14 +16,34 @@ class ExcelReport extends Component {
     });
   }
   render() {
+    const groupBy = (array, key) => {
+      return array.reduce((result, currentValue) => {
+        (result[currentValue[key]] = result[currentValue[key]] || []).push(
+          currentValue
+        );
+        return result;
+      }, {});
+    };
+
+    const dataGroup = groupBy(this.props.dataExel, "no_terima");
+    const dataGroupArr = Object.values(dataGroup);
+
+    let jmlterimaAll = 0;
+    let brtterimaAll = 0;
+
+    this.props.dataExel.forEach((element) => {
+      jmlterimaAll = jmlterimaAll + parseFloat(element.jumlah_batu);
+      brtterimaAll = brtterimaAll + parseFloat(element.berat_batu);
+    });
+
     return (
       <>
         <ReactHTMLTableToExcel
           id="test-table-xls-button"
           className="ant-btn ant-btn-primary ant-btn-block ant-btn-success"
           table="table-to-xls"
-          filename={`LAPORAN ANALYSIS STOCK (${this.state.divisi})`}
-          sheet={`LAPORAN ANALYSIS STOCK (${this.state.divisi})`}
+          filename={`LAPORAN TERIMA BATU BY DIVISI (${this.props.dataHead?.divisi})`}
+          sheet={`LAPORAN TERIMA BATU BY DIVISI (${this.props.dataHead?.divisi})`}
           buttonText="Export Excel"
         />
         <table id="table-to-xls" style={{ display: "none" }}>
@@ -32,16 +51,16 @@ class ExcelReport extends Component {
             <tr>
               <th colSpan="10" style={{ textAlign: "center" }}>
                 {" "}
-                LAPORAN ANALYSIS STOCK {this.state.divisi}
+                LAPORAN TERIMA BATU BY DIVISI {this.props.dataHead?.divisi}
               </th>
             </tr>
             <tr>
               <th colSpan="10">
                 {" "}
                 Tanggal :{" "}
-                {this.state.tgl_dari_string +
+                {this.props.dataHead?.tgl_dari +
                   " s/d " +
-                  this.state.tgl_sampai_string}{" "}
+                  this.props.dataHead?.tgl_sampai}{" "}
               </th>
             </tr>
             <tr>
@@ -51,7 +70,15 @@ class ExcelReport extends Component {
                   color: "#000",
                   textAlign: "center",
                 }}
-                rowSpan={2}
+              >
+                TANGGAL
+              </td>
+              <td
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
               >
                 NO JOB ORDER
               </td>
@@ -61,7 +88,6 @@ class ExcelReport extends Component {
                   color: "#000",
                   textAlign: "center",
                 }}
-                rowSpan={2}
               >
                 KODE BARANG
               </td>
@@ -71,70 +97,8 @@ class ExcelReport extends Component {
                   color: "#000",
                   textAlign: "center",
                 }}
-                rowSpan={2}
               >
-                NAMA BARANG
-              </td>
-              <td
-                style={{
-                  backgroundColor: "#99CCFF",
-                  color: "#000",
-                  textAlign: "center",
-                }}
-                rowSpan={2}
-              >
-                JENIS BAHAN
-              </td>
-              <td
-                style={{
-                  backgroundColor: "#99CCFF",
-                  color: "#000",
-                  textAlign: "center",
-                }}
-                colSpan={2}
-              >
-                TERIMA
-              </td>
-              <td
-                style={{
-                  backgroundColor: "#99CCFF",
-                  color: "#000",
-                  textAlign: "center",
-                }}
-                colSpan={2}
-              >
-                KIRIM
-              </td>
-              <td
-                style={{
-                  backgroundColor: "#99CCFF",
-                  color: "red",
-                  textAlign: "center",
-                }}
-                rowSpan={2}
-              >
-                SUSUT
-              </td>
-              <td
-                style={{
-                  backgroundColor: "#99CCFF",
-                  color: "red",
-                  textAlign: "center",
-                }}
-                rowSpan={2}
-              >
-                PERSEN
-              </td>
-            </tr>
-            <tr>
-              <td
-                style={{
-                  backgroundColor: "#99CCFF",
-                  color: "#000",
-                  textAlign: "center",
-                }}
-              >
-                QTY
+                KODE BATU
               </td>
               <td
                 style={{
@@ -143,7 +107,7 @@ class ExcelReport extends Component {
                   textAlign: "center",
                 }}
               >
-                BERAT
+                JUMLAH TERIMA
               </td>
               <td
                 style={{
@@ -152,44 +116,83 @@ class ExcelReport extends Component {
                   textAlign: "center",
                 }}
               >
-                QTY
-              </td>
-              <td
-                style={{
-                  backgroundColor: "#99CCFF",
-                  color: "#000",
-                  textAlign: "center",
-                }}
-              >
-                BERAT
+                BERAT TERIMA
               </td>
             </tr>
           </thead>
           <tbody>
-            {this.props.dataExel.map((element) => {
+            {dataGroupArr.map((element) => {
+              let jmlterima = 0;
+              let brtterima = 0;
+
               return (
-                <tr>
-                  <td>{element.no_job_order}</td>
-                  <td>{element.kode_barang}</td>
-                  <td>{element.nama_barang}</td>
-                  <td>{element.jenis_bahan}</td>
-                  <td style={{ textAlign: "right" }}>
-                    {element.jumlah_terima}
-                  </td>
-                  <td style={{ textAlign: "right" }}>
-                    {parseFloat(element.berat_terima).toFixed(3)}
-                  </td>
-                  <td style={{ textAlign: "right" }}>{element.jumlah_kirim}</td>
-                  <td style={{ textAlign: "right" }}>
-                    {parseFloat(element.berat_kirim).toFixed(3)}
-                  </td>
-                  <td style={{ color: "red", textAlign: "right" }}>
-                    {parseFloat(element.susut).toFixed(3)}
-                  </td>
-                  <td style={{ color: "red", textAlign: "right" }}>
-                    {element.persen + " %"}
-                  </td>
-                </tr>
+                <>
+                  <tr>
+                    <td
+                      colSpan="6"
+                      style={{
+                        backgroundColor: "#bbbbbb",
+                        textAlign: "left",
+                      }}
+                    >
+                      No Terima : {element[0].no_terima}
+                    </td>
+                  </tr>
+                  {element.map((item) => {
+                    jmlterima = jmlterima + parseFloat(item.jumlah_batu);
+                    brtterima = brtterima + parseFloat(item.berat_batu);
+
+                    return (
+                      <tr>
+                        <td>{item.tgl_terima}</td>
+                        <td>{item.no_job_order}</td>
+                        <td>{item.kode_barang}</td>
+                        <td>{item.kode_batu}</td>
+                        <td
+                          style={{
+                            textAlign: "right",
+                          }}
+                        >
+                          {item.jumlah_batu}
+                        </td>
+                        <td
+                          style={{
+                            textAlign: "right",
+                          }}
+                        >
+                          {item.berat_batu}
+                        </td>
+                      </tr>
+                    );
+                  })}
+                  <tr>
+                    <td
+                      colSpan="4"
+                      style={{
+                        backgroundColor: "#dddddd",
+                        textAlign: "right",
+                      }}
+                    >
+                      Sub Total :
+                    </td>
+                    <td
+                      style={{
+                        backgroundColor: "#dddddd",
+                        textAlign: "right",
+                      }}
+                    >
+                      {jmlterima}
+                    </td>
+                    <td
+                      style={{
+                        backgroundColor: "#dddddd",
+                        textAlign: "right",
+                      }}
+                    >
+                      {brtterima.toFixed(3)}
+                    </td>
+                  </tr>
+                </>
               );
             })}
           </tbody>
@@ -208,58 +211,14 @@ class ExcelReport extends Component {
                   textAlign: "right",
                 }}
               >
-                {this.props.dataExel.reduce(
-                  (a, b) => a + parseFloat(b.jumlah_terima),
-                  0
-                )}
+                {jmlterimaAll}
               </td>
               <td
                 style={{
                   textAlign: "right",
                 }}
               >
-                {this.props.dataExel
-                  .reduce((a, b) => a + parseFloat(b.berat_terima), 0)
-                  .toFixed(3)}
-              </td>
-              <td
-                style={{
-                  textAlign: "right",
-                }}
-              >
-                {this.props.dataExel.reduce(
-                  (a, b) => a + parseFloat(b.jumlah_kirim),
-                  0
-                )}
-              </td>
-              <td
-                style={{
-                  textAlign: "right",
-                }}
-              >
-                {this.props.dataExel
-                  .reduce((a, b) => a + parseFloat(b.berat_kirim), 0)
-                  .toFixed(3)}
-              </td>
-              <td
-                style={{
-                  textAlign: "right",
-                  color: "red",
-                }}
-              >
-                {this.props.dataExel
-                  .reduce((a, b) => a + parseFloat(b.susut), 0)
-                  .toFixed(3)}
-              </td>
-              <td
-                style={{
-                  textAlign: "right",
-                  color: "red",
-                }}
-              >
-                {this.props.dataExel
-                  .reduce((a, b) => a + parseFloat(b.persen), 0)
-                  .toFixed(3) + " %"}
+                {brtterimaAll.toFixed(3)}
               </td>
             </tr>
           </tfoot>

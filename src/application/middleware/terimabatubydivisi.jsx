@@ -38,7 +38,7 @@ const getAllTerimaBatuByDivisi =
       );
       data.tgl_dari = tgl_dari_string;
       data.tgl_sampai = tgl_sampai_string;
-      writeLocal("mutasi_saldo_by_divisi_head", data);
+      writeLocal("terima_batu_by_divisi_head", data);
 
       if (data.bahan === undefined) {
         dispatch(setLoadingButton(false));

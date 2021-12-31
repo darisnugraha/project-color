@@ -71,9 +71,9 @@ class ExcelReport extends Component {
                 <th colSpan="10">
                   {" "}
                   Tanggal :{" "}
-                  {this.props.dataHead.tgl_dari_string +
+                  {this.props.dataHead.tgl_dari +
                     " s/d " +
-                    this.props.dataHead.tgl_sampai_string}{" "}
+                    this.props.dataHead.tgl_sampai}{" "}
                 </th>
               </tr>
               <tr>

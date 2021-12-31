@@ -6,7 +6,7 @@ import TerimaBatuByDivisi from "../../../../../application/selectors/terimabatub
 
 const TableLaporanTerimaBatu = () => {
   const dataTerimaBatu = useSelector(TerimaBatuByDivisi.getAllTerimaBatu);
-  const divisi = "SAMPLE";
+  const divisi = useSelector(TerimaBatuByDivisi.getDivisi);
 
   const columns = [
     {
@@ -108,7 +108,10 @@ const TableLaporanTerimaBatu = () => {
     <Table
       dataSource={dataTerimaBatu}
       columns={
-        divisi === "SAMPLE" || divisi === "POLISHING" || divisi === "PLATTING"
+        divisi === "SAMPLE" ||
+        divisi === "POLISHING" ||
+        divisi === "PLATTING" ||
+        divisi === "-"
           ? columnsTwo
           : columns
       }

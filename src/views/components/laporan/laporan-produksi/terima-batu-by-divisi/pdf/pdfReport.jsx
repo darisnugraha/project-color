@@ -3,7 +3,7 @@ import "jspdf-autotable";
 
 const pdfReport = (data = "") => {
   let data_head =
-    JSON.parse(localStorage.getItem("analysis_stock_by_divisi_head")) || [];
+    JSON.parse(localStorage.getItem("terima_batu_by_divisi_head")) || [];
   let tgl_dari_string = data_head.tgl_dari;
   let tgl_sampai_string = data_head.tgl_sampai;
   const doc = new jsPDF("l", "mm", [297, 210]);
@@ -11,179 +11,149 @@ const pdfReport = (data = "") => {
   let tableColumn = [];
 
   let finalY = 30;
-  doc.text(`Laporan MUTASI OUTSTAND (${data_head.divisi})`, 14, 15);
+  doc.text(`Laporan TERIMA BATU BY DIVISI (${data_head.divisi})`, 14, 15);
   doc.setFontSize(20);
   doc.text("AMG", 200, 15);
 
   doc.setFontSize(10);
   doc.setProperties({
-    title: "MUTASI OUTSTAND",
+    title: "TERIMA BATU BY DIVISI",
   });
   doc.text(`PERIODE : ${tgl_dari_string} s/d ${tgl_sampai_string}`, 14, 25);
 
   tableColumn = [
     [
       {
+        content: `TANGGAL`,
+      },
+      {
         content: `NO JOB ORDER`,
-        rowSpan: 2,
       },
       {
         content: `KODE BARANG`,
-        rowSpan: 2,
       },
       {
-        content: `NAMA BARANG`,
-        rowSpan: 2,
+        content: `KODE BATU`,
       },
       {
-        content: `JENIS BAHAN`,
-        rowSpan: 2,
+        content: `JUMLAH BATU`,
       },
       {
-        content: `TERIMA`,
-        colSpan: 2,
-      },
-      {
-        content: `KIRIM`,
-        colSpan: 2,
-      },
-      {
-        content: `SUSUT`,
-        rowSpan: 2,
-        styles: {
-          textColor: "#FF0000",
-        },
-      },
-      {
-        content: `%`,
-        rowSpan: 2,
-        styles: {
-          textColor: "#FF0000",
-        },
-      },
-    ],
-    [
-      {
-        content: "Qty",
-      },
-      {
-        content: "Berat",
-      },
-      {
-        content: "Qty",
-      },
-      {
-        content: "Berat",
+        content: `BERAT BATU`,
       },
     ],
   ];
 
-  data.forEach((element) => {
-    const row = [
+  const groupBy = (array, key) => {
+    return array.reduce((result, currentValue) => {
+      (result[currentValue[key]] = result[currentValue[key]] || []).push(
+        currentValue
+      );
+      return result;
+    }, {});
+  };
+
+  const dataGroup = groupBy(data, "no_terima");
+  const dataGroupArr = Object.values(dataGroup);
+
+  dataGroupArr.forEach((element) => {
+    let jmlterima = 0;
+    let brtterima = 0;
+
+    const rowKirim = [
       {
-        content: element.no_job_order,
+        content: "No Terima : " + element[0].no_terima,
+        styles: {
+          halign: "left",
+          fillColor: "#bbbbbb",
+        },
+        colSpan: 6,
       },
+    ];
+    tableRows.push(rowKirim);
+    element.forEach((item) => {
+      jmlterima = jmlterima + parseFloat(item.jumlah_batu);
+      brtterima = brtterima + parseFloat(item.berat_batu);
+
+      const row = [
+        {
+          content: item.tgl_terima,
+          styles: {
+            halign: "center",
+          },
+        },
+        {
+          content: item.no_job_order,
+          styles: {
+            halign: "center",
+          },
+        },
+        {
+          content: item.kode_barang,
+          styles: {
+            halign: "center",
+          },
+        },
+        {
+          content: item.kode_batu,
+          styles: {
+            halign: "center",
+          },
+        },
+        {
+          content: item.jumlah_batu,
+        },
+        {
+          content: item.berat_batu,
+        },
+      ];
+      tableRows.push(row);
+    });
+    const rowFoot = [
       {
-        content: element.kode_barang,
-      },
-      {
-        content: element.nama_barang,
-      },
-      {
-        content: element.jenis_bahan,
-      },
-      {
-        content: element.jumlah_terima,
+        content: "Sub Total :",
         styles: {
           halign: "right",
+          fillColor: "#dddddd",
+        },
+        colSpan: 4,
+      },
+      {
+        content: jmlterima,
+        styles: {
+          halign: "right",
+          fillColor: "#dddddd",
         },
       },
       {
-        content: parseFloat(element.berat_terima).toFixed(3),
+        content: brtterima.toFixed(3),
         styles: {
           halign: "right",
-        },
-      },
-      {
-        content: element.jumlah_kirim,
-        styles: {
-          halign: "right",
-        },
-      },
-      {
-        content: parseFloat(element.berat_kirim).toFixed(3),
-        styles: {
-          halign: "right",
-        },
-      },
-      {
-        content: element.susut,
-        styles: {
-          halign: "right",
-          textColor: "#FF0000",
-        },
-      },
-      {
-        content: element.persen + " %",
-        styles: {
-          halign: "right",
-          textColor: "#FF0000",
+          fillColor: "#dddddd",
         },
       },
     ];
-    tableRows.push(row);
+    tableRows.push(rowFoot);
+  });
+
+  let jmlterimaAll = 0;
+  let brtterimaAll = 0;
+
+  data.forEach((element) => {
+    jmlterimaAll = jmlterimaAll + parseFloat(element.jumlah_batu);
+    brtterimaAll = brtterimaAll + parseFloat(element.berat_batu);
   });
 
   const footer = [
     {
       content: "Grand Total :",
       colSpan: 4,
-      styles: {
-        halign: "right",
-      },
     },
     {
-      content: data.reduce((a, b) => a + parseFloat(b.jumlah_terima), 0),
-      styles: {
-        halign: "right",
-      },
+      content: jmlterimaAll,
     },
     {
-      content: data
-        .reduce((a, b) => a + parseFloat(b.berat_terima), 0)
-        .toFixed(3),
-      styles: {
-        halign: "right",
-      },
-    },
-    {
-      content: data.reduce((a, b) => a + parseFloat(b.jumlah_kirim), 0),
-      styles: {
-        halign: "right",
-      },
-    },
-    {
-      content: data
-        .reduce((a, b) => a + parseFloat(b.berat_kirim), 0)
-        .toFixed(3),
-      styles: {
-        halign: "right",
-      },
-    },
-    {
-      content: data.reduce((a, b) => a + parseFloat(b.susut), 0).toFixed(3),
-      styles: {
-        halign: "right",
-        textColor: "#FF0000",
-      },
-    },
-    {
-      content:
-        data.reduce((a, b) => a + parseFloat(b.persen), 0).toFixed(3) + " %",
-      styles: {
-        halign: "right",
-        textColor: "#FF0000",
-      },
+      content: brtterimaAll.toFixed(3),
     },
   ];
   tableRows.push(footer);
@@ -209,7 +179,7 @@ const pdfReport = (data = "") => {
     margin: { top: 10 },
     bodyStyles: {
       fontSize: 8,
-      halign: "center",
+      halign: "right",
     },
     headStyles: {
       fontSize: 8,
@@ -243,7 +213,7 @@ const pdfReport = (data = "") => {
   x.document.write(
     `<html>
     <head>
-    <title>MUTASI OUTSTAND</title>
+    <title>TERIMA BATU BY DIVISI</title>
     </head>
     <body style='margin:0 !important'>
     <embed width='100%' height='100%'src='${string}'></embed>
