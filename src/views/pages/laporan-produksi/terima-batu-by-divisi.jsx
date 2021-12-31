@@ -14,11 +14,12 @@ import { pageLoadedLogin } from "../../../application/actions/ui";
 import { getAllJenisBahan } from "../../../application/actions/jenisbahan.jsx";
 import { getAllDesign } from "../../../application/actions/design.jsx";
 import { getAllDivisi } from "../../../application/actions/divisi.jsx";
-import DataTerimaBatuByDivisi from "../../../application/selectors/kirimbydivisi";
+import DataTerimaBatuByDivisi from "../../../application/selectors/terimabatubydivisi";
+import { getAllBatu } from "../../../application/actions/batu.jsx";
 
 const TerimaBatuByDivisi = () => {
   const dataTerimaBatuByDivisi = useSelector(
-    DataTerimaBatuByDivisi.getAllKirimByDivisi
+    DataTerimaBatuByDivisi.getAllTerimaBatu
   );
   const dispatch = useDispatch();
   useEffect(() => {
@@ -26,6 +27,7 @@ const TerimaBatuByDivisi = () => {
     dispatch(getAllJenisBahan);
     dispatch(getAllDesign);
     dispatch(getAllDivisi);
+    dispatch(getAllBatu);
     document.title = "Laporan Terima Batu By Divisi";
   }, [dispatch]);
 

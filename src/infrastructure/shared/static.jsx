@@ -25,6 +25,8 @@ const URL_GET_ALL_MUTASI_OUTSTAND_BY_DIVISI = `${baseurl}produksi/report/mutasi-
 const URL_GET_ALL_MUTASI_HISTORY_BY_DIVISI = `${baseurl}produksi/report/mutasi-history-by-divisi?`;
 const URL_GET_ALL_ANALYSIS_STOCK_BY_DIVISI = `${baseurl}produksi/report/analysis-stock-by-divisi?`;
 const URL_GET_ALL_SAMPLE_TERIMA_BAHAN = `${baseurl}/produksi/report/sample-terima-bahan?`;
+const URL_GET_ALL_TERIMA_BATU_BY_DIVISI = `${baseurl}/produksi/report/etc-terima-batu?`;
+const URL_GET_ALL_BATU = `${baseurl}/produksi/report/get-kode-batu`;
 
 const data = {
   URL_LOGIN,
@@ -52,6 +54,8 @@ const data = {
   URL_GET_ALL_MUTASI_HISTORY_BY_DIVISI,
   URL_GET_ALL_ANALYSIS_STOCK_BY_DIVISI,
   URL_GET_ALL_SAMPLE_TERIMA_BAHAN,
+  URL_GET_ALL_TERIMA_BATU_BY_DIVISI,
+  URL_GET_ALL_BATU,
 };
 
 export default data;

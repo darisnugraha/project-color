@@ -7,10 +7,11 @@ import styleAntd from "../../../../../infrastructure/shared/styleAntd";
 import ui from "../../../../../application/selectors/ui";
 import jenisbahan from "../../../../../application/selectors/jenisbahan";
 import divisi from "../../../../../application/selectors/divisi";
+import batu from "../../../../../application/selectors/batu";
 import terimabatu from "../../../../../application/selectors/terimabatubydivisi";
 import "antd/dist/antd.css";
 import {
-  // getAllAnalysisStockByDivisi,
+  getAllTerimaBatuByDivisi,
   getDivisi,
   setDataTerimaBatuByDivisiSuccess,
 } from "../../../../../application/actions/terimabatubydivisi";
@@ -64,6 +65,7 @@ let FormLaporanTerimaBatu = (prop) => {
   const btnLoading = useSelector(ui.getBtnLoading);
   const datajenisbahan = useSelector(jenisbahan.getAllJenisbahan);
   const datadivisi = useSelector(divisi.getAllDivisi);
+  const dataBatu = useSelector(batu.getAllBatu);
   const divisichoose = useSelector(terimabatu.getDivisi);
 
   return (
@@ -135,9 +137,21 @@ let FormLaporanTerimaBatu = (prop) => {
             placeholder="Pilih Batu"
             onBlur={(e) => e.preventDefault()}
           >
-            <Option value="SEMUA" key="SEMUA">
-              <span style={{ fontSize: "13px" }}>Semua</span>
-            </Option>
+            {dataBatu.map((item) => {
+              if (item.kode_batu === "") {
+                return (
+                  <Option value="SEMUA" key="SEMUA">
+                    <span style={{ fontSize: "13px" }}>Semua</span>
+                  </Option>
+                );
+              } else {
+                return (
+                  <Option value={item.kode_batu} key={item.kode_batu}>
+                    <span style={{ fontSize: "13px" }}>{item.kode_batu}</span>
+                  </Option>
+                );
+              }
+            })}
           </Field>
         </Col>
         <Col offset={1}>
@@ -217,7 +231,7 @@ let FormLaporanTerimaBatu = (prop) => {
             type="primary"
             htmltype="button"
             loading={btnLoading}
-            // onClick={() => prop.dispatch(getAllAnalysisStockByDivisi)}
+            onClick={() => prop.dispatch(getAllTerimaBatuByDivisi)}
             style={{ marginTop: 29 }}
           >
             Lihat Laporan

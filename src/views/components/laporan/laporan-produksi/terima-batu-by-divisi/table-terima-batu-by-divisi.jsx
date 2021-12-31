@@ -1,11 +1,11 @@
 import React from "react";
 import { Table } from "antd";
 import "antd/dist/antd.css";
-// import { useSelector } from "react-redux";
-// import TerimaBatuByDivisi from "../../../../../application/selectors/analysisstock";
+import { useSelector } from "react-redux";
+import TerimaBatuByDivisi from "../../../../../application/selectors/terimabatubydivisi";
 
 const TableLaporanTerimaBatu = () => {
-  // const dataTerimaBatu = useSelector(TerimaBatuByDivisi.getAllAnalysisStock);
+  const dataTerimaBatu = useSelector(TerimaBatuByDivisi.getAllTerimaBatu);
   const divisi = "SAMPLE";
 
   const columns = [
@@ -106,8 +106,7 @@ const TableLaporanTerimaBatu = () => {
 
   return (
     <Table
-      // dataSource={dataTerimaBatu}
-      dataSource={[]}
+      dataSource={dataTerimaBatu}
       columns={
         divisi === "SAMPLE" || divisi === "POLISHING" || divisi === "PLATTING"
           ? columnsTwo

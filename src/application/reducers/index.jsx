@@ -29,6 +29,7 @@ import mutasihistory from "./mutasihistory";
 import analysisstock from "./analysisstock";
 import terimabatubydivisi from "./terimabatubydivisi";
 import sampleterimabahan from "./sampleterimabahan";
+import batu from "./batu";
 
 export default combineReducers({
   login,
@@ -60,5 +61,6 @@ export default combineReducers({
   analysisstock,
   terimabatubydivisi,
   sampleterimabahan,
+  batu,
   form: formReducer,
 });
