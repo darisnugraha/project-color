@@ -27,6 +27,7 @@ import MutasiHistory from "../../views/pages/laporan-produksi/mutasi-history-by-
 import AnalysisStock from "../../views/pages/laporan-produksi/analysis-stock-by-divisi";
 import TerimaBatuByDivisi from "../../views/pages/laporan-produksi/terima-batu-by-divisi";
 import SampleTerimaBahan from "../../views/pages/laporan-produksi/sample-terima-bahan";
+import TerimaSubDivisi from "../../views/pages/laporan-produksi/terima-sub-divisi";
 
 const routes = [
   // {
@@ -160,6 +161,11 @@ const routes = [
     path: "/laporan-produksi/sample-terima-bahan",
     title: "Laporan Sample Terima Bahan",
     component: () => <SampleTerimaBahan />,
+  },
+  {
+    path: "/laporan-produksi/terima-sub-divisi",
+    title: "Laporan Terima Sub Divisi",
+    component: () => <TerimaSubDivisi />,
   },
   {
     path: "/notfound",

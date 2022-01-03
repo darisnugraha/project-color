@@ -119,6 +119,10 @@ const Menu = [
         path: "/laporan-produksi/sample-terima-bahan",
         title: "Sample Terima Bahan",
       },
+      {
+        path: "/laporan-produksi/terima-sub-divisi",
+        title: "Terima Sub Divisi",
+      },
     ],
   },
 ];

@@ -28,6 +28,7 @@ import analysisstock from "./analysisstock";
 import sampleterimabahan from "./sampleterimabahan";
 import terimabatubydivisi from "./terimabatubydivisi";
 import batu from "./batu";
+import terimasubdivisi from "./terimasubdivisi";
 
 const midd = [
   ...ui,
@@ -60,6 +61,7 @@ const midd = [
   ...sampleterimabahan,
   ...terimabatubydivisi,
   ...batu,
+  ...terimasubdivisi,
 ];
 
 export default midd;

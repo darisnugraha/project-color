@@ -27,6 +27,7 @@ import AnalysisStock from "./analysisstock";
 import SampleTerimaBahan from "./sampleterimabahan";
 import TerimaBatu from "./terimabatubydivisi";
 import Batu from "./batu";
+import TerimaSubDivisi from "./terimasubdivisi";
 
 const api = {
   login,
@@ -58,6 +59,7 @@ const api = {
   SampleTerimaBahan,
   TerimaBatu,
   Batu,
+  TerimaSubDivisi,
 };
 
 export default api;

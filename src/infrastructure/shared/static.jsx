@@ -27,6 +27,7 @@ const URL_GET_ALL_ANALYSIS_STOCK_BY_DIVISI = `${baseurl}produksi/report/analysis
 const URL_GET_ALL_SAMPLE_TERIMA_BAHAN = `${baseurl}/produksi/report/sample-terima-bahan?`;
 const URL_GET_ALL_TERIMA_BATU_BY_DIVISI = `${baseurl}/produksi/report/etc-terima-batu?`;
 const URL_GET_ALL_BATU = `${baseurl}/produksi/report/get-kode-batu`;
+const URL_GET_ALL_TERIMA_SUB_DIVISI = `${baseurl}/produksi/report/terima-sub-divisi?`;
 
 const data = {
   URL_LOGIN,
@@ -56,6 +57,7 @@ const data = {
   URL_GET_ALL_SAMPLE_TERIMA_BAHAN,
   URL_GET_ALL_TERIMA_BATU_BY_DIVISI,
   URL_GET_ALL_BATU,
+  URL_GET_ALL_TERIMA_SUB_DIVISI,
 };
 
 export default data;
