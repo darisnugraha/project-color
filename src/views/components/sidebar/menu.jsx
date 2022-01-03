@@ -123,6 +123,10 @@ const Menu = [
         path: "/laporan-produksi/terima-sub-divisi",
         title: "Terima Sub Divisi",
       },
+      {
+        path: "/laporan-produksi/saldo-sub-divisi",
+        title: "Saldo Sub Divisi",
+      },
     ],
   },
 ];

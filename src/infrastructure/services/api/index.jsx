@@ -28,6 +28,7 @@ import SampleTerimaBahan from "./sampleterimabahan";
 import TerimaBatu from "./terimabatubydivisi";
 import Batu from "./batu";
 import TerimaSubDivisi from "./terimasubdivisi";
+import SaldoSubDivisi from "./saldosubdivisi";
 
 const api = {
   login,
@@ -60,6 +61,7 @@ const api = {
   TerimaBatu,
   Batu,
   TerimaSubDivisi,
+  SaldoSubDivisi,
 };
 
 export default api;

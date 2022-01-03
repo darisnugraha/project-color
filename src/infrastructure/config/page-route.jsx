@@ -28,6 +28,7 @@ import AnalysisStock from "../../views/pages/laporan-produksi/analysis-stock-by-
 import TerimaBatuByDivisi from "../../views/pages/laporan-produksi/terima-batu-by-divisi";
 import SampleTerimaBahan from "../../views/pages/laporan-produksi/sample-terima-bahan";
 import TerimaSubDivisi from "../../views/pages/laporan-produksi/terima-sub-divisi";
+import SaldoSubDivisi from "../../views/pages/laporan-produksi/saldo-sub-divisi";
 
 const routes = [
   // {
@@ -166,6 +167,11 @@ const routes = [
     path: "/laporan-produksi/terima-sub-divisi",
     title: "Laporan Terima Sub Divisi",
     component: () => <TerimaSubDivisi />,
+  },
+  {
+    path: "/laporan-produksi/saldo-sub-divisi",
+    title: "Laporan Saldo Sub Divisi",
+    component: () => <SaldoSubDivisi />,
   },
   {
     path: "/notfound",

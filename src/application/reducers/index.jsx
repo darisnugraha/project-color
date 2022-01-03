@@ -31,6 +31,7 @@ import terimabatubydivisi from "./terimabatubydivisi";
 import sampleterimabahan from "./sampleterimabahan";
 import batu from "./batu";
 import terimasubdivisi from "./terimasubdivisi";
+import saldosubdivisi from "./saldosubdivisi";
 
 export default combineReducers({
   login,
@@ -64,5 +65,6 @@ export default combineReducers({
   sampleterimabahan,
   batu,
   terimasubdivisi,
+  saldosubdivisi,
   form: formReducer,
 });
