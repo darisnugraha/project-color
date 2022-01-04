@@ -7,14 +7,6 @@ class ExcelReport extends Component {
     this.state = { tgl_dari_string: "", tgl_sampai_string: "", divisi: "" };
   }
 
-  componentDidMount() {
-    let data = JSON.parse(localStorage.getItem("saldo_sub_divisi_head")) || [];
-    this.setState({
-      tgl_dari_string: data.tgl_dari,
-      tgl_sampai_string: data.tgl_sampai,
-      divisi: data.divisi,
-    });
-  }
   render() {
     const groupBy = (array, key) => {
       return array.reduce((result, currentValue) => {
@@ -25,7 +17,7 @@ class ExcelReport extends Component {
       }, {});
     };
 
-    const dataGroup = groupBy(this.props.dataExel, "no_terima");
+    const dataGroup = groupBy(this.props.dataExel, "sub_divisi");
     const dataGroupArr = Object.values(dataGroup);
 
     let jmlterimaAll = 0;
@@ -42,46 +34,19 @@ class ExcelReport extends Component {
           id="test-table-xls-button"
           className="ant-btn ant-btn-primary ant-btn-block ant-btn-success"
           table="table-to-xls"
-          filename={`LAPORAN TERIMA SUB DIVISI (${this.state.divisi})`}
-          sheet={`LAPORAN TERIMA SUB DIVISI (${this.state.divisi})`}
+          filename={`LAPORAN SALDO SUB DIVISI`}
+          sheet={`LAPORAN SALDO SUB DIVISI`}
           buttonText="Export Excel"
         />
         <table id="table-to-xls" style={{ display: "none" }}>
           <thead>
             <tr>
-              <th colSpan="10" style={{ textAlign: "center" }}>
+              <th colSpan="6" style={{ textAlign: "center" }}>
                 {" "}
-                LAPORAN TERIMA SUB DIVISI {this.state.divisi}
+                LAPORAN SALDO SUB DIVISI
               </th>
             </tr>
             <tr>
-              <th colSpan="10">
-                {" "}
-                Tanggal :{" "}
-                {this.state.tgl_dari_string +
-                  " s/d " +
-                  this.state.tgl_sampai_string}{" "}
-              </th>
-            </tr>
-            <tr>
-              <td
-                style={{
-                  backgroundColor: "#99CCFF",
-                  color: "#000",
-                  textAlign: "center",
-                }}
-              >
-                TANGGAL
-              </td>
-              <td
-                style={{
-                  backgroundColor: "#99CCFF",
-                  color: "#000",
-                  textAlign: "center",
-                }}
-              >
-                SUB DIVISI
-              </td>
               <td
                 style={{
                   backgroundColor: "#99CCFF",
@@ -116,6 +81,15 @@ class ExcelReport extends Component {
                   textAlign: "center",
                 }}
               >
+                JENIS
+              </td>
+              <td
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
+              >
                 JML TERIMA
               </td>
               <td
@@ -138,13 +112,13 @@ class ExcelReport extends Component {
                 <>
                   <tr>
                     <td
-                      colSpan="7"
+                      colSpan="6"
                       style={{
                         backgroundColor: "#bbbbbb",
                         textAlign: "left",
                       }}
                     >
-                      No Terima : {element[0].no_terima}
+                      SUB DIVISI : {element[0].sub_divisi}
                     </td>
                   </tr>
                   {element.map((item) => {
@@ -153,11 +127,10 @@ class ExcelReport extends Component {
 
                     return (
                       <tr>
-                        <td>{item.tanggal}</td>
-                        <td>{item.sub_divisi}</td>
                         <td>{item.no_job_order}</td>
                         <td>{item.kode_barang}</td>
-                        <td>{item.jenis_bahan}</td>
+                        <td>{item.bahan}</td>
+                        <td>{item.jenis}</td>
                         <td
                           style={{
                             textAlign: "right",
@@ -177,7 +150,7 @@ class ExcelReport extends Component {
                   })}
                   <tr>
                     <td
-                      colSpan="5"
+                      colSpan="4"
                       style={{
                         backgroundColor: "#dddddd",
                         textAlign: "right",
@@ -209,7 +182,7 @@ class ExcelReport extends Component {
           <tfoot>
             <tr>
               <td
-                colSpan="5"
+                colSpan="4"
                 style={{
                   textAlign: "right",
                 }}

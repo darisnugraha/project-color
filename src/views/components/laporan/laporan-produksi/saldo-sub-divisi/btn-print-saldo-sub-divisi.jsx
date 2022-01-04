@@ -15,6 +15,7 @@ const BtnPrint = () => {
   const btnLoading = useSelector(ui.getBtnLoading);
   const dataSaldoSubDivisi = useSelector(SaldoSubDivisi.getAllSaldoSubDivisi);
   const type = useSelector(SaldoSubDivisi.getType);
+  const data = JSON.parse(localStorage.getItem("saldo_sub_divisi_head")) || [];
 
   const pdfExportHandle = () => {
     if (type === "ALL") {
@@ -28,9 +29,9 @@ const BtnPrint = () => {
     <Row style={{ marginTop: 15 }}>
       <Col span={10} style={{ marginTop: 10 }}>
         {type === "ALL" ? (
-          <ExcelReport dataExel={dataSaldoSubDivisi} />
+          <ExcelReport dataExel={dataSaldoSubDivisi} dataHead={data} />
         ) : (
-          <ExcelReportHarian dataExel={dataSaldoSubDivisi} />
+          <ExcelReportHarian dataExel={dataSaldoSubDivisi} dataHead={data} />
         )}
       </Col>
       <Col htmltype="button" span={10} style={{ marginTop: 10 }} offset={2}>
