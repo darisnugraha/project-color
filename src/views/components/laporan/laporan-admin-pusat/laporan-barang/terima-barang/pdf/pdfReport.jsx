@@ -244,7 +244,7 @@ const pdfReport = (data = "") => {
     jmlrusakAll = jmlrusakAll + parseFloat(element.stock_rusak);
     brtrusakAll = brtrusakAll + parseFloat(element.berat_rusak);
     brtspruAll = brtspruAll + parseFloat(element.berat_spru);
-    bubukAll = bubukAll + parseFloat(element.berat_spru);
+    bubukAll = bubukAll + parseFloat(element.bubuk);
   });
 
   const footer = [
