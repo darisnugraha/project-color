@@ -1,5 +1,5 @@
 import login from "./login";
-import laporanStockGlobalProduksi from "./laporanstockglobalproduksi";
+import laporanStockGlobalProduksi from "./stockglobalproduksi";
 import kirimsaldotahun from "./kirimsaldotahun";
 import stockadmin from "./stockadmin";
 import saldobahan from "./saldobahan";
@@ -29,6 +29,7 @@ import TerimaBatu from "./terimabatubydivisi";
 import Batu from "./batu";
 import TerimaSubDivisi from "./terimasubdivisi";
 import SaldoSubDivisi from "./saldosubdivisi";
+import TerimaGudangQC from "./terimagudangqc";
 
 const api = {
   login,
@@ -62,6 +63,7 @@ const api = {
   Batu,
   TerimaSubDivisi,
   SaldoSubDivisi,
+  TerimaGudangQC,
 };
 
 export default api;

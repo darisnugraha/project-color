@@ -65,22 +65,23 @@ const getAllLaporanSaldoSubDivisi =
           }
         }
       } else {
-        const tgl_dari = new Date(data.date[0]);
-        const tgl_dari_string = Moment.tz(tgl_dari, "Asia/Jakarta").format(
-          "YYYY-MM-DD"
-        );
-        const tgl_sampai = new Date(data.date[1]);
-        const tgl_sampai_string = Moment.tz(tgl_sampai, "Asia/Jakarta").format(
-          "YYYY-MM-DD"
-        );
-        data.tgl_dari = tgl_dari_string;
-        data.tgl_sampai = tgl_sampai_string;
-        writeLocal("saldo_sub_divisi_head", data);
-
-        if (data.bahan === undefined) {
+        if (data.bahan === undefined || data.date === null) {
           dispatch(setLoadingButton(false));
           sweetalert.default.Failed("Lengkapi Form Terlebih Dahulu !");
         } else {
+          const tgl_dari = new Date(data.date[0]);
+          const tgl_dari_string = Moment.tz(tgl_dari, "Asia/Jakarta").format(
+            "YYYY-MM-DD"
+          );
+          const tgl_sampai = new Date(data.date[1]);
+          const tgl_sampai_string = Moment.tz(
+            tgl_sampai,
+            "Asia/Jakarta"
+          ).format("YYYY-MM-DD");
+          data.tgl_dari = tgl_dari_string;
+          data.tgl_sampai = tgl_sampai_string;
+          writeLocal("saldo_sub_divisi_head", data);
+
           const response = await api.SaldoSubDivisi.getHarianSaldoSubDivisi({
             params: data,
           });

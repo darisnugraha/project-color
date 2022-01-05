@@ -26,21 +26,23 @@ const terimabahanproduksi =
       dispatch(setLoadingButton(true));
       dispatch(setDataTerimaBarangProduksiSuccess({ feedback: [] }));
       const data = getState().form.FormLaporanTerimaBarangProduksi.values;
-      const tgl_dari = new Date(data.date[0]);
-      const tgl_dari_string = Moment.tz(tgl_dari, "Asia/Jakarta").format(
-        "YYYY-MM-DD"
-      );
-      const tgl_sampai = new Date(data.date[1]);
-      const tgl_sampai_string = Moment.tz(tgl_sampai, "Asia/Jakarta").format(
-        "YYYY-MM-DD"
-      );
-      data.tgl_dari = tgl_dari_string;
-      data.tgl_sampai = tgl_sampai_string;
-      writeLocal("terima_barang_produksi_head", data);
-      if (data.kode_jenis_bahan === undefined) {
+
+      if (data.date === null || data.kode_jenis_bahan === undefined) {
         dispatch(setLoadingButton(false));
         sweetalert.default.Failed("Lengkapi Form Terlebih Dahulu !");
       } else {
+        const tgl_dari = new Date(data.date[0]);
+        const tgl_dari_string = Moment.tz(tgl_dari, "Asia/Jakarta").format(
+          "YYYY-MM-DD"
+        );
+        const tgl_sampai = new Date(data.date[1]);
+        const tgl_sampai_string = Moment.tz(tgl_sampai, "Asia/Jakarta").format(
+          "YYYY-MM-DD"
+        );
+        data.tgl_dari = tgl_dari_string;
+        data.tgl_sampai = tgl_sampai_string;
+        writeLocal("terima_barang_produksi_head", data);
+
         const response =
           await api.TerimaBarangProduksi.getAllTerimaBarangProduksi({
             params: data,

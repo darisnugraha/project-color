@@ -29,6 +29,7 @@ import TerimaBatuByDivisi from "../../views/pages/laporan-produksi/terima-batu-b
 import SampleTerimaBahan from "../../views/pages/laporan-produksi/sample-terima-bahan";
 import TerimaSubDivisi from "../../views/pages/laporan-produksi/terima-sub-divisi";
 import SaldoSubDivisi from "../../views/pages/laporan-produksi/saldo-sub-divisi";
+import TerimaGudanQC from "../../views/pages/gudan-qc/terima-gudang-qc";
 
 const routes = [
   // {
@@ -172,6 +173,11 @@ const routes = [
     path: "/laporan-produksi/saldo-sub-divisi",
     title: "Laporan Saldo Sub Divisi",
     component: () => <SaldoSubDivisi />,
+  },
+  {
+    path: "/laporan-gudang-qc/terima",
+    title: "Laporan Terima Gudang QC",
+    component: () => <TerimaGudanQC />,
   },
   {
     path: "/notfound",

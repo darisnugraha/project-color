@@ -1,0 +1,70 @@
+import React from "react";
+import { Table } from "antd";
+import "antd/dist/antd.css";
+import { useSelector } from "react-redux";
+import TerimaGudangQC from "../../../../../application/selectors/terimagudangqc";
+
+const TableLaporanTerimaGudangQC = () => {
+  const dataTerimaGudangQC = useSelector(TerimaGudangQC.getAllTerimaGudangQC);
+
+  const columns = [
+    {
+      title: "Tanggal",
+      dataIndex: "tanggal",
+      key: "tanggal",
+      align: "center",
+    },
+    {
+      title: "No Kirim",
+      dataIndex: "no_kirim",
+      key: "no_kirim",
+      align: "center",
+    },
+    {
+      title: "No Job Order",
+      dataIndex: "no_job_order",
+      key: "no_job_order",
+      align: "center",
+    },
+    {
+      title: "Nama Barang",
+      dataIndex: "nama_barang",
+      key: "nama_barang",
+      align: "center",
+    },
+    {
+      title: "Jenis Bahan",
+      dataIndex: "jenis_bahan",
+      key: "jenis_bahan",
+      align: "center",
+    },
+    {
+      title: "Jml Terima",
+      dataIndex: "jumlah_terima",
+      key: "jumlah_terima",
+      align: "center",
+    },
+    {
+      title: "Brt Terima",
+      dataIndex: "berat_terima",
+      key: "berat_terima",
+      align: "center",
+    },
+    {
+      title: "Design",
+      dataIndex: "design",
+      key: "design",
+      align: "center",
+    },
+  ];
+
+  return (
+    <Table
+      dataSource={dataTerimaGudangQC}
+      columns={columns}
+      scroll={{ x: 1500, y: 1000 }}
+    />
+  );
+};
+
+export default TableLaporanTerimaGudangQC;

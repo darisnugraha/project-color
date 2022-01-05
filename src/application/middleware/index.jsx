@@ -30,6 +30,7 @@ import terimabatubydivisi from "./terimabatubydivisi";
 import batu from "./batu";
 import terimasubdivisi from "./terimasubdivisi";
 import saldosubdivisi from "./saldosubdivisi";
+import terimagudangqc from "./terimagudangqc";
 
 const midd = [
   ...ui,
@@ -64,6 +65,7 @@ const midd = [
   ...batu,
   ...terimasubdivisi,
   ...saldosubdivisi,
+  ...terimagudangqc,
 ];
 
 export default midd;

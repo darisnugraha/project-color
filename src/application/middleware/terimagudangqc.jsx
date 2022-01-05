@@ -8,31 +8,32 @@
 // getState is FUNCTION for get current data in your state (reducer), just call getState().yourReducer.yourData
 
 import {
-  GET_ALL_MUTASI_OUTSTAND_BY_DIVISI,
-  setDataMutasiOutstandByDivisiSuccess,
-  setDataMutasiOutstandByDivisiFailed,
-  getDivisi,
-} from "../actions/mutasioutstand";
+  GET_ALL_TERIMA_GUDANG_QC,
+  setDataTerimaGudangQCSuccess,
+  setDataTerimaGudangQCFailed,
+} from "../actions/terimagudangqc";
 import { setLoadingButton } from "../actions/ui";
 import Moment from "moment";
 import * as sweetalert from "../../infrastructure/shared/sweetalert";
 
-const getAllDataMutasiOutstand =
+const getDataTerimaGudangQC =
   ({ api, log, writeLocal, getLocal, toast }) =>
   ({ dispatch, getState }) =>
   (next) =>
   async (action) => {
     next(action);
-    if (action.type === GET_ALL_MUTASI_OUTSTAND_BY_DIVISI) {
+    if (action.type === GET_ALL_TERIMA_GUDANG_QC) {
       dispatch(setLoadingButton(true));
-      dispatch(setDataMutasiOutstandByDivisiSuccess({ feedback: [] }));
-      const data = getState().form.FormLaporanMutasiOutstand.values;
-
-      if (data.bahan === undefined || data.date === null) {
+      dispatch(setDataTerimaGudangQCSuccess({ feedback: [] }));
+      const data = getState().form.FormLaporanTerimaGudangQC.values;
+      if (
+        data.kode_jenis_bahan === undefined ||
+        data.date === null ||
+        data.design === undefined
+      ) {
         dispatch(setLoadingButton(false));
         sweetalert.default.Failed("Lengkapi Form Terlebih Dahulu !");
       } else {
-        dispatch(getDivisi({ divisi: data.divisi }));
         const tgl_dari = new Date(data.date[0]);
         const tgl_dari_string = Moment.tz(tgl_dari, "Asia/Jakarta").format(
           "YYYY-MM-DD"
@@ -43,38 +44,33 @@ const getAllDataMutasiOutstand =
         );
         data.tgl_dari = tgl_dari_string;
         data.tgl_sampai = tgl_sampai_string;
-        writeLocal("mutasi_outstand_by_divisi_head", data);
+        writeLocal("terima_gudang_qc", data);
 
-        const response = await api.MutasiOutstand.getAllMutasiOutstand({
+        const response = await api.TerimaGudangQC.getAllTerimaGudangQC({
           params: data,
         });
-        log(response);
         if (response?.value !== null) {
           dispatch(setLoadingButton(false));
           if (response?.value.length === 0) {
             dispatch(setLoadingButton(false));
             sweetalert.default.Failed("Data Laporan Kosong !");
-            dispatch(setDataMutasiOutstandByDivisiSuccess({ feedback: [] }));
+            dispatch(setDataTerimaGudangQCSuccess({ feedback: [] }));
           } else {
             dispatch(setLoadingButton(false));
             sweetalert.default.Success("Berhasil Mengambil Data !");
             dispatch(
-              setDataMutasiOutstandByDivisiSuccess({
-                feedback: response?.value,
-              })
+              setDataTerimaGudangQCSuccess({ feedback: response?.value })
             );
           }
         } else {
           dispatch(setLoadingButton(false));
           sweetalert.default.Failed("Terjadi Kesalahan Saat Mengambil Data !");
-          dispatch(
-            setDataMutasiOutstandByDivisiFailed({ error: response.error })
-          );
+          dispatch(setDataTerimaGudangQCFailed({ error: response.error }));
         }
       }
     }
   };
 
-const data = [getAllDataMutasiOutstand];
+const data = [getDataTerimaGudangQC];
 
 export default data;

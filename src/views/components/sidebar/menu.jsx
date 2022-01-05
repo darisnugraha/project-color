@@ -129,6 +129,29 @@ const Menu = [
       },
     ],
   },
+  {
+    path: "/laporan-gudang-qc",
+    icon: "fa fa-book",
+    title: "Laporan Gudang QC",
+    children: [
+      {
+        path: "/laporan-gudang-qc/terima",
+        title: "Terima Gudang QC",
+      },
+      {
+        path: "/laporan-gudang-qc/kirim",
+        title: "Kirim Gudang QC",
+      },
+      {
+        path: "/laporan-gudang-qc/kirim-marketing",
+        title: "Kirim Marketing Gudang QC",
+      },
+      {
+        path: "/laporan-gudang-qc/mutasi-stock",
+        title: "Mutasi Stock Gudang QC",
+      },
+    ],
+  },
 ];
 
 export default Menu;

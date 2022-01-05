@@ -1,5 +1,5 @@
 import React from "react";
-import { connect, useDispatch, useSelector } from "react-redux";
+import { connect, useSelector } from "react-redux";
 import { Form, Button, Row, Col, Select } from "antd";
 import { Field, reduxForm } from "redux-form";
 import moment from "moment";
@@ -7,48 +7,40 @@ import styleAntd from "../../../../../infrastructure/shared/styleAntd";
 import ui from "../../../../../application/selectors/ui";
 import jenisbahan from "../../../../../application/selectors/jenisbahan";
 import design from "../../../../../application/selectors/design";
-import divisi from "../../../../../application/selectors/divisi";
 import "antd/dist/antd.css";
-import { getAllTerimaByDivisi } from "../../../../../application/actions/terimabydivisi";
+import { getAllTerimaGudangQC } from "../../../../../application/actions/terimagudangqc";
 
 const dateFormat = "DD/MM/YYYY";
 const today = new Date();
 const { Option } = Select;
 
 const maptostate = (state) => {
-  if (state.form.FormLaporanTerimaByDivisi?.values !== undefined) {
+  if (state.form.FormLaporanTerimaGudangQC?.values !== undefined) {
     return {
       initialValues: {
-        date: state.form.FormLaporanTerimaByDivisi.values.date,
-        divisi: state.form.FormLaporanTerimaByDivisi.values.divisi,
+        date: state.form.FormLaporanTerimaGudangQC.values.date,
         kode_jenis_bahan:
-          state.form.FormLaporanTerimaByDivisi.values.kode_jenis_bahan,
-        design: state.form.FormLaporanTerimaByDivisi.values.design,
-        no_job_order: state.form.FormLaporanTerimaByDivisi.values.no_job_order,
-        alloy: state.form.FormLaporanTerimaByDivisi.values.alloy,
+          state.form.FormLaporanTerimaGudangQC.values.kode_jenis_bahan,
+        design: state.form.FormLaporanTerimaGudangQC.values.design,
+        alloy: state.form.FormLaporanTerimaGudangQC.values.alloy,
       },
     };
   } else {
     return {
       initialValues: {
         date: [moment(today, dateFormat), moment(today, dateFormat)],
-        divisi: state.divisi.feedback[0]?.Divisi,
         kode_jenis_bahan: "SEMUA",
         design: "SEMUA",
-        no_job_order: undefined,
         alloy: false,
       },
     };
   }
 };
 
-let FormLaporanTerimaByDivisi = (prop) => {
-  // eslint-disable-next-line
-  const dispatch = useDispatch();
+let FormLaporanTerimaGudangQC = (prop) => {
   const btnLoading = useSelector(ui.getBtnLoading);
   const datajenisbahan = useSelector(jenisbahan.getAllJenisbahan);
   const datadesign = useSelector(design.getAllDesign);
-  const datadivisi = useSelector(divisi.getAllDivisi);
 
   return (
     <Form layout="vertical">
@@ -62,24 +54,6 @@ let FormLaporanTerimaByDivisi = (prop) => {
             className="form-item-group"
             onBlur={(e) => e.preventDefault()}
           />
-        </Col>
-        <Col offset={1}>
-          <Field
-            name="divisi"
-            label={<span style={{ fontSize: "13px" }}>Divisi</span>}
-            style={{ width: 250 }}
-            component={styleAntd.ASelect}
-            placeholder="Pilih Divisi"
-            onBlur={(e) => e.preventDefault()}
-          >
-            {datadivisi.map((item) => {
-              return (
-                <Option value={item.Divisi} key={item.Divisi}>
-                  <span style={{ fontSize: "13px" }}>{item.Divisi}</span>
-                </Option>
-              );
-            })}
-          </Field>
         </Col>
         <Col offset={1}>
           <Field
@@ -134,16 +108,6 @@ let FormLaporanTerimaByDivisi = (prop) => {
         </Col>
         <Col offset={1}>
           <Field
-            name="no_job_order"
-            type="text"
-            label={<span style={{ fontSize: "13px" }}>No Job Order</span>}
-            component={styleAntd.AInput}
-            className="form-item-group"
-            placeholder="Masukkan No Job Order"
-          />
-        </Col>
-        <Col offset={1}>
-          <Field
             label={<span style={{ fontSize: "13px" }}>Alloy</span>}
             name="alloy"
             id="alloy"
@@ -156,7 +120,7 @@ let FormLaporanTerimaByDivisi = (prop) => {
             type="primary"
             htmltype="button"
             loading={btnLoading}
-            onClick={() => prop.dispatch(getAllTerimaByDivisi)}
+            onClick={() => prop.dispatch(getAllTerimaGudangQC)}
             style={{ marginTop: 29 }}
           >
             Lihat Laporan
@@ -167,8 +131,8 @@ let FormLaporanTerimaByDivisi = (prop) => {
   );
 };
 
-FormLaporanTerimaByDivisi = reduxForm({
-  form: "FormLaporanTerimaByDivisi",
+FormLaporanTerimaGudangQC = reduxForm({
+  form: "FormLaporanTerimaGudangQC",
   enableReinitialize: true,
-})(FormLaporanTerimaByDivisi);
-export default connect(maptostate, null)(FormLaporanTerimaByDivisi);
+})(FormLaporanTerimaGudangQC);
+export default connect(maptostate, null)(FormLaporanTerimaGudangQC);
