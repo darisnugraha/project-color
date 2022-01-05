@@ -88,11 +88,15 @@ let FormLaporanMutasiSaldoByDivisi = (prop) => {
             }}
           >
             {datadivisi.map((item) => {
-              return (
-                <Option value={item.Divisi} key={item.Divisi}>
-                  <span style={{ fontSize: "13px" }}>{item.Divisi}</span>
-                </Option>
-              );
+              if (item.Divisi !== "AMPLAS") {
+                return (
+                  <Option value={item.Divisi} key={item.Divisi}>
+                    <span style={{ fontSize: "13px" }}>{item.Divisi}</span>
+                  </Option>
+                );
+              } else {
+                return false;
+              }
             })}
           </Field>
         </Col>
