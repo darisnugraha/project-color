@@ -30,6 +30,7 @@ import Batu from "./batu";
 import TerimaSubDivisi from "./terimasubdivisi";
 import SaldoSubDivisi from "./saldosubdivisi";
 import TerimaGudangQC from "./terimagudangqc";
+import KirimGudangQC from "./kirimgudangqc";
 
 const api = {
   login,
@@ -64,6 +65,7 @@ const api = {
   TerimaSubDivisi,
   SaldoSubDivisi,
   TerimaGudangQC,
+  KirimGudangQC,
 };
 
 export default api;

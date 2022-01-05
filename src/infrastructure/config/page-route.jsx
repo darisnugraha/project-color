@@ -30,6 +30,7 @@ import SampleTerimaBahan from "../../views/pages/laporan-produksi/sample-terima-
 import TerimaSubDivisi from "../../views/pages/laporan-produksi/terima-sub-divisi";
 import SaldoSubDivisi from "../../views/pages/laporan-produksi/saldo-sub-divisi";
 import TerimaGudanQC from "../../views/pages/gudan-qc/terima-gudang-qc";
+import KirimGudangQC from "../../views/pages/gudan-qc/kirim-gudang-qc";
 
 const routes = [
   // {
@@ -178,6 +179,11 @@ const routes = [
     path: "/laporan-gudang-qc/terima",
     title: "Laporan Terima Gudang QC",
     component: () => <TerimaGudanQC />,
+  },
+  {
+    path: "/laporan-gudang-qc/kirim",
+    title: "Laporan Kirim Gudang QC",
+    component: () => <KirimGudangQC />,
   },
   {
     path: "/notfound",

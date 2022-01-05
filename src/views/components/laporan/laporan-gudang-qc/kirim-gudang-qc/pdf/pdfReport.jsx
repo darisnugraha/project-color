@@ -10,13 +10,13 @@ const pdfReport = (data = "") => {
   let tableColumn = [];
 
   let finalY = 30;
-  doc.text(`Laporan TERIMA GUDANG QC`, 14, 15);
+  doc.text(`Laporan KIRIM GUDANG QC`, 14, 15);
   doc.setFontSize(20);
   doc.text("AMG", 200, 15);
 
   doc.setFontSize(10);
   doc.setProperties({
-    title: "TERIMA GUDANG QC",
+    title: "KIRIM GUDANG QC",
   });
   doc.text(`PERIODE : ${tgl_dari_string} s/d ${tgl_sampai_string}`, 14, 25);
 
@@ -55,7 +55,7 @@ const pdfReport = (data = "") => {
     }, {});
   };
 
-  const dataGroup = groupBy(data, "no_kirim");
+  const dataGroup = groupBy(data, "kode_jenis");
   const dataGroupArr = Object.values(dataGroup);
 
   dataGroupArr.forEach((element) => {
@@ -64,7 +64,7 @@ const pdfReport = (data = "") => {
 
     const rowKirim = [
       {
-        content: "No Kirim : " + element[0].no_kirim,
+        content: "Kode Jenis : " + element[0].kode_jenis,
         styles: {
           halign: "left",
           fillColor: "#bbbbbb",
@@ -82,8 +82,8 @@ const pdfReport = (data = "") => {
     ];
     tableRows.push(rowKirim);
     element.forEach((item) => {
-      jmlterima = jmlterima + parseFloat(item.jumlah_terima);
-      brtterima = brtterima + parseFloat(item.berat_terima);
+      jmlterima = jmlterima + parseFloat(item.jumlah_kirim);
+      brtterima = brtterima + parseFloat(item.berat_kirim);
 
       const row = [
         {
@@ -111,10 +111,10 @@ const pdfReport = (data = "") => {
           },
         },
         {
-          content: item.jumlah_terima,
+          content: item.jumlah_kirim,
         },
         {
-          content: item.berat_terima,
+          content: item.berat_kirim,
         },
         {
           content: item.design,
@@ -160,8 +160,8 @@ const pdfReport = (data = "") => {
   let brtterimaAll = 0;
 
   data.forEach((element) => {
-    jmlterimaAll = jmlterimaAll + parseFloat(element.jumlah_terima);
-    brtterimaAll = brtterimaAll + parseFloat(element.berat_terima);
+    jmlterimaAll = jmlterimaAll + parseFloat(element.jumlah_kirim);
+    brtterimaAll = brtterimaAll + parseFloat(element.berat_kirim);
   });
 
   const footer = [
@@ -233,7 +233,7 @@ const pdfReport = (data = "") => {
   x.document.write(
     `<html>
     <head>
-    <title>TERIMA GUDANG QC</title>
+    <title>KIRIM GUDANG QC</title>
     </head>
     <body style='margin:0 !important'>
     <embed width='100%' height='100%'src='${string}'></embed>
