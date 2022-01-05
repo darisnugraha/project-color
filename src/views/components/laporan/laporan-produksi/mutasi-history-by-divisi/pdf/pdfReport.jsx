@@ -320,7 +320,8 @@ const pdfReport = (data = "") => {
     });
   } else if (
     data_head.divisi === "FR EPOXY" ||
-    data_head.divisi === "AMPLAS EPOXY"
+    data_head.divisi === "AMPLAS EPOXY" ||
+    data_head.divisi === "SAMPLE"
   ) {
     tableColumn = [
       [

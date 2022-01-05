@@ -490,7 +490,8 @@ class ExcelReport extends Component {
       );
     } else if (
       this.props.dataHead?.divisi === "FR EPOXY" ||
-      this.props.dataHead?.divisi === "AMPLAS EPOXY"
+      this.props.dataHead?.divisi === "AMPLAS EPOXY" ||
+      this.props.dataHead?.divisi === "SAMPLE"
     ) {
       return (
         <>
