@@ -33,6 +33,7 @@ import saldosubdivisi from "./saldosubdivisi";
 import terimagudangqc from "./terimagudangqc";
 import kirimgudangqc from "./kirimgudangqc";
 import kirimmarketinggudangqc from "./kirimmarketinggudangqc";
+import mutasistockgudangqc from "./mutasistockgudangqc";
 
 const midd = [
   ...ui,
@@ -70,6 +71,7 @@ const midd = [
   ...terimagudangqc,
   ...kirimgudangqc,
   ...kirimmarketinggudangqc,
+  ...mutasistockgudangqc,
 ];
 
 export default midd;

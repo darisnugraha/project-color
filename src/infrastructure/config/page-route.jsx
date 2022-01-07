@@ -32,6 +32,7 @@ import SaldoSubDivisi from "../../views/pages/laporan-produksi/saldo-sub-divisi"
 import TerimaGudanQC from "../../views/pages/gudang-qc/terima-gudang-qc";
 import KirimGudangQC from "../../views/pages/gudang-qc/kirim-gudang-qc";
 import KirimMarketingGudangQC from "../../views/pages/gudang-qc/kirim-marketing-gudang-qc";
+import MutasiStockGudangQC from "../../views/pages/gudang-qc/mutasi-stock-gudang-qc";
 
 const routes = [
   // {
@@ -190,6 +191,11 @@ const routes = [
     path: "/laporan-gudang-qc/kirim-marketing",
     title: "Laporan Kirim Marketing Gudang QC",
     component: () => <KirimMarketingGudangQC />,
+  },
+  {
+    path: "/laporan-gudang-qc/mutasi-stock",
+    title: "Laporan Mutasi Stock Gudang QC",
+    component: () => <MutasiStockGudangQC />,
   },
   {
     path: "/notfound",
