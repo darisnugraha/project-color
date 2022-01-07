@@ -29,8 +29,9 @@ import TerimaBatuByDivisi from "../../views/pages/laporan-produksi/terima-batu-b
 import SampleTerimaBahan from "../../views/pages/laporan-produksi/sample-terima-bahan";
 import TerimaSubDivisi from "../../views/pages/laporan-produksi/terima-sub-divisi";
 import SaldoSubDivisi from "../../views/pages/laporan-produksi/saldo-sub-divisi";
-import TerimaGudanQC from "../../views/pages/gudan-qc/terima-gudang-qc";
-import KirimGudangQC from "../../views/pages/gudan-qc/kirim-gudang-qc";
+import TerimaGudanQC from "../../views/pages/gudang-qc/terima-gudang-qc";
+import KirimGudangQC from "../../views/pages/gudang-qc/kirim-gudang-qc";
+import KirimMarketingGudangQC from "../../views/pages/gudang-qc/kirim-marketing-gudang-qc";
 
 const routes = [
   // {
@@ -184,6 +185,11 @@ const routes = [
     path: "/laporan-gudang-qc/kirim",
     title: "Laporan Kirim Gudang QC",
     component: () => <KirimGudangQC />,
+  },
+  {
+    path: "/laporan-gudang-qc/kirim-marketing",
+    title: "Laporan Kirim Marketing Gudang QC",
+    component: () => <KirimMarketingGudangQC />,
   },
   {
     path: "/notfound",

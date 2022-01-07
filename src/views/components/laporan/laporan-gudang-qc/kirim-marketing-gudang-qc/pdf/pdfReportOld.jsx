@@ -2,7 +2,8 @@ import { jsPDF } from "jspdf";
 import "jspdf-autotable";
 
 const pdfReport = (data = "") => {
-  let data_head = JSON.parse(localStorage.getItem("kirim_gudang_qc")) || [];
+  let data_head =
+    JSON.parse(localStorage.getItem("kirim_marketing_gudang_qc")) || [];
   let tgl_dari_string = data_head.tgl_dari;
   let tgl_sampai_string = data_head.tgl_sampai;
   const doc = new jsPDF("l", "mm", [297, 210]);
@@ -55,7 +56,7 @@ const pdfReport = (data = "") => {
     }, {});
   };
 
-  const dataGroup = groupBy(data, "kode_jenis");
+  const dataGroup = groupBy(data, "no_kirim");
   const dataGroupArr = Object.values(dataGroup);
 
   dataGroupArr.forEach((element) => {
@@ -64,7 +65,7 @@ const pdfReport = (data = "") => {
 
     const rowKirim = [
       {
-        content: "Kode Jenis : " + element[0].kode_jenis,
+        content: "No Kirim : " + element[0].no_kirim,
         styles: {
           halign: "left",
           fillColor: "#bbbbbb",

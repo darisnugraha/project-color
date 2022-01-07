@@ -34,6 +34,7 @@ import terimasubdivisi from "./terimasubdivisi";
 import saldosubdivisi from "./saldosubdivisi";
 import terimagudangqc from "./terimagudangqc";
 import kirimgudangqc from "./kirimgudangqc";
+import kirimmarketinggudangqc from "./kirimmarketinggudangqc";
 
 export default combineReducers({
   login,
@@ -70,5 +71,6 @@ export default combineReducers({
   saldosubdivisi,
   terimagudangqc,
   kirimgudangqc,
+  kirimmarketinggudangqc,
   form: formReducer,
 });

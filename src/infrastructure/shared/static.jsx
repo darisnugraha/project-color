@@ -31,6 +31,7 @@ const URL_GET_ALL_TERIMA_SUB_DIVISI = `${baseurl}/produksi/report/terima-sub-div
 const URL_GET_ALL_SALDO_SUB_DIVISI = `${baseurl}/produksi/report/saldo-sub-divisi?`;
 const URL_GET_ALL_TERIMA_GUDANG_QC = `${baseurl}/gudangqc/report/terima-qc?`;
 const URL_GET_ALL_KIRIM_GUDANG_QC = `${baseurl}/gudangqc/report/kirim-qc?`;
+const URL_GET_ALL_KIRIM_MARKETING_GUDANG_QC = `${baseurl}/gudangqc/report/qc-kirim-marketing?`;
 
 const data = {
   URL_LOGIN,
@@ -64,6 +65,7 @@ const data = {
   URL_GET_ALL_SALDO_SUB_DIVISI,
   URL_GET_ALL_TERIMA_GUDANG_QC,
   URL_GET_ALL_KIRIM_GUDANG_QC,
+  URL_GET_ALL_KIRIM_MARKETING_GUDANG_QC,
 };
 
 export default data;

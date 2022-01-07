@@ -2,7 +2,8 @@ import { jsPDF } from "jspdf";
 import "jspdf-autotable";
 
 const pdfReport = (data = "") => {
-  let data_head = JSON.parse(localStorage.getItem("kirim_gudang_qc")) || [];
+  let data_head =
+    JSON.parse(localStorage.getItem("kirim_marketing_gudang_qc")) || [];
   let tgl_dari_string = data_head.tgl_dari;
   let tgl_sampai_string = data_head.tgl_sampai;
   const doc = new jsPDF("l", "mm", [297, 210]);

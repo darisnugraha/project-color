@@ -31,6 +31,7 @@ import TerimaSubDivisi from "./terimasubdivisi";
 import SaldoSubDivisi from "./saldosubdivisi";
 import TerimaGudangQC from "./terimagudangqc";
 import KirimGudangQC from "./kirimgudangqc";
+import KirimMarketingGudangQC from "./kirimmarketinggudangqc";
 
 const api = {
   login,
@@ -66,6 +67,7 @@ const api = {
   SaldoSubDivisi,
   TerimaGudangQC,
   KirimGudangQC,
+  KirimMarketingGudangQC,
 };
 
 export default api;
