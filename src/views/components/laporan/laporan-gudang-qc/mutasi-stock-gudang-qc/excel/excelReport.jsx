@@ -16,6 +16,49 @@ class ExcelReport extends Component {
     });
   }
   render() {
+    const berat_in = this.props.dataExel.reduce(
+      (a, b) => a + parseFloat(b.berat_terima),
+      0
+    );
+    const berat_rusak = this.props.dataExel.reduce(
+      (a, b) => a + parseFloat(b.berat_rusak),
+      0
+    );
+    const berat_spru = this.props.dataExel.reduce(
+      (a, b) => a + parseFloat(b.spru),
+      0
+    );
+    const berat_bubuk = this.props.dataExel.reduce(
+      (a, b) => a + parseFloat(b.bubuk),
+      0
+    );
+    const berat_sisa = this.props.dataExel.reduce(
+      (a, b) => a + parseFloat(b.berat_sisa),
+      0
+    );
+    const batu_sisa = this.props.dataExel.reduce(
+      (a, b) => a + parseFloat(b.batu_sisa),
+      0
+    );
+    const batu_rusak = this.props.dataExel.reduce(
+      (a, b) => a + parseFloat(b.batu_rusak),
+      0
+    );
+    const berat_out = this.props.dataExel.reduce(
+      (a, b) => a + parseFloat(b.berat_kirim),
+      0
+    );
+
+    const saldo =
+      berat_in +
+      berat_rusak +
+      berat_spru +
+      berat_bubuk +
+      berat_sisa +
+      batu_sisa +
+      batu_rusak -
+      berat_out;
+
     return (
       <>
         <ReactHTMLTableToExcel
@@ -267,9 +310,11 @@ class ExcelReport extends Component {
           </tbody>
           <tfoot>
             <tr>
-              <td colSpan={6} style={{ textAlign: "right" }}>
-                Total :
+              <td style={{ textAlign: "right" }}>Saldo :</td>
+              <td colSpan={5} style={{ textAlign: "left" }}>
+                {saldo.toFixed(3)}
               </td>
+              <td style={{ textAlign: "right" }}>Total :</td>
               <td style={{ textAlign: "right" }}>
                 {this.props.dataExel.reduce(
                   (a, b) => a + parseFloat(b.jumlah_terima),

@@ -178,10 +178,41 @@ const pdfReport = (data = "") => {
     tableRows.push(row);
   });
 
+  const berat_in = data.reduce((a, b) => a + parseFloat(b.berat_terima), 0);
+  const berat_rusak = data.reduce((a, b) => a + parseFloat(b.berat_rusak), 0);
+  const berat_spru = data.reduce((a, b) => a + parseFloat(b.spru), 0);
+  const berat_bubuk = data.reduce((a, b) => a + parseFloat(b.bubuk), 0);
+  const berat_sisa = data.reduce((a, b) => a + parseFloat(b.berat_sisa), 0);
+  const batu_sisa = data.reduce((a, b) => a + parseFloat(b.batu_sisa), 0);
+  const batu_rusak = data.reduce((a, b) => a + parseFloat(b.batu_rusak), 0);
+  const berat_out = data.reduce((a, b) => a + parseFloat(b.berat_kirim), 0);
+
+  const saldo =
+   ( berat_in +
+    berat_rusak +
+    berat_spru +
+    berat_bubuk +
+    berat_sisa +
+    batu_sisa +
+    batu_rusak) -
+    berat_out;
+
   const footer = [
     {
+      content: "Saldo : ",
+      styles: {
+        halign: "right",
+      },
+    },
+    {
+      content: saldo.toFixed(3),
+      colSpan: 5,
+      styles: {
+        halign: "left",
+      },
+    },
+    {
       content: "Total : ",
-      colSpan: 6,
       styles: {
         halign: "right",
       },

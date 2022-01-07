@@ -24,15 +24,15 @@ const URL_GET_ALL_MUTASI_SALDO_BY_DIVISI = `${baseurl}produksi/report/mutasi-sal
 const URL_GET_ALL_MUTASI_OUTSTAND_BY_DIVISI = `${baseurl}produksi/report/mutasi-outstand-by-divisi?`;
 const URL_GET_ALL_MUTASI_HISTORY_BY_DIVISI = `${baseurl}produksi/report/mutasi-history-by-divisi?`;
 const URL_GET_ALL_ANALYSIS_STOCK_BY_DIVISI = `${baseurl}produksi/report/analysis-stock-by-divisi?`;
-const URL_GET_ALL_SAMPLE_TERIMA_BAHAN = `${baseurl}/produksi/report/sample-terima-bahan?`;
-const URL_GET_ALL_TERIMA_BATU_BY_DIVISI = `${baseurl}/produksi/report/etc-terima-batu?`;
-const URL_GET_ALL_BATU = `${baseurl}/produksi/report/get-kode-batu`;
-const URL_GET_ALL_TERIMA_SUB_DIVISI = `${baseurl}/produksi/report/terima-sub-divisi?`;
-const URL_GET_ALL_SALDO_SUB_DIVISI = `${baseurl}/produksi/report/saldo-sub-divisi?`;
-const URL_GET_ALL_TERIMA_GUDANG_QC = `${baseurl}/gudangqc/report/terima-qc?`;
-const URL_GET_ALL_KIRIM_GUDANG_QC = `${baseurl}/gudangqc/report/kirim-qc?`;
-const URL_GET_ALL_KIRIM_MARKETING_GUDANG_QC = `${baseurl}/gudangqc/report/qc-kirim-marketing?`;
-const URL_GET_ALL_MUTASI_STOCK_GUDANG_QC = `${baseurl}/gudangqc/report/mutasi-stock-qc?`;
+const URL_GET_ALL_SAMPLE_TERIMA_BAHAN = `${baseurl}produksi/report/sample-terima-bahan?`;
+const URL_GET_ALL_TERIMA_BATU_BY_DIVISI = `${baseurl}produksi/report/etc-terima-batu?`;
+const URL_GET_ALL_BATU = `${baseurl}produksi/report/get-kode-batu`;
+const URL_GET_ALL_TERIMA_SUB_DIVISI = `${baseurl}produksi/report/terima-sub-divisi?`;
+const URL_GET_ALL_SALDO_SUB_DIVISI = `${baseurl}produksi/report/saldo-sub-divisi?`;
+const URL_GET_ALL_TERIMA_GUDANG_QC = `${baseurl}gudangqc/report/terima-qc?`;
+const URL_GET_ALL_KIRIM_GUDANG_QC = `${baseurl}gudangqc/report/kirim-qc?`;
+const URL_GET_ALL_KIRIM_MARKETING_GUDANG_QC = `${baseurl}gudangqc/report/qc-kirim-marketing?`;
+const URL_GET_ALL_MUTASI_STOCK_GUDANG_QC = `${baseurl}gudangqc/report/mutasi-stock-qc?`;
 
 const data = {
   URL_LOGIN,
