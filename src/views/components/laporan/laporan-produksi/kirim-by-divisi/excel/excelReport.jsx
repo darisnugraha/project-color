@@ -4,14 +4,14 @@ import ReactHTMLTableToExcel from "react-html-table-to-excel";
 class ExcelReport extends Component {
   constructor(props) {
     super(props);
-    this.state = { tgl_dari_string: "", tgl_sampai_string: "", divisi: "" };
+    this.state = { tgl_dari: "", tgl_sampai: "", divisi: "" };
   }
 
   componentDidMount() {
     let data = JSON.parse(localStorage.getItem("kirim_by_divisi_head")) || [];
     this.setState({
-      tgl_dari_string: data.tgl_dari,
-      tgl_sampai_string: data.tgl_sampai,
+      tgl_dari: data.tgl_dari,
+      tgl_sampai: data.tgl_sampai,
       divisi: data.divisi,
     });
   }
@@ -310,9 +310,9 @@ class ExcelReport extends Component {
                 <th colSpan="10">
                   {" "}
                   Tanggal :{" "}
-                  {this.props.dataHead.tgl_dari_string +
+                  {this.props.dataHead.tgl_dari +
                     " s/d " +
-                    this.props.dataHead.tgl_sampai_string}{" "}
+                    this.props.dataHead.tgl_sampai}{" "}
                 </th>
               </tr>
               <tr>
@@ -706,9 +706,9 @@ class ExcelReport extends Component {
                 <th colSpan="10">
                   {" "}
                   Tanggal :{" "}
-                  {this.props.dataHead.tgl_dari_string +
+                  {this.props.dataHead.tgl_dari +
                     " s/d " +
-                    this.props.dataHead.tgl_sampai_string}{" "}
+                    this.props.dataHead.tgl_sampai}{" "}
                 </th>
               </tr>
               <tr>
@@ -1131,9 +1131,9 @@ class ExcelReport extends Component {
                 <th colSpan="10">
                   {" "}
                   Tanggal :{" "}
-                  {this.props.dataHead.tgl_dari_string +
+                  {this.props.dataHead.tgl_dari +
                     " s/d " +
-                    this.props.dataHead.tgl_sampai_string}{" "}
+                    this.props.dataHead.tgl_sampai}{" "}
                 </th>
               </tr>
               <tr>
@@ -1145,6 +1145,15 @@ class ExcelReport extends Component {
                   }}
                 >
                   TANGGAL
+                </td>
+                <td
+                  style={{
+                    backgroundColor: "#99CCFF",
+                    color: "#000",
+                    textAlign: "center",
+                  }}
+                >
+                  NO KIRIM
                 </td>
                 <td
                   style={{
@@ -1225,6 +1234,15 @@ class ExcelReport extends Component {
                     textAlign: "center",
                   }}
                 >
+                  BUBUK
+                </td>
+                <td
+                  style={{
+                    backgroundColor: "#99CCFF",
+                    color: "#000",
+                    textAlign: "center",
+                  }}
+                >
                   SUSUT
                 </td>
                 <td
@@ -1244,13 +1262,14 @@ class ExcelReport extends Component {
                 let brtkirim = 0;
                 let jmlrusak = 0;
                 let brtrusak = 0;
+                let bubuk = 0;
                 let susut = 0;
 
                 return (
                   <>
                     <tr>
                       <td
-                        colSpan="5"
+                        colSpan="7"
                         style={{
                           backgroundColor: "#bbbbbb",
                           textAlign: "left",
@@ -1273,11 +1292,13 @@ class ExcelReport extends Component {
                       brtkirim = brtkirim + parseFloat(item.berat_out);
                       jmlrusak = jmlrusak + parseFloat(item.stock_rusak);
                       brtrusak = brtrusak + parseFloat(item.berat_rusak);
+                      bubuk = bubuk + parseFloat(item.bubuk);
                       susut = susut + parseFloat(item.susut);
 
                       return (
                         <tr>
                           <td>{item.tgl_kirim}</td>
+                          <td>{item.no_kirim}</td>
                           <td>{item.no_job_order}</td>
                           <td>{item.kode_barang}</td>
                           <td>{item.nama_barang}</td>
@@ -1315,6 +1336,13 @@ class ExcelReport extends Component {
                               textAlign: "right",
                             }}
                           >
+                            {item.bubuk}
+                          </td>
+                          <td
+                            style={{
+                              textAlign: "right",
+                            }}
+                          >
                             {item.susut}
                           </td>
                           <td>{item.design}</td>
@@ -1323,7 +1351,7 @@ class ExcelReport extends Component {
                     })}
                     <tr>
                       <td
-                        colSpan="5"
+                        colSpan="6"
                         style={{
                           backgroundColor: "#dddddd",
                           textAlign: "right",
@@ -1369,6 +1397,14 @@ class ExcelReport extends Component {
                           textAlign: "right",
                         }}
                       >
+                        {bubuk.toFixed(3)}
+                      </td>
+                      <td
+                        style={{
+                          backgroundColor: "#dddddd",
+                          textAlign: "right",
+                        }}
+                      >
                         {susut.toFixed(3)}
                       </td>
                       <td
@@ -1387,7 +1423,7 @@ class ExcelReport extends Component {
             <tfoot>
               <tr>
                 <td
-                  colSpan="5"
+                  colSpan="6"
                   style={{
                     textAlign: "right",
                   }}
@@ -1421,6 +1457,13 @@ class ExcelReport extends Component {
                   }}
                 >
                   {brtrusakAll.toFixed(3)}
+                </td>
+                <td
+                  style={{
+                    textAlign: "right",
+                  }}
+                >
+                  {bubukAll.toFixed(3)}
                 </td>
                 <td
                   style={{

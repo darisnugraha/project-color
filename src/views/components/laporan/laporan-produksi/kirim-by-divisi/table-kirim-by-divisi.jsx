@@ -74,6 +74,12 @@ const TabelLaporanKirimByDivisi = () => {
       align: "center",
     },
     {
+      title: "Bubuk",
+      dataIndex: "bubuk",
+      key: "bubuk",
+      align: "center",
+    },
+    {
       title: "Susut",
       dataIndex: "susut",
       key: "susut",

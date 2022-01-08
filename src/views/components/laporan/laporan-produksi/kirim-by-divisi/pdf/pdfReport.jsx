@@ -812,6 +812,9 @@ const pdfReport = (data = "") => {
           content: `BRT RUSAK`,
         },
         {
+          content: `BUBUK`,
+        },
+        {
           content: `SUSUT`,
         },
         {
@@ -837,6 +840,7 @@ const pdfReport = (data = "") => {
       let brtkirim = 0;
       let jmlrusak = 0;
       let brtrusak = 0;
+      let bubuk = 0;
       let susut = 0;
 
       const rowKirim = [
@@ -846,7 +850,7 @@ const pdfReport = (data = "") => {
             halign: "left",
             fillColor: "#bbbbbb",
           },
-          colSpan: 6,
+          colSpan: 7,
         },
         {
           content: "",
@@ -863,6 +867,7 @@ const pdfReport = (data = "") => {
         brtkirim = brtkirim + parseFloat(item.berat_out);
         jmlrusak = jmlrusak + parseFloat(item.stock_rusak);
         brtrusak = brtrusak + parseFloat(item.berat_rusak);
+        bubuk = bubuk + parseFloat(item.bubuk);
         susut = susut + parseFloat(item.susut);
 
         const row = [
@@ -915,10 +920,16 @@ const pdfReport = (data = "") => {
             content: item.berat_rusak,
           },
           {
+            content: item.bubuk,
+          },
+          {
             content: item.susut,
           },
           {
             content: item.design,
+            styles: {
+              halign: "center",
+            },
           },
         ];
         tableRows.push(row);
@@ -961,6 +972,13 @@ const pdfReport = (data = "") => {
           },
         },
         {
+          content: bubuk.toFixed(3),
+          styles: {
+            halign: "right",
+            fillColor: "#dddddd",
+          },
+        },
+        {
           content: susut.toFixed(3),
           styles: {
             halign: "right",
@@ -982,6 +1000,7 @@ const pdfReport = (data = "") => {
     let brtkirimAll = 0;
     let jmlrusakAll = 0;
     let brtrusakAll = 0;
+    let bubukAll = 0;
     let susutAll = 0;
 
     data.forEach((element) => {
@@ -989,6 +1008,7 @@ const pdfReport = (data = "") => {
       brtkirimAll = brtkirimAll + parseFloat(element.berat_out);
       jmlrusakAll = jmlrusakAll + parseFloat(element.stock_rusak);
       brtrusakAll = brtrusakAll + parseFloat(element.berat_rusak);
+      bubukAll = bubukAll + parseFloat(element.bubuk);
       susutAll = susutAll + parseFloat(element.susut);
     });
 
@@ -1008,6 +1028,9 @@ const pdfReport = (data = "") => {
       },
       {
         content: brtrusakAll.toFixed(3),
+      },
+      {
+        content: bubukAll.toFixed(3),
       },
       {
         content: susutAll.toFixed(3),
