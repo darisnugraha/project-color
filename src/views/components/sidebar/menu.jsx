@@ -152,6 +152,17 @@ const Menu = [
       },
     ],
   },
+  {
+    path: "/laporan-marketing",
+    icon: "fa fa-book",
+    title: "Laporan Marketing",
+    children: [
+      {
+        path: "/laporan-marketing/input-draft-po",
+        title: "Input Draft PO",
+      },
+    ],
+  },
 ];
 
 export default Menu;

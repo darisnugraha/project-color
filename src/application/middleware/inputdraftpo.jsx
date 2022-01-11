@@ -8,31 +8,33 @@
 // getState is FUNCTION for get current data in your state (reducer), just call getState().yourReducer.yourData
 
 import {
-  GET_ALL_MUTASI_OUTSTAND_BY_DIVISI,
-  setDataMutasiOutstandByDivisiSuccess,
-  setDataMutasiOutstandByDivisiFailed,
-  getDivisi,
-} from "../actions/mutasioutstand";
+  GET_ALL_INPUT_DRAFT_PO,
+  setDataInputDraftPOSuccess,
+  setDataInputDraftPOFailed,
+} from "../actions/inputdraftpo";
 import { setLoadingButton } from "../actions/ui";
 import Moment from "moment";
 import * as sweetalert from "../../infrastructure/shared/sweetalert";
 
-const getAllDataMutasiOutstand =
+const getDataInputDraftPO =
   ({ api, log, writeLocal, getLocal, toast }) =>
   ({ dispatch, getState }) =>
   (next) =>
   async (action) => {
     next(action);
-    if (action.type === GET_ALL_MUTASI_OUTSTAND_BY_DIVISI) {
+    if (action.type === GET_ALL_INPUT_DRAFT_PO) {
       dispatch(setLoadingButton(true));
-      dispatch(setDataMutasiOutstandByDivisiSuccess({ feedback: [] }));
-      const data = getState().form.FormLaporanMutasiOutstand.values;
-
-      if (data.bahan === undefined || data.date === null) {
+      dispatch(setDataInputDraftPOSuccess([]));
+      const data = getState().form.FormGetNoPO.values;
+      const dataPO = getState().form.FormLaporanInputDraftPO.values;
+      if (
+        data.date === null ||
+        data.customer === undefined ||
+        dataPO.no_po === undefined
+      ) {
         dispatch(setLoadingButton(false));
         sweetalert.default.Failed("Lengkapi Form Terlebih Dahulu !");
       } else {
-        dispatch(getDivisi({ divisi: data.divisi }));
         const tgl_dari = new Date(data.date[0]);
         const tgl_dari_string = Moment.tz(tgl_dari, "Asia/Jakarta").format(
           "YYYY-MM-DD"
@@ -43,37 +45,37 @@ const getAllDataMutasiOutstand =
         );
         data.tgl_dari = tgl_dari_string;
         data.tgl_sampai = tgl_sampai_string;
-        writeLocal("mutasi_outstand_by_divisi_head", data);
+        const dataKirim = {
+          tgl_dari: data.tgl_dari,
+          tgl_sampai: data.tgl_sampai,
+          customer: data.customer,
+          no_po: dataPO.no_po,
+          validasi: dataPO.validasi,
+          type: dataPO.type,
+        };
+        writeLocal("input_draft_po", dataKirim);
 
-        const response = await api.MutasiOutstand.getAllMutasiOutstand({
-          params: data,
-        });
+        const response = await api.InputDraftPO.getAllInputDraftPO(dataKirim);
         if (response?.value !== null) {
           dispatch(setLoadingButton(false));
           if (response?.value.length === 0) {
             dispatch(setLoadingButton(false));
             sweetalert.default.Failed("Data Laporan Kosong !");
-            dispatch(setDataMutasiOutstandByDivisiSuccess({ feedback: [] }));
+            dispatch(setDataInputDraftPOSuccess([]));
           } else {
             dispatch(setLoadingButton(false));
             sweetalert.default.Success("Berhasil Mengambil Data !");
-            dispatch(
-              setDataMutasiOutstandByDivisiSuccess({
-                feedback: response?.value,
-              })
-            );
+            dispatch(setDataInputDraftPOSuccess(response?.value));
           }
         } else {
           dispatch(setLoadingButton(false));
           sweetalert.default.Failed("Terjadi Kesalahan Saat Mengambil Data !");
-          dispatch(
-            setDataMutasiOutstandByDivisiFailed({ error: response.error })
-          );
+          dispatch(setDataInputDraftPOFailed(response.error));
         }
       }
     }
   };
 
-const data = [getAllDataMutasiOutstand];
+const data = [getDataInputDraftPO];
 
 export default data;

@@ -36,6 +36,9 @@ import terimagudangqc from "./terimagudangqc";
 import kirimgudangqc from "./kirimgudangqc";
 import kirimmarketinggudangqc from "./kirimmarketinggudangqc";
 import mutasistockgudangqc from "./mutasistockgudangqc";
+import customer from "./customer";
+import nopo from "./nopo";
+import inputdraftpo from "./inputdraftpo";
 
 export default combineReducers({
   login,
@@ -74,5 +77,8 @@ export default combineReducers({
   kirimgudangqc,
   kirimmarketinggudangqc,
   mutasistockgudangqc,
+  customer,
+  nopo,
+  inputdraftpo,
   form: formReducer,
 });

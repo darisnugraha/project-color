@@ -34,6 +34,9 @@ import terimagudangqc from "./terimagudangqc";
 import kirimgudangqc from "./kirimgudangqc";
 import kirimmarketinggudangqc from "./kirimmarketinggudangqc";
 import mutasistockgudangqc from "./mutasistockgudangqc";
+import customer from "./customer";
+import nopo from "./nopo";
+import inputdrafpo from "./inputdraftpo";
 
 const midd = [
   ...ui,
@@ -72,6 +75,9 @@ const midd = [
   ...kirimgudangqc,
   ...kirimmarketinggudangqc,
   ...mutasistockgudangqc,
+  ...customer,
+  ...nopo,
+  ...inputdrafpo,
 ];
 
 export default midd;

@@ -33,6 +33,9 @@ const URL_GET_ALL_TERIMA_GUDANG_QC = `${baseurl}gudangqc/report/terima-qc?`;
 const URL_GET_ALL_KIRIM_GUDANG_QC = `${baseurl}gudangqc/report/kirim-qc?`;
 const URL_GET_ALL_KIRIM_MARKETING_GUDANG_QC = `${baseurl}gudangqc/report/qc-kirim-marketing?`;
 const URL_GET_ALL_MUTASI_STOCK_GUDANG_QC = `${baseurl}gudangqc/report/mutasi-stock-qc?`;
+const URL_GET_ALL_CUSTOMER = `${baseurl}report/get-customer`;
+const URL_GET_ALL_NO_PO = `${baseurl}report/get-no-po?`;
+const URL_GET_ALL_INPUT_DRAFT_PO = `${baseurl}/marketing/report/input-draft-po?`;
 
 const data = {
   URL_LOGIN,
@@ -68,6 +71,9 @@ const data = {
   URL_GET_ALL_KIRIM_GUDANG_QC,
   URL_GET_ALL_KIRIM_MARKETING_GUDANG_QC,
   URL_GET_ALL_MUTASI_STOCK_GUDANG_QC,
+  URL_GET_ALL_CUSTOMER,
+  URL_GET_ALL_NO_PO,
+  URL_GET_ALL_INPUT_DRAFT_PO,
 };
 
 export default data;

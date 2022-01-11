@@ -33,6 +33,9 @@ import TerimaGudangQC from "./terimagudangqc";
 import KirimGudangQC from "./kirimgudangqc";
 import KirimMarketingGudangQC from "./kirimmarketinggudangqc";
 import MutasiStockGudangQC from "./mutasistockgudangqc";
+import Customer from "./customer";
+import NoPO from "./nopo";
+import InputDraftPO from "./inputdraftpo";
 
 const api = {
   login,
@@ -70,6 +73,9 @@ const api = {
   KirimGudangQC,
   KirimMarketingGudangQC,
   MutasiStockGudangQC,
+  Customer,
+  NoPO,
+  InputDraftPO,
 };
 
 export default api;

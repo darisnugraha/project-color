@@ -33,6 +33,7 @@ import TerimaGudanQC from "../../views/pages/gudang-qc/terima-gudang-qc";
 import KirimGudangQC from "../../views/pages/gudang-qc/kirim-gudang-qc";
 import KirimMarketingGudangQC from "../../views/pages/gudang-qc/kirim-marketing-gudang-qc";
 import MutasiStockGudangQC from "../../views/pages/gudang-qc/mutasi-stock-gudang-qc";
+import InputDraftPO from "../../views/pages/laporan-marketing/laporan-input-draft-po";
 
 const routes = [
   // {
@@ -196,6 +197,11 @@ const routes = [
     path: "/laporan-gudang-qc/mutasi-stock",
     title: "Laporan Mutasi Stock Gudang QC",
     component: () => <MutasiStockGudangQC />,
+  },
+  {
+    path: "/laporan-marketing/input-draft-po",
+    title: "Laporan Input Draft PO",
+    component: () => <InputDraftPO />,
   },
   {
     path: "/notfound",
