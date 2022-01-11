@@ -260,7 +260,15 @@ const pdfReport = (data = "") => {
     },
     {
       content:
-        data.reduce((a, b) => a + parseFloat(b.persen), 0).toFixed(3) + " %",
+        data
+          .reduce(
+            (a, b) =>
+              a +
+              (parseFloat(b.total_berat_batu) / parseFloat(b.total_berat)) *
+                100,
+            0
+          )
+          .toFixed(3) + " %",
       styles: {
         halign: "right",
         lineWidth: 0.5,
@@ -307,6 +315,259 @@ const pdfReport = (data = "") => {
   });
   tableRows = [];
   tableColumn = [];
+  finalY = doc.autoTableEndPosY() + 20;
+
+  let tableColumnDua = [
+    [
+      {
+        content: "BERAT 16K",
+      },
+      {
+        content: "BERAT BATU",
+      },
+      {
+        content: "TOTAL 18K",
+      },
+    ],
+  ];
+
+  let tableRowsDua = [];
+
+  let rowsk = [
+    {
+      content: data
+        .reduce(
+          (a, b) =>
+            a +
+            (parseFloat(b.total_berat70) - parseFloat(b.total_berat_batu70)),
+          0
+        )
+        .toFixed(3),
+    },
+    {
+      content: data
+        .reduce((a, b) => a + parseFloat(b.total_berat_batu70), 0)
+        .toFixed(3),
+    },
+    {
+      content: data
+        .reduce((a, b) => a + parseFloat(b.total_berat70), 0)
+        .toFixed(3),
+    },
+  ];
+  tableRowsDua.push(rowsk);
+  let row24k = [
+    {
+      content: "TOTAL 24K",
+      styles: {
+        lineWidth: 0.5,
+        lineColor: [0, 0, 0],
+        fontSize: 8,
+        fillColor: "#E8E5E5",
+        textColor: "#000",
+        valign: "middle",
+        halign: "center",
+      },
+    },
+    {
+      content: "",
+      styles: {
+        lineWidth: 0.5,
+        lineColor: [0, 0, 0],
+        fontSize: 8,
+        fillColor: "#E8E5E5",
+        textColor: "#000",
+        valign: "middle",
+        halign: "center",
+      },
+    },
+    {
+      content: "",
+      styles: {
+        lineWidth: 0.5,
+        lineColor: [0, 0, 0],
+        fontSize: 8,
+        fillColor: "#E8E5E5",
+        textColor: "#000",
+        valign: "middle",
+        halign: "center",
+      },
+    },
+  ];
+  tableRowsDua.push(row24k);
+
+  let rows24k = [
+    {
+      content: data
+        .reduce(
+          (a, b) =>
+            a +
+            (parseFloat(b.total_berat70) - parseFloat(b.total_berat_batu70)) *
+              0.7,
+          0
+        )
+        .toFixed(3),
+    },
+    {
+      content: "",
+    },
+    {
+      content: "",
+    },
+  ];
+  tableRowsDua.push(rows24k);
+
+  doc.autoTable({
+    head: tableColumnDua,
+    body: tableRowsDua,
+    startY: finalY,
+    theme: "plain",
+    margin: { top: 10 },
+    bodyStyles: {
+      fontSize: 8,
+      halign: "center",
+    },
+    headStyles: {
+      lineWidth: 0.5,
+      lineColor: [0, 0, 0],
+      fontSize: 8,
+      fillColor: "#E8E5E5",
+      textColor: "#000",
+      valign: "middle",
+      halign: "center",
+    },
+    tableLineColor: [255, 255, 255],
+    tableLineWidth: 1,
+  });
+  tableRowsDua = [];
+  tableColumnDua = [];
+  finalY = doc.autoTableEndPosY() + 20;
+
+  let tableColumnTiga = [
+    [
+      {
+        content: "BERAT 18K",
+      },
+      {
+        content: "BERAT BATU",
+      },
+      {
+        content: "TOTAL 18K",
+      },
+    ],
+  ];
+
+  let tableRowsTiga = [];
+
+  let rowskdua = [
+    {
+      content: data
+        .reduce(
+          (a, b) =>
+            a +
+            (parseFloat(b.total_berat75) - parseFloat(b.total_berat_batu75)),
+          0
+        )
+        .toFixed(3),
+    },
+    {
+      content: data
+        .reduce((a, b) => a + parseFloat(b.total_berat_batu75), 0)
+        .toFixed(3),
+    },
+    {
+      content: data
+        .reduce((a, b) => a + parseFloat(b.total_berat75), 0)
+        .toFixed(3),
+    },
+  ];
+  tableRowsTiga.push(rowskdua);
+
+  let row24kdua = [
+    {
+      content: "TOTAL 24K",
+      styles: {
+        lineWidth: 0.5,
+        lineColor: [0, 0, 0],
+        fontSize: 8,
+        fillColor: "#E8E5E5",
+        textColor: "#000",
+        valign: "middle",
+        halign: "center",
+      },
+    },
+    {
+      content: "",
+      styles: {
+        lineWidth: 0.5,
+        lineColor: [0, 0, 0],
+        fontSize: 8,
+        fillColor: "#E8E5E5",
+        textColor: "#000",
+        valign: "middle",
+        halign: "center",
+      },
+    },
+    {
+      content: "",
+      styles: {
+        lineWidth: 0.5,
+        lineColor: [0, 0, 0],
+        fontSize: 8,
+        fillColor: "#E8E5E5",
+        textColor: "#000",
+        valign: "middle",
+        halign: "center",
+      },
+    },
+  ];
+  tableRowsTiga.push(row24kdua);
+
+  let rows24kdua = [
+    {
+      content: data
+        .reduce(
+          (a, b) =>
+            a +
+            (parseFloat(b.total_berat75) - parseFloat(b.total_berat_batu75)) *
+              0.75,
+          0
+        )
+        .toFixed(3),
+    },
+    {
+      content: "",
+    },
+    {
+      content: "",
+    },
+  ];
+  tableRowsTiga.push(rows24kdua);
+
+  doc.autoTable({
+    head: tableColumnTiga,
+    body: tableRowsTiga,
+    startY: finalY,
+    theme: "plain",
+    margin: { top: 10 },
+    bodyStyles: {
+      fontSize: 8,
+      halign: "center",
+    },
+    headStyles: {
+      lineWidth: 0.5,
+      lineColor: [0, 0, 0],
+      fontSize: 8,
+      fillColor: "#E8E5E5",
+      textColor: "#000",
+      valign: "middle",
+      halign: "center",
+    },
+    tableLineColor: [255, 255, 255],
+    tableLineWidth: 1,
+  });
+  tableRowsTiga = [];
+  tableColumnTiga = [];
   finalY = doc.autoTableEndPosY() + 20;
 
   const pages = doc.internal.getNumberOfPages();

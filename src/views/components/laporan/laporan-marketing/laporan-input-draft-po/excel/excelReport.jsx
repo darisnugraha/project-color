@@ -399,6 +399,169 @@ class ExcelReport extends Component {
               </>
             );
           })}
+          <tr></tr>
+          <thead>
+            <tr>
+              <td
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
+              >
+                BERAT 16K
+              </td>
+              <td
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
+              >
+                BERAT BATU
+              </td>
+              <td
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
+              >
+                TOTAL 18K
+              </td>
+              <td></td>
+              <td
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
+              >
+                BERAT 18K
+              </td>
+              <td
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
+              >
+                BERAT BATU
+              </td>
+              <td
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
+              >
+                TOTAL 18K
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                {this.props.dataExel
+                  .reduce(
+                    (a, b) =>
+                      a +
+                      (parseFloat(b.total_berat70) -
+                        parseFloat(b.total_berat_batu70)),
+                    0
+                  )
+                  .toFixed(3)}
+              </td>
+              <td>
+                {this.props.dataExel
+                  .reduce((a, b) => a + parseFloat(b.total_berat_batu70), 0)
+                  .toFixed(3)}
+              </td>
+              <td>
+                {this.props.dataExel
+                  .reduce((a, b) => a + parseFloat(b.total_berat70), 0)
+                  .toFixed(3)}
+              </td>
+              <td></td>
+              <td>
+                {this.props.dataExel
+                  .reduce(
+                    (a, b) =>
+                      a +
+                      (parseFloat(b.total_berat75) -
+                        parseFloat(b.total_berat_batu75)),
+                    0
+                  )
+                  .toFixed(3)}
+              </td>
+              <td>
+                {this.props.dataExel
+                  .reduce((a, b) => a + parseFloat(b.total_berat_batu75), 0)
+                  .toFixed(3)}
+              </td>
+              <td>
+                {this.props.dataExel
+                  .reduce((a, b) => a + parseFloat(b.total_berat75), 0)
+                  .toFixed(3)}
+              </td>
+            </tr>
+          </tbody>
+          <thead>
+            <tr>
+              <td
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
+              >
+                TOTAL 24K
+              </td>
+              <td>{""}</td>
+              <td>{""}</td>
+              <td>{""}</td>
+              <td
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
+              >
+                TOTAL 24K
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                {this.props.dataExel
+                  .reduce(
+                    (a, b) =>
+                      a +
+                      (parseFloat(b.total_berat70) -
+                        parseFloat(b.total_berat_batu70)) *
+                        0.7,
+                    0
+                  )
+                  .toFixed(3)}
+              </td>
+              <td>{""}</td>
+              <td>{""}</td>
+              <td>{""}</td>
+              <td>
+                {this.props.dataExel
+                  .reduce(
+                    (a, b) =>
+                      a +
+                      (parseFloat(b.total_berat75) -
+                        parseFloat(b.total_berat_batu75)) *
+                        0.75,
+                    0
+                  )
+                  .toFixed(3)}
+              </td>
+            </tr>
+          </tbody>
         </table>
       </>
     );
