@@ -15,7 +15,7 @@ const KirimMarketingGudangQC = {
         "&design=" +
         params.design +
         "&no_job_order=" +
-        params.no_job_order +
+        (params.no_job_order || undefined) +
         "&jenis=" +
         params.kode_jenis +
         "&ekspor=" +

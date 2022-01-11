@@ -40,6 +40,7 @@ import customer from "./customer";
 import nopo from "./nopo";
 import inputdraftpo from "./inputdraftpo";
 import jobprocessing from "./jobprocessing";
+import bataljoborder from "./bataljoborder";
 
 export default combineReducers({
   login,
@@ -82,5 +83,6 @@ export default combineReducers({
   nopo,
   inputdraftpo,
   jobprocessing,
+  bataljoborder,
   form: formReducer,
 });

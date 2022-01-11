@@ -40,7 +40,6 @@ const getDataKirimMarketingGudangQC =
         );
         data.tgl_dari = tgl_dari_string;
         data.tgl_sampai = tgl_sampai_string;
-        data.no_job_order = undefined;
         writeLocal("kirim_marketing_gudang_qc", data);
 
         const response =

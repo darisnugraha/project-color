@@ -32,7 +32,7 @@ const maptostate = (state) => {
         date: [moment(today, dateFormat), moment(today, dateFormat)],
         kode_jenis_bahan: "SEMUA",
         design: "SEMUA",
-        no_job_order: "",
+        no_job_order: undefined,
         alloy: false,
       },
     };

@@ -37,6 +37,7 @@ import Customer from "./customer";
 import NoPO from "./nopo";
 import InputDraftPO from "./inputdraftpo";
 import JobProcessing from "./jobprocessing";
+import BatalJobOrder from "./bataljoborder";
 
 const api = {
   login,
@@ -78,6 +79,7 @@ const api = {
   NoPO,
   InputDraftPO,
   JobProcessing,
+  BatalJobOrder,
 };
 
 export default api;

@@ -165,6 +165,10 @@ const Menu = [
         path: "/laporan-marketing/job-processing",
         title: "Job Processing",
       },
+      {
+        path: "/laporan-marketing/batal-job-order",
+        title: "Batal Job Order",
+      },
     ],
   },
 ];

@@ -14,7 +14,9 @@ const getNoPO =
   async (action) => {
     next(action);
     if (action.type === GET_ALL_NO_PO) {
-      const data = getState().form.FormGetNoPO.values;
+      const data = getState().form.FormGetNoPO
+        ? getState().form.FormGetNoPO.values
+        : getState().form.FormGetNoPOJP.values;
       dispatch(setLoadingButton(true));
       dispatch(setDataNoPOSuccess([]));
       const tgl_dari = new Date(data.date[0]);

@@ -40,7 +40,6 @@ const getDataMutasiStockGudangQC =
         );
         data.tgl_dari = tgl_dari_string;
         data.tgl_sampai = tgl_sampai_string;
-        data.no_job_order = undefined;
         writeLocal("mutasi_stock_gudang_qc", data);
 
         const response =

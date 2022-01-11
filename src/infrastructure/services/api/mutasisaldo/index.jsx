@@ -19,7 +19,7 @@ const MutasiSaldo = {
         "&jenis=" +
         params.jenis +
         "&no_job_order=" +
-        params.no_job_order +
+        (params.no_job_order || undefined) +
         "&reparasi=" +
         params.reparasi +
         "&all=" +

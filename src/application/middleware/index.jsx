@@ -38,6 +38,7 @@ import customer from "./customer";
 import nopo from "./nopo";
 import inputdrafpo from "./inputdraftpo";
 import jobprocessing from "./jobprocessing";
+import bataljoborder from "./bataljoborder";
 
 const midd = [
   ...ui,
@@ -80,6 +81,7 @@ const midd = [
   ...nopo,
   ...inputdrafpo,
   ...jobprocessing,
+  ...bataljoborder,
 ];
 
 export default midd;

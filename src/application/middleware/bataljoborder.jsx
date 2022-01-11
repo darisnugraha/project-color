@@ -8,25 +8,26 @@
 // getState is FUNCTION for get current data in your state (reducer), just call getState().yourReducer.yourData
 
 import {
-  GET_ALL_KIRIM_GUDANG_QC,
-  setDataKirimGudangQCSuccess,
-  setDataKirimGudangQCFailed,
-} from "../actions/kirimgudangqc";
+  GET_ALL_BATAL_JOB_ORDER,
+  setDataBatalJobOrderSuccess,
+  setDataBatalJobOrderFailed,
+} from "../actions/bataljoborder";
 import { setLoadingButton } from "../actions/ui";
 import Moment from "moment";
 import * as sweetalert from "../../infrastructure/shared/sweetalert";
 
-const getDataKirimGudangQC =
+const getAllDataBatalJobOrder =
   ({ api, log, writeLocal, getLocal, toast }) =>
   ({ dispatch, getState }) =>
   (next) =>
   async (action) => {
     next(action);
-    if (action.type === GET_ALL_KIRIM_GUDANG_QC) {
+    if (action.type === GET_ALL_BATAL_JOB_ORDER) {
       dispatch(setLoadingButton(true));
-      dispatch(setDataKirimGudangQCSuccess({ feedback: [] }));
-      const data = getState().form.FormLaporanKirimGudangQC.values;
-      if (data.date === null || data.design === undefined) {
+      dispatch(setDataBatalJobOrderSuccess({ feedback: [] }));
+      const data = getState().form.FormLaporanBatalJobOrder.values;
+
+      if (data.date === null) {
         dispatch(setLoadingButton(false));
         sweetalert.default.Failed("Lengkapi Form Terlebih Dahulu !");
       } else {
@@ -40,9 +41,9 @@ const getDataKirimGudangQC =
         );
         data.tgl_dari = tgl_dari_string;
         data.tgl_sampai = tgl_sampai_string;
-        writeLocal("kirim_gudang_qc", data);
+        writeLocal("batal_job_order", data);
 
-        const response = await api.KirimGudangQC.getAllKirimGudangQC({
+        const response = await api.BatalJobOrder.getAllBatalJobOrder({
           params: data,
         });
         if (response?.value !== null) {
@@ -50,23 +51,23 @@ const getDataKirimGudangQC =
           if (response?.value.length === 0) {
             dispatch(setLoadingButton(false));
             sweetalert.default.Failed("Data Laporan Kosong !");
-            dispatch(setDataKirimGudangQCSuccess({ feedback: [] }));
+            dispatch(setDataBatalJobOrderSuccess({ feedback: [] }));
           } else {
             dispatch(setLoadingButton(false));
             sweetalert.default.Success("Berhasil Mengambil Data !");
             dispatch(
-              setDataKirimGudangQCSuccess({ feedback: response?.value })
+              setDataBatalJobOrderSuccess({ feedback: response?.value })
             );
           }
         } else {
           dispatch(setLoadingButton(false));
           sweetalert.default.Failed("Terjadi Kesalahan Saat Mengambil Data !");
-          dispatch(setDataKirimGudangQCFailed({ error: response.error }));
+          dispatch(setDataBatalJobOrderFailed({ error: response.error }));
         }
       }
     }
   };
 
-const data = [getDataKirimGudangQC];
+const data = [getAllDataBatalJobOrder];
 
 export default data;

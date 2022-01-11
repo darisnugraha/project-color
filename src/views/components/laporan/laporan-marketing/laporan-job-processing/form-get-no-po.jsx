@@ -18,11 +18,11 @@ const today = new Date();
 const { Option } = Select;
 
 const maptostate = (state) => {
-  if (state.form.FormGetNoPO?.values !== undefined) {
+  if (state.form.FormGetNoPOJP?.values !== undefined) {
     return {
       initialValues: {
-        date: state.form.FormGetNoPO.values.date,
-        customer: state.form.FormGetNoPO.values.customer,
+        date: state.form.FormGetNoPOJP.values.date,
+        customer: state.form.FormGetNoPOJP.values.customer,
       },
     };
   } else {
@@ -35,7 +35,7 @@ const maptostate = (state) => {
   }
 };
 
-let FormGetNoPO = (prop) => {
+let FormGetNoPOJP = (prop) => {
   const btnLoading = useSelector(ui.getBtnLoading);
   const datacustomer = useSelector(customer.getAllCustomer);
 
@@ -97,8 +97,8 @@ let FormGetNoPO = (prop) => {
   );
 };
 
-FormGetNoPO = reduxForm({
-  form: "FormGetNoPO",
+FormGetNoPOJP = reduxForm({
+  form: "FormGetNoPOJP",
   enableReinitialize: true,
-})(FormGetNoPO);
-export default connect(maptostate, null)(FormGetNoPO);
+})(FormGetNoPOJP);
+export default connect(maptostate, null)(FormGetNoPOJP);

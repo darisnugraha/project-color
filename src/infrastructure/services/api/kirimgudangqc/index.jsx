@@ -15,7 +15,7 @@ const KirimGudangQC = {
         "&design=" +
         params.design +
         "&no_job_order=" +
-        params.no_job_order +
+        (params.no_job_order || undefined) +
         "&alloy=" +
         params.alloy,
     });

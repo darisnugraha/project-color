@@ -15,7 +15,7 @@ const TerimaBarang = {
         "&bahan=" +
         params.kode_jenis_bahan +
         "&no_job_order=" +
-        params.no_job_order +
+        (params.no_job_order || undefined) +
         "&alloy=" +
         params.alloy,
     });

@@ -44,7 +44,7 @@ const maptostate = (state) => {
         kode_jenis_bahan: "SEMUA",
         kode_jenis: "SEMUA",
         design: "SEMUA",
-        no_job_order: "",
+        no_job_order: undefined,
         format: "NEW",
         alloy: false,
         ekspor: false,

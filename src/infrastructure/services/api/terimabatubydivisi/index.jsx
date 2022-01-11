@@ -19,7 +19,7 @@ const TerimaBatu = {
         "&pasang=" +
         params.pasang +
         "&no_job_order=" +
-        params.no_job_order +
+        (params.no_job_order || undefined) +
         "&alloy=" +
         params.alloy,
     });
