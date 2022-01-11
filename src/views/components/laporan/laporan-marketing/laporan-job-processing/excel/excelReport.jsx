@@ -633,6 +633,244 @@ class ExcelReport extends Component {
               </td>
             </tr>
           </tfoot>
+          <tr></tr>
+          <thead>
+            <tr>
+              <td
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
+                colSpan={2}
+              >
+                TOTAL ORDER
+              </td>
+              <td
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
+                colSpan={2}
+              >
+                PROCESSING
+              </td>
+              <td
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
+                colSpan={2}
+              >
+                KELUAR
+              </td>
+              <td
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
+                colSpan={2}
+              >
+                SALDO ORDER
+              </td>
+              <td
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
+                colSpan={2}
+              >
+                BARU ORDER
+              </td>
+              <td
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
+                colSpan={2}
+              >
+                TOTAL PROCESSING ORDER
+              </td>
+            </tr>
+            <tr>
+              <td
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
+              >
+                QTY
+              </td>
+              <td
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
+              >
+                BERAT
+              </td>
+              <td
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
+              >
+                QTY
+              </td>
+              <td
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
+              >
+                BERAT
+              </td>
+              <td
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
+              >
+                QTY
+              </td>
+              <td
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
+              >
+                BERAT
+              </td>
+              <td
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
+              >
+                QTY
+              </td>
+              <td
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
+              >
+                BERAT
+              </td>
+              <td
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
+              >
+                QTY
+              </td>
+              <td
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
+              >
+                BERAT
+              </td>
+              <td
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
+              >
+                QTY
+              </td>
+              <td
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
+              >
+                BERAT
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                {this.props.dataExel.reduce((a, b) => a + parseFloat(b.qty), 0)}
+              </td>
+              <td>
+                {this.props.dataExel.reduce(
+                  (a, b) => a + parseFloat(b.berat),
+                  0
+                )}
+              </td>
+              <td>
+                {this.props.dataExel.reduce(
+                  (a, b) => a + parseFloat(b.jumlah_processing),
+                  0
+                )}
+              </td>
+              <td>
+                {this.props.dataExel.reduce(
+                  (a, b) => a + parseFloat(b.berat_processing),
+                  0
+                )}
+              </td>
+              <td>
+                {this.props.dataExel.reduce(
+                  (a, b) => a + parseFloat(b.jumlah_admin),
+                  0
+                )}
+              </td>
+              <td>
+                {this.props.dataExel.reduce(
+                  (a, b) => a + parseFloat(b.berat_admin),
+                  0
+                )}
+              </td>
+              <td>
+                {this.props.dataExel.reduce(
+                  (a, b) => a + parseFloat(b.jumlah_processing),
+                  0
+                )}
+              </td>
+              <td>
+                {this.props.dataExel.reduce(
+                  (a, b) => a + parseFloat(b.berat_processing),
+                  0
+                )}
+              </td>
+              <td>{""}</td>
+              <td>{""}</td>
+              <td>
+                {this.props.dataExel.reduce(
+                  (a, b) => a + parseFloat(b.jumlah_processing),
+                  0
+                )}
+              </td>
+              <td>
+                {this.props.dataExel.reduce(
+                  (a, b) => a + parseFloat(b.berat_processing),
+                  0
+                )}
+              </td>
+            </tr>
+          </tbody>
         </table>
       </>
     );

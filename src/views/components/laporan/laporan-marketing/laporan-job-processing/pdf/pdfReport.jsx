@@ -5,7 +5,7 @@ const pdfReport = (data = "") => {
   let data_head = JSON.parse(localStorage.getItem("job_processing")) || [];
   let tgl_dari_string = data_head.tgl_dari;
   let tgl_sampai_string = data_head.tgl_sampai;
-  const doc = new jsPDF("l", "mm", [510, 410]);
+  const doc = new jsPDF("l", "mm", [450, 310]);
   let tableRows = [];
   let tableColumn = [];
 
@@ -211,73 +211,73 @@ const pdfReport = (data = "") => {
         content: element.qty,
       },
       {
-        content: element.berat,
+        content: parseFloat(element.berat).toFixed(3),
       },
       {
         content: element.jumlah_master,
       },
       {
-        content: element.berat_master,
+        content: parseFloat(element.berat_master).toFixed(3),
       },
       {
         content: element.jumlah_molding,
       },
       {
-        content: element.berat_molding,
+        content: parseFloat(element.berat_molding).toFixed(3),
       },
       {
         content: element.jumlah_wax,
       },
       {
-        content: element.berat_wax,
+        content: parseFloat(element.berat_wax).toFixed(3),
       },
       {
         content: element.jumlah_casting,
       },
       {
-        content: element.berat_casting,
+        content: parseFloat(element.berat_casting).toFixed(3),
       },
       {
         content: element.jumlah_adm,
       },
       {
-        content: element.berat_adm,
+        content: parseFloat(element.berat_adm).toFixed(3),
       },
       {
         content: element.jumlah_filling,
       },
       {
-        content: element.berat_filling,
+        content: parseFloat(element.berat_filling).toFixed(3),
       },
       {
         content: element.jumlah_handsetting,
       },
       {
-        content: element.berat_handsetting,
+        content: parseFloat(element.berat_handsetting).toFixed(3),
       },
       {
         content: element.jumlah_polishing,
       },
       {
-        content: element.berat_polishing,
+        content: parseFloat(element.berat_polishing).toFixed(3),
       },
       {
         content: element.jumlah_platting,
       },
       {
-        content: element.berat_platting,
+        content: parseFloat(element.berat_platting).toFixed(3),
       },
       {
         content: element.jumlah_admin,
       },
       {
-        content: element.berat_admin,
+        content: parseFloat(element.berat_admin).toFixed(3),
       },
       {
         content: element.jumlah_processing,
       },
       {
-        content: element.berat_processing,
+        content: parseFloat(element.berat_processing).toFixed(3),
       },
     ];
     tableRows.push(row);
@@ -491,6 +491,109 @@ const pdfReport = (data = "") => {
   });
   tableRows = [];
   tableColumn = [];
+  finalY = doc.autoTableEndPosY() + 20;
+
+  let tableRowsTotal = [];
+  let tableColumnTotal = [];
+
+  tableColumnTotal = [
+    [
+      { content: "TOTAL ORDER", colSpan: 2 },
+      { content: "PROCESSING", colSpan: 2 },
+      { content: "KELUAR", colSpan: 2 },
+      { content: "SALDO ORDER", colSpan: 2 },
+      { content: "BARU ORDER", colSpan: 2 },
+      { content: "TOTAL PROCESSING ORDER", colSpan: 2 },
+    ],
+    [
+      { content: "QTY" },
+      { content: "BERAT" },
+      { content: "QTY" },
+      { content: "BERAT" },
+      { content: "QTY" },
+      { content: "BERAT" },
+      { content: "QTY" },
+      { content: "BERAT" },
+      { content: "QTY" },
+      { content: "BERAT" },
+      { content: "QTY" },
+      { content: "BERAT" },
+    ],
+  ];
+  let rowsTotal = [
+    {
+      content: data.reduce((a, b) => a + parseFloat(b.qty), 0),
+    },
+    {
+      content: data.reduce((a, b) => a + parseFloat(b.berat), 0).toFixed(3),
+    },
+    {
+      content: data.reduce((a, b) => a + parseFloat(b.jumlah_processing), 0),
+    },
+    {
+      content: data
+        .reduce((a, b) => a + parseFloat(b.berat_processing), 0)
+        .toFixed(3),
+    },
+    {
+      content: data.reduce((a, b) => a + parseFloat(b.jumlah_admin), 0),
+    },
+    {
+      content: data
+        .reduce((a, b) => a + parseFloat(b.berat_admin), 0)
+        .toFixed(3),
+    },
+    {
+      content: data.reduce((a, b) => a + parseFloat(b.jumlah_processing), 0),
+    },
+    {
+      content: data
+        .reduce((a, b) => a + parseFloat(b.berat_processing), 0)
+        .toFixed(3),
+    },
+    {
+      content: "",
+    },
+    {
+      content: "",
+    },
+    {
+      content: data.reduce((a, b) => a + parseFloat(b.jumlah_processing), 0),
+    },
+    {
+      content: data
+        .reduce((a, b) => a + parseFloat(b.berat_processing), 0)
+        .toFixed(3),
+    },
+  ];
+  tableRowsTotal.push(rowsTotal);
+
+  doc.autoTable({
+    head: tableColumnTotal,
+    body: tableRowsTotal,
+    startY: finalY,
+    theme: "plain",
+    margin: { top: 10 },
+    bodyStyles: {
+      lineWidth: 0.5,
+      lineColor: [0, 0, 0],
+      fontSize: 7,
+      halign: "center",
+    },
+    headStyles: {
+      lineWidth: 0.5,
+      lineColor: [0, 0, 0],
+      fontSize: 8,
+      fillColor: "#E8E5E5",
+      textColor: "#000",
+      valign: "middle",
+      halign: "center",
+    },
+    tableLineColor: [255, 255, 255],
+    tableLineWidth: 1,
+  });
+  tableRowsTotal = [];
+  tableColumnTotal = [];
   finalY = doc.autoTableEndPosY() + 20;
 
   const pages = doc.internal.getNumberOfPages();
