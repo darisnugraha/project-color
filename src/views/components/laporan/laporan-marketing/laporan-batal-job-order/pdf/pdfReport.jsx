@@ -23,25 +23,28 @@ const pdfReport = (data = "") => {
   tableColumn = [
     [
       {
+        content: `NO PO`,
+      },
+      {
         content: `TANGGAL`,
       },
       {
         content: `NO JOB ORDER`,
       },
       {
+        content: `DIVISI`,
+      },
+      {
         content: `NAMA BARANG`,
       },
       {
-        content: `JENIS BAHAN`,
+        content: `BAHAN`,
       },
       {
-        content: `JML TERIMA`,
+        content: `QTY`,
       },
       {
-        content: `BRT TERIMA`,
-      },
-      {
-        content: `DESIGN`,
+        content: `BERAT`,
       },
     ],
   ];
@@ -55,7 +58,7 @@ const pdfReport = (data = "") => {
     }, {});
   };
 
-  const dataGroup = groupBy(data, "kode_jenis");
+  const dataGroup = groupBy(data, "no_batal_po");
   const dataGroupArr = Object.values(dataGroup);
 
   dataGroupArr.forEach((element) => {
@@ -64,12 +67,12 @@ const pdfReport = (data = "") => {
 
     const rowKirim = [
       {
-        content: "Kode Jenis : " + element[0].kode_jenis,
+        content: "NO BATAL PO : " + element[0].no_batal_po,
         styles: {
           halign: "left",
           fillColor: "#bbbbbb",
         },
-        colSpan: 3,
+        colSpan: 4,
       },
       {
         content: "",
@@ -82,10 +85,16 @@ const pdfReport = (data = "") => {
     ];
     tableRows.push(rowKirim);
     element.forEach((item) => {
-      jmlterima = jmlterima + parseFloat(item.jumlah_kirim);
-      brtterima = brtterima + parseFloat(item.berat_kirim);
+      jmlterima = jmlterima + parseFloat(item.jumlah);
+      brtterima = brtterima + parseFloat(item.berat);
 
       const row = [
+        {
+          content: item.no_po_marketing,
+          styles: {
+            halign: "center",
+          },
+        },
         {
           content: item.tanggal,
           styles: {
@@ -99,25 +108,28 @@ const pdfReport = (data = "") => {
           },
         },
         {
-          content: item.nama_barang,
+          content: item.kode_barang,
           styles: {
             halign: "center",
           },
         },
         {
-          content: item.jenis_bahan,
+          content: item.divisi,
           styles: {
             halign: "center",
           },
         },
         {
-          content: item.jumlah_kirim,
+          content: item.bahan,
+          styles: {
+            halign: "center",
+          },
         },
         {
-          content: item.berat_kirim,
+          content: item.jumlah,
         },
         {
-          content: item.design,
+          content: item.berat,
         },
       ];
       tableRows.push(row);
@@ -129,7 +141,7 @@ const pdfReport = (data = "") => {
           halign: "right",
           fillColor: "#dddddd",
         },
-        colSpan: 4,
+        colSpan: 6,
       },
       {
         content: jmlterima,
@@ -160,14 +172,14 @@ const pdfReport = (data = "") => {
   let brtterimaAll = 0;
 
   data.forEach((element) => {
-    jmlterimaAll = jmlterimaAll + parseFloat(element.jumlah_kirim);
-    brtterimaAll = brtterimaAll + parseFloat(element.berat_kirim);
+    jmlterimaAll = jmlterimaAll + parseFloat(element.jumlah);
+    brtterimaAll = brtterimaAll + parseFloat(element.berat);
   });
 
   const footer = [
     {
       content: "Grand Total :",
-      colSpan: 4,
+      colSpan: 6,
     },
     {
       content: jmlterimaAll,

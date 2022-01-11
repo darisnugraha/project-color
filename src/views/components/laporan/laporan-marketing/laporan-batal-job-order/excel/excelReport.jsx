@@ -25,15 +25,15 @@ class ExcelReport extends Component {
       }, {});
     };
 
-    const dataGroup = groupBy(this.props.dataExel, "kode_jenis");
+    const dataGroup = groupBy(this.props.dataExel, "no_batal_po");
     const dataGroupArr = Object.values(dataGroup);
 
     let jmlterimaAll = 0;
     let brtterimaAll = 0;
 
     this.props.dataExel.forEach((element) => {
-      jmlterimaAll = jmlterimaAll + parseFloat(element.jumlah_kirim);
-      brtterimaAll = brtterimaAll + parseFloat(element.berat_kirim);
+      jmlterimaAll = jmlterimaAll + parseFloat(element.jumlah);
+      brtterimaAll = brtterimaAll + parseFloat(element.berat);
     });
 
     return (
@@ -71,6 +71,15 @@ class ExcelReport extends Component {
                   textAlign: "center",
                 }}
               >
+                NO PO
+              </td>
+              <td
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
+              >
                 TANGGAL
               </td>
               <td
@@ -81,6 +90,15 @@ class ExcelReport extends Component {
                 }}
               >
                 NO JOB ORDER
+              </td>
+              <td
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
+              >
+                DIVISI
               </td>
               <td
                 style={{
@@ -107,7 +125,7 @@ class ExcelReport extends Component {
                   textAlign: "center",
                 }}
               >
-                JML TERIMA
+                QTY
               </td>
               <td
                 style={{
@@ -116,16 +134,7 @@ class ExcelReport extends Component {
                   textAlign: "center",
                 }}
               >
-                BRT TERIMA
-              </td>
-              <td
-                style={{
-                  backgroundColor: "#99CCFF",
-                  color: "#000",
-                  textAlign: "center",
-                }}
-              >
-                DESIGN
+                BERAT
               </td>
             </tr>
           </thead>
@@ -138,13 +147,13 @@ class ExcelReport extends Component {
                 <>
                   <tr>
                     <td
-                      colSpan="3"
+                      colSpan="4"
                       style={{
                         backgroundColor: "#bbbbbb",
                         textAlign: "left",
                       }}
                     >
-                      Kode Jenis : {element[0].kode_jenis}
+                      NO BATAL PO : {element[0].no_batal_po}
                     </td>
                     <td
                       colSpan="4"
@@ -157,36 +166,37 @@ class ExcelReport extends Component {
                     </td>
                   </tr>
                   {element.map((item) => {
-                    jmlterima = jmlterima + parseFloat(item.jumlah_kirim);
-                    brtterima = brtterima + parseFloat(item.berat_kirim);
+                    jmlterima = jmlterima + parseFloat(item.jumlah);
+                    brtterima = brtterima + parseFloat(item.berat);
 
                     return (
                       <tr>
-                        <td>{item.tgl_kirim}</td>
+                        <td>{item.no_po_marketing}</td>
+                        <td>{item.tanggal}</td>
                         <td>{item.no_job_order}</td>
-                        <td>{item.nama_barang}</td>
-                        <td>{item.jenis_bahan}</td>
+                        <td>{item.divisi}</td>
+                        <td>{item.kode_barang}</td>
+                        <td>{item.bahan}</td>
                         <td
                           style={{
                             textAlign: "right",
                           }}
                         >
-                          {item.jumlah_kirim}
+                          {item.jumlah}
                         </td>
                         <td
                           style={{
                             textAlign: "right",
                           }}
                         >
-                          {item.berat_kirim}
+                          {item.berat}
                         </td>
-                        <td>{item.design}</td>
                       </tr>
                     );
                   })}
                   <tr>
                     <td
-                      colSpan="4"
+                      colSpan="6"
                       style={{
                         backgroundColor: "#dddddd",
                         textAlign: "right",
@@ -210,14 +220,6 @@ class ExcelReport extends Component {
                     >
                       {brtterima.toFixed(3)}
                     </td>
-                    <td
-                      style={{
-                        backgroundColor: "#dddddd",
-                        textAlign: "right",
-                      }}
-                    >
-                      {""}
-                    </td>
                   </tr>
                 </>
               );
@@ -226,7 +228,7 @@ class ExcelReport extends Component {
           <tfoot>
             <tr>
               <td
-                colSpan="4"
+                colSpan="6"
                 style={{
                   textAlign: "right",
                 }}
