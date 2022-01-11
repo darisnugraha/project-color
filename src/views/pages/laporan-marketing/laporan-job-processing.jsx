@@ -7,23 +7,23 @@ import {
   PanelHeader,
   PanelBody,
 } from "../../components/panel/panel.jsx";
-import TableLaporanInputDraftPO from "../../components/laporan/laporan-marketing/laporan-input-draft-po/table-input-draft-po";
-import FormLaporanInputDraftPO from "../../components/laporan/laporan-marketing/laporan-input-draft-po/form-input-draft-po";
-import BtnPrint from "../../components/laporan/laporan-marketing/laporan-input-draft-po/btn-print-input-draft-po";
+import TableLaporanJobProcessing from "../../components/laporan/laporan-marketing/laporan-job-processing/table-job-processing";
+import FormLaporanJobProcessing from "../../components/laporan/laporan-marketing/laporan-job-processing/form-job-processing";
+import BtnPrint from "../../components/laporan/laporan-marketing/laporan-job-processing/btn-print-job-processing";
 import { pageLoadedLogin } from "../../../application/actions/ui";
-import DataInputDraftPO from "../../../application/selectors/inputdraftpo";
+import DataJobProcessing from "../../../application/selectors/jobprocessing";
 import DataNoPO from "../../../application/selectors/nopo";
 import { getAllCustomer } from "../../../application/actions/customer.jsx";
-import FormGetNoPO from "../../components/laporan/laporan-marketing/laporan-input-draft-po/form-get-no-po.jsx";
+import FormGetNoPO from "../../components/laporan/laporan-marketing/laporan-job-processing/form-get-no-po.jsx";
 
-const InputDraftPO = () => {
-  const dataInputDraftPO = useSelector(DataInputDraftPO.getAllInputDraftPO);
+const JobProcessing = () => {
+  const dataJobProcessing = useSelector(DataJobProcessing.getAllJobProcessing);
   const dataNoPO = useSelector(DataNoPO.getAllNoPO);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(pageLoadedLogin);
     dispatch(getAllCustomer);
-    document.title = "Laporan Input Draft PO";
+    document.title = "Laporan Job Processing";
   }, [dispatch]);
 
   return (
@@ -33,15 +33,15 @@ const InputDraftPO = () => {
           <Link to="/dashboard">Home</Link>
         </li>
         <li className="breadcrumb-item">
-          <Link to="/marketing/input-draft-po">Laporan Marketing</Link>
+          <Link to="/marketing/job-processing">Laporan Marketing</Link>
         </li>
-        <li className="breadcrumb-item active">Input Draft PO</li>
+        <li className="breadcrumb-item active">Job Processing</li>
       </ol>
       <h1 className="page-header">
-        Laporan Marketing <small>Input Draft PO</small>
+        Laporan Marketing <small>Job Processing</small>
       </h1>
       <Panel>
-        <PanelHeader>Input Draft PO</PanelHeader>
+        <PanelHeader>Job Processing</PanelHeader>
         <PanelBody>
           <Card bordered={false}>
             <div className="row">
@@ -57,14 +57,14 @@ const InputDraftPO = () => {
               style={{ display: dataNoPO.length === 0 ? "none" : "" }}
             >
               <div className="col-12">
-                <FormLaporanInputDraftPO />
+                <FormLaporanJobProcessing />
               </div>
             </div>
             <div
               className="row"
               style={{
                 marginTop: 10,
-                display: dataInputDraftPO.length === 0 ? "none" : "",
+                display: dataJobProcessing.length === 0 ? "none" : "",
               }}
             >
               <div className="col-12">
@@ -73,14 +73,14 @@ const InputDraftPO = () => {
                 </Divider>
               </div>
               <div className="col-12">
-                <TableLaporanInputDraftPO />
+                <TableLaporanJobProcessing />
               </div>
             </div>
             <div
               className="row"
               style={{
                 marginTop: 10,
-                display: dataInputDraftPO.length === 0 ? "none" : "",
+                display: dataJobProcessing.length === 0 ? "none" : "",
               }}
             >
               <div className="col-12">
@@ -94,4 +94,4 @@ const InputDraftPO = () => {
   );
 };
 
-export default InputDraftPO;
+export default JobProcessing;

@@ -7,34 +7,34 @@ import ui from "../../../../../application/selectors/ui";
 import nopo from "../../../../../application/selectors/nopo";
 import "antd/dist/antd.css";
 import {
-  getAllInputDraftPO,
-  setDataInputDraftPOSuccess,
+  getAllJobProcessing,
+  setDataJobProcessingSuccess,
   setType,
-} from "../../../../../application/actions/inputdraftpo";
+} from "../../../../../application/actions/jobprocessing";
 
 const { Option } = Select;
 
 const maptostate = (state) => {
-  if (state.form.FormLaporanInputDraftPO?.values !== undefined) {
+  if (state.form.FormLaporanJobProcessing?.values !== undefined) {
     return {
       initialValues: {
-        no_po: state.form.FormLaporanInputDraftPO.values.no_po,
-        validasi: state.form.FormLaporanInputDraftPO.values.validasi,
-        type: state.form.FormLaporanInputDraftPO.values.type,
+        no_po: state.form.FormLaporanJobProcessing.values.no_po,
+        proses: state.form.FormLaporanJobProcessing.values.proses,
+        type: state.form.FormLaporanJobProcessing.values.type,
       },
     };
   } else {
     return {
       initialValues: {
         no_po: "SEMUA",
-        validasi: false,
-        type: "L",
+        proses: "SEMUA",
+        type: "REKAP",
       },
     };
   }
 };
 
-let FormLaporanInputDraftPO = (prop) => {
+let FormLaporanJobProcessing = (prop) => {
   const btnLoading = useSelector(ui.getBtnLoading);
   const datanopo = useSelector(nopo.getAllNoPO);
 
@@ -74,35 +74,47 @@ let FormLaporanInputDraftPO = (prop) => {
             onBlur={(e) => e.preventDefault()}
             onChange={(val) => {
               prop.dispatch(setType({ type: val }));
-              prop.dispatch(setDataInputDraftPOSuccess([]));
+              prop.dispatch(setDataJobProcessingSuccess([]));
             }}
           >
-            <Option value="L" key="L">
-              <span style={{ fontSize: "13px" }}>L</span>
+            <Option value="REKAP" key="REKAP">
+              <span style={{ fontSize: "13px" }}>Rekap</span>
             </Option>
-            <Option value="PERAK" key="PERAK">
-              <span style={{ fontSize: "13px" }}>Perak</span>
-            </Option>
-            <Option value="E" key="E">
-              <span style={{ fontSize: "13px" }}>E</span>
+            <Option value="DETAIL" key="DETAIL">
+              <span style={{ fontSize: "13px" }}>Detail</span>
             </Option>
           </Field>
         </Col>
         <Col offset={1}>
           <Field
-            label={<span style={{ fontSize: "13px" }}>Validasi</span>}
-            name="validasi"
-            id="validasi"
-            component={styleAntd.ACheckBox}
-            type="checkbox"
-          />
+            name="proses"
+            label={<span style={{ fontSize: "13px" }}>Proses</span>}
+            style={{ width: 250 }}
+            component={styleAntd.ASelect}
+            placeholder="Pilih Proses"
+            onBlur={(e) => e.preventDefault()}
+            onChange={(val) => {
+              prop.dispatch(setType({ type: val }));
+              prop.dispatch(setDataJobProcessingSuccess([]));
+            }}
+          >
+            <Option value="SEMUA" key="SEMUA">
+              <span style={{ fontSize: "13px" }}>Semua</span>
+            </Option>
+            <Option value="PROSES" key="PROSES">
+              <span style={{ fontSize: "13px" }}>Proses</span>
+            </Option>
+            <Option value="SELESAI" key="SELESAI">
+              <span style={{ fontSize: "13px" }}>Selesai</span>
+            </Option>
+          </Field>
         </Col>
         <Col offset={1}>
           <Button
             type="primary"
             htmltype="button"
             loading={btnLoading}
-            onClick={() => prop.dispatch(getAllInputDraftPO)}
+            onClick={() => prop.dispatch(getAllJobProcessing)}
             style={{ marginTop: 29 }}
           >
             Lihat Laporan
@@ -113,8 +125,8 @@ let FormLaporanInputDraftPO = (prop) => {
   );
 };
 
-FormLaporanInputDraftPO = reduxForm({
-  form: "FormLaporanInputDraftPO",
+FormLaporanJobProcessing = reduxForm({
+  form: "FormLaporanJobProcessing",
   enableReinitialize: true,
-})(FormLaporanInputDraftPO);
-export default connect(maptostate, null)(FormLaporanInputDraftPO);
+})(FormLaporanJobProcessing);
+export default connect(maptostate, null)(FormLaporanJobProcessing);

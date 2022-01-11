@@ -39,6 +39,7 @@ import mutasistockgudangqc from "./mutasistockgudangqc";
 import customer from "./customer";
 import nopo from "./nopo";
 import inputdraftpo from "./inputdraftpo";
+import jobprocessing from "./jobprocessing";
 
 export default combineReducers({
   login,
@@ -80,5 +81,6 @@ export default combineReducers({
   customer,
   nopo,
   inputdraftpo,
+  jobprocessing,
   form: formReducer,
 });

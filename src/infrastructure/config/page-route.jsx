@@ -34,6 +34,7 @@ import KirimGudangQC from "../../views/pages/gudang-qc/kirim-gudang-qc";
 import KirimMarketingGudangQC from "../../views/pages/gudang-qc/kirim-marketing-gudang-qc";
 import MutasiStockGudangQC from "../../views/pages/gudang-qc/mutasi-stock-gudang-qc";
 import InputDraftPO from "../../views/pages/laporan-marketing/laporan-input-draft-po";
+import JobProcessing from "../../views/pages/laporan-marketing/laporan-job-processing";
 
 const routes = [
   // {
@@ -202,6 +203,11 @@ const routes = [
     path: "/laporan-marketing/input-draft-po",
     title: "Laporan Input Draft PO",
     component: () => <InputDraftPO />,
+  },
+  {
+    path: "/laporan-marketing/job-processing",
+    title: "Laporan Job Processing",
+    component: () => <JobProcessing />,
   },
   {
     path: "/notfound",

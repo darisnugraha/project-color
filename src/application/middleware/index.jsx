@@ -37,6 +37,7 @@ import mutasistockgudangqc from "./mutasistockgudangqc";
 import customer from "./customer";
 import nopo from "./nopo";
 import inputdrafpo from "./inputdraftpo";
+import jobprocessing from "./jobprocessing";
 
 const midd = [
   ...ui,
@@ -78,6 +79,7 @@ const midd = [
   ...customer,
   ...nopo,
   ...inputdrafpo,
+  ...jobprocessing,
 ];
 
 export default midd;

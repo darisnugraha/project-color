@@ -36,6 +36,7 @@ import MutasiStockGudangQC from "./mutasistockgudangqc";
 import Customer from "./customer";
 import NoPO from "./nopo";
 import InputDraftPO from "./inputdraftpo";
+import JobProcessing from "./jobprocessing";
 
 const api = {
   login,
@@ -76,6 +77,7 @@ const api = {
   Customer,
   NoPO,
   InputDraftPO,
+  JobProcessing,
 };
 
 export default api;

@@ -161,6 +161,10 @@ const Menu = [
         path: "/laporan-marketing/input-draft-po",
         title: "Input Draft PO",
       },
+      {
+        path: "/laporan-marketing/job-processing",
+        title: "Job Processing",
+      },
     ],
   },
 ];
