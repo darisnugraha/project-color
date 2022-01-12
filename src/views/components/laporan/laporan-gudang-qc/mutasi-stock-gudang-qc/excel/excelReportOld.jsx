@@ -7,14 +7,6 @@ class ExcelReport extends Component {
     this.state = { tgl_dari_string: "", tgl_sampai_string: "", type: "" };
   }
 
-  componentDidMount() {
-    let data = this.props.dataHead || [];
-    this.setState({
-      tgl_dari_string: data.tgl_dari,
-      tgl_sampai_string: data.tgl_sampai,
-      type: data.type,
-    });
-  }
   render() {
     return (
       <>
@@ -38,9 +30,9 @@ class ExcelReport extends Component {
               <th colSpan="10">
                 {" "}
                 Tanggal :{" "}
-                {this.state.tgl_dari_string +
+                {this.props.dataHead?.tgl_dari_string +
                   " s/d " +
-                  this.state.tgl_sampai_string}{" "}
+                  this.props.dataHead?.tgl_sampai_string}{" "}
               </th>
             </tr>
             <tr>

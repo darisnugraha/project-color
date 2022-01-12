@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ReactHTMLTableToExcel from "react-html-table-to-excel";
 import "antd/dist/antd.css";
 import "antd-button-color/dist/css/style.css";
+import service from "../../../../../infrastructure/services/index";
 
 class ExcelReport extends Component {
   constructor(props) {
@@ -95,7 +96,7 @@ class ExcelReport extends Component {
       0
     );
 
-    const tanggal = new Date(localStorage.getItem("tanggal_lap"));
+    const tanggal = service.getLocal("stock_global_produksi").date;
     return (
       <>
         <ReactHTMLTableToExcel
@@ -115,7 +116,7 @@ class ExcelReport extends Component {
               </th>
             </tr>
             <tr>
-              <th colSpan="14"> Tanggal : {tanggal.toLocaleDateString()}</th>
+              <th colSpan="14"> Tanggal : {tanggal}</th>
             </tr>
             <tr>
               <td

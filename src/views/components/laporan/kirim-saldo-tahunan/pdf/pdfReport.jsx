@@ -1,5 +1,6 @@
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";
+import service from "../../../../../infrastructure/services/index";
 
 const pdfReport = (data = "") => {
   const doc = new jsPDF("l", "mm", [297, 210]);
@@ -15,7 +16,7 @@ const pdfReport = (data = "") => {
   doc.setProperties({
     title: "Saldo Bahan",
   });
-  doc.text(`PERIODE : ${localStorage.getItem("tanggal_lap")}`, 14, 25);
+  doc.text(`PERIODE : ${service.getLocal("kirim_saldo_tahun").date}`, 14, 25);
 
   tableColumn = [
     [

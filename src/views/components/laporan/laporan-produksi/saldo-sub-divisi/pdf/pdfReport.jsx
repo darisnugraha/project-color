@@ -2,10 +2,6 @@ import { jsPDF } from "jspdf";
 import "jspdf-autotable";
 
 const pdfReport = (data = "") => {
-  // let data_head =
-  //   JSON.parse(localStorage.getItem("saldo_sub_divisi_head")) || [];
-  // let tgl_dari_string = data_head.tgl_dari;
-  // let tgl_sampai_string = data_head.tgl_sampai;
   const doc = new jsPDF("l", "mm", [297, 210]);
   let tableRows = [];
   let tableColumn = [];
@@ -19,7 +15,6 @@ const pdfReport = (data = "") => {
   doc.setProperties({
     title: "SALDO SUB DIVISI",
   });
-  // doc.text(`PERIODE : ${tgl_dari_string} s/d ${tgl_sampai_string}`, 14, 25);
 
   tableColumn = [
     [

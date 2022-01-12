@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from "react";
 import ReactHTMLTableToExcel from "react-html-table-to-excel";
+import service from "../../../../../infrastructure/services/index";
 
 class ExcelReportR extends Component {
   constructor(props) {
@@ -175,7 +176,7 @@ class ExcelReportR extends Component {
       0
     );
 
-    const tanggal = new Date(localStorage.getItem("tanggal_lap"));
+    const tanggal = service.getLocal("stock_global_produksi").date;
     return (
       <>
         <ReactHTMLTableToExcel
@@ -195,7 +196,7 @@ class ExcelReportR extends Component {
               </th>
             </tr>
             <tr>
-              <th colSpan="14"> Tanggal : {tanggal.toLocaleDateString()}</th>
+              <th colSpan="14"> Tanggal : {tanggal}</th>
             </tr>
             <tr>
               <td

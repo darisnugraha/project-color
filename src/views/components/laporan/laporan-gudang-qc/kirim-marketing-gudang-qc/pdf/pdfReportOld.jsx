@@ -1,9 +1,9 @@
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";
+import service from "../../../../../../infrastructure/services/index";
 
 const pdfReport = (data = "") => {
-  let data_head =
-    JSON.parse(localStorage.getItem("kirim_marketing_gudang_qc")) || [];
+  let data_head = service.getLocal("kirim_marketing_gudang_qc") || [];
   let tgl_dari_string = data_head.tgl_dari;
   let tgl_sampai_string = data_head.tgl_sampai;
   const doc = new jsPDF("l", "mm", [297, 210]);
@@ -11,13 +11,13 @@ const pdfReport = (data = "") => {
   let tableColumn = [];
 
   let finalY = 30;
-  doc.text(`Laporan KIRIM GUDANG QC`, 14, 15);
+  doc.text(`Laporan KIRIM GUDANG QC OLD`, 14, 15);
   doc.setFontSize(20);
   doc.text("AMG", 200, 15);
 
   doc.setFontSize(10);
   doc.setProperties({
-    title: "KIRIM GUDANG QC",
+    title: "KIRIM GUDANG QC OLD",
   });
   doc.text(`PERIODE : ${tgl_dari_string} s/d ${tgl_sampai_string}`, 14, 25);
 

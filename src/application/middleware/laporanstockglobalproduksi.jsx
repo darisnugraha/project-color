@@ -44,6 +44,7 @@ const laporanStockGlobalProduksi =
       if (response?.value !== null) {
         sweetalert.default.Success("Berhasil Melihat Laporan !");
         writeLocal("tanggal_lap", tgl.toLocaleDateString());
+        writeLocal("stock_global_produksi", dataKirim);
         if (data.tipe_laporan === "L") {
           dispatch(setDataLaporanStockGlobalProduksiLSuccess(response?.value));
         } else {

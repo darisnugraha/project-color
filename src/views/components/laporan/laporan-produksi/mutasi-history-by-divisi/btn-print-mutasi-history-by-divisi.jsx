@@ -7,15 +7,13 @@ import ui from "../../../../../application/selectors/ui";
 import MutasiHistory from "../../../../../application/selectors/mutasihistory";
 import ExcelReport from "./excel/excelReport";
 import pdfReport from "./pdf/pdfReport";
+import service from "../../../../../infrastructure/services/index";
 
 const BtnPrint = () => {
   // eslint-disable-next-line
   const btnLoading = useSelector(ui.getBtnLoading);
   const dataMutasiHistory = useSelector(MutasiHistory.getAllMutasiHistory);
-  const data = JSON.parse(
-    localStorage.getItem("mutasi_history_by_divisi_head")
-  );
-
+  const data = service.getLocal("mutasi_history_by_divisi_head");
   const pdfExportHandle = () => {
     pdfReport(dataMutasiHistory);
   };

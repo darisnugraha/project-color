@@ -1,25 +1,25 @@
-export const encryptascii = (str) => {
-  let key = process.env.REACT_APP_ENCKEY;
+// export const encryptascii = (str) => {
+//   let key = process.env.REACT_APP_ENCKEY;
 
-  let dataKey = {};
-  for (let i = 0; i < key.length; i++) {
-    dataKey[i] = key.substr(`${i}`, 1);
-  }
+//   let dataKey = {};
+//   for (let i = 0; i < key.length; i++) {
+//     dataKey[i] = key.substr(`${i}`, 1);
+//   }
 
-  let strEnc = '';
-  let nkey = 0;
-  let jml = str.length;
+//   let strEnc = '';
+//   let nkey = 0;
+//   let jml = str.length;
 
-  for (let i = 0; i < parseInt(jml); i++) {
-    strEnc = strEnc + hexEncode(str[i].charCodeAt(0) + dataKey[nkey].charCodeAt(0));
+//   for (let i = 0; i < parseInt(jml); i++) {
+//     strEnc = strEnc + hexEncode(str[i].charCodeAt(0) + dataKey[nkey].charCodeAt(0));
 
-    if (nkey === Object.keys(dataKey).length - 1) {
-      nkey = 0;
-    }
-    nkey = nkey + 1;
-  }
-  return strEnc.toUpperCase();
-};
+//     if (nkey === Object.keys(dataKey).length - 1) {
+//       nkey = 0;
+//     }
+//     nkey = nkey + 1;
+//   }
+//   return strEnc.toUpperCase();
+// };
 
 export const decryptascii = (str) => {
   if (str !== null) {
@@ -29,12 +29,13 @@ export const decryptascii = (str) => {
       dataKey[i] = key.substr(`${i}`, 1);
     }
 
-    let strDec = '';
+    let strDec = "";
     let nkey = 0;
     let jml = str.length;
     let i = 0;
     while (i < parseInt(jml)) {
-      strDec = strDec + chr(hexdec(str.substr(i, 2)) - dataKey[nkey].charCodeAt(0));
+      strDec =
+        strDec + chr(hexdec(str.substr(i, 2)) - dataKey[nkey].charCodeAt(0));
       if (nkey === Object.keys(dataKey).length - 1) {
         nkey = 0;
       }
@@ -42,21 +43,23 @@ export const decryptascii = (str) => {
       i = i + 2;
     }
     return strDec;
+  } else {
+    return false;
   }
 };
-export const hexEncode = (str) => {
-  var result = '';
-  result = str.toString(16);
-  return result;
-};
+// export const hexEncode = (str) => {
+//   var result = '';
+//   result = str.toString(16);
+//   return result;
+// };
 
 export const hexdec = (hex) => {
-  var str = '';
+  var str = "";
   str = parseInt(hex, 16);
   return str;
 };
 export const chr = (asci) => {
-  var str = '';
+  var str = "";
   str = String.fromCharCode(asci);
   return str;
 };

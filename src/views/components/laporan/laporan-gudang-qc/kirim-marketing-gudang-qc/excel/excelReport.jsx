@@ -7,14 +7,6 @@ class ExcelReport extends Component {
     this.state = { tgl_dari_string: "", tgl_sampai_string: "", divisi: "" };
   }
 
-  componentDidMount() {
-    let data = this.props.dataHead || [];
-    this.setState({
-      tgl_dari_string: data.tgl_dari,
-      tgl_sampai_string: data.tgl_sampai,
-      divisi: data.divisi,
-    });
-  }
   render() {
     const groupBy = (array, key) => {
       return array.reduce((result, currentValue) => {
@@ -42,8 +34,8 @@ class ExcelReport extends Component {
           id="test-table-xls-button"
           className="ant-btn ant-btn-primary ant-btn-block ant-btn-success"
           table="table-to-xls"
-          filename={`LAPORAN KIRIM GUDANG QC`}
-          sheet={`LAPORAN KIRIM GUDANG QC`}
+          filename={`LAPORAN KIRIM GUDANG QC NEW`}
+          sheet={`LAPORAN KIRIM GUDANG QC NEW`}
           buttonText="Export Excel"
         />
         <table id="table-to-xls" style={{ display: "none" }}>
@@ -51,16 +43,16 @@ class ExcelReport extends Component {
             <tr>
               <th colSpan="10" style={{ textAlign: "center" }}>
                 {" "}
-                LAPORAN KIRIM GUDANG QC
+                LAPORAN KIRIM GUDANG QC NEW
               </th>
             </tr>
             <tr>
               <th colSpan="10">
                 {" "}
                 Tanggal :{" "}
-                {this.state.tgl_dari_string +
+                {this.props.dataHead?.tgl_dari +
                   " s/d " +
-                  this.state.tgl_sampai_string}{" "}
+                  this.props.dataHead?.tgl_sampai}{" "}
               </th>
             </tr>
             <tr>

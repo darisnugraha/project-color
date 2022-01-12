@@ -7,14 +7,6 @@ class ExcelReport extends Component {
     this.state = { tgl_dari_string: "", tgl_sampai_string: "", divisi: "" };
   }
 
-  componentDidMount() {
-    let data = this.props.dataHead || [];
-    this.setState({
-      tgl_dari_string: data.tgl_dari,
-      tgl_sampai_string: data.tgl_sampai,
-      divisi: data.divisi,
-    });
-  }
   render() {
     const groupBy = (array, key) => {
       return array.reduce((result, currentValue) => {
@@ -41,17 +33,19 @@ class ExcelReport extends Component {
           buttonText="Export Excel"
         />
         <table id="table-to-xls" style={{ display: "none" }}>
-          <tr>
-            <th colSpan={20} style={{ textAlign: "center" }}>
-              LAPORAN INPUT DRAFT PO EXPORT
-            </th>
-          </tr>
-          <tr>
-            <th colSpan={20} style={{ textAlign: "center" }}>
-              TANGGAL : {this.props.dataHead?.tgl_dari} s/d &nbsp;
-              {this.props.dataHead?.tgl_sampai}
-            </th>
-          </tr>
+          <thead>
+            <tr>
+              <th colSpan={20} style={{ textAlign: "center" }}>
+                LAPORAN INPUT DRAFT PO EXPORT
+              </th>
+            </tr>
+            <tr>
+              <th colSpan={20} style={{ textAlign: "center" }}>
+                TANGGAL : {this.props.dataHead?.tgl_dari} s/d &nbsp;
+                {this.props.dataHead?.tgl_sampai}
+              </th>
+            </tr>
+          </thead>
           {dataGroupArr.map((element) => {
             return (
               <>

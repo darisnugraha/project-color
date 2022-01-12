@@ -1,9 +1,9 @@
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";
+import service from "../../../../../../infrastructure/services/index";
 
 const pdfReport = (data = "") => {
-  let data_head =
-    JSON.parse(localStorage.getItem("mutasi_stock_gudang_qc")) || [];
+  let data_head = service.getLocal("mutasi_stock_gudang_qc") || [];
   let tgl_dari_string = data_head.tgl_dari;
   let tgl_sampai_string = data_head.tgl_sampai;
   const doc = new jsPDF("l", "mm", [297, 210]);
@@ -188,13 +188,13 @@ const pdfReport = (data = "") => {
   const berat_out = data.reduce((a, b) => a + parseFloat(b.berat_kirim), 0);
 
   const saldo =
-   ( berat_in +
+    berat_in +
     berat_rusak +
     berat_spru +
     berat_bubuk +
     berat_sisa +
     batu_sisa +
-    batu_rusak) -
+    batu_rusak -
     berat_out;
 
   const footer = [

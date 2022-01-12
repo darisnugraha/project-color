@@ -9,12 +9,13 @@ import ExcelReport from "./excel/excelReport";
 import ExcelReportEksport from "./excel/excelReportEksport";
 import pdfReport from "./pdf/pdfReport";
 import pdfReportEksport from "./pdf/pdfReportEksport";
+import service from "../../../../../infrastructure/services/index";
 
 const BtnPrint = () => {
   // eslint-disable-next-line
   const btnLoading = useSelector(ui.getBtnLoading);
   const dataJobProcessing = useSelector(JobProcessing.getAllJobProcessing);
-  const data = JSON.parse(localStorage.getItem("job_processing")) || [];
+  const data = service.getLocal("job_processing") || [];
   const type = useSelector(JobProcessing.getTypeJobProcessing);
 
   const pdfExportHandle = () => {

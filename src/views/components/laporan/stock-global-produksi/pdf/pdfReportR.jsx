@@ -1,12 +1,12 @@
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";
+import service from "../../../../../infrastructure/services/index";
 
 const pdfReportR = (data = "") => {
   const doc = new jsPDF("l", "mm", [420, 210]);
   let tableRows = [];
   let tableColumn = [];
 
-  const tanggal = new Date(localStorage.getItem("tanggal_lap"));
   let finalY = 30;
   doc.text("Laporan Stock Global Produksi R", 14, 15);
   doc.setFontSize(20);
@@ -16,7 +16,11 @@ const pdfReportR = (data = "") => {
   doc.setProperties({
     title: "Bahan Tukang Detail",
   });
-  doc.text(`PERIODE : ${tanggal.toLocaleDateString()}`, 14, 25);
+  doc.text(
+    `PERIODE : ${service.getLocal("stock_global_produksi").date}`,
+    14,
+    25
+  );
 
   tableColumn = [
     [
@@ -131,7 +135,7 @@ const pdfReportR = (data = "") => {
 
   let total = 0;
   let textString = "";
-  // eslint-disable-next-line 
+  // eslint-disable-next-line
   let textDisplay = 0;
 
   let eay18Awal = 0;

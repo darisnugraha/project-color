@@ -1,5 +1,6 @@
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";
+import service from "../../../../../infrastructure/services/index";
 
 const pdfReport = (data = "") => {
   const doc = new jsPDF("l", "mm", [297, 210]);
@@ -7,7 +8,6 @@ const pdfReport = (data = "") => {
   let tableColumn = [];
 
   let finalY = 30;
-  const tanggal = new Date(localStorage.getItem("tanggal_lap"));
   doc.text("Laporan Stock Global Produksi L", 14, 15);
   doc.setFontSize(20);
   doc.text("AMG", 200, 15);
@@ -16,7 +16,11 @@ const pdfReport = (data = "") => {
   doc.setProperties({
     title: "Bahan Tukang Detail",
   });
-  doc.text(`PERIODE : ${tanggal.toLocaleDateString()}`, 14, 25);
+  doc.text(
+    `PERIODE : ${service.getLocal("stock_global_produksi").date}`,
+    14,
+    25
+  );
 
   tableColumn = [
     [

@@ -1,8 +1,9 @@
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";
+import service from "../../../../../../infrastructure/services/index";
 
 const pdfReport = (data = "") => {
-  let data_head = JSON.parse(localStorage.getItem("batal_job_order")) || [];
+  let data_head = service.getLocal("batal_job_order") || [];
   let tgl_dari_string = data_head.tgl_dari;
   let tgl_sampai_string = data_head.tgl_sampai;
   const doc = new jsPDF("l", "mm", [297, 210]);

@@ -9,6 +9,7 @@ import ExcelReport from "./excel/excelReport";
 import ExcelReportOld from "./excel/excelReportOld";
 import pdfReport from "./pdf/pdfReport";
 import pdfReportOld from "./pdf/pdfReportOld";
+import service from "../../../../../infrastructure/services/index";
 
 const BtnPrint = () => {
   // eslint-disable-next-line
@@ -17,7 +18,7 @@ const BtnPrint = () => {
     MutasiGudangQC.getAllMutasiStockGudangQC
   );
   const type = useSelector(MutasiGudangQC.getTypeMutasiStockGudangQC);
-  const data = JSON.parse(localStorage.getItem("mutasi_stock_gudang_qc")) || [];
+  const data = service.getLocal("mutasi_stock_gudang_qc") || [];
 
   const pdfExportHandle = () => {
     if (type === "SALDO" || type === "HISTORY") {

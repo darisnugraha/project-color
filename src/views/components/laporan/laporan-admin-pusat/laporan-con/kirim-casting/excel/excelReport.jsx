@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ReactHTMLTableToExcel from "react-html-table-to-excel";
+import service from "../../../../../../../infrastructure/services/index";
 
 class ExcelReport extends Component {
   constructor(props) {
@@ -8,7 +9,7 @@ class ExcelReport extends Component {
   }
 
   componentDidMount() {
-    let data = JSON.parse(localStorage.getItem("kirim_casting_head")) || [];
+    let data = service.getLocal("kirim_casting_head") || [];
     this.setState({
       tgl_dari_string: data.tgl_dari,
       tgl_sampai_string: data.tgl_sampai,

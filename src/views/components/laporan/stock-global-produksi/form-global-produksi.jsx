@@ -35,6 +35,8 @@ const maptostate = (state) => {
           repair: false,
         },
       };
+    } else {
+      return {};
     }
   }
 };

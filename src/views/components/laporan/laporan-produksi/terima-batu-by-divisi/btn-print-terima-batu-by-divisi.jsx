@@ -9,14 +9,14 @@ import ExcelReport from "./excel/excelReport";
 import ExcelReportDua from "./excel/excelReportSecond";
 import pdfReport from "./pdf/pdfReport";
 import pdfReportDua from "./pdf/pdfReportSecond";
+import service from "../../../../../infrastructure/services/index";
 
 const BtnPrint = () => {
   // eslint-disable-next-line
   const btnLoading = useSelector(ui.getBtnLoading);
   const dataTerimaBatu = useSelector(TerimaBatuByDivisi.getAllTerimaBatu);
   const divisi = useSelector(TerimaBatuByDivisi.getDivisi);
-  const data =
-    JSON.parse(localStorage.getItem("terima_batu_by_divisi_head")) || [];
+  const data = service.getLocal("terima_batu_by_divisi_head") || [];
 
   const pdfExportHandle = () => {
     if (

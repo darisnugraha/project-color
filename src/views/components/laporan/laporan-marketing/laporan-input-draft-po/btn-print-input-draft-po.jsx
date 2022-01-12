@@ -11,12 +11,13 @@ import ExcelReportPerak from "./excel/excelReportPerak";
 import pdfReport from "./pdf/pdfReport";
 import pdfReportPerak from "./pdf/pdfReportPerak";
 import pdfReportEksport from "./pdf/pdfReportEksport";
+import service from "../../../../../infrastructure/services/index";
 
 const BtnPrint = () => {
   // eslint-disable-next-line
   const btnLoading = useSelector(ui.getBtnLoading);
   const dataInputDraftPO = useSelector(InputDraftPO.getAllInputDraftPO);
-  const data = JSON.parse(localStorage.getItem("input_draft_po")) || [];
+  const data = service.getLocal("input_draft_po") || [];
   const type = useSelector(InputDraftPO.getTypeInputDraftPO);
 
   const pdfExportHandle = () => {

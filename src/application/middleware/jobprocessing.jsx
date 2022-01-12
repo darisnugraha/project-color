@@ -25,7 +25,7 @@ const getDataJobProcessing =
     if (action.type === GET_ALL_JOB_PROCESSING) {
       dispatch(setLoadingButton(true));
       dispatch(setDataJobProcessingSuccess([]));
-      const data = getState().form.FormGetNoPO.values;
+      const data = getState().form.FormGetNoPOJP.values;
       const dataPO = getState().form.FormLaporanJobProcessing.values;
       if (
         data.date === null ||

@@ -7,14 +7,6 @@ class ExcelReport extends Component {
     this.state = { tgl_dari_string: "", tgl_sampai_string: "", type: "" };
   }
 
-  componentDidMount() {
-    let data = this.props.dataHead || [];
-    this.setState({
-      tgl_dari_string: data.tgl_dari,
-      tgl_sampai_string: data.tgl_sampai,
-      type: data.type,
-    });
-  }
   render() {
     return (
       <>
@@ -22,8 +14,8 @@ class ExcelReport extends Component {
           id="test-table-xls-button"
           className="ant-btn ant-btn-primary ant-btn-block ant-btn-success"
           table="table-to-xls"
-          filename={`LAPORAN JOB PROCESSING (${this.state.type})`}
-          sheet={`LAPORAN JOB PROCESSING (${this.state.type})`}
+          filename={`LAPORAN JOB PROCESSING (${this.props.dataHead?.type})`}
+          sheet={`LAPORAN JOB PROCESSING (${this.props.dataHead?.type})`}
           buttonText="Export Excel"
         />
         <table id="table-to-xls" style={{ display: "none" }}>
@@ -31,16 +23,16 @@ class ExcelReport extends Component {
             <tr>
               <th colSpan="10" style={{ textAlign: "center" }}>
                 {" "}
-                LAPORAN JOB PROCESSING ({this.state.type})
+                LAPORAN JOB PROCESSING ({this.props.dataHead?.type})
               </th>
             </tr>
             <tr>
               <th colSpan="10">
                 {" "}
                 Tanggal :{" "}
-                {this.state.tgl_dari_string +
+                {this.props.dataHead?.tgl_dari +
                   " s/d " +
-                  this.state.tgl_sampai_string}{" "}
+                  this.props.dataHead?.tgl_sampai}{" "}
               </th>
             </tr>
             <tr>
@@ -632,8 +624,8 @@ class ExcelReport extends Component {
                 )}
               </td>
             </tr>
+            <tr></tr>
           </tfoot>
-          <tr></tr>
           <thead>
             <tr>
               <td

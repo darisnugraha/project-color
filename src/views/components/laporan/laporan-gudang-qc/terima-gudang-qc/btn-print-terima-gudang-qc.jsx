@@ -7,12 +7,13 @@ import ui from "../../../../../application/selectors/ui";
 import TerimaGudangQC from "../../../../../application/selectors/terimagudangqc";
 import ExcelReport from "./excel/excelReport";
 import pdfReport from "./pdf/pdfReport";
+import service from "../../../../../infrastructure/services/index";
 
 const BtnPrint = () => {
   // eslint-disable-next-line
   const btnLoading = useSelector(ui.getBtnLoading);
   const dataTerimaGudangQC = useSelector(TerimaGudangQC.getAllTerimaGudangQC);
-  const data = JSON.parse(localStorage.getItem("terima_gudang_qc")) || [];
+  const data = service.getLocal("terima_gudang_qc") || [];
 
   const pdfExportHandle = () => {
     pdfReport(dataTerimaGudangQC);

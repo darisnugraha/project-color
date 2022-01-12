@@ -9,13 +9,14 @@ import ExcelReport from "./excel/excelReport";
 import ExcelReportHarian from "./excel/excelReportHarian";
 import pdfReport from "./pdf/pdfReport";
 import pdfReportHarian from "./pdf/pdfReportHarian";
+import service from "../../../../../infrastructure/services/index";
 
 const BtnPrint = () => {
   // eslint-disable-next-line
   const btnLoading = useSelector(ui.getBtnLoading);
   const dataSaldoSubDivisi = useSelector(SaldoSubDivisi.getAllSaldoSubDivisi);
   const type = useSelector(SaldoSubDivisi.getType);
-  const data = JSON.parse(localStorage.getItem("saldo_sub_divisi_head")) || [];
+  const data = service.getLocal("saldo_sub_divisi_head") || [];
 
   const pdfExportHandle = () => {
     if (type === "ALL") {

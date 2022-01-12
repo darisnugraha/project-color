@@ -19,12 +19,12 @@ const kirimsaldotahun =
       const data = getState().form.FormLaporanKirimSaldoTahun.values;
       const tgl = new Date(data.tanggal);
       const tgl_kirim = moment.tz(tgl, "Asia/Jakarta").format("YYYY-MM");
-      writeLocal("tanggal_lap", tgl_kirim);
       data.date = tgl_kirim;
       const dataKirim = {
         date: data.date,
         kode_jenis_bahan: data.kode_jenis_bahan,
       };
+      writeLocal("kirim_saldo_tahun", dataKirim);
       const response = await api.kirimsaldotahun.addKirimsaldotahun(dataKirim);
       if (response?.value !== null) {
         if (response?.value.length === 0) {

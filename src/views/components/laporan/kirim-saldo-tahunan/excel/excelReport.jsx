@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ReactHTMLTableToExcel from "react-html-table-to-excel";
+import service from "../../../../../infrastructure/services/index";
 
 class ExcelReport extends Component {
   constructor(props) {
@@ -33,7 +34,7 @@ class ExcelReport extends Component {
             <tr>
               <th colSpan="14">
                 {" "}
-                Tanggal : {localStorage.getItem("tanggal_lap")}
+                Tanggal : {service.getLocal("kirim_saldo_tahun").date}
               </th>
             </tr>
             <tr>
@@ -289,59 +290,63 @@ class ExcelReport extends Component {
             })}
           </tbody>
           <tfoot>
-            <th colSpan="3">Total</th>
-            <th style={{ textAlign: "right" }}>
-              {this.props.dataExel
-                .reduce((a, b) => a + b.fr_selesai, 0)
-                .toFixed(3)}
-            </th>
-            <th style={{ textAlign: "right" }}>
-              {this.props.dataExel
-                .reduce((a, b) => a + b.fr_saldo, 0)
-                .toFixed(3)}
-            </th>
-            <th style={{ textAlign: "right" }}>
-              {this.props.dataExel
-                .reduce((a, b) => a + b.fr2_selesai, 0)
-                .toFixed(3)}
-            </th>
-            <th style={{ textAlign: "right" }}>
-              {this.props.dataExel
-                .reduce((a, b) => a + b.fr2_saldo, 0)
-                .toFixed(3)}
-            </th>
-            <th style={{ textAlign: "right" }}>
-              {this.props.dataExel
-                .reduce((a, b) => a + b.fr3_selesai, 0)
-                .toFixed(3)}
-            </th>
-            <th style={{ textAlign: "right" }}>
-              {this.props.dataExel
-                .reduce((a, b) => a + b.fr3_saldo, 0)
-                .toFixed(3)}
-            </th>
-            <th style={{ textAlign: "right" }}>{totalFrSelesai.toFixed(3)}</th>
-            <th style={{ textAlign: "right" }}>{totalFrSaldo.toFixed(3)}</th>
-            <th style={{ textAlign: "right" }}>
-              {this.props.dataExel
-                .reduce((a, b) => a + b.handsetting1_selesai, 0)
-                .toFixed(3)}
-            </th>
-            <th style={{ textAlign: "right" }}>
-              {this.props.dataExel
-                .reduce((a, b) => a + b.handsetting1_saldo, 0)
-                .toFixed(3)}
-            </th>
-            <th style={{ textAlign: "right" }}>
-              {this.props.dataExel
-                .reduce((a, b) => a + b.handsetting2_selesai, 0)
-                .toFixed(3)}
-            </th>
-            <th style={{ textAlign: "right" }}>
-              {this.props.dataExel
-                .reduce((a, b) => a + b.handsetting2_saldo, 0)
-                .toFixed(3)}
-            </th>
+            <tr>
+              <th colSpan="3">Total</th>
+              <th style={{ textAlign: "right" }}>
+                {this.props.dataExel
+                  .reduce((a, b) => a + b.fr_selesai, 0)
+                  .toFixed(3)}
+              </th>
+              <th style={{ textAlign: "right" }}>
+                {this.props.dataExel
+                  .reduce((a, b) => a + b.fr_saldo, 0)
+                  .toFixed(3)}
+              </th>
+              <th style={{ textAlign: "right" }}>
+                {this.props.dataExel
+                  .reduce((a, b) => a + b.fr2_selesai, 0)
+                  .toFixed(3)}
+              </th>
+              <th style={{ textAlign: "right" }}>
+                {this.props.dataExel
+                  .reduce((a, b) => a + b.fr2_saldo, 0)
+                  .toFixed(3)}
+              </th>
+              <th style={{ textAlign: "right" }}>
+                {this.props.dataExel
+                  .reduce((a, b) => a + b.fr3_selesai, 0)
+                  .toFixed(3)}
+              </th>
+              <th style={{ textAlign: "right" }}>
+                {this.props.dataExel
+                  .reduce((a, b) => a + b.fr3_saldo, 0)
+                  .toFixed(3)}
+              </th>
+              <th style={{ textAlign: "right" }}>
+                {totalFrSelesai.toFixed(3)}
+              </th>
+              <th style={{ textAlign: "right" }}>{totalFrSaldo.toFixed(3)}</th>
+              <th style={{ textAlign: "right" }}>
+                {this.props.dataExel
+                  .reduce((a, b) => a + b.handsetting1_selesai, 0)
+                  .toFixed(3)}
+              </th>
+              <th style={{ textAlign: "right" }}>
+                {this.props.dataExel
+                  .reduce((a, b) => a + b.handsetting1_saldo, 0)
+                  .toFixed(3)}
+              </th>
+              <th style={{ textAlign: "right" }}>
+                {this.props.dataExel
+                  .reduce((a, b) => a + b.handsetting2_selesai, 0)
+                  .toFixed(3)}
+              </th>
+              <th style={{ textAlign: "right" }}>
+                {this.props.dataExel
+                  .reduce((a, b) => a + b.handsetting2_saldo, 0)
+                  .toFixed(3)}
+              </th>
+            </tr>
           </tfoot>
         </table>
       </>

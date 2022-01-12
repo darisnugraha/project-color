@@ -7,14 +7,6 @@ class ExcelReport extends Component {
     this.state = { tgl_dari_string: "", tgl_sampai_string: "", type: "" };
   }
 
-  componentDidMount() {
-    let data = this.props.dataHead || [];
-    this.setState({
-      tgl_dari_string: data.tgl_dari,
-      tgl_sampai_string: data.tgl_sampai,
-      type: data.type,
-    });
-  }
   render() {
     const berat_in = this.props.dataExel.reduce(
       (a, b) => a + parseFloat(b.berat_terima),
@@ -65,8 +57,8 @@ class ExcelReport extends Component {
           id="test-table-xls-button"
           className="ant-btn ant-btn-primary ant-btn-block ant-btn-success"
           table="table-to-xls"
-          filename={`LAPORAN MUTASI STOCK GUDANG QC (${this.state.type})`}
-          sheet={`LAPORAN MUTASI STOCK GUDANG QC (${this.state.type})`}
+          filename={`LAPORAN MUTASI STOCK GUDANG QC (${this.props.dataHead?.type})`}
+          sheet={`LAPORAN MUTASI STOCK GUDANG QC (${this.props.dataHead?.type})`}
           buttonText="Export Excel"
         />
         <table id="table-to-xls" style={{ display: "none" }}>
@@ -74,16 +66,16 @@ class ExcelReport extends Component {
             <tr>
               <th colSpan="10" style={{ textAlign: "center" }}>
                 {" "}
-                LAPORAN MUTASI STOCK GUDANG QC ({this.state.type})
+                LAPORAN MUTASI STOCK GUDANG QC ({this.props.dataHead?.type})
               </th>
             </tr>
             <tr>
               <th colSpan="10">
                 {" "}
                 Tanggal :{" "}
-                {this.state.tgl_dari_string +
+                {this.props.dataHead?.tgl_dari +
                   " s/d " +
-                  this.state.tgl_sampai_string}{" "}
+                  this.props.dataHead?.tgl_sampai}{" "}
               </th>
             </tr>
             <tr>

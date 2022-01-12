@@ -9,6 +9,7 @@ import ExcelReport from "./excel/excelReport";
 import ExcelReportOld from "./excel/excelReportOld";
 import pdfReport from "./pdf/pdfReport";
 import pdfReportOld from "./pdf/pdfReportOld";
+import service from "../../../../../infrastructure/services/index";
 
 const BtnPrint = () => {
   // eslint-disable-next-line
@@ -19,8 +20,7 @@ const BtnPrint = () => {
   const type = useSelector(
     KirimMarketingGudangQC.getTypeKirimMarketingGudangQC
   );
-  const data =
-    JSON.parse(localStorage.getItem("kirim_marketing_gudang_qc")) || [];
+  const data = service.getLocal("kirim_marketing_gudang_qc") || [];
 
   const pdfExportHandle = () => {
     if (type === "NEW") {

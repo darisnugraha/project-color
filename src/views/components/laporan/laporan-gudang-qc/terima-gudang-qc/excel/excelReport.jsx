@@ -7,14 +7,6 @@ class ExcelReport extends Component {
     this.state = { tgl_dari_string: "", tgl_sampai_string: "", divisi: "" };
   }
 
-  componentDidMount() {
-    let data = this.props.dataHead || [];
-    this.setState({
-      tgl_dari_string: data.tgl_dari,
-      tgl_sampai_string: data.tgl_sampai,
-      divisi: data.divisi,
-    });
-  }
   render() {
     const groupBy = (array, key) => {
       return array.reduce((result, currentValue) => {
@@ -58,9 +50,9 @@ class ExcelReport extends Component {
               <th colSpan="10">
                 {" "}
                 Tanggal :{" "}
-                {this.state.tgl_dari_string +
+                {this.props.dataHead?.tgl_dari +
                   " s/d " +
-                  this.state.tgl_sampai_string}{" "}
+                  this.props.dataHead?.tgl_sampai}{" "}
               </th>
             </tr>
             <tr>

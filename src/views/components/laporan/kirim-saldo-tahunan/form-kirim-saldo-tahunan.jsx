@@ -30,6 +30,8 @@ const maptostate = (state) => {
           kode_jenis_bahan: state.jenisbahan.feedback[0].kode_jenis_bahan,
         },
       };
+    } else {
+      return {};
     }
   }
 };

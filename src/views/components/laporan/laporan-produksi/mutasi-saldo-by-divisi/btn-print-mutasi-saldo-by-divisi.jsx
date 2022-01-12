@@ -7,12 +7,13 @@ import ui from "../../../../../application/selectors/ui";
 import MutasiSaldo from "../../../../../application/selectors/mutasisaldo";
 import ExcelReport from "./excel/excelReport";
 import pdfReport from "./pdf/pdfReport";
+import service from "../../../../../infrastructure/services/index";
 
 const BtnPrint = () => {
   // eslint-disable-next-line
   const btnLoading = useSelector(ui.getBtnLoading);
   const dataMutasiSaldo = useSelector(MutasiSaldo.getAllMutasiSaldo);
-  const data = JSON.parse(localStorage.getItem("mutasi_saldo_by_divisi_head"));
+  const data = service.getLocal("mutasi_saldo_by_divisi_head");
 
   const pdfExportHandle = () => {
     pdfReport(dataMutasiSaldo);
