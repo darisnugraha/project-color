@@ -42,6 +42,7 @@ import inputdraftpo from "./inputdraftpo";
 import jobprocessing from "./jobprocessing";
 import bataljoborder from "./bataljoborder";
 import reparasimasuk from "./reparasimasuk";
+import reparasikeluar from "./reparasikeluar";
 
 export default combineReducers({
   login,
@@ -86,5 +87,6 @@ export default combineReducers({
   jobprocessing,
   bataljoborder,
   reparasimasuk,
+  reparasikeluar,
   form: formReducer,
 });

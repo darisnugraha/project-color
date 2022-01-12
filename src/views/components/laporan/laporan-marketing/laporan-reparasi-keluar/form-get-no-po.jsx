@@ -8,21 +8,21 @@ import ui from "../../../../../application/selectors/ui";
 import customer from "../../../../../application/selectors/customer";
 import "antd/dist/antd.css";
 import {
-  getAllNoPOJP,
-  setDataNoPOJPSuccess,
+  getAllNoPOReparasiRK,
+  setDataNoPOReparasiRKSuccess,
 } from "../../../../../application/actions/nopo";
-import { setDataJobProcessingSuccess } from "../../../../../application/actions/jobprocessing";
+import { setDataReparasiKeluarSuccess } from "../../../../../application/actions/reparasikeluar";
 
 const dateFormat = "DD/MM/YYYY";
 const today = new Date();
 const { Option } = Select;
 
 const maptostate = (state) => {
-  if (state.form.FormGetNoPOJP?.values !== undefined) {
+  if (state.form.FormGetNoPORK?.values !== undefined) {
     return {
       initialValues: {
-        date: state.form.FormGetNoPOJP.values.date,
-        customer: state.form.FormGetNoPOJP.values.customer,
+        date: state.form.FormGetNoPORK.values.date,
+        customer: state.form.FormGetNoPORK.values.customer,
       },
     };
   } else {
@@ -35,7 +35,7 @@ const maptostate = (state) => {
   }
 };
 
-let FormGetNoPOJP = (prop) => {
+let FormGetNoPORK = (prop) => {
   const btnLoading = useSelector(ui.getBtnLoading);
   const datacustomer = useSelector(customer.getAllCustomer);
 
@@ -51,8 +51,8 @@ let FormGetNoPOJP = (prop) => {
             className="form-item-group"
             onBlur={(e) => e.preventDefault()}
             onChange={() => {
-              prop.dispatch(setDataNoPOJPSuccess([]));
-              prop.dispatch(setDataJobProcessingSuccess([]));
+              prop.dispatch(setDataNoPOReparasiRKSuccess([]));
+              prop.dispatch(setDataReparasiKeluarSuccess([]));
             }}
           />
         </Col>
@@ -65,8 +65,8 @@ let FormGetNoPOJP = (prop) => {
             placeholder="Pilih Customer"
             onBlur={(e) => e.preventDefault()}
             onChange={() => {
-              prop.dispatch(setDataNoPOJPSuccess([]));
-              prop.dispatch(setDataJobProcessingSuccess([]));
+              prop.dispatch(setDataNoPOReparasiRKSuccess([]));
+              prop.dispatch(setDataReparasiKeluarSuccess([]));
             }}
           >
             <Option value="SEMUA" key="SEMUA">
@@ -86,7 +86,7 @@ let FormGetNoPOJP = (prop) => {
             type="primary"
             htmltype="button"
             loading={btnLoading}
-            onClick={() => prop.dispatch(getAllNoPOJP)}
+            onClick={() => prop.dispatch(getAllNoPOReparasiRK)}
             style={{ marginTop: 29 }}
           >
             Cari No PO
@@ -97,8 +97,8 @@ let FormGetNoPOJP = (prop) => {
   );
 };
 
-FormGetNoPOJP = reduxForm({
-  form: "FormGetNoPOJP",
+FormGetNoPORK = reduxForm({
+  form: "FormGetNoPORK",
   enableReinitialize: true,
-})(FormGetNoPOJP);
-export default connect(maptostate, null)(FormGetNoPOJP);
+})(FormGetNoPORK);
+export default connect(maptostate, null)(FormGetNoPORK);

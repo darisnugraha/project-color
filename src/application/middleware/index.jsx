@@ -40,6 +40,7 @@ import inputdrafpo from "./inputdraftpo";
 import jobprocessing from "./jobprocessing";
 import bataljoborder from "./bataljoborder";
 import reparasimasuk from "./reparasimasuk";
+import reparasikeluar from "./reparasikeluar";
 
 const midd = [
   ...ui,
@@ -84,6 +85,7 @@ const midd = [
   ...jobprocessing,
   ...bataljoborder,
   ...reparasimasuk,
+  ...reparasikeluar,
 ];
 
 export default midd;

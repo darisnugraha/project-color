@@ -39,6 +39,7 @@ import InputDraftPO from "./inputdraftpo";
 import JobProcessing from "./jobprocessing";
 import BatalJobOrder from "./bataljoborder";
 import ReparasiMasuk from "./reparasimasuk";
+import ReparasiKeluar from "./reparasikeluar";
 
 const api = {
   login,
@@ -82,6 +83,7 @@ const api = {
   JobProcessing,
   BatalJobOrder,
   ReparasiMasuk,
+  ReparasiKeluar,
 };
 
 export default api;

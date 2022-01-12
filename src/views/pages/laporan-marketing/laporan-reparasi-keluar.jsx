@@ -7,23 +7,25 @@ import {
   PanelHeader,
   PanelBody,
 } from "../../components/panel/panel.jsx";
-import TableLaporanJobProcessing from "../../components/laporan/laporan-marketing/laporan-job-processing/table-job-processing";
-import FormLaporanJobProcessing from "../../components/laporan/laporan-marketing/laporan-job-processing/form-job-processing";
-import BtnPrint from "../../components/laporan/laporan-marketing/laporan-job-processing/btn-print-job-processing";
+import TableLaporanReparasiKeluar from "../../components/laporan/laporan-marketing/laporan-reparasi-keluar/table-reparasi-keluar";
+import FormLaporanReparasiKeluar from "../../components/laporan/laporan-marketing/laporan-reparasi-keluar/form-reparasi-keluar";
+import BtnPrint from "../../components/laporan/laporan-marketing/laporan-reparasi-keluar/btn-print-reparasi-keluar";
 import { pageLoadedLogin } from "../../../application/actions/ui";
-import DataJobProcessing from "../../../application/selectors/jobprocessing";
+import DataReparasiKeluar from "../../../application/selectors/reparasikeluar";
 import DataNoPO from "../../../application/selectors/nopo";
 import { getAllCustomer } from "../../../application/actions/customer.jsx";
-import FormGetNoPO from "../../components/laporan/laporan-marketing/laporan-job-processing/form-get-no-po.jsx";
+import FormGetNoPO from "../../components/laporan/laporan-marketing/laporan-reparasi-keluar/form-get-no-po.jsx";
 
-const JobProcessing = () => {
-  const dataJobProcessing = useSelector(DataJobProcessing.getAllJobProcessing);
-  const dataNoPO = useSelector(DataNoPO.getAllNoPOJP);
+const ReparasiKeluar = () => {
+  const dataReparasiKeluar = useSelector(
+    DataReparasiKeluar.getAllReparasiKeluar
+  );
+  const dataNoPO = useSelector(DataNoPO.getAllNoPOReparasiRK);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(pageLoadedLogin);
     dispatch(getAllCustomer);
-    document.title = "Laporan Job Processing";
+    document.title = "Laporan Reparasi Keluar";
   }, [dispatch]);
 
   return (
@@ -33,15 +35,15 @@ const JobProcessing = () => {
           <Link to="/dashboard">Home</Link>
         </li>
         <li className="breadcrumb-item">
-          <Link to="/marketing/job-processing">Laporan Marketing</Link>
+          <Link to="/marketing/reparasi-keluar">Laporan Marketing</Link>
         </li>
-        <li className="breadcrumb-item active">Job Processing</li>
+        <li className="breadcrumb-item active">Reparasi Keluar</li>
       </ol>
       <h1 className="page-header">
-        Laporan Marketing <small>Job Processing</small>
+        Laporan Marketing <small>Reparasi Keluar</small>
       </h1>
       <Panel>
-        <PanelHeader>Job Processing</PanelHeader>
+        <PanelHeader>Reparasi Keluar</PanelHeader>
         <PanelBody>
           <Card bordered={false}>
             <div className="row">
@@ -57,14 +59,14 @@ const JobProcessing = () => {
               style={{ display: dataNoPO.length === 0 ? "none" : "" }}
             >
               <div className="col-12">
-                <FormLaporanJobProcessing />
+                <FormLaporanReparasiKeluar />
               </div>
             </div>
             <div
               className="row"
               style={{
                 marginTop: 10,
-                display: dataJobProcessing.length === 0 ? "none" : "",
+                display: dataReparasiKeluar.length === 0 ? "none" : "",
               }}
             >
               <div className="col-12">
@@ -73,14 +75,14 @@ const JobProcessing = () => {
                 </Divider>
               </div>
               <div className="col-12">
-                <TableLaporanJobProcessing />
+                <TableLaporanReparasiKeluar />
               </div>
             </div>
             <div
               className="row"
               style={{
                 marginTop: 10,
-                display: dataJobProcessing.length === 0 ? "none" : "",
+                display: dataReparasiKeluar.length === 0 ? "none" : "",
               }}
             >
               <div className="col-12">
@@ -94,4 +96,4 @@ const JobProcessing = () => {
   );
 };
 
-export default JobProcessing;
+export default ReparasiKeluar;

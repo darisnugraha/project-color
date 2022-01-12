@@ -173,6 +173,10 @@ const Menu = [
         path: "/laporan-marketing/reparasi-masuk",
         title: "Reparasi Masuk",
       },
+      {
+        path: "/laporan-marketing/reparasi-keluar",
+        title: "Reparasi Keluar",
+      },
     ],
   },
 ];

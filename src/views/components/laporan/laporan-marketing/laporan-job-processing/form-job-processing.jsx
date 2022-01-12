@@ -36,7 +36,7 @@ const maptostate = (state) => {
 
 let FormLaporanJobProcessing = (prop) => {
   const btnLoading = useSelector(ui.getBtnLoading);
-  const datanopo = useSelector(nopo.getAllNoPO);
+  const datanopo = useSelector(nopo.getAllNoPOJP);
 
   return (
     <Form layout="vertical">
