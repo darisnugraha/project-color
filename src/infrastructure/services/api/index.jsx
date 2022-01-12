@@ -38,6 +38,7 @@ import NoPO from "./nopo";
 import InputDraftPO from "./inputdraftpo";
 import JobProcessing from "./jobprocessing";
 import BatalJobOrder from "./bataljoborder";
+import ReparasiMasuk from "./reparasimasuk";
 
 const api = {
   login,
@@ -80,6 +81,7 @@ const api = {
   InputDraftPO,
   JobProcessing,
   BatalJobOrder,
+  ReparasiMasuk,
 };
 
 export default api;

@@ -169,6 +169,10 @@ const Menu = [
         path: "/laporan-marketing/batal-job-order",
         title: "Batal Job Order",
       },
+      {
+        path: "/laporan-marketing/reparasi-masuk",
+        title: "Reparasi Masuk",
+      },
     ],
   },
 ];

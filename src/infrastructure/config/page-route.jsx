@@ -36,6 +36,7 @@ import MutasiStockGudangQC from "../../views/pages/gudang-qc/mutasi-stock-gudang
 import InputDraftPO from "../../views/pages/laporan-marketing/laporan-input-draft-po";
 import JobProcessing from "../../views/pages/laporan-marketing/laporan-job-processing";
 import BatalJobOrder from "../../views/pages/laporan-marketing/laporan-batal-job-order";
+import ReparasiMasuk from "../../views/pages/laporan-marketing/laporan-reparasi-masuk";
 
 const routes = [
   // {
@@ -214,6 +215,11 @@ const routes = [
     path: "/laporan-marketing/batal-job-order",
     title: "Laporan Batal Job Order",
     component: () => <BatalJobOrder />,
+  },
+  {
+    path: "/laporan-marketing/reparasi-masuk",
+    title: "Laporan Reparasi Masuk",
+    component: () => <ReparasiMasuk />,
   },
   {
     path: "/notfound",

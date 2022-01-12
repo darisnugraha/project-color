@@ -2,6 +2,9 @@ import {
   GET_ALL_NO_PO,
   setDataNoPOSuccess,
   setDataNoPOFailed,
+  GET_ALL_NO_PO_REPARASI,
+  setDataNoPOReparasiSuccess,
+  setDataNoPOReparasiFailed,
 } from "../actions/nopo";
 import { setLoadingButton } from "../actions/ui";
 import Moment from "moment";
@@ -49,6 +52,46 @@ const getNoPO =
     }
   };
 
-const data = [getNoPO];
+const getNoPOReparasi =
+  ({ api, log, writeLocal, getLocal, toast }) =>
+  ({ dispatch, getState }) =>
+  (next) =>
+  async (action) => {
+    next(action);
+    if (action.type === GET_ALL_NO_PO_REPARASI) {
+      const data = getState().form.FormGetNoPORM.values;
+      dispatch(setLoadingButton(true));
+      dispatch(setDataNoPOReparasiSuccess([]));
+      const tgl_dari = new Date(data.date[0]);
+      const tgl_dari_string = Moment.tz(tgl_dari, "Asia/Jakarta").format(
+        "YYYY-MM-DD"
+      );
+      const tgl_sampai = new Date(data.date[1]);
+      const tgl_sampai_string = Moment.tz(tgl_sampai, "Asia/Jakarta").format(
+        "YYYY-MM-DD"
+      );
+      data.tgl_dari = tgl_dari_string;
+      data.tgl_sampai = tgl_sampai_string;
+      writeLocal("get_no_po_reparasi", data);
+      const response = await api.NoPO.getAllNoPOReparasi(data);
+      if (response?.value !== null) {
+        if (response?.value.length === 0) {
+          sweetalert.default.Failed("Data No PO Kosong !");
+          dispatch(setDataNoPOReparasiSuccess(response?.value));
+          dispatch(setLoadingButton(false));
+        } else {
+          sweetalert.default.Success("Berhasil Mengambil Data");
+          dispatch(setDataNoPOReparasiSuccess(response?.value));
+          dispatch(setLoadingButton(false));
+        }
+      } else {
+        sweetalert.default.Failed("Gagal Mengambli Data");
+        dispatch(setDataNoPOReparasiFailed(response?.error));
+        dispatch(setLoadingButton(false));
+      }
+    }
+  };
+
+const data = [getNoPO, getNoPOReparasi];
 
 export default data;

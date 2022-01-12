@@ -43,12 +43,17 @@ let FormLaporanJobProcessing = (prop) => {
       <Row>
         <Col offset={1}>
           <Field
+            optionFilterProp="children"
+            showSearch
             name="no_po"
             label={<span style={{ fontSize: "13px" }}>No PO</span>}
             style={{ width: 250 }}
             component={styleAntd.ASelect}
             placeholder="Pilih No PO"
             onBlur={(e) => e.preventDefault()}
+            filterOption={(input, option) =>
+              option.value.toLowerCase().indexOf(input.toLowerCase()) >= 0
+            }
           >
             <Option value="SEMUA" key="SEMUA">
               <span style={{ fontSize: "13px" }}>Semua</span>

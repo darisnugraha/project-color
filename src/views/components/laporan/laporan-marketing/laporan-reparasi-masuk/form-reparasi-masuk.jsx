@@ -6,37 +6,29 @@ import styleAntd from "../../../../../infrastructure/shared/styleAntd";
 import ui from "../../../../../application/selectors/ui";
 import nopo from "../../../../../application/selectors/nopo";
 import "antd/dist/antd.css";
-import {
-  getAllInputDraftPO,
-  setDataInputDraftPOSuccess,
-  setType,
-} from "../../../../../application/actions/inputdraftpo";
+import { getAllReparasiMasuk } from "../../../../../application/actions/reparasimasuk";
 
 const { Option } = Select;
 
 const maptostate = (state) => {
-  if (state.form.FormLaporanInputDraftPO?.values !== undefined) {
+  if (state.form.FormLaporanReparasiMasuk?.values !== undefined) {
     return {
       initialValues: {
-        no_po: state.form.FormLaporanInputDraftPO.values.no_po,
-        validasi: state.form.FormLaporanInputDraftPO.values.validasi,
-        type: state.form.FormLaporanInputDraftPO.values.type,
+        no_po: state.form.FormLaporanReparasiMasuk.values.no_po,
       },
     };
   } else {
     return {
       initialValues: {
         no_po: "SEMUA",
-        validasi: false,
-        type: "L",
       },
     };
   }
 };
 
-let FormLaporanInputDraftPO = (prop) => {
+let FormLaporanReparasiMasuk = (prop) => {
   const btnLoading = useSelector(ui.getBtnLoading);
-  const datanopo = useSelector(nopo.getAllNoPO);
+  const datanopo = useSelector(nopo.getAllNoPOReparasi);
 
   return (
     <Form layout="vertical">
@@ -70,44 +62,11 @@ let FormLaporanInputDraftPO = (prop) => {
           </Field>
         </Col>
         <Col offset={1}>
-          <Field
-            name="type"
-            label={<span style={{ fontSize: "13px" }}>Type</span>}
-            style={{ width: 250 }}
-            component={styleAntd.ASelect}
-            placeholder="Pilih Type"
-            onBlur={(e) => e.preventDefault()}
-            onChange={(val) => {
-              prop.dispatch(setType({ type: val }));
-              prop.dispatch(setDataInputDraftPOSuccess([]));
-            }}
-          >
-            <Option value="L" key="L">
-              <span style={{ fontSize: "13px" }}>L</span>
-            </Option>
-            <Option value="PERAK" key="PERAK">
-              <span style={{ fontSize: "13px" }}>Perak</span>
-            </Option>
-            <Option value="E" key="E">
-              <span style={{ fontSize: "13px" }}>E</span>
-            </Option>
-          </Field>
-        </Col>
-        <Col offset={1}>
-          <Field
-            label={<span style={{ fontSize: "13px" }}>Validasi</span>}
-            name="validasi"
-            id="validasi"
-            component={styleAntd.ACheckBox}
-            type="checkbox"
-          />
-        </Col>
-        <Col offset={1}>
           <Button
             type="primary"
             htmltype="button"
             loading={btnLoading}
-            onClick={() => prop.dispatch(getAllInputDraftPO)}
+            onClick={() => prop.dispatch(getAllReparasiMasuk)}
             style={{ marginTop: 29 }}
           >
             Lihat Laporan
@@ -118,8 +77,8 @@ let FormLaporanInputDraftPO = (prop) => {
   );
 };
 
-FormLaporanInputDraftPO = reduxForm({
-  form: "FormLaporanInputDraftPO",
+FormLaporanReparasiMasuk = reduxForm({
+  form: "FormLaporanReparasiMasuk",
   enableReinitialize: true,
-})(FormLaporanInputDraftPO);
-export default connect(maptostate, null)(FormLaporanInputDraftPO);
+})(FormLaporanReparasiMasuk);
+export default connect(maptostate, null)(FormLaporanReparasiMasuk);
