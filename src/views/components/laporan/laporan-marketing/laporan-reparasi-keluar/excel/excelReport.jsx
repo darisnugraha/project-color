@@ -50,7 +50,7 @@ class ExcelReport extends Component {
                 <thead>
                   <tr>
                     <td
-                      colSpan={17}
+                      colSpan={14}
                       style={{
                         backgroundColor: "#99CCFF",
                         color: "#000",
@@ -67,8 +67,9 @@ class ExcelReport extends Component {
                         color: "#000",
                         textAlign: "center",
                       }}
+                      colSpan={2}
                     >
-                      NO
+                      TANGGAL ORDER
                     </td>
                     <td
                       style={{
@@ -77,7 +78,46 @@ class ExcelReport extends Component {
                         textAlign: "center",
                       }}
                     >
-                      TANGGAL TERIMA
+                      {element[0].tanggal_order}
+                    </td>
+                    <td
+                      style={{
+                        backgroundColor: "#99CCFF",
+                        color: "#000",
+                        textAlign: "center",
+                      }}
+                    >
+                      TANGGAL SELESAI
+                    </td>
+                    <td
+                      style={{
+                        backgroundColor: "#99CCFF",
+                        color: "#000",
+                        textAlign: "center",
+                      }}
+                    >
+                      {element[0].tanggal_selesai}
+                    </td>
+                    <td
+                      style={{
+                        backgroundColor: "#99CCFF",
+                        color: "#000",
+                        textAlign: "center",
+                      }}
+                      colSpan={9}
+                    >
+                      {""}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td
+                      style={{
+                        backgroundColor: "#99CCFF",
+                        color: "#000",
+                        textAlign: "center",
+                      }}
+                    >
+                      NO
                     </td>
                     <td
                       style={{
@@ -104,7 +144,7 @@ class ExcelReport extends Component {
                         textAlign: "center",
                       }}
                     >
-                      KODE BATU
+                      GAMBAR
                     </td>
                     <td
                       style={{
@@ -113,7 +153,7 @@ class ExcelReport extends Component {
                         textAlign: "center",
                       }}
                     >
-                      GAMBAR
+                      KETERANGAN
                     </td>
                     <td
                       style={{
@@ -131,16 +171,7 @@ class ExcelReport extends Component {
                         textAlign: "center",
                       }}
                     >
-                      BERAT NOTA
-                    </td>
-                    <td
-                      style={{
-                        backgroundColor: "#99CCFF",
-                        color: "#000",
-                        textAlign: "center",
-                      }}
-                    >
-                      BERAT TIMBANG
+                      BERAT / PCS
                     </td>
                     <td
                       style={{
@@ -205,15 +236,6 @@ class ExcelReport extends Component {
                     >
                       TOTAL BERAT
                     </td>
-                    <td
-                      style={{
-                        backgroundColor: "#99CCFF",
-                        color: "#000",
-                        textAlign: "center",
-                      }}
-                    >
-                      KETERANGAN
-                    </td>
                   </tr>
                 </thead>
                 <tbody>
@@ -222,34 +244,30 @@ class ExcelReport extends Component {
                       <>
                         <tr>
                           <td
-                            colSpan={17}
+                            colSpan={14}
                             style={{
                               backgroundColor: "#bbbbbb",
                               color: "#000",
                               textAlign: "left",
                             }}
                           >
-                            {item.kode_jenis}
+                            {item.no_job_order}
                           </td>
                         </tr>
                         <tr>
                           <td style={{ textAlign: "center" }}>{item.no}</td>
-                          <td style={{ textAlign: "center" }}>
-                            {item.tanggal_terima}
-                          </td>
                           <td style={{ textAlign: "center" }}>
                             {item.kode_barang}
                           </td>
                           <td style={{ textAlign: "center" }}>
                             {item.nama_barang}
                           </td>
-                          <td style={{ textAlign: "center" }}>
-                            {item.kode_batu}
-                          </td>
                           <td style={{ textAlign: "center" }}>{item.gambar}</td>
+                          <td style={{ textAlign: "center" }}>
+                            {item.keterangan}
+                          </td>
                           <td>{item.ongkos}</td>
-                          <td>{item.berat_nota}</td>
-                          <td>{item.berat_timbang}</td>
+                          <td>{item.berat_pcs}</td>
                           <td>{item.awh75}</td>
                           <td>{item.ayl75}</td>
                           <td>{item.ayl70}</td>
@@ -257,9 +275,6 @@ class ExcelReport extends Component {
                           <td>{item.ayl375}</td>
                           <td>{item.alloy}</td>
                           <td>{item.total_berat}</td>
-                          <td style={{ textAlign: "center" }}>
-                            {item.keterangan}
-                          </td>
                         </tr>
                       </>
                     );
@@ -268,7 +283,7 @@ class ExcelReport extends Component {
                 <tfoot>
                   <tr>
                     <td
-                      colSpan={6}
+                      colSpan={5}
                       style={{ textAlign: "right", backgroundColor: "#80a1c2" }}
                     >
                       TOTAL
@@ -284,19 +299,15 @@ class ExcelReport extends Component {
                       style={{ textAlign: "right", backgroundColor: "#80a1c2" }}
                     >
                       {this.props.dataExel
-                        .reduce((a, b) => a + parseFloat(b.berat_nota), 0)
-                        .toFixed(3)}
-                    </td>
-                    <td
-                      style={{ textAlign: "right", backgroundColor: "#80a1c2" }}
-                    >
-                      {this.props.dataExel
-                        .reduce((a, b) => a + parseFloat(b.berat_timbang), 0)
+                        .reduce((a, b) => a + parseFloat(b.berat_pcs), 0)
                         .toFixed(3)}
                     </td>
                     <td
                       colSpan={6}
-                      style={{ textAlign: "center", backgroundColor: "#80a1c2" }}
+                      style={{
+                        textAlign: "center",
+                        backgroundColor: "#80a1c2",
+                      }}
                     >
                       {this.props.dataExel
                         .reduce(
@@ -318,11 +329,6 @@ class ExcelReport extends Component {
                       {this.props.dataExel
                         .reduce((a, b) => a + parseFloat(b.total_berat), 0)
                         .toFixed(3)}
-                    </td>
-                    <td
-                      style={{ textAlign: "right", backgroundColor: "#80a1c2" }}
-                    >
-                      {""}
                     </td>
                   </tr>
                 </tfoot>

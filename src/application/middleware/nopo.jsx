@@ -157,7 +157,7 @@ const getNoPOReparasiRK =
       data.tgl_dari = tgl_dari_string;
       data.tgl_sampai = tgl_sampai_string;
       writeLocal("get_no_po_reparasi", data);
-      const response = await api.NoPO.getAllNoPOReparasi(data);
+      const response = await api.NoPO.getAllNoPOReparasiKeluar(data);
       if (response?.value !== null) {
         if (response?.value.length === 0) {
           sweetalert.default.Failed("Data No PO Kosong !");

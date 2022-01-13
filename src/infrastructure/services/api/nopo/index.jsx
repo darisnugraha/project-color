@@ -28,6 +28,19 @@ const NoPO = {
     });
     return response;
   },
+  getAllNoPOReparasiKeluar: async (params) => {
+    const response = await get({
+      url:
+        word.URL_GET_ALL_NO_PO_REPARASI_KELUAR +
+        "startDate=" +
+        params.tgl_dari +
+        "&endDate=" +
+        params.tgl_sampai +
+        "&customer=" +
+        params.customer,
+    });
+    return response;
+  },
 };
 
 export default NoPO;

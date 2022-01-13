@@ -23,9 +23,21 @@ const TableLaporanReparasiKeluar = () => {
       align: "center",
     },
     {
-      title: "Tanggal Terima",
-      dataIndex: "tanggal_terima",
-      key: "tanggal_terima",
+      title: "Tanggal Order",
+      dataIndex: "tanggal_order",
+      key: "tanggal_order",
+      align: "center",
+    },
+    {
+      title: "Tanggal Selesai",
+      dataIndex: "tanggal_selesai",
+      key: "tanggal_selesai",
+      align: "center",
+    },
+    {
+      title: "No Job Order",
+      dataIndex: "no_job_order",
+      key: "no_job_order",
       align: "center",
     },
     {
@@ -41,15 +53,15 @@ const TableLaporanReparasiKeluar = () => {
       align: "center",
     },
     {
-      title: "Kode Batu",
-      dataIndex: "kode_batu",
-      key: "kode_batu",
-      align: "center",
-    },
-    {
       title: "Gambar",
       dataIndex: "gambar",
       key: "gambar",
+      align: "center",
+    },
+    {
+      title: "Keterangan",
+      dataIndex: "keterangan",
+      key: "keterangan",
       align: "center",
     },
     {
@@ -59,15 +71,9 @@ const TableLaporanReparasiKeluar = () => {
       align: "center",
     },
     {
-      title: "Berat Nota",
-      dataIndex: "berat_nota",
-      key: "berat_nota",
-      align: "center",
-    },
-    {
-      title: "Berat Timbang",
-      dataIndex: "berat_timbang",
-      key: "berat_timbang",
+      title: "Berat / PCS",
+      dataIndex: "berat_pcs",
+      key: "berat_pcs",
       align: "center",
     },
     {
@@ -110,12 +116,6 @@ const TableLaporanReparasiKeluar = () => {
       title: "Total Berat",
       dataIndex: "total_berat",
       key: "total_berat",
-      align: "center",
-    },
-    {
-      title: "Keterangan",
-      dataIndex: "keterangan",
-      key: "keterangan",
       align: "center",
     },
   ];

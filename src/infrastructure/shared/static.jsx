@@ -35,7 +35,8 @@ const URL_GET_ALL_KIRIM_MARKETING_GUDANG_QC = `${baseurl}gudangqc/report/qc-kiri
 const URL_GET_ALL_MUTASI_STOCK_GUDANG_QC = `${baseurl}gudangqc/report/mutasi-stock-qc?`;
 const URL_GET_ALL_CUSTOMER = `${baseurl}report/get-customer`;
 const URL_GET_ALL_NO_PO = `${baseurl}report/get-no-po?`;
-const URL_GET_ALL_NO_PO_REPARASI = `${baseurl}report/get-no-po-reparasi?`;
+const URL_GET_ALL_NO_PO_REPARASI = `${baseurl}report/get-no-po-reparasi-masuk?`;
+const URL_GET_ALL_NO_PO_REPARASI_KELUAR = `${baseurl}report/get-no-po-reparasi-keluar?`;
 const URL_GET_ALL_INPUT_DRAFT_PO = `${baseurl}marketing/report/input-draft-po?`;
 const URL_GET_ALL_JOB_PROCESSING = `${baseurl}marketing/report/job-processing?`;
 const URL_GET_ALL_BATAL_JOB_ORDER = `${baseurl}marketing/report/batal-job-order?`;
@@ -84,6 +85,7 @@ const data = {
   URL_GET_ALL_REPARASI_MASUK,
   URL_GET_ALL_NO_PO_REPARASI,
   URL_GET_ALL_REPARASI_KELUAR,
+  URL_GET_ALL_NO_PO_REPARASI_KELUAR,
 };
 
 export default data;

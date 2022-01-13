@@ -38,15 +38,31 @@ const pdfReport = (data = "") => {
       [
         {
           content: element[0].no_po_marketing,
-          colSpan: 17,
+          colSpan: 14,
+        },
+      ],
+      [
+        {
+          content: `TANGGAL ORDER`,
+          colSpan: 2,
+        },
+        {
+          content: element[0].tanggal_order,
+        },
+        {
+          content: `TANGGAL SELESAI`,
+        },
+        {
+          content: element[0].tanggal_selesai,
+        },
+        {
+          content: "",
+          colSpan: 9,
         },
       ],
       [
         {
           content: `NO`,
-        },
-        {
-          content: `TANGGAL TERIMA`,
         },
         {
           content: `KODE BARANG`,
@@ -55,19 +71,16 @@ const pdfReport = (data = "") => {
           content: `NAMA BARANG`,
         },
         {
-          content: `KODE BATU`,
+          content: `GAMBAR`,
         },
         {
-          content: `GAMBAR`,
+          content: `KETERANGAN`,
         },
         {
           content: `ONGKOS`,
         },
         {
-          content: `BERAT NOTA`,
-        },
-        {
-          content: `BERAT TIMBANG`,
+          content: `BERAT / PCS`,
         },
         {
           content: `AWH 75`,
@@ -90,16 +103,13 @@ const pdfReport = (data = "") => {
         {
           content: `TOTAL BERAT`,
         },
-        {
-          content: `KETERANGAN`,
-        },
       ],
     ];
     element.forEach((item) => {
       const row = [
         {
-          content: item.kode_jenis,
-          colSpan: 17,
+          content: item.no_job_order,
+          colSpan: 14,
           styles: {
             halign: "left",
             fillColor: "#bbbbbb",
@@ -111,19 +121,16 @@ const pdfReport = (data = "") => {
           content: item.no,
         },
         {
-          content: item.tanggal_terima,
-        },
-        {
           content: item.kode_barang,
         },
         {
           content: item.nama_barang,
         },
         {
-          content: item.kode_batu,
+          content: item.gambar,
         },
         {
-          content: item.gambar,
+          content: item.keterangan,
         },
         {
           content: item.ongkos,
@@ -132,13 +139,7 @@ const pdfReport = (data = "") => {
           },
         },
         {
-          content: item.berat_nota,
-          styles: {
-            halign: "right",
-          },
-        },
-        {
-          content: item.berat_timbang,
+          content: item.berat_pcs,
           styles: {
             halign: "right",
           },
@@ -167,9 +168,6 @@ const pdfReport = (data = "") => {
             halign: "right",
           },
         },
-        {
-          content: item.keterangan,
-        },
       ];
       tableRows.push(row, row2);
     });
@@ -178,7 +176,7 @@ const pdfReport = (data = "") => {
   const footer = [
     {
       content: "Total",
-      colSpan: 6,
+      colSpan: 5,
       styles: {
         halign: "right",
         fillColor: "#aaa9a8",
@@ -192,18 +190,7 @@ const pdfReport = (data = "") => {
       },
     },
     {
-      content: data
-        .reduce((a, b) => a + parseFloat(b.berat_nota), 0)
-        .toFixed(3),
-      styles: {
-        halign: "right",
-        fillColor: "#aaa9a8",
-      },
-    },
-    {
-      content: data
-        .reduce((a, b) => a + parseFloat(b.berat_timbang), 0)
-        .toFixed(3),
+      content: data.reduce((a, b) => a + parseFloat(b.berat_pcs), 0).toFixed(3),
       styles: {
         halign: "right",
         fillColor: "#aaa9a8",
@@ -238,20 +225,13 @@ const pdfReport = (data = "") => {
         fillColor: "#aaa9a8",
       },
     },
-    {
-      content: "",
-      styles: {
-        halign: "right",
-        fillColor: "#aaa9a8",
-      },
-    },
   ];
   tableRows.push(footer);
 
   const printed = [
     {
       content: `Printed By Admin`,
-      colSpan: 17,
+      colSpan: 14,
       styles: {
         lineWidth: 0,
         lineColor: [0, 0, 0],
