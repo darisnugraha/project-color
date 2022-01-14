@@ -38,6 +38,7 @@ import JobProcessing from "../../views/pages/laporan-marketing/laporan-job-proce
 import BatalJobOrder from "../../views/pages/laporan-marketing/laporan-batal-job-order";
 import ReparasiMasuk from "../../views/pages/laporan-marketing/laporan-reparasi-masuk";
 import ReparasiKeluar from "../../views/pages/laporan-marketing/laporan-reparasi-keluar";
+import LaporanPOMasuk from "../../views/pages/laporan-marketing/laporan-po-masuk";
 
 const routes = [
   // {
@@ -226,6 +227,11 @@ const routes = [
     path: "/laporan-marketing/reparasi-keluar",
     title: "Laporan Reparasi Keluar",
     component: () => <ReparasiKeluar />,
+  },
+  {
+    path: "/laporan-marketing/po-masuk",
+    title: "Laporan PO Masuk",
+    component: () => <LaporanPOMasuk />,
   },
   {
     path: "/notfound",

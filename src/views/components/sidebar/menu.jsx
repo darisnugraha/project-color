@@ -177,6 +177,10 @@ const Menu = [
         path: "/laporan-marketing/reparasi-keluar",
         title: "Reparasi Keluar",
       },
+      {
+        path: "/laporan-marketing/po-masuk",
+        title: "PO Masuk",
+      },
     ],
   },
 ];

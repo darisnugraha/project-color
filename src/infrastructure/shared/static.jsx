@@ -42,6 +42,7 @@ const URL_GET_ALL_JOB_PROCESSING = `${baseurl}marketing/report/job-processing?`;
 const URL_GET_ALL_BATAL_JOB_ORDER = `${baseurl}marketing/report/batal-job-order?`;
 const URL_GET_ALL_REPARASI_MASUK = `${baseurl}marketing/report/reparasi-masuk?`;
 const URL_GET_ALL_REPARASI_KELUAR = `${baseurl}marketing/report/reparasi-keluar?`;
+const URL_GET_ALL_PO_MASUK = `${baseurl}marketing/report/po-masuk?`;
 
 const data = {
   URL_LOGIN,
@@ -86,6 +87,7 @@ const data = {
   URL_GET_ALL_NO_PO_REPARASI,
   URL_GET_ALL_REPARASI_KELUAR,
   URL_GET_ALL_NO_PO_REPARASI_KELUAR,
+  URL_GET_ALL_PO_MASUK,
 };
 
 export default data;

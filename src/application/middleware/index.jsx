@@ -41,6 +41,7 @@ import jobprocessing from "./jobprocessing";
 import bataljoborder from "./bataljoborder";
 import reparasimasuk from "./reparasimasuk";
 import reparasikeluar from "./reparasikeluar";
+import pomasuk from "./pomasuk";
 
 const midd = [
   ...ui,
@@ -86,6 +87,7 @@ const midd = [
   ...bataljoborder,
   ...reparasimasuk,
   ...reparasikeluar,
+  ...pomasuk,
 ];
 
 export default midd;

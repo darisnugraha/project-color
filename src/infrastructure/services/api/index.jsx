@@ -40,6 +40,7 @@ import JobProcessing from "./jobprocessing";
 import BatalJobOrder from "./bataljoborder";
 import ReparasiMasuk from "./reparasimasuk";
 import ReparasiKeluar from "./reparasikeluar";
+import POMasuk from "./pomasuk";
 
 const api = {
   login,
@@ -84,6 +85,7 @@ const api = {
   BatalJobOrder,
   ReparasiMasuk,
   ReparasiKeluar,
+  POMasuk,
 };
 
 export default api;
