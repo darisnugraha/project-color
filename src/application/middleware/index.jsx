@@ -42,6 +42,7 @@ import bataljoborder from "./bataljoborder";
 import reparasimasuk from "./reparasimasuk";
 import reparasikeluar from "./reparasikeluar";
 import pomasuk from "./pomasuk";
+import prosesproduksi from "./prosesproduksi";
 
 const midd = [
   ...ui,
@@ -88,6 +89,7 @@ const midd = [
   ...reparasimasuk,
   ...reparasikeluar,
   ...pomasuk,
+  ...prosesproduksi,
 ];
 
 export default midd;

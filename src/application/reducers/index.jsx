@@ -44,6 +44,7 @@ import bataljoborder from "./bataljoborder";
 import reparasimasuk from "./reparasimasuk";
 import reparasikeluar from "./reparasikeluar";
 import pomasuk from "./pomasuk";
+import prosesproduksi from "./prosesproduksi";
 
 export default combineReducers({
   login,
@@ -90,5 +91,6 @@ export default combineReducers({
   reparasimasuk,
   reparasikeluar,
   pomasuk,
+  prosesproduksi,
   form: formReducer,
 });

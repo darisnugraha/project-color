@@ -181,6 +181,10 @@ const Menu = [
         path: "/laporan-marketing/po-masuk",
         title: "PO Masuk",
       },
+      {
+        path: "/laporan-marketing/proses-produksi",
+        title: "Proses Produksi",
+      },
     ],
   },
 ];
