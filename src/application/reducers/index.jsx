@@ -47,6 +47,7 @@ import pomasuk from "./pomasuk";
 import prosesproduksi from "./prosesproduksi";
 import tambahbatu from "./tambahbatu";
 import ambilbatu from "./ambilbatu";
+import returbatuwax from "./returbatuwax";
 
 export default combineReducers({
   login,
@@ -96,5 +97,6 @@ export default combineReducers({
   prosesproduksi,
   tambahbatu,
   ambilbatu,
+  returbatuwax,
   form: formReducer,
 });

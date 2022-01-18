@@ -42,6 +42,7 @@ import LaporanPOMasuk from "../../views/pages/laporan-marketing/laporan-po-masuk
 import ProsesProduksi from "../../views/pages/laporan-marketing/laporan-proses-produksi";
 import TambahBatu from "../../views/pages/laporan-admin-batu/laporan-tambah-batu";
 import AmbilBatu from "../../views/pages/laporan-admin-batu/laporan-ambil-batu";
+import ReturBatuWax from "../../views/pages/laporan-admin-batu/laporan-retur-batu-wax";
 
 const routes = [
   // {
@@ -250,6 +251,11 @@ const routes = [
     path: "/laporan-admin-batu/ambil-batu",
     title: "Laporan Ambil Batu",
     component: () => <AmbilBatu />,
+  },
+  {
+    path: "/laporan-admin-batu/retur-wax-batu",
+    title: "Laporan Retur Batu Wax",
+    component: () => <ReturBatuWax />,
   },
   {
     path: "/notfound",

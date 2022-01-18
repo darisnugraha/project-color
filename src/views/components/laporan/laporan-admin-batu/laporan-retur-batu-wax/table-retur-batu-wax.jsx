@@ -2,10 +2,10 @@ import React from "react";
 import { Table } from "antd";
 import "antd/dist/antd.css";
 import { useSelector } from "react-redux";
-import ReturBatuWax from "../../../../../application/selectors/tambahbatu";
+import ReturBatuWax from "../../../../../application/selectors/returbatuwax";
 
 const TableLaporanReturBatuWax = () => {
-  const dataReturBatuWax = useSelector(ReturBatuWax.getAllTambahBatu);
+  const dataReturBatuWax = useSelector(ReturBatuWax.getAllReturBatuWax);
 
   const columns = [
     {

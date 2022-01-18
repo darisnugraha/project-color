@@ -12,10 +12,10 @@ import FormLaporanReturBatuWax from "../../components/laporan/laporan-admin-batu
 import BtnPrint from "../../components/laporan/laporan-admin-batu/laporan-retur-batu-wax/btn-print-retur-batu-wax";
 import { pageLoadedLogin } from "../../../application/actions/ui";
 import { getAllBatu } from "../../../application/actions/batu";
-import DataReturBatuWax from "../../../application/selectors/tambahbatu";
+import DataReturBatuWax from "../../../application/selectors/returbatuwax";
 
 const ReturBatuWax = () => {
-  const dataReturBatuWax = useSelector(DataReturBatuWax.getAllTambahBatu);
+  const dataReturBatuWax = useSelector(DataReturBatuWax.getAllReturBatuWax);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(pageLoadedLogin);

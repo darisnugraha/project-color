@@ -1,17 +1,15 @@
 import React from "react";
 import { connect, useSelector } from "react-redux";
-import { Form, Button, Row, Col, Select } from "antd";
+import { Form, Button, Row, Col } from "antd";
 import { Field, reduxForm } from "redux-form";
 import moment from "moment";
 import styleAntd from "../../../../../infrastructure/shared/styleAntd";
 import ui from "../../../../../application/selectors/ui";
-import batu from "../../../../../application/selectors/batu";
 import "antd/dist/antd.css";
-import { getAllTambahBatu } from "../../../../../application/actions/tambahbatu";
+import { getAllReturBatuWax } from "../../../../../application/actions/returbatuwax";
 
 const dateFormat = "DD/MM/YYYY";
 const today = new Date();
-const { Option } = Select;
 
 const maptostate = (state) => {
   if (state.form.FormLaporanReturBatuWax?.values !== undefined) {
@@ -33,7 +31,6 @@ const maptostate = (state) => {
 
 let FormLaporanReturBatuWax = (prop) => {
   const btnLoading = useSelector(ui.getBtnLoading);
-  const dataKodeBatu = useSelector(batu.getAllBatu);
 
   return (
     <Form layout="vertical">
@@ -63,7 +60,7 @@ let FormLaporanReturBatuWax = (prop) => {
             type="primary"
             htmltype="button"
             loading={btnLoading}
-            onClick={() => prop.dispatch(getAllTambahBatu)}
+            onClick={() => prop.dispatch(getAllReturBatuWax)}
             style={{ marginTop: 29 }}
           >
             Lihat Laporan

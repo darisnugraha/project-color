@@ -46,6 +46,7 @@ const URL_GET_ALL_PO_MASUK = `${baseurl}marketing/report/po-masuk?`;
 const URL_GET_ALL_PROSES_PRODUKSI = `${baseurl}marketing/report/proses-produksi?`;
 const URL_GET_ALL_TAMBAH_BATU = `${baseurl}adminbatu/report/tambah-batu?`;
 const URL_GET_ALL_AMBIL_BATU = `${baseurl}adminbatu/report/ambil-batu?`;
+const URL_GET_ALL_RETUR_BATU_WAX = `${baseurl}adminbatu/report/retur-batu-wax?`;
 
 const data = {
   URL_LOGIN,
@@ -94,6 +95,7 @@ const data = {
   URL_GET_ALL_PROSES_PRODUKSI,
   URL_GET_ALL_TAMBAH_BATU,
   URL_GET_ALL_AMBIL_BATU,
+  URL_GET_ALL_RETUR_BATU_WAX,
 };
 
 export default data;
