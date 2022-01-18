@@ -34,7 +34,7 @@ class ExcelReport extends Component {
             <tr>
               <th colSpan="14">
                 {" "}
-                Tanggal : {service.getLocal("kirim_saldo_tahun").date}
+                Tanggal : {service.getLocal("kirim_saldo_tahun")?.date}
               </th>
             </tr>
             <tr>

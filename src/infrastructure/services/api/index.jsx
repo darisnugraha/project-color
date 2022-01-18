@@ -46,6 +46,7 @@ import TambahBatu from "./tambahbatu";
 import AmbilBatu from "./ambilbatu";
 import ReturBatuWax from "./returbatuwax";
 import ReturBatu from "./returbatu";
+import SaldoStockBatu from "./saldostockbatu";
 
 const api = {
   login,
@@ -96,6 +97,7 @@ const api = {
   AmbilBatu,
   ReturBatuWax,
   ReturBatu,
+  SaldoStockBatu,
 };
 
 export default api;

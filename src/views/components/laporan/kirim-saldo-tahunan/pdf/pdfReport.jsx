@@ -16,7 +16,7 @@ const pdfReport = (data = "") => {
   doc.setProperties({
     title: "Saldo Bahan",
   });
-  doc.text(`PERIODE : ${service.getLocal("kirim_saldo_tahun").date}`, 14, 25);
+  doc.text(`PERIODE : ${service.getLocal("kirim_saldo_tahun")?.date}`, 14, 25);
 
   tableColumn = [
     [
