@@ -43,6 +43,7 @@ import ReparasiKeluar from "./reparasikeluar";
 import POMasuk from "./pomasuk";
 import ProsesProduksi from "./prosesproduksi";
 import TambahBatu from "./tambahbatu";
+import AmbilBatu from "./ambilbatu";
 
 const api = {
   login,
@@ -90,6 +91,7 @@ const api = {
   POMasuk,
   ProsesProduksi,
   TambahBatu,
+  AmbilBatu,
 };
 
 export default api;

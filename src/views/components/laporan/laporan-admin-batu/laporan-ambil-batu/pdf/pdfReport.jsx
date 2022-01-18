@@ -3,7 +3,7 @@ import "jspdf-autotable";
 import service from "../../../../../../infrastructure/services/index";
 
 const pdfReport = (data = "") => {
-  let data_head = service.getLocal("tambah_batu") || [];
+  let data_head = service.getLocal("ambil_batu") || [];
   let tgl_dari_string = data_head.tgl_dari;
   let tgl_sampai_string = data_head.tgl_sampai;
   const doc = new jsPDF("l", "mm", [297, 210]);
@@ -11,13 +11,13 @@ const pdfReport = (data = "") => {
   let tableColumn = [];
 
   let finalY = 30;
-  doc.text(`Laporan TAMBAH BATU`, 14, 15);
+  doc.text(`Laporan AMBIL BATU`, 14, 15);
   doc.setFontSize(20);
   doc.text("AMG", 200, 15);
 
   doc.setFontSize(10);
   doc.setProperties({
-    title: "TAMBAH BATU",
+    title: "AMBIL BATU",
   });
   doc.text(`PERIODE : ${tgl_dari_string} s/d ${tgl_sampai_string}`, 14, 25);
 
@@ -53,7 +53,7 @@ const pdfReport = (data = "") => {
     }, {});
   };
 
-  const dataGroup = groupBy(data, "no");
+  const dataGroup = groupBy(data, "no_ambil");
   const dataGroupArr = Object.values(dataGroup);
 
   dataGroupArr.forEach((element) => {
@@ -62,7 +62,7 @@ const pdfReport = (data = "") => {
 
     const rowKirim = [
       {
-        content: "NO : " + element[0].no,
+        content: "NO : " + element[0].no_ambil,
         styles: {
           halign: "left",
           fillColor: "#bbbbbb",
@@ -222,7 +222,7 @@ const pdfReport = (data = "") => {
   x.document.write(
     `<html>
     <head>
-    <title>TAMBAH BATU</title>
+    <title>AMBIL BATU</title>
     </head>
     <body style='margin:0 !important'>
     <embed width='100%' height='100%'src='${string}'></embed>

@@ -44,6 +44,7 @@ import reparasikeluar from "./reparasikeluar";
 import pomasuk from "./pomasuk";
 import prosesproduksi from "./prosesproduksi";
 import tambahbatu from "./tambahbatu";
+import ambilbatu from "./ambilbatu";
 
 const midd = [
   ...ui,
@@ -92,6 +93,7 @@ const midd = [
   ...pomasuk,
   ...prosesproduksi,
   ...tambahbatu,
+  ...ambilbatu,
 ];
 
 export default midd;
