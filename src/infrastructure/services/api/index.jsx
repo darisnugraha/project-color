@@ -42,6 +42,7 @@ import ReparasiMasuk from "./reparasimasuk";
 import ReparasiKeluar from "./reparasikeluar";
 import POMasuk from "./pomasuk";
 import ProsesProduksi from "./prosesproduksi";
+import TambahBatu from "./tambahbatu";
 
 const api = {
   login,
@@ -88,6 +89,7 @@ const api = {
   ReparasiKeluar,
   POMasuk,
   ProsesProduksi,
+  TambahBatu,
 };
 
 export default api;

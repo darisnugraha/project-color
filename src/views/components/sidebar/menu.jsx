@@ -187,6 +187,25 @@ const Menu = [
       },
     ],
   },
+  {
+    path: "/laporan-admin-batu",
+    icon: "fa fa-book",
+    title: "Laporan Admin Batu",
+    children: [
+      {
+        path: "/laporan-admin-batu/tambah-batu",
+        title: "Tambah Batu",
+      },
+      {
+        path: "/laporan-admin-batu/ambil-batu",
+        title: "Ambil Batu",
+      },
+      {
+        path: "/laporan-admin-batu/retur-wax-batu",
+        title: "Retur Batu Wax",
+      },
+    ],
+  },
 ];
 
 export default Menu;

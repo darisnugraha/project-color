@@ -44,6 +44,7 @@ const URL_GET_ALL_REPARASI_MASUK = `${baseurl}marketing/report/reparasi-masuk?`;
 const URL_GET_ALL_REPARASI_KELUAR = `${baseurl}marketing/report/reparasi-keluar?`;
 const URL_GET_ALL_PO_MASUK = `${baseurl}marketing/report/po-masuk?`;
 const URL_GET_ALL_PROSES_PRODUKSI = `${baseurl}marketing/report/proses-produksi?`;
+const URL_GET_ALL_TAMBAH_BATU = `${baseurl}adminbatu/report/tambah-batu?`;
 
 const data = {
   URL_LOGIN,
@@ -90,6 +91,7 @@ const data = {
   URL_GET_ALL_NO_PO_REPARASI_KELUAR,
   URL_GET_ALL_PO_MASUK,
   URL_GET_ALL_PROSES_PRODUKSI,
+  URL_GET_ALL_TAMBAH_BATU,
 };
 
 export default data;

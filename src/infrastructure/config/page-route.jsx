@@ -40,6 +40,7 @@ import ReparasiMasuk from "../../views/pages/laporan-marketing/laporan-reparasi-
 import ReparasiKeluar from "../../views/pages/laporan-marketing/laporan-reparasi-keluar";
 import LaporanPOMasuk from "../../views/pages/laporan-marketing/laporan-po-masuk";
 import ProsesProduksi from "../../views/pages/laporan-marketing/laporan-proses-produksi";
+import TambahBatu from "../../views/pages/laporan-admin-batu/laporan-tambah-batu";
 
 const routes = [
   // {
@@ -238,6 +239,11 @@ const routes = [
     path: "/laporan-marketing/proses-produksi",
     title: "Laporan Proses Produksi",
     component: () => <ProsesProduksi />,
+  },
+  {
+    path: "/laporan-admin-batu/tambah-batu",
+    title: "Laporan Tambah Batu",
+    component: () => <TambahBatu />,
   },
   {
     path: "/notfound",
