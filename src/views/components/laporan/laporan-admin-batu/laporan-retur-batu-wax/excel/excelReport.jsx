@@ -17,15 +17,15 @@ class ExcelReport extends Component {
       }, {});
     };
 
-    const dataGroup = groupBy(this.props.dataExel, "no");
+    const dataGroup = groupBy(this.props.dataExel, "no_retur");
     const dataGroupArr = Object.values(dataGroup);
 
     let jmlterimaAll = 0;
     let brtterimaAll = 0;
 
     this.props.dataExel.forEach((element) => {
-      jmlterimaAll = jmlterimaAll + parseFloat(element.jumlah_batu);
-      brtterimaAll = brtterimaAll + parseFloat(element.berat_batu);
+      jmlterimaAll = jmlterimaAll + parseFloat(element.jumlah_retur);
+      brtterimaAll = brtterimaAll + parseFloat(element.berat_retur);
     });
 
     return (
@@ -34,20 +34,20 @@ class ExcelReport extends Component {
           id="test-table-xls-button"
           className="ant-btn ant-btn-primary ant-btn-block ant-btn-success"
           table="table-to-xls"
-          filename={`LAPORAN TAMBAH BATU`}
-          sheet={`LAPORAN TAMBAH BATU`}
+          filename={`LAPORAN RETUR BATU WAX`}
+          sheet={`LAPORAN RETUR BATU WAX`}
           buttonText="Export Excel"
         />
         <table id="table-to-xls" style={{ display: "none" }}>
           <thead>
             <tr>
-              <th colSpan="6" style={{ textAlign: "center" }}>
+              <th colSpan="9" style={{ textAlign: "center" }}>
                 {" "}
-                LAPORAN TAMBAH BATU
+                LAPORAN RETUR BATU WAX
               </th>
             </tr>
             <tr>
-              <th colSpan="6">
+              <th colSpan="9">
                 {" "}
                 Tanggal :{" "}
                 {this.props.dataHead?.tgl_dari +
@@ -72,7 +72,7 @@ class ExcelReport extends Component {
                   textAlign: "center",
                 }}
               >
-                KODE BATU
+                NO JOB ORDER
               </td>
               <td
                 style={{
@@ -81,7 +81,25 @@ class ExcelReport extends Component {
                   textAlign: "center",
                 }}
               >
-                NAMA BATU
+                KODE BARANG
+              </td>
+              <td
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
+              >
+                JENIS BAHAN
+              </td>
+              <td
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
+              >
+                KODE BATU
               </td>
               <td
                 style={{
@@ -99,7 +117,7 @@ class ExcelReport extends Component {
                   textAlign: "center",
                 }}
               >
-                JUMLAH BATU
+                JUMLAH RETUR
               </td>
               <td
                 style={{
@@ -108,7 +126,16 @@ class ExcelReport extends Component {
                   textAlign: "center",
                 }}
               >
-                BERAT BATU
+                BERAT RETUR
+              </td>
+              <td
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
+              >
+                STATUS
               </td>
             </tr>
           </thead>
@@ -121,45 +148,48 @@ class ExcelReport extends Component {
                 <>
                   <tr>
                     <td
-                      colSpan="6"
+                      colSpan="9"
                       style={{
                         backgroundColor: "#bbbbbb",
                         textAlign: "left",
                       }}
                     >
-                      NO : {element[0].no}
+                      NO : {element[0].no_retur}
                     </td>
                   </tr>
                   {element.map((item) => {
-                    jmlterima = jmlterima + parseFloat(item.jumlah_batu);
-                    brtterima = brtterima + parseFloat(item.berat_batu);
+                    jmlterima = jmlterima + parseFloat(item.jumlah_retur);
+                    brtterima = brtterima + parseFloat(item.berat_retur);
 
                     return (
                       <tr>
                         <td>{item.tanggal}</td>
+                        <td>{item.no_job_order}</td>
+                        <td>{item.kode_barang}</td>
+                        <td>{item.jenis_bahan}</td>
                         <td>{item.kode_batu}</td>
-                        <td>{item.nama_batu}</td>
                         <td>{item.ukuran_batu}</td>
                         <td
                           style={{
                             textAlign: "right",
                           }}
                         >
-                          {item.jumlah_batu}
+                          {item.jumlah_retur}
                         </td>
                         <td
                           style={{
                             textAlign: "right",
                           }}
                         >
-                          {item.berat_batu}
+                          {item.berat_retur}
                         </td>
+                        <td>{item.status}</td>
                       </tr>
                     );
                   })}
                   <tr>
                     <td
-                      colSpan="4"
+                      colSpan="7"
                       style={{
                         backgroundColor: "#dddddd",
                         textAlign: "right",
@@ -183,6 +213,14 @@ class ExcelReport extends Component {
                     >
                       {brtterima.toFixed(3)}
                     </td>
+                    <td
+                      style={{
+                        backgroundColor: "#dddddd",
+                        textAlign: "right",
+                      }}
+                    >
+                      {""}
+                    </td>
                   </tr>
                 </>
               );
@@ -191,7 +229,7 @@ class ExcelReport extends Component {
           <tfoot>
             <tr>
               <td
-                colSpan="4"
+                colSpan="7"
                 style={{
                   textAlign: "right",
                 }}
@@ -211,6 +249,13 @@ class ExcelReport extends Component {
                 }}
               >
                 {brtterimaAll.toFixed(3)}
+              </td>
+              <td
+                style={{
+                  textAlign: "right",
+                }}
+              >
+                {""}
               </td>
             </tr>
           </tfoot>

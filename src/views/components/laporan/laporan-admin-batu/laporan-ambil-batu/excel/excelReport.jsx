@@ -137,8 +137,8 @@ class ExcelReport extends Component {
                     return (
                       <tr>
                         <td>{item.tanggal}</td>
-                        <td>{item.nama_batu}</td>
                         <td>{item.kode_batu}</td>
+                        <td>{item.nama_batu}</td>
                         <td>{item.ukuran_batu}</td>
                         <td
                           style={{
