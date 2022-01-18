@@ -204,6 +204,14 @@ const Menu = [
         path: "/laporan-admin-batu/retur-wax-batu",
         title: "Retur Batu Wax",
       },
+      {
+        path: "/laporan-admin-batu/retur-batu",
+        title: "Retur Batu",
+      },
+      {
+        path: "/laporan-admin-batu/saldo-stock-batu",
+        title: "Saldo Stock Batu",
+      },
     ],
   },
 ];

@@ -2,10 +2,10 @@ import React from "react";
 import { Table } from "antd";
 import "antd/dist/antd.css";
 import { useSelector } from "react-redux";
-import ReturBatuWax from "../../../../../application/selectors/returbatuwax";
+import ReturBatu from "../../../../../application/selectors/returbatu";
 
-const TableLaporanReturBatuWax = () => {
-  const dataReturBatuWax = useSelector(ReturBatuWax.getAllReturBatuWax);
+const TableLaporanReturBatu = () => {
+  const dataReturBatu = useSelector(ReturBatu.getAllReturBatu);
 
   const columns = [
     {
@@ -51,32 +51,26 @@ const TableLaporanReturBatuWax = () => {
       align: "center",
     },
     {
-      title: "Jumlah Retur",
-      dataIndex: "jumlah_retur",
-      key: "jumlah_retur",
+      title: "Jumlah Batu",
+      dataIndex: "jumlah_batu",
+      key: "jumlah_batu",
       align: "center",
     },
     {
-      title: "Berat Retur",
-      dataIndex: "berat_retur",
-      key: "berat_retur",
-      align: "center",
-    },
-    {
-      title: "Status",
-      dataIndex: "status",
-      key: "status",
+      title: "Berat Batu",
+      dataIndex: "berat_batu",
+      key: "berat_batu",
       align: "center",
     },
   ];
 
   return (
     <Table
-      dataSource={dataReturBatuWax}
+      dataSource={dataReturBatu}
       columns={columns}
       scroll={{ x: 1500, y: 1000 }}
     />
   );
 };
 
-export default TableLaporanReturBatuWax;
+export default TableLaporanReturBatu;

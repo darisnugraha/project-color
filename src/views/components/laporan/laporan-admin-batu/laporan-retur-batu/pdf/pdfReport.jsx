@@ -3,7 +3,7 @@ import "jspdf-autotable";
 import service from "../../../../../../infrastructure/services/index";
 
 const pdfReport = (data = "") => {
-  let data_head = service.getLocal("retur_batu_wax") || [];
+  let data_head = service.getLocal("retur_batu") || [];
   let tgl_dari_string = data_head.tgl_dari;
   let tgl_sampai_string = data_head.tgl_sampai;
   const doc = new jsPDF("l", "mm", [297, 210]);
@@ -11,13 +11,13 @@ const pdfReport = (data = "") => {
   let tableColumn = [];
 
   let finalY = 30;
-  doc.text(`Laporan RETUR BATU WAX`, 14, 15);
+  doc.text(`Laporan RETUR BATU`, 14, 15);
   doc.setFontSize(20);
   doc.text("AMG", 200, 15);
 
   doc.setFontSize(10);
   doc.setProperties({
-    title: "RETUR BATU WAX",
+    title: "RETUR BATU",
   });
   doc.text(`PERIODE : ${tgl_dari_string} s/d ${tgl_sampai_string}`, 14, 25);
 
@@ -42,13 +42,10 @@ const pdfReport = (data = "") => {
         content: `UKURAN BATU`,
       },
       {
-        content: `JUMLAH RETUR`,
+        content: `JUMLAH BATU`,
       },
       {
-        content: `BERAT RETUR`,
-      },
-      {
-        content: `STATUS`,
+        content: `BERAT BATU`,
       },
     ],
   ];
@@ -81,8 +78,8 @@ const pdfReport = (data = "") => {
     ];
     tableRows.push(rowKirim);
     element.forEach((item) => {
-      jmlterima = jmlterima + parseFloat(item.jumlah_retur);
-      brtterima = brtterima + parseFloat(item.berat_retur);
+      jmlterima = jmlterima + parseFloat(item.jumlah_batu);
+      brtterima = brtterima + parseFloat(item.berat_batu);
 
       const row = [
         {
@@ -122,16 +119,10 @@ const pdfReport = (data = "") => {
           },
         },
         {
-          content: item.jumlah_retur,
+          content: item.jumlah_batu,
         },
         {
-          content: item.berat_retur,
-        },
-        {
-          content: item.status,
-          styles: {
-            halign: "center",
-          },
+          content: item.berat_batu,
         },
       ];
       tableRows.push(row);
@@ -159,13 +150,6 @@ const pdfReport = (data = "") => {
           fillColor: "#dddddd",
         },
       },
-      {
-        content: "",
-        styles: {
-          halign: "right",
-          fillColor: "#dddddd",
-        },
-      },
     ];
     tableRows.push(rowFoot);
   });
@@ -174,8 +158,8 @@ const pdfReport = (data = "") => {
   let brtterimaAll = 0;
 
   data.forEach((element) => {
-    jmlterimaAll = jmlterimaAll + parseFloat(element.jumlah_retur);
-    brtterimaAll = brtterimaAll + parseFloat(element.berat_retur);
+    jmlterimaAll = jmlterimaAll + parseFloat(element.jumlah_batu);
+    brtterimaAll = brtterimaAll + parseFloat(element.berat_batu);
   });
 
   const footer = [
@@ -256,7 +240,7 @@ const pdfReport = (data = "") => {
   x.document.write(
     `<html>
     <head>
-    <title>RETUR BATU WAX</title>
+    <title>RETUR BATU</title>
     </head>
     <body style='margin:0 !important'>
     <embed width='100%' height='100%'src='${string}'></embed>

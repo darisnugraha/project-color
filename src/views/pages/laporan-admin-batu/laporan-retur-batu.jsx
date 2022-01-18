@@ -7,18 +7,20 @@ import {
   PanelHeader,
   PanelBody,
 } from "../../components/panel/panel.jsx";
-import TableLaporanReturBatuWax from "../../components/laporan/laporan-admin-batu/laporan-retur-batu-wax/table-retur-batu-wax";
-import FormLaporanReturBatuWax from "../../components/laporan/laporan-admin-batu/laporan-retur-batu-wax/form-retur-batu-wax";
-import BtnPrint from "../../components/laporan/laporan-admin-batu/laporan-retur-batu-wax/btn-print-retur-batu-wax";
+import TableLaporanReturBatu from "../../components/laporan/laporan-admin-batu/laporan-retur-batu/table-retur-batu";
+import FormLaporanReturBatu from "../../components/laporan/laporan-admin-batu/laporan-retur-batu/form-retur-batu";
+import BtnPrint from "../../components/laporan/laporan-admin-batu/laporan-retur-batu/btn-print-retur-batu";
 import { pageLoadedLogin } from "../../../application/actions/ui";
-import DataReturBatuWax from "../../../application/selectors/returbatuwax";
+import { getAllBatu } from "../../../application/actions/batu";
+import DataReturBatu from "../../../application/selectors/returbatu";
 
-const ReturBatuWax = () => {
-  const dataReturBatuWax = useSelector(DataReturBatuWax.getAllReturBatuWax);
+const ReturBatu = () => {
+  const dataReturBatu = useSelector(DataReturBatu.getAllReturBatu);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(pageLoadedLogin);
-    document.title = "Laporan Retur Batu Wax";
+    dispatch(getAllBatu);
+    document.title = "Laporan Retur Batu";
   }, [dispatch]);
 
   return (
@@ -28,29 +30,27 @@ const ReturBatuWax = () => {
           <Link to="/dashboard">Home</Link>
         </li>
         <li className="breadcrumb-item">
-          <Link to="/laporan-admin-batu/retur-wax-batu">
-            Laporan Admin Batu
-          </Link>
+          <Link to="/laporan-admin-batu/retur-batu">Laporan Admin Batu</Link>
         </li>
-        <li className="breadcrumb-item active">Retur Batu Wax</li>
+        <li className="breadcrumb-item active">Retur Batu</li>
       </ol>
       <h1 className="page-header">
-        Laporan Admin Batu <small>Retur Batu Wax</small>
+        Laporan Admin Batu <small>Retur Batu</small>
       </h1>
       <Panel>
-        <PanelHeader>Retur Batu Wax</PanelHeader>
+        <PanelHeader>Retur Batu</PanelHeader>
         <PanelBody>
           <Card bordered={false}>
             <div className="row">
               <div className="col-12">
-                <FormLaporanReturBatuWax />
+                <FormLaporanReturBatu />
               </div>
             </div>
             <div
               className="row"
               style={{
                 marginTop: 10,
-                display: dataReturBatuWax.length === 0 ? "none" : "",
+                display: dataReturBatu.length === 0 ? "none" : "",
               }}
             >
               <div className="col-12">
@@ -59,14 +59,14 @@ const ReturBatuWax = () => {
                 </Divider>
               </div>
               <div className="col-12">
-                <TableLaporanReturBatuWax />
+                <TableLaporanReturBatu />
               </div>
             </div>
             <div
               className="row"
               style={{
                 marginTop: 10,
-                display: dataReturBatuWax.length === 0 ? "none" : "",
+                display: dataReturBatu.length === 0 ? "none" : "",
               }}
             >
               <div className="col-12">
@@ -80,4 +80,4 @@ const ReturBatuWax = () => {
   );
 };
 
-export default ReturBatuWax;
+export default ReturBatu;
