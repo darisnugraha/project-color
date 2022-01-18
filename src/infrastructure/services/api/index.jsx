@@ -47,6 +47,7 @@ import AmbilBatu from "./ambilbatu";
 import ReturBatuWax from "./returbatuwax";
 import ReturBatu from "./returbatu";
 import SaldoStockBatu from "./saldostockbatu";
+import KirimBatu from "./kirimbatu";
 
 const api = {
   login,
@@ -98,6 +99,7 @@ const api = {
   ReturBatuWax,
   ReturBatu,
   SaldoStockBatu,
+  KirimBatu,
 };
 
 export default api;

@@ -48,6 +48,7 @@ import ambilbatu from "./ambilbatu";
 import returbatuwax from "./returbatuwax";
 import returbatu from "./returbatu";
 import saldostockbatu from "./saldostockbatu";
+import kirimbatu from "./kirimbatu";
 
 const midd = [
   ...ui,
@@ -100,6 +101,7 @@ const midd = [
   ...returbatuwax,
   ...returbatu,
   ...saldostockbatu,
+  ...kirimbatu,
 ];
 
 export default midd;

@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Input, DatePicker, Radio, Checkbox, Select } from "antd";
+import { Form, Input, DatePicker, Radio, Checkbox, Select, Switch } from "antd";
 
 const FormItem = Form.Item;
 const RadioGroup = Radio.Group;
@@ -28,6 +28,15 @@ const ARangePick = makeField(RangePicker);
 const ARadioGroup = makeField(RadioGroup);
 const ACheckBox = makeField(Checkbox);
 const ASelect = makeField(Select);
+const ASwitch = makeField(Switch);
 
-const data = { AInput, ADatePick, ARadioGroup, ACheckBox, ASelect, ARangePick };
+const data = {
+  AInput,
+  ADatePick,
+  ARadioGroup,
+  ACheckBox,
+  ASelect,
+  ARangePick,
+  ASwitch,
+};
 export default data;

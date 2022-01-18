@@ -212,6 +212,10 @@ const Menu = [
         path: "/laporan-admin-batu/saldo-stock-batu",
         title: "Saldo Stock Batu",
       },
+      {
+        path: "/laporan-admin-batu/kirim-batu",
+        title: "Kirim Batu",
+      },
     ],
   },
 ];
