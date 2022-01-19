@@ -50,6 +50,7 @@ import SaldoStockBatu from "./saldostockbatu";
 import KirimBatu from "./kirimbatu";
 import KirimBahanAdmin from "./kirimbahanadmin";
 import MutasiStockCasting from "./mutasistockcasting";
+import KartuJobOrder from "./kartujoborder";
 
 const api = {
   login,
@@ -104,6 +105,7 @@ const api = {
   KirimBatu,
   KirimBahanAdmin,
   MutasiStockCasting,
+  KartuJobOrder,
 };
 
 export default api;

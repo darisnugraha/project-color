@@ -51,6 +51,7 @@ import saldostockbatu from "./saldostockbatu";
 import kirimbatu from "./kirimbatu";
 import kirimbahanadmin from "./kirimbahanadmin";
 import mutasistockcasting from "./mutasistockcasting";
+import kartujoborder from "./kartujoborder";
 
 const midd = [
   ...ui,
@@ -106,6 +107,7 @@ const midd = [
   ...kirimbatu,
   ...kirimbahanadmin,
   ...mutasistockcasting,
+  ...kartujoborder,
 ];
 
 export default midd;

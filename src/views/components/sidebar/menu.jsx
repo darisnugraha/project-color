@@ -80,6 +80,10 @@ const Menu = [
           },
         ],
       },
+      {
+        path: "/laporan-admin-pusat/kartu-job-order",
+        title: "Kartu Job Order",
+      },
     ],
   },
   {

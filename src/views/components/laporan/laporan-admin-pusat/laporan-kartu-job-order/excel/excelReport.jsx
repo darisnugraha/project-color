@@ -14,20 +14,20 @@ class ExcelReport extends Component {
           id="test-table-xls-button"
           className="ant-btn ant-btn-primary ant-btn-block ant-btn-success"
           table="table-to-xls"
-          filename={`LAPORAN MUTASI STOCK CASTING`}
-          sheet={`LAPORAN MUTASI STOCK CASTING`}
+          filename={`LAPORAN KARTU JOB ORDER`}
+          sheet={`LAPORAN KARTU JOB ORDER`}
           buttonText="Export Excel"
         />
         <table id="table-to-xls" style={{ display: "none" }}>
           <thead>
             <tr>
-              <th colSpan="16" style={{ textAlign: "center" }}>
+              <th colSpan="19" style={{ textAlign: "center" }}>
                 {" "}
-                LAPORAN MUTASI STOCK CASTING
+                LAPORAN KARTU JOB ORDER
               </th>
             </tr>
             <tr>
-              <th colSpan="16">
+              <th colSpan="19">
                 {" "}
                 Tanggal :{" "}
                 {this.props.dataHead?.tgl_dari +
@@ -132,9 +132,49 @@ class ExcelReport extends Component {
                   color: "#000",
                   textAlign: "center",
                 }}
-                colSpan={3}
+                colSpan={2}
               >
                 KIRIM
+              </td>
+              <td
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
+                rowSpan={2}
+              >
+                SPRU
+              </td>
+              <td
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
+                rowSpan={2}
+              >
+                BUBUK
+              </td>
+              <td
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
+                rowSpan={2}
+              >
+                SUSUT
+              </td>
+              <td
+                style={{
+                  backgroundColor: "#99CCFF",
+                  color: "#000",
+                  textAlign: "center",
+                }}
+                rowSpan={2}
+              >
+                USER
               </td>
               <td
                 style={{
@@ -220,15 +260,6 @@ class ExcelReport extends Component {
               >
                 BERAT
               </td>
-              <td
-                style={{
-                  backgroundColor: "#99CCFF",
-                  color: "#000",
-                  textAlign: "center",
-                }}
-              >
-                SISA
-              </td>
             </tr>
           </thead>
           <tbody>
@@ -249,7 +280,10 @@ class ExcelReport extends Component {
                   <td style={{ textAlign: "right" }}>{item.batu_sisa}</td>
                   <td style={{ textAlign: "right" }}>{item.jumlah_kirim}</td>
                   <td style={{ textAlign: "right" }}>{item.berat_kirim}</td>
-                  <td style={{ textAlign: "right" }}>{item.sisa_kirim}</td>
+                  <td style={{ textAlign: "right" }}>{item.spru}</td>
+                  <td style={{ textAlign: "right" }}>{item.bubuk}</td>
+                  <td style={{ textAlign: "right" }}>{item.susut}</td>
+                  <td>{item.user}</td>
                   <td>{item.keterangan}</td>
                 </tr>
               );
@@ -305,7 +339,17 @@ class ExcelReport extends Component {
               </td>
               <td style={{ textAlign: "right" }}>
                 {this.props.dataExel
-                  .reduce((a, b) => a + parseFloat(b.sisa_kirim), 0)
+                  .reduce((a, b) => a + parseFloat(b.spru), 0)
+                  .toFixed(3)}
+              </td>
+              <td style={{ textAlign: "right" }}>
+                {this.props.dataExel
+                  .reduce((a, b) => a + parseFloat(b.bubuk), 0)
+                  .toFixed(3)}
+              </td>
+              <td style={{ textAlign: "right" }}>
+                {this.props.dataExel
+                  .reduce((a, b) => a + parseFloat(b.susut), 0)
                   .toFixed(3)}
               </td>
             </tr>

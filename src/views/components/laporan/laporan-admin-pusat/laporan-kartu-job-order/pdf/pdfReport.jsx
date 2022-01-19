@@ -3,21 +3,21 @@ import "jspdf-autotable";
 import service from "../../../../../../infrastructure/services/index";
 
 const pdfReport = (data = "") => {
-  let data_head = service.getLocal("mutasi_stock_casting") || [];
+  let data_head = service.getLocal("kartu_job_order") || [];
   let tgl_dari_string = data_head.tgl_dari;
   let tgl_sampai_string = data_head.tgl_sampai;
-  const doc = new jsPDF("l", "mm", [297, 210]);
+  const doc = new jsPDF("l", "mm", [420, 210]);
   let tableRows = [];
   let tableColumn = [];
 
   let finalY = 30;
-  doc.text(`Laporan MUTASI STOCK CASTING`, 14, 15);
+  doc.text(`Laporan KARTU JOB ORDER`, 14, 15);
   doc.setFontSize(20);
   doc.text("AMG", 200, 15);
 
   doc.setFontSize(10);
   doc.setProperties({
-    title: "MUTASI STOCK CASTING",
+    title: "KARTU JOB ORDER",
   });
   doc.text(`PERIODE : ${tgl_dari_string} s/d ${tgl_sampai_string}`, 14, 25);
 
@@ -61,7 +61,23 @@ const pdfReport = (data = "") => {
       },
       {
         content: `KIRIM`,
-        colSpan: 3,
+        colSpan: 2,
+      },
+      {
+        content: `SPRU`,
+        rowSpan: 2,
+      },
+      {
+        content: `BUBUK`,
+        rowSpan: 2,
+      },
+      {
+        content: `SUSUT`,
+        rowSpan: 2,
+      },
+      {
+        content: `USER`,
+        rowSpan: 2,
       },
       {
         content: `KETERANGAN`,
@@ -92,9 +108,6 @@ const pdfReport = (data = "") => {
       },
       {
         content: `BERAT`,
-      },
-      {
-        content: `SISA`,
       },
     ],
   ];
@@ -162,7 +175,19 @@ const pdfReport = (data = "") => {
         content: element.berat_kirim,
       },
       {
-        content: element.sisa_kirim,
+        content: element.spru,
+      },
+      {
+        content: element.bubuk,
+      },
+      {
+        content: element.susut,
+      },
+      {
+        content: element.user,
+        styles: {
+          halign: "center",
+        },
       },
       {
         content: element.keterangan,
@@ -237,9 +262,19 @@ const pdfReport = (data = "") => {
       },
     },
     {
-      content: data
-        .reduce((a, b) => a + parseFloat(b.sisa_kirim), 0)
-        .toFixed(3),
+      content: data.reduce((a, b) => a + parseFloat(b.spru), 0).toFixed(3),
+      styles: {
+        halign: "right",
+      },
+    },
+    {
+      content: data.reduce((a, b) => a + parseFloat(b.bubuk), 0).toFixed(3),
+      styles: {
+        halign: "right",
+      },
+    },
+    {
+      content: data.reduce((a, b) => a + parseFloat(b.susut), 0).toFixed(3),
       styles: {
         halign: "right",
       },
@@ -250,7 +285,7 @@ const pdfReport = (data = "") => {
   const printed = [
     {
       content: `Printed By Admin`,
-      colSpan: 10,
+      colSpan: 19,
       styles: {
         fontStyle: "italic",
         textColor: "#000",
@@ -302,7 +337,7 @@ const pdfReport = (data = "") => {
   x.document.write(
     `<html>
     <head>
-    <title>MUTASI STOCK CASTING</title>
+    <title>KARTU JOB ORDER</title>
     </head>
     <body style='margin:0 !important'>
     <embed width='100%' height='100%'src='${string}'></embed>

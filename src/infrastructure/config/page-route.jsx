@@ -48,6 +48,7 @@ import SaldoStockBatu from "../../views/pages/laporan-admin-batu/laporan-saldo-s
 import KirimBatu from "../../views/pages/laporan-admin-batu/laporan-kirim-batu";
 import KirimBahanAdmin from "../../views/pages/laporan-casting/laporan-kirim-bahan-admin";
 import MutasiStockCasting from "../../views/pages/laporan-casting/laporan-mutasi-stock-casting";
+import KartuJobOrder from "../../views/pages/laporan-admin-pusat/laporan-kartu-job-order";
 
 const routes = [
   // {
@@ -286,6 +287,11 @@ const routes = [
     path: "/laporan-casting/mutasi-stock-casting",
     title: "Laporan Mutasi Stock Casting",
     component: () => <MutasiStockCasting />,
+  },
+  {
+    path: "/laporan-admin-pusat/kartu-job-order",
+    title: "Laporan Kartu Job Order",
+    component: () => <KartuJobOrder />,
   },
   {
     path: "/notfound",
