@@ -52,6 +52,7 @@ import returbatu from "./returbatu";
 import saldostockbatu from "./saldostockbatu";
 import kirimbatu from "./kirimbatu";
 import kirimbahanadmin from "./kirimbahanadmin";
+import mutasistockcasting from "./mutasistockcasting";
 
 export default combineReducers({
   login,
@@ -106,5 +107,6 @@ export default combineReducers({
   saldostockbatu,
   kirimbatu,
   kirimbahanadmin,
+  mutasistockcasting,
   form: formReducer,
 });

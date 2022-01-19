@@ -49,6 +49,7 @@ import ReturBatu from "./returbatu";
 import SaldoStockBatu from "./saldostockbatu";
 import KirimBatu from "./kirimbatu";
 import KirimBahanAdmin from "./kirimbahanadmin";
+import MutasiStockCasting from "./mutasistockcasting";
 
 const api = {
   login,
@@ -102,6 +103,7 @@ const api = {
   SaldoStockBatu,
   KirimBatu,
   KirimBahanAdmin,
+  MutasiStockCasting,
 };
 
 export default api;
