@@ -96,7 +96,7 @@ class ExcelReport extends Component {
       0
     );
 
-    const tanggal = service.getLocal("stock_global_produksi").date;
+    const tanggal = service.getLocal("stock_global_produksi")?.date;
     return (
       <>
         <ReactHTMLTableToExcel

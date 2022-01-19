@@ -17,7 +17,7 @@ const pdfReportR = (data = "") => {
     title: "Bahan Tukang Detail",
   });
   doc.text(
-    `PERIODE : ${service.getLocal("stock_global_produksi").date}`,
+    `PERIODE : ${service.getLocal("stock_global_produksi")?.date}`,
     14,
     25
   );
