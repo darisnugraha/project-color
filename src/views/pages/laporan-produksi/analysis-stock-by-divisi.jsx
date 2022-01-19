@@ -24,6 +24,26 @@ const AnalysisStock = () => {
     dispatch(getAllDivisi);
     document.title = "Laporan Analysis Stock";
   }, [dispatch]);
+  const countLengthData = dataAnalysisStock.length;
+  const componentTableButton = (
+    <div>
+      <div className="row" style={{ marginTop: 10 }}>
+        <div className="col-12">
+          <Divider orientation="left" style={{ fontSize: "14px" }}>
+            Tabel Laporan
+          </Divider>
+        </div>
+        <div className="col-12">
+          <TableLaporanAnalysisStock />
+        </div>
+      </div>
+      <div className="row" style={{ marginTop: 10 }}>
+        <div className="col-12">
+          <BtnPrint />
+        </div>
+      </div>
+    </div>
+  );
 
   return (
     <div>
@@ -50,33 +70,7 @@ const AnalysisStock = () => {
                 <FormLaporanAnalysisStock />
               </div>
             </div>
-            <div
-              className="row"
-              style={{
-                marginTop: 10,
-                display: dataAnalysisStock.length === 0 ? "none" : "",
-              }}
-            >
-              <div className="col-12">
-                <Divider orientation="left" style={{ fontSize: "14px" }}>
-                  Tabel Laporan
-                </Divider>
-              </div>
-              <div className="col-12">
-                <TableLaporanAnalysisStock />
-              </div>
-            </div>
-            <div
-              className="row"
-              style={{
-                marginTop: 10,
-                display: dataAnalysisStock.length === 0 ? "none" : "",
-              }}
-            >
-              <div className="col-12">
-                <BtnPrint />
-              </div>
-            </div>
+            {countLengthData !== 0 && componentTableButton}
           </Card>
         </PanelBody>
       </Panel>

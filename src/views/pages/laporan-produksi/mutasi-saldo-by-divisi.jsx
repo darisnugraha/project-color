@@ -26,6 +26,26 @@ const MutasiSaldo = () => {
     dispatch(getAllDivisi);
     document.title = "Laporan Mutasi Saldo";
   }, [dispatch]);
+  const countLengthData = dataMutasiSaldo.length;
+  const componentTableButton = (
+    <div>
+      <div className="row" style={{ marginTop: 10 }}>
+        <div className="col-12">
+          <Divider orientation="left" style={{ fontSize: "14px" }}>
+            Tabel Laporan
+          </Divider>
+        </div>
+        <div className="col-12">
+          <TableLaporanMutasiSaldo />
+        </div>
+      </div>
+      <div className="row" style={{ marginTop: 10 }}>
+        <div className="col-12">
+          <BtnPrint />
+        </div>
+      </div>
+    </div>
+  );
 
   return (
     <div>
@@ -52,33 +72,7 @@ const MutasiSaldo = () => {
                 <FormLaporanMutasiSaldo />
               </div>
             </div>
-            <div
-              className="row"
-              style={{
-                marginTop: 10,
-                display: dataMutasiSaldo.length === 0 ? "none" : "",
-              }}
-            >
-              <div className="col-12">
-                <Divider orientation="left" style={{ fontSize: "14px" }}>
-                  Tabel Laporan
-                </Divider>
-              </div>
-              <div className="col-12">
-                <TableLaporanMutasiSaldo />
-              </div>
-            </div>
-            <div
-              className="row"
-              style={{
-                marginTop: 10,
-                display: dataMutasiSaldo.length === 0 ? "none" : "",
-              }}
-            >
-              <div className="col-12">
-                <BtnPrint />
-              </div>
-            </div>
+            {countLengthData !== 0 && componentTableButton}
           </Card>
         </PanelBody>
       </Panel>

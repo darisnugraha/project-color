@@ -22,6 +22,26 @@ const KirimCasting = () => {
     dispatch(getAllJenisBahan);
     document.title = "Laporan Kirim Casting";
   }, [dispatch]);
+  const countLengthData = dataKirimCasting.length;
+  const componentTableButton = (
+    <div>
+      <div className="row" style={{ marginTop: 10 }}>
+        <div className="col-12">
+          <Divider orientation="left" style={{ fontSize: "14px" }}>
+            Tabel Laporan
+          </Divider>
+        </div>
+        <div className="col-12">
+          <TableLaporanKirimCasting />
+        </div>
+      </div>
+      <div className="row" style={{ marginTop: 10 }}>
+        <div className="col-12">
+          <BtnPrint />
+        </div>
+      </div>
+    </div>
+  );
 
   return (
     <div>
@@ -48,33 +68,7 @@ const KirimCasting = () => {
                 <FormLaporanKirimCasting />
               </div>
             </div>
-            <div
-              className="row"
-              style={{
-                marginTop: 10,
-                display: dataKirimCasting.length === 0 ? "none" : "",
-              }}
-            >
-              <div className="col-12">
-                <Divider orientation="left" style={{ fontSize: "14px" }}>
-                  Tabel Laporan
-                </Divider>
-              </div>
-              <div className="col-12">
-                <TableLaporanKirimCasting />
-              </div>
-            </div>
-            <div
-              className="row"
-              style={{
-                marginTop: 10,
-                display: dataKirimCasting.length === 0 ? "none" : "",
-              }}
-            >
-              <div className="col-12">
-                <BtnPrint />
-              </div>
-            </div>
+            {countLengthData !== componentTableButton}
           </Card>
         </PanelBody>
       </Panel>

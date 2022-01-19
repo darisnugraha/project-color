@@ -25,6 +25,36 @@ const InputDraftPO = () => {
     dispatch(getAllCustomer);
     document.title = "Laporan Input Draft PO";
   }, [dispatch]);
+  const countLengthDataPO = dataNoPO.length;
+  const countLengthData = dataInputDraftPO.length;
+  const componentForm = (
+    <div>
+      <div className="row">
+        <div className="col-12">
+          <FormLaporanInputDraftPO />
+        </div>
+      </div>
+    </div>
+  );
+  const componentTableButton = (
+    <div>
+      <div className="row" style={{ marginTop: 10 }}>
+        <div className="col-12">
+          <Divider orientation="left" style={{ fontSize: "14px" }}>
+            Tabel Laporan
+          </Divider>
+        </div>
+        <div className="col-12">
+          <TableLaporanInputDraftPO />
+        </div>
+      </div>
+      <div className="row" style={{ marginTop: 10 }}>
+        <div className="col-12">
+          <BtnPrint />
+        </div>
+      </div>
+    </div>
+  );
 
   return (
     <div>
@@ -52,41 +82,8 @@ const InputDraftPO = () => {
                 <Divider orientation="left" style={{ fontSize: "14px" }} />
               </div>
             </div>
-            <div
-              className="row"
-              style={{ display: dataNoPO.length === 0 ? "none" : "" }}
-            >
-              <div className="col-12">
-                <FormLaporanInputDraftPO />
-              </div>
-            </div>
-            <div
-              className="row"
-              style={{
-                marginTop: 10,
-                display: dataInputDraftPO.length === 0 ? "none" : "",
-              }}
-            >
-              <div className="col-12">
-                <Divider orientation="left" style={{ fontSize: "14px" }}>
-                  Tabel Laporan
-                </Divider>
-              </div>
-              <div className="col-12">
-                <TableLaporanInputDraftPO />
-              </div>
-            </div>
-            <div
-              className="row"
-              style={{
-                marginTop: 10,
-                display: dataInputDraftPO.length === 0 ? "none" : "",
-              }}
-            >
-              <div className="col-12">
-                <BtnPrint />
-              </div>
-            </div>
+            {countLengthDataPO !== 0 && componentForm}
+            {countLengthData !== 0 && componentTableButton}
           </Card>
         </PanelBody>
       </Panel>

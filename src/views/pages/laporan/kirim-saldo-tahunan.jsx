@@ -25,6 +25,27 @@ const KirimSaldoTahunan = () => {
     document.title = "Laporan Stock Global Produksi";
   }, [dispatch]);
 
+  const countLengthData = dataKirimSaldoTahun.length;
+  const componentTableButton = (
+    <div>
+      <div className="row">
+        <div className="col-12">
+          <Divider orientation="left" style={{ fontSize: "14px" }}>
+            Tabel Laporan
+          </Divider>
+        </div>
+        <div className="col-12">
+          <TableLaporanKirimSaldoTahun />
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-12">
+          <BtnPrint />
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <div>
       <ol className="breadcrumb float-xl-right">
@@ -48,31 +69,7 @@ const KirimSaldoTahunan = () => {
                 <FormLaporanKirimSaldoTahun />
               </div>
             </div>
-            <div
-              className="row"
-              style={{
-                display: dataKirimSaldoTahun.length === 0 ? "none" : "",
-              }}
-            >
-              <div className="col-12">
-                <Divider orientation="left" style={{ fontSize: "14px" }}>
-                  Tabel Laporan
-                </Divider>
-              </div>
-              <div className="col-12">
-                <TableLaporanKirimSaldoTahun />
-              </div>
-            </div>
-            <div
-              className="row"
-              style={{
-                display: dataKirimSaldoTahun.length === 0 ? "none" : "",
-              }}
-            >
-              <div className="col-12">
-                <BtnPrint />
-              </div>
-            </div>
+            {countLengthData !== 0 && componentTableButton}
           </Card>
         </PanelBody>
       </Panel>

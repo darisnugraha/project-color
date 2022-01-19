@@ -20,6 +20,26 @@ const AmbilBatu = () => {
     dispatch(pageLoadedLogin);
     document.title = "Laporan Ambil Batu";
   }, [dispatch]);
+  const countLengthData = dataAmbilBatu.length;
+  const componentTableButton = (
+    <div>
+      <div className="row" style={{ marginTop: 10 }}>
+        <div className="col-12">
+          <Divider orientation="left" style={{ fontSize: "14px" }}>
+            Tabel Laporan
+          </Divider>
+        </div>
+        <div className="col-12">
+          <TableLaporanAmbilBatu />
+        </div>
+      </div>
+      <div className="row" style={{ marginTop: 10 }}>
+        <div className="col-12">
+          <BtnPrint />
+        </div>
+      </div>
+    </div>
+  );
 
   return (
     <div>
@@ -44,33 +64,7 @@ const AmbilBatu = () => {
                 <FormLaporanAmbilBatu />
               </div>
             </div>
-            <div
-              className="row"
-              style={{
-                marginTop: 10,
-                display: dataAmbilBatu.length === 0 ? "none" : "",
-              }}
-            >
-              <div className="col-12">
-                <Divider orientation="left" style={{ fontSize: "14px" }}>
-                  Tabel Laporan
-                </Divider>
-              </div>
-              <div className="col-12">
-                <TableLaporanAmbilBatu />
-              </div>
-            </div>
-            <div
-              className="row"
-              style={{
-                marginTop: 10,
-                display: dataAmbilBatu.length === 0 ? "none" : "",
-              }}
-            >
-              <div className="col-12">
-                <BtnPrint />
-              </div>
-            </div>
+            {countLengthData !== 0 && componentTableButton}
           </Card>
         </PanelBody>
       </Panel>

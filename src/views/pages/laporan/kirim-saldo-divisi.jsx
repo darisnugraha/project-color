@@ -25,6 +25,26 @@ const KirimSaldoDivisi = () => {
   const dataKirimSaldoDivisi = useSelector(
     KirimSaldoDivisiSelector.getAllKirimsaldodivisi
   );
+  const countLengthData = dataKirimSaldoDivisi.length;
+  const componentTableButton = (
+    <div>
+      <div className="row" style={{ marginTop: 10 }}>
+        <div className="col-12">
+          <Divider orientation="left" style={{ fontSize: "14px" }}>
+            Tabel Laporan
+          </Divider>
+        </div>
+        <div className="col-12">
+          <TableLaporanKirimSaldoDivisi />
+        </div>
+      </div>
+      <div className="row" style={{ marginTop: 10 }}>
+        <div className="col-12">
+          <BtnPrint />
+        </div>
+      </div>
+    </div>
+  );
 
   return (
     <div>
@@ -49,33 +69,7 @@ const KirimSaldoDivisi = () => {
                 <FormLaporanKirimSaldoDivisi />
               </div>
             </div>
-            <div
-              className="row"
-              style={{
-                marginTop: 10,
-                display: dataKirimSaldoDivisi.length === 0 ? "none" : "",
-              }}
-            >
-              <div className="col-12">
-                <Divider orientation="left" style={{ fontSize: "14px" }}>
-                  Tabel Laporan
-                </Divider>
-              </div>
-              <div className="col-12">
-                <TableLaporanKirimSaldoDivisi />
-              </div>
-            </div>
-            <div
-              className="row"
-              style={{
-                marginTop: 10,
-                display: dataKirimSaldoDivisi.length === 0 ? "none" : "",
-              }}
-            >
-              <div className="col-12">
-                <BtnPrint />
-              </div>
-            </div>
+            {countLengthData !== 0 && componentTableButton}
           </Card>
         </PanelBody>
       </Panel>

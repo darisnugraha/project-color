@@ -27,6 +27,36 @@ const ReparasiKeluar = () => {
     dispatch(getAllCustomer);
     document.title = "Laporan Reparasi Keluar";
   }, [dispatch]);
+  const countLengthDataPO = dataNoPO.length;
+  const componentForm = (
+    <div>
+      <div className="row">
+        <div className="col-12">
+          <FormLaporanReparasiKeluar />
+        </div>
+      </div>
+    </div>
+  );
+  const countLengthData = dataReparasiKeluar.length;
+  const componentTableButton = (
+    <div>
+      <div className="row" style={{ marginTop: 10 }}>
+        <div className="col-12">
+          <Divider orientation="left" style={{ fontSize: "14px" }}>
+            Tabel Laporan
+          </Divider>
+        </div>
+        <div className="col-12">
+          <TableLaporanReparasiKeluar />
+        </div>
+      </div>
+      <div className="row" style={{ marginTop: 10 }}>
+        <div className="col-12">
+          <BtnPrint />
+        </div>
+      </div>
+    </div>
+  );
 
   return (
     <div>
@@ -54,41 +84,8 @@ const ReparasiKeluar = () => {
                 <Divider orientation="left" style={{ fontSize: "14px" }} />
               </div>
             </div>
-            <div
-              className="row"
-              style={{ display: dataNoPO.length === 0 ? "none" : "" }}
-            >
-              <div className="col-12">
-                <FormLaporanReparasiKeluar />
-              </div>
-            </div>
-            <div
-              className="row"
-              style={{
-                marginTop: 10,
-                display: dataReparasiKeluar.length === 0 ? "none" : "",
-              }}
-            >
-              <div className="col-12">
-                <Divider orientation="left" style={{ fontSize: "14px" }}>
-                  Tabel Laporan
-                </Divider>
-              </div>
-              <div className="col-12">
-                <TableLaporanReparasiKeluar />
-              </div>
-            </div>
-            <div
-              className="row"
-              style={{
-                marginTop: 10,
-                display: dataReparasiKeluar.length === 0 ? "none" : "",
-              }}
-            >
-              <div className="col-12">
-                <BtnPrint />
-              </div>
-            </div>
+            {countLengthDataPO !== 0 && componentForm}
+            {countLengthData !== 0 && componentTableButton}
           </Card>
         </PanelBody>
       </Panel>
