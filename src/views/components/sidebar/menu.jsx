@@ -218,6 +218,21 @@ const Menu = [
       },
     ],
   },
+  {
+    path: "/laporan-casting",
+    icon: "fa fa-book",
+    title: "Laporan Casting",
+    children: [
+      {
+        path: "/laporan-casting/kirim-bahan-admin",
+        title: "Kirim Bahan Admin",
+      },
+      {
+        path: "/laporan-casting/mutasi-stock-casting",
+        title: "Mutasi Stock Casting",
+      },
+    ],
+  },
 ];
 
 export default Menu;

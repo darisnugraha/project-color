@@ -46,6 +46,7 @@ import ReturBatuWax from "../../views/pages/laporan-admin-batu/laporan-retur-bat
 import ReturBatu from "../../views/pages/laporan-admin-batu/laporan-retur-batu";
 import SaldoStockBatu from "../../views/pages/laporan-admin-batu/laporan-saldo-stock-batu";
 import KirimBatu from "../../views/pages/laporan-admin-batu/laporan-kirim-batu";
+import KirimBahanAdmin from "../../views/pages/laporan-casting/laporan-kirim-bahan-admin";
 
 const routes = [
   // {
@@ -274,6 +275,11 @@ const routes = [
     path: "/laporan-admin-batu/kirim-batu",
     title: "Laporan Kirim Batu",
     component: () => <KirimBatu />,
+  },
+  {
+    path: "/laporan-casting/kirim-bahan-admin",
+    title: "Laporan Kirim Bahan Admin",
+    component: () => <KirimBahanAdmin />,
   },
   {
     path: "/notfound",

@@ -50,6 +50,7 @@ const URL_GET_ALL_RETUR_BATU_WAX = `${baseurl}adminbatu/report/retur-batu-wax?`;
 const URL_GET_ALL_RETUR_BATU = `${baseurl}adminbatu/report/retur-batu?`;
 const URL_GET_ALL_SALDO_STOCK_BATU = `${baseurl}adminbatu/report/saldo-stock-batu?`;
 const URL_GET_ALL_KIRIM_BATU = `${baseurl}adminbatu/report/kirim-batu?`;
+const URL_GET_ALL_KIRIM_BAHAN_ADMIN = `${baseurl}casting/report/kirim-bahan-admin?`;
 
 const data = {
   URL_LOGIN,
@@ -102,6 +103,7 @@ const data = {
   URL_GET_ALL_RETUR_BATU,
   URL_GET_ALL_SALDO_STOCK_BATU,
   URL_GET_ALL_KIRIM_BATU,
+  URL_GET_ALL_KIRIM_BAHAN_ADMIN,
 };
 
 export default data;
