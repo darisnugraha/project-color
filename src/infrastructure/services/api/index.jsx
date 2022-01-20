@@ -52,6 +52,7 @@ import KirimBahanAdmin from "./kirimbahanadmin";
 import MutasiStockCasting from "./mutasistockcasting";
 import KartuJobOrder from "./kartujoborder";
 import TerimaPusatByDivisi from "./terimapusatbydivisi";
+import KirimPusatByDivisi from "./kirimpusatbydivisi";
 
 const api = {
   login,
@@ -108,6 +109,7 @@ const api = {
   MutasiStockCasting,
   KartuJobOrder,
   TerimaPusatByDivisi,
+  KirimPusatByDivisi,
 };
 
 export default api;
