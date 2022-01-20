@@ -49,6 +49,7 @@ import KirimBatu from "../../views/pages/laporan-admin-batu/laporan-kirim-batu";
 import KirimBahanAdmin from "../../views/pages/laporan-casting/laporan-kirim-bahan-admin";
 import MutasiStockCasting from "../../views/pages/laporan-casting/laporan-mutasi-stock-casting";
 import KartuJobOrder from "../../views/pages/laporan-admin-pusat/laporan-kartu-job-order";
+import TerimaPusatByDivisi from "../../views/pages/laporan-admin-pusat/laporan-terima-pusat-by-divisi";
 
 const routes = [
   // {
@@ -292,6 +293,11 @@ const routes = [
     path: "/laporan-admin-pusat/kartu-job-order",
     title: "Laporan Kartu Job Order",
     component: () => <KartuJobOrder />,
+  },
+  {
+    path: "/laporan-admin-pusat/terima-by-divisi",
+    title: "Laporan Terima By Divisi",
+    component: () => <TerimaPusatByDivisi />,
   },
   {
     path: "/notfound",

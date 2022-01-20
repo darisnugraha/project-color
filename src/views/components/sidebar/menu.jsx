@@ -84,6 +84,14 @@ const Menu = [
         path: "/laporan-admin-pusat/kartu-job-order",
         title: "Kartu Job Order",
       },
+      {
+        path: "/laporan-admin-pusat/terima-by-divisi",
+        title: "Terima By Divisi",
+      },
+      {
+        path: "/laporan-admin-pusat/kirim-by-divisi",
+        title: "Kirim By Divisi",
+      },
     ],
   },
   {
