@@ -57,6 +57,7 @@ import MutasiStockPusatByDivisi from "./mutasistockpusatbydivisi";
 import AdminTerimaBatu from "./adminterimabatu";
 import AdminKirimBatu from "./adminkirimbatu";
 import AdminMutasiStockBatu from "./adminmutasistockbatu";
+import AdminReturBatu from "./adminreturbatu";
 
 const api = {
   login,
@@ -118,6 +119,7 @@ const api = {
   AdminTerimaBatu,
   AdminKirimBatu,
   AdminMutasiStockBatu,
+  AdminReturBatu,
 };
 
 export default api;

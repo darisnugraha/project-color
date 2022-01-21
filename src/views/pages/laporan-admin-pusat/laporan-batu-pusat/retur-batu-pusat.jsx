@@ -7,22 +7,26 @@ import {
   PanelHeader,
   PanelBody,
 } from "../../../components/panel/panel.jsx";
-import TableMutasiStockBatuPusat from "../../../components/laporan/laporan-admin-pusat/laporan-batu-pusat/mutasi-stock-batu-pusat/table-mutasi-stock-batu-pusat";
-import FormMutasiStockBatuPusat from "../../../components/laporan/laporan-admin-pusat/laporan-batu-pusat/mutasi-stock-batu-pusat/form-mutasi-stock-batu-pusat";
-import BtnPrint from "../../../components/laporan/laporan-admin-pusat/laporan-batu-pusat/mutasi-stock-batu-pusat/btn-print-mutasi-stock-batu-pusat";
+import TableReturBatuPusat from "../../../components/laporan/laporan-admin-pusat/laporan-batu-pusat/retur-batu-pusat/table-retur-batu-pusat";
+import FormReturBatuPusat from "../../../components/laporan/laporan-admin-pusat/laporan-batu-pusat/retur-batu-pusat/form-retur-batu-pusat";
+import BtnPrint from "../../../components/laporan/laporan-admin-pusat/laporan-batu-pusat/retur-batu-pusat/btn-print-retur-batu-pusat";
 import { pageLoadedLogin } from "../../../../application/actions/ui";
-import DataMutasiStockBatuPusat from "../../../../application/selectors/adminmutasistockbatu";
+import { getAllJenisBahan } from "../../../../application/actions/jenisbahan.jsx";
+import DataReturBatuPusat from "../../../../application/selectors/adminreturbatu";
+import { getAllBatu } from "../../../../application/actions/batu";
 
-const MutasiStockBatuPusat = () => {
+const ReturBatuPusat = () => {
   const dispatch = useDispatch();
-  const dataMutasiStockBatuPusat = useSelector(
-    DataMutasiStockBatuPusat.getAllAdminMutasiStockBatu
+  const dataReturBatuPusat = useSelector(
+    DataReturBatuPusat.getAllAdminReturBatu
   );
   useEffect(() => {
     dispatch(pageLoadedLogin);
-    document.title = "Laporan Mutasi Stock Pusat";
+    dispatch(getAllJenisBahan);
+    dispatch(getAllBatu);
+    document.title = "Laporan Retur Batu Pusat";
   }, [dispatch]);
-  const countLengthData = dataMutasiStockBatuPusat.length;
+  const countLengthData = dataReturBatuPusat.length;
   const componentTableButton = (
     <div>
       <div className="row" style={{ marginTop: 10 }}>
@@ -32,7 +36,7 @@ const MutasiStockBatuPusat = () => {
           </Divider>
         </div>
         <div className="col-12">
-          <TableMutasiStockBatuPusat />
+          <TableReturBatuPusat />
         </div>
       </div>
       <div className="row" style={{ marginTop: 10 }}>
@@ -50,22 +54,22 @@ const MutasiStockBatuPusat = () => {
           <Link to="/dashboard">Home</Link>
         </li>
         <li className="breadcrumb-item">
-          <Link to="/laporan-admin-pusat/batu/mutasi-stock-batu">
+          <Link to="/laporan-admin-pusat/batu/admin-retur-batu">
             Laporan Admin Pusat
           </Link>
         </li>
-        <li className="breadcrumb-item active">Mutasi Stock Pusat</li>
+        <li className="breadcrumb-item active">Retur Batu Pusat</li>
       </ol>
       <h1 className="page-header">
-        Laporan Admin Pusat <small>Mutasi Stock Pusat</small>
+        Laporan Admin Pusat <small>Retur Batu Pusat</small>
       </h1>
       <Panel>
-        <PanelHeader>Mutasi Stock Pusat</PanelHeader>
+        <PanelHeader>Retur Batu Pusat</PanelHeader>
         <PanelBody>
           <Card bordered={false}>
             <div className="row">
               <div className="col-12">
-                <FormMutasiStockBatuPusat />
+                <FormReturBatuPusat />
               </div>
             </div>
             {countLengthData !== 0 && componentTableButton}
@@ -76,4 +80,4 @@ const MutasiStockBatuPusat = () => {
   );
 };
 
-export default MutasiStockBatuPusat;
+export default ReturBatuPusat;

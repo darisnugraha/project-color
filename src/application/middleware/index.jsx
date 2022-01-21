@@ -58,6 +58,7 @@ import mutasistockpusatbydivisi from "./mutasistockpusatbydivisi";
 import adminterimabatu from "./adminterimabatu";
 import adminkirimbatu from "./adminkirimbatu";
 import adminmutasistockbatu from "./adminmutasistockbatu";
+import adminreturbatu from "./adminreturbatu";
 
 const midd = [
   ...ui,
@@ -120,6 +121,7 @@ const midd = [
   ...adminterimabatu,
   ...adminkirimbatu,
   ...adminmutasistockbatu,
+  ...adminreturbatu,
 ];
 
 export default midd;

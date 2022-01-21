@@ -96,6 +96,10 @@ const Menu = [
             path: "/laporan-admin-pusat/batu/admin-mutasi-stock-batu",
             title: "Admin Pusat Mutasi Stock Batu",
           },
+          {
+            path: "/laporan-admin-pusat/batu/admin-retur-batu",
+            title: "Admin Pusat Retur Batu",
+          },
         ],
       },
       {
