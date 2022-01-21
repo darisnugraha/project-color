@@ -13,7 +13,9 @@ import pdfReport from "./pdf/pdfReport";
 import pdfReportTarikKawat from "./pdf/pdfReportTarikKawat";
 import pdfReportBatu from "./pdf/pdfReportBatu";
 import pdfReportLebur from "./pdf/pdfReportLebur";
+import pdfReportOutstand from "./pdf/pdfReportOutstand";
 import service from "../../../../../infrastructure/services/index";
+import ExcelReportOutstand from "./excel/excelReportOutstand";
 
 const BtnPrint = () => {
   // eslint-disable-next-line
@@ -24,24 +26,48 @@ const BtnPrint = () => {
   const divisi = useSelector(
     MutasiStockPusatByDivisi.getDivisiMutasiStockPusatByDivisi
   );
+  const type = useSelector(
+    MutasiStockPusatByDivisi.getTypeMutasiStockPusatByDivisi
+  );
   const data = service.getLocal("mutasi_stock_pusat_divisi") || [];
 
   const pdfExportHandle = () => {
     if (divisi === "HAND WORKING") {
-      pdfReport(dataMutasiStockPusatByDivisi);
+      if (type === "OUTSTANDING") {
+        pdfReportOutstand(dataMutasiStockPusatByDivisi);
+      } else {
+        pdfReport(dataMutasiStockPusatByDivisi);
+      }
     } else if (divisi === "TARIK KAWAT") {
-      pdfReportTarikKawat(dataMutasiStockPusatByDivisi);
+      if (type === "OUTSTANDING") {
+        pdfReportOutstand(dataMutasiStockPusatByDivisi);
+      } else {
+        pdfReportTarikKawat(dataMutasiStockPusatByDivisi);
+      }
     } else if (divisi === "BATU") {
-      pdfReportBatu(dataMutasiStockPusatByDivisi);
+      if (type === "OUTSTANDING") {
+        pdfReportOutstand(dataMutasiStockPusatByDivisi);
+      } else {
+        pdfReportBatu(dataMutasiStockPusatByDivisi);
+      }
     } else {
-      pdfReportLebur(dataMutasiStockPusatByDivisi);
+      if (type === "OUTSTANDING") {
+        pdfReportOutstand(dataMutasiStockPusatByDivisi);
+      } else {
+        pdfReportLebur(dataMutasiStockPusatByDivisi);
+      }
     }
   };
 
   return (
     <Row style={{ marginTop: 15 }}>
       <Col span={10} style={{ marginTop: 10 }}>
-        {divisi === "HAND WORKING" ? (
+        {type === "OUTSTANDING" ? (
+          <ExcelReportOutstand
+            dataExel={dataMutasiStockPusatByDivisi}
+            dataHead={data}
+          />
+        ) : divisi === "HAND WORKING" ? (
           <ExcelReport
             dataExel={dataMutasiStockPusatByDivisi}
             dataHead={data}

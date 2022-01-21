@@ -12,6 +12,7 @@ import {
   getAllMutasiStockPusatByDivisi,
   setDataMutasiStockPusatByDivisiSuccess,
   setDivisi,
+  setType,
 } from "../../../../../application/actions/mutasistockpusatbydivisi";
 
 const dateFormat = "DD/MM/YYYY";
@@ -162,6 +163,12 @@ let FormLaporanMutasiStockPusatByDivisi = (prop) => {
             component={styleAntd.ASelect}
             placeholder="Pilih Type"
             onBlur={(e) => e.preventDefault()}
+            onChange={(e) => {
+              prop.dispatch(
+                setDataMutasiStockPusatByDivisiSuccess({ feedback: [] })
+              );
+              prop.dispatch(setType({ type: e }));
+            }}
           >
             <Option value="SALDO" key="SALDO">
               <span style={{ fontSize: "13px" }}>Saldo</span>

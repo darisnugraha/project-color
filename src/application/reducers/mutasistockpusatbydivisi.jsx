@@ -3,12 +3,14 @@ import {
   SET_DATA_MUTASI_STOCK_PUSAT_BY_DIVISI_SUCCESS,
   SET_DATA_MUTASI_STOCK_PUSAT_BY_DIVISI_FAILED,
   SET_DIVISI,
+  SET_TYPE,
 } from "../actions/mutasistockpusatbydivisi";
 const initialState = {
   feedback: [],
   error: null,
   isEdit: false,
   divisi: "HAND WORKING",
+  type: "SALDO",
 };
 
 const mutasistockpusatbydivisi = (state = initialState, action) => {
@@ -27,6 +29,11 @@ const mutasistockpusatbydivisi = (state = initialState, action) => {
       return {
         ...state,
         divisi: action.payload.data,
+      };
+    case SET_TYPE:
+      return {
+        ...state,
+        type: action.payload.data,
       };
     default:
       return state;
