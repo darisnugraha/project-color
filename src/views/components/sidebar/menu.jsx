@@ -92,6 +92,10 @@ const Menu = [
             path: "/laporan-admin-pusat/batu/admin-terima-batu",
             title: "Admin Pusat Terima Batu",
           },
+          {
+            path: "/laporan-admin-pusat/batu/admin-mutasi-stock-batu",
+            title: "Admin Pusat Mutasi Stock Batu",
+          },
         ],
       },
       {

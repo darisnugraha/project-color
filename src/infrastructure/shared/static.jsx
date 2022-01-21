@@ -58,6 +58,7 @@ const URL_GET_ALL_KIRIM_PUSAT_BY_DIVISI = `${baseurl}adminpusat/report/kirim-pro
 const URL_GET_ALL_MUTASI_STOCK_PUSAT_BY_DIVISI = `${baseurl}adminpusat/report/mutasi-stock-produksi-by-divisi?`;
 const URL_GET_ALL_ADMIN_TERIMA_BATU = `${baseurl}adminpusat/report/admin-terima-batu?`;
 const URL_GET_ALL_ADMIN_KIRIM_BATU = `${baseurl}adminpusat/report/admin-kirim-batu?`;
+const URL_GET_ALL_ADMIN_MUTASI_STOCK_BATU = `${baseurl}adminpusat/report/admin-mutasi-stock-batu?`;
 
 const data = {
   URL_LOGIN,
@@ -118,6 +119,7 @@ const data = {
   URL_GET_ALL_MUTASI_STOCK_PUSAT_BY_DIVISI,
   URL_GET_ALL_ADMIN_TERIMA_BATU,
   URL_GET_ALL_ADMIN_KIRIM_BATU,
+  URL_GET_ALL_ADMIN_MUTASI_STOCK_BATU,
 };
 
 export default data;

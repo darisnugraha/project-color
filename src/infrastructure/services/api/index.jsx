@@ -56,6 +56,7 @@ import KirimPusatByDivisi from "./kirimpusatbydivisi";
 import MutasiStockPusatByDivisi from "./mutasistockpusatbydivisi";
 import AdminTerimaBatu from "./adminterimabatu";
 import AdminKirimBatu from "./adminkirimbatu";
+import AdminMutasiStockBatu from "./adminmutasistockbatu";
 
 const api = {
   login,
@@ -116,6 +117,7 @@ const api = {
   MutasiStockPusatByDivisi,
   AdminTerimaBatu,
   AdminKirimBatu,
+  AdminMutasiStockBatu,
 };
 
 export default api;

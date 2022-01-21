@@ -54,6 +54,7 @@ import KirimPusatByDivisi from "../../views/pages/laporan-produksi/laporan-kirim
 import MutasiStockPusatByDivisi from "../../views/pages/laporan-produksi/laporan-mutasi-stock-pusat-by-divisi";
 import TerimaBatuPusat from "../../views/pages/laporan-admin-pusat/laporan-batu-pusat/terima-batu-pusat";
 import KirimBatuPusat from "../../views/pages/laporan-admin-pusat/laporan-batu-pusat/kirim-batu-pusat";
+import MutasiStockBatuPusat from "../../views/pages/laporan-admin-pusat/laporan-batu-pusat/mutasi-stock-batu-pusat";
 
 const routes = [
   // {
@@ -322,6 +323,11 @@ const routes = [
     path: "/laporan-admin-pusat/batu/admin-kirim-batu",
     title: "Laporan Admin Kirim Batu",
     component: () => <KirimBatuPusat />,
+  },
+  {
+    path: "/laporan-admin-pusat/batu/admin-mutasi-stock-batu",
+    title: "Laporan Admin Mutasi Stock Batu",
+    component: () => <MutasiStockBatuPusat />,
   },
   {
     path: "/notfound",

@@ -59,6 +59,7 @@ import kirimpusatbydivisi from "./kirimpusatbydivisi";
 import mutasistockpusatbydivisi from "./mutasistockpusatbydivisi";
 import adminterimabatu from "./adminterimabatu";
 import adminkirimbatu from "./adminkirimbatu";
+import adminmutasistockbatu from "./adminmutasistockbatu";
 
 export default combineReducers({
   login,
@@ -120,5 +121,6 @@ export default combineReducers({
   mutasistockpusatbydivisi,
   adminterimabatu,
   adminkirimbatu,
+  adminmutasistockbatu,
   form: formReducer,
 });
