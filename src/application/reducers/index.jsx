@@ -56,6 +56,7 @@ import mutasistockcasting from "./mutasistockcasting";
 import kartujoborder from "./kartujoborder";
 import terimapusatbydivisi from "./terimapusatbydivisi";
 import kirimpusatbydivisi from "./kirimpusatbydivisi";
+import mutasistockpusatbydivisi from "./mutasistockpusatbydivisi";
 
 export default combineReducers({
   login,
@@ -114,5 +115,6 @@ export default combineReducers({
   kartujoborder,
   terimapusatbydivisi,
   kirimpusatbydivisi,
+  mutasistockpusatbydivisi,
   form: formReducer,
 });

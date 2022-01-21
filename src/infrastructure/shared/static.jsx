@@ -55,6 +55,7 @@ const URL_GET_ALL_MUTASI_STOCK_CASTING = `${baseurl}casting/report/mutasi-stock-
 const URL_GET_ALL_KARTU_JOB_ORDER = `${baseurl}adminpusat/report/kartu-job-order?`;
 const URL_GET_ALL_TERIMA_PUSAT_BY_DIVISI = `${baseurl}adminpusat/report/terima-produksi-by-divisi?`;
 const URL_GET_ALL_KIRIM_PUSAT_BY_DIVISI = `${baseurl}adminpusat/report/kirim-produksi-by-divisi?`;
+const URL_GET_ALL_MUTASI_STOCK_PUSAT_BY_DIVISI = `${baseurl}adminpusat/report/mutasi-stock-produksi-by-divisi?`;
 
 const data = {
   URL_LOGIN,
@@ -112,6 +113,7 @@ const data = {
   URL_GET_ALL_KARTU_JOB_ORDER,
   URL_GET_ALL_TERIMA_PUSAT_BY_DIVISI,
   URL_GET_ALL_KIRIM_PUSAT_BY_DIVISI,
+  URL_GET_ALL_MUTASI_STOCK_PUSAT_BY_DIVISI,
 };
 
 export default data;

@@ -54,6 +54,7 @@ import mutasistockcasting from "./mutasistockcasting";
 import kartujoborder from "./kartujoborder";
 import terimapusatbydivisi from "./terimapusatbydivisi";
 import kirimpusatbydivisi from "./kirimpusatbydivisi";
+import mutasistockpusatbydivisi from "./mutasistockpusatbydivisi";
 
 const midd = [
   ...ui,
@@ -112,6 +113,7 @@ const midd = [
   ...kartujoborder,
   ...terimapusatbydivisi,
   ...kirimpusatbydivisi,
+  ...mutasistockpusatbydivisi,
 ];
 
 export default midd;

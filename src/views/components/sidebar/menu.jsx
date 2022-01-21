@@ -84,14 +84,6 @@ const Menu = [
         path: "/laporan-admin-pusat/kartu-job-order",
         title: "Kartu Job Order",
       },
-      {
-        path: "/laporan-admin-pusat/terima-by-divisi",
-        title: "Terima By Divisi",
-      },
-      {
-        path: "/laporan-admin-pusat/kirim-by-divisi",
-        title: "Kirim By Divisi",
-      },
     ],
   },
   {
@@ -138,6 +130,18 @@ const Menu = [
       {
         path: "/laporan-produksi/saldo-sub-divisi",
         title: "Saldo Sub Divisi",
+      },
+      {
+        path: "/laporan-produksi/admin-terima-by-divisi",
+        title: "Admin Terima By Divisi",
+      },
+      {
+        path: "/laporan-produksi/admin-kirim-by-divisi",
+        title: "Admin Kirim By Divisi",
+      },
+      {
+        path: "/laporan-produksi/mutasi-stock-by-divisi",
+        title: "Mutasi Stock By Divisi",
       },
     ],
   },

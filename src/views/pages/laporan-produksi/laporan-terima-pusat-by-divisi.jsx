@@ -7,9 +7,9 @@ import {
   PanelHeader,
   PanelBody,
 } from "../../components/panel/panel.jsx";
-import TableLaporanTerimaPusatByDivisi from "../../components/laporan/laporan-admin-pusat/laporan-terima-pusat-by-divisi/table-terima-pusat-by-divisi";
-import FormLaporanTerimaPusatByDivisi from "../../components/laporan/laporan-admin-pusat/laporan-terima-pusat-by-divisi/form-terima-pusat-by-divisi";
-import BtnPrint from "../../components/laporan/laporan-admin-pusat/laporan-terima-pusat-by-divisi/btn-print-terima-pusat-by-divisi";
+import TableLaporanTerimaPusatByDivisi from "../../components/laporan/laporan-produksi/laporan-terima-pusat-by-divisi/table-terima-pusat-by-divisi";
+import FormLaporanTerimaPusatByDivisi from "../../components/laporan/laporan-produksi/laporan-terima-pusat-by-divisi/form-terima-pusat-by-divisi";
+import BtnPrint from "../../components/laporan/laporan-produksi/laporan-terima-pusat-by-divisi/btn-print-terima-pusat-by-divisi";
 import { pageLoadedLogin } from "../../../application/actions/ui";
 import { getAllJenisBahan } from "../../../application/actions/jenisbahan";
 import DataTerimaPusatByDivisi from "../../../application/selectors/terimapusatbydivisi";
@@ -54,14 +54,14 @@ const TerimaPusatByDivisi = () => {
           <Link to="/dashboard">Home</Link>
         </li>
         <li className="breadcrumb-item">
-          <Link to="/laporan-admin-pusat/terima-by-divisi">
-            Laporan Admin Pusat
+          <Link to="/laporan-produksi/admin-terima-by-divisi">
+            Laporan Produksi
           </Link>
         </li>
         <li className="breadcrumb-item active">Terima By Divisi</li>
       </ol>
       <h1 className="page-header">
-        Laporan Admin Pusat <small>Terima By Divisi</small>
+        Laporan Produksi <small>Terima By Divisi</small>
       </h1>
       <Panel>
         <PanelHeader>Terima By Divisi</PanelHeader>

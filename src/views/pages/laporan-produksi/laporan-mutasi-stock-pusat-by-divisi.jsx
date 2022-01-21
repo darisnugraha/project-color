@@ -7,26 +7,26 @@ import {
   PanelHeader,
   PanelBody,
 } from "../../components/panel/panel.jsx";
-import TableLaporanKirimPusatByDivisi from "../../components/laporan/laporan-admin-pusat/laporan-kirim-pusat-by-divisi/table-kirim-pusat-by-divisi";
-import FormLaporanKirimPusatByDivisi from "../../components/laporan/laporan-admin-pusat/laporan-kirim-pusat-by-divisi/form-kirim-pusat-by-divisi";
-import BtnPrint from "../../components/laporan/laporan-admin-pusat/laporan-kirim-pusat-by-divisi/btn-print-kirim-pusat-by-divisi";
+import TableLaporanMutasiStockPusatByDivisi from "../../components/laporan/laporan-produksi/laporan-mutasi-stock-pusat-by-divisi/table-mutasi-stock-pusat-by-divisi";
+import FormLaporanMutasiStockPusatByDivisi from "../../components/laporan/laporan-produksi/laporan-mutasi-stock-pusat-by-divisi/form-mutasi-stock-pusat-by-divisi";
+import BtnPrint from "../../components/laporan/laporan-produksi/laporan-mutasi-stock-pusat-by-divisi/btn-print-mutasi-stock-pusat-by-divisi";
 import { pageLoadedLogin } from "../../../application/actions/ui";
 import { getAllJenisBahan } from "../../../application/actions/jenisbahan";
-import DataKirimPusatByDivisi from "../../../application/selectors/kirimpusatbydivisi";
+import DataMutasiStockPusatByDivisi from "../../../application/selectors/mutasistockpusatbydivisi";
 
-const KirimPusatByDivisi = () => {
-  const dataKirimPusatByDivisi = useSelector(
-    DataKirimPusatByDivisi.getAllKirimPusatByDivisi
+const MutasiStockPusatByDivisi = () => {
+  const dataMutasiStockPusatByDivisi = useSelector(
+    DataMutasiStockPusatByDivisi.getAllMutasiStockPusatByDivisi
   );
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(pageLoadedLogin);
     dispatch(getAllJenisBahan);
-    document.title = "Laporan Kirim By Divisi";
+    document.title = "Laporan Mutasi Stock Produksi";
   }, [dispatch]);
 
-  const countLengthData = dataKirimPusatByDivisi.length;
+  const countLengthData = dataMutasiStockPusatByDivisi.length;
   const componentTableButton = (
     <div>
       <div className="row" style={{ marginTop: 10 }}>
@@ -36,7 +36,7 @@ const KirimPusatByDivisi = () => {
           </Divider>
         </div>
         <div className="col-12">
-          <TableLaporanKirimPusatByDivisi />
+          <TableLaporanMutasiStockPusatByDivisi />
         </div>
       </div>
       <div className="row" style={{ marginTop: 10 }}>
@@ -54,22 +54,22 @@ const KirimPusatByDivisi = () => {
           <Link to="/dashboard">Home</Link>
         </li>
         <li className="breadcrumb-item">
-          <Link to="/laporan-admin-pusat/kirim-by-divisi">
-            Laporan Admin Pusat
+          <Link to="/laporan-produksi/mutasi-stock-by-divisi">
+            Laporan Produksi
           </Link>
         </li>
-        <li className="breadcrumb-item active">Kirim By Divisi</li>
+        <li className="breadcrumb-item active">Mutasi Stock Produksi</li>
       </ol>
       <h1 className="page-header">
-        Laporan Admin Pusat <small>Kirim By Divisi</small>
+        Laporan Produksi <small>Mutasi Stock Produksi</small>
       </h1>
       <Panel>
-        <PanelHeader>Kirim By Divisi</PanelHeader>
+        <PanelHeader>Mutasi Stock Produksi</PanelHeader>
         <PanelBody>
           <Card bordered={false}>
             <div className="row">
               <div className="col-12">
-                <FormLaporanKirimPusatByDivisi />
+                <FormLaporanMutasiStockPusatByDivisi />
               </div>
             </div>
             {countLengthData !== 0 && componentTableButton}
@@ -80,4 +80,4 @@ const KirimPusatByDivisi = () => {
   );
 };
 
-export default KirimPusatByDivisi;
+export default MutasiStockPusatByDivisi;

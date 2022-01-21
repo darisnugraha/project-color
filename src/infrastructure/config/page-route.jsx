@@ -49,8 +49,9 @@ import KirimBatu from "../../views/pages/laporan-admin-batu/laporan-kirim-batu";
 import KirimBahanAdmin from "../../views/pages/laporan-casting/laporan-kirim-bahan-admin";
 import MutasiStockCasting from "../../views/pages/laporan-casting/laporan-mutasi-stock-casting";
 import KartuJobOrder from "../../views/pages/laporan-admin-pusat/laporan-kartu-job-order";
-import TerimaPusatByDivisi from "../../views/pages/laporan-admin-pusat/laporan-terima-pusat-by-divisi";
-import KirimPusatByDivisi from "../../views/pages/laporan-admin-pusat/laporan-kirim-pusat-by-divisi";
+import TerimaPusatByDivisi from "../../views/pages/laporan-produksi/laporan-terima-pusat-by-divisi";
+import KirimPusatByDivisi from "../../views/pages/laporan-produksi/laporan-kirim-pusat-by-divisi";
+import MutasiStockPusatByDivisi from "../../views/pages/laporan-produksi/laporan-mutasi-stock-pusat-by-divisi";
 
 const routes = [
   // {
@@ -296,14 +297,19 @@ const routes = [
     component: () => <KartuJobOrder />,
   },
   {
-    path: "/laporan-admin-pusat/terima-by-divisi",
-    title: "Laporan Terima By Divisi",
+    path: "/laporan-produksi/admin-terima-by-divisi",
+    title: "Laporan Admin Terima By Divisi",
     component: () => <TerimaPusatByDivisi />,
   },
   {
-    path: "/laporan-admin-pusat/kirim-by-divisi",
-    title: "Laporan Kirim By Divisi",
+    path: "/laporan-produksi/admin-kirim-by-divisi",
+    title: "Laporan Admin Kirim By Divisi",
     component: () => <KirimPusatByDivisi />,
+  },
+  {
+    path: "/laporan-produksi/mutasi-stock-by-divisi",
+    title: "Laporan Mutasi Stock By Divisi",
+    component: () => <MutasiStockPusatByDivisi />,
   },
   {
     path: "/notfound",
