@@ -1,9 +1,10 @@
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";
-import service from "../../../../../../infrastructure/services/index";
+import service from "../../../../../../../infrastructure/services/index";
 
-const pdfReportOutstand = (data = "") => {
-  let data_head = service.getLocal("mutasi_stock_pusat_divisi") || [];
+const pdfReport = (data = "") => {
+  console.log(data.length);
+  let data_head = service.getLocal("admin_terima_batu");
   let tgl_dari_string = data_head.tgl_dari;
   let tgl_sampai_string = data_head.tgl_sampai;
   const doc = new jsPDF("l", "mm", [297, 210]);
@@ -11,21 +12,13 @@ const pdfReportOutstand = (data = "") => {
   let tableColumn = [];
 
   let finalY = 30;
-  doc.text(
-    `Laporan ${
-      data_head.type === "SALDO" ? "MUTASI" : data_head.type
-    } STOCK BY DIVISI (${data_head.divisi})`,
-    14,
-    15
-  );
+  doc.text("Laporan ADMIN TERIMA BATU", 14, 15);
   doc.setFontSize(20);
   doc.text("AMG", 200, 15);
 
   doc.setFontSize(10);
   doc.setProperties({
-    title: `Laporan ${
-      data_head.type === "SALDO" ? "MUTASI" : data_head.type
-    } STOCK BY DIVISI (${data_head.divisi})`,
+    title: "ADMIN TERIMA BATU",
   });
   doc.text(`PERIODE : ${tgl_dari_string} s/d ${tgl_sampai_string}`, 14, 25);
 
@@ -35,105 +28,124 @@ const pdfReportOutstand = (data = "") => {
         content: `TANGGAL`,
       },
       {
-        content: `JAM`,
-      },
-      {
         content: `NO JOB ORDER`,
       },
       {
         content: `KODE BARANG`,
       },
       {
-        content: `NAMA BARANG`,
+        content: `KODE BATU`,
+      },
+
+      {
+        content: `JUMLAH BATU`,
       },
       {
-        content: `JENIS BAHAN`,
-      },
-      {
-        content: `QTY`,
-      },
-      {
-        content: `BERAT`,
-      },
-      {
-        content: `KETERANGAN`,
+        content: `BERAT BATU`,
       },
     ],
   ];
 
-  data.forEach((item) => {
-    const row = [
+  const groupBy = (array, key) => {
+    return array.reduce((result, currentValue) => {
+      (result[currentValue[key]] = result[currentValue[key]] || []).push(
+        currentValue
+      );
+      return result;
+    }, {});
+  };
+
+  const dataGroup = groupBy(data, "no_terima");
+  const dataGroupArr = Object.values(dataGroup);
+
+  dataGroupArr.forEach((element) => {
+    const rowKirim = [
       {
-        content: item.tanggal,
+        content: "NO TERIMA : " + element[0].no_terima,
         styles: {
-          halign: "center",
+          halign: "left",
+          fillColor: "#bbbbbb",
+        },
+        colSpan: 6,
+      },
+    ];
+    tableRows.push(rowKirim);
+    element.forEach((item) => {
+      const row = [
+        {
+          content: item.tanggal,
+          styles: {
+            halign: "center",
+          },
+        },
+        {
+          content: item.no_job_order,
+          styles: {
+            halign: "center",
+          },
+        },
+        {
+          content: item.kode_barang,
+          styles: {
+            halign: "center",
+          },
+        },
+        {
+          content: item.kode_batu,
+          styles: {
+            halign: "center",
+          },
+        },
+        {
+          content: item.jumlah_batu,
+        },
+        {
+          content: item.berat_batu,
+        },
+      ];
+      tableRows.push(row);
+    });
+    const rowFoot = [
+      {
+        content: "Sub Total :",
+        styles: {
+          halign: "right",
+          fillColor: "#dddddd",
+        },
+        colSpan: 4,
+      },
+      {
+        content: element.reduce((a, b) => a + parseFloat(b.jumlah_batu), 0),
+        styles: {
+          halign: "right",
+          fillColor: "#dddddd",
         },
       },
       {
-        content: item.jam,
+        content: element
+          .reduce((a, b) => a + parseFloat(b.berat_batu), 0)
+          .toFixed(3),
         styles: {
-          halign: "center",
-        },
-      },
-      {
-        content: item.no_job_order,
-        styles: {
-          halign: "center",
-        },
-      },
-      {
-        content: item.kode_barang,
-        styles: {
-          halign: "center",
-        },
-      },
-      {
-        content: item.nama_barang,
-        styles: {
-          halign: "center",
-        },
-      },
-      {
-        content: item.jenis_bahan,
-        styles: {
-          halign: "center",
-        },
-      },
-      {
-        content: item.jumlah,
-      },
-      {
-        content: item.berat,
-      },
-      {
-        content: item.keterangan,
-        styles: {
-          halign: "center",
+          halign: "right",
+          fillColor: "#dddddd",
         },
       },
     ];
-    tableRows.push(row);
+    tableRows.push(rowFoot);
   });
 
   const footer = [
     {
       content: "Grand Total :",
-      colSpan: 6,
-      styles: {
-        halign: "right",
-      },
+      colSpan: 4,
     },
     {
-      content: data.reduce((a, b) => a + parseFloat(b.jumlah), 0),
-      styles: {
-        halign: "right",
-      },
+      content: data.reduce((a, b) => a + parseFloat(b.jumlah_batu), 0),
     },
     {
-      content: data.reduce((a, b) => a + parseFloat(b.berat), 0).toFixed(3),
-      styles: {
-        halign: "right",
-      },
+      content: data
+        .reduce((a, b) => a + parseFloat(b.berat_batu), 0)
+        .toFixed(3),
     },
   ];
   tableRows.push(footer);
@@ -141,7 +153,7 @@ const pdfReportOutstand = (data = "") => {
   const printed = [
     {
       content: `Printed By Admin`,
-      colSpan: 9,
+      colSpan: 6,
       styles: {
         fontStyle: "italic",
         textColor: "#000",
@@ -193,7 +205,7 @@ const pdfReportOutstand = (data = "") => {
   x.document.write(
     `<html>
     <head>
-    <title>MUTASI STOCK BY DIVISI (${data_head.divisi})</title>
+    <title>ADMIN TERIMA BATU</title>
     </head>
     <body style='margin:0 !important'>
     <embed width='100%' height='100%'src='${string}'></embed>
@@ -202,4 +214,4 @@ const pdfReportOutstand = (data = "") => {
   );
 };
 
-export default pdfReportOutstand;
+export default pdfReport;

@@ -11,6 +11,9 @@ const TableLaporanMutasiStockPusatByDivisi = () => {
   const divisi = useSelector(
     MutasiStockPusatByDivisi.getDivisiMutasiStockPusatByDivisi
   );
+  const type = useSelector(
+    MutasiStockPusatByDivisi.getTypeMutasiStockPusatByDivisi
+  );
 
   const columnsHandworking = [
     {
@@ -351,12 +354,70 @@ const TableLaporanMutasiStockPusatByDivisi = () => {
       align: "center",
     },
   ];
+  const columnsOutstand = [
+    {
+      title: "Tanggal",
+      dataIndex: "tanggal",
+      key: "tanggal",
+      align: "center",
+    },
+    {
+      title: "Jam",
+      dataIndex: "jam",
+      key: "jam",
+      align: "center",
+    },
+    {
+      title: "No Job Order",
+      dataIndex: "no_job_order",
+      key: "no_job_order",
+      align: "center",
+    },
+    {
+      title: "Kode Barang",
+      dataIndex: "kode_barang",
+      key: "kode_barang",
+      align: "center",
+    },
+    {
+      title: "Nama Barang",
+      dataIndex: "nama_barang",
+      key: "nama_barang",
+      align: "center",
+    },
+    {
+      title: "Jenis Bahan",
+      dataIndex: "jenis_bahan",
+      key: "jenis_bahan",
+      align: "center",
+    },
+    {
+      title: "Qty",
+      dataIndex: "jumlah",
+      key: "jumlah",
+      align: "center",
+    },
+    {
+      title: "Berat",
+      dataIndex: "berat",
+      key: "berat",
+      align: "center",
+    },
+    {
+      title: "Keterangan",
+      dataIndex: "keterangan",
+      key: "keterangan",
+      align: "center",
+    },
+  ];
 
   return (
     <Table
       dataSource={dataMutasiStockPusatByDivisi}
       columns={
-        divisi === "HAND WORKING"
+        type === "OUTSTANDING"
+          ? columnsOutstand
+          : divisi === "HAND WORKING"
           ? columnsHandworking
           : divisi === "TARIK KAWAT"
           ? columnsTarikKawat

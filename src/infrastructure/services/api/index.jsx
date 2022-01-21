@@ -54,6 +54,7 @@ import KartuJobOrder from "./kartujoborder";
 import TerimaPusatByDivisi from "./terimapusatbydivisi";
 import KirimPusatByDivisi from "./kirimpusatbydivisi";
 import MutasiStockPusatByDivisi from "./mutasistockpusatbydivisi";
+import AdminTerimaBatu from "./adminterimabatu";
 
 const api = {
   login,
@@ -112,6 +113,7 @@ const api = {
   TerimaPusatByDivisi,
   KirimPusatByDivisi,
   MutasiStockPusatByDivisi,
+  AdminTerimaBatu,
 };
 
 export default api;

@@ -81,6 +81,20 @@ const Menu = [
         ],
       },
       {
+        path: "/laporan-admin-pusat/batu",
+        title: "Batu",
+        children: [
+          {
+            path: "/laporan-admin-pusat/batu/admin-kirim-batu",
+            title: "Admin Pusat Kirim Batu",
+          },
+          {
+            path: "/laporan-admin-pusat/batu/admin-terima-batu",
+            title: "Admin Pusat Terima Batu",
+          },
+        ],
+      },
+      {
         path: "/laporan-admin-pusat/kartu-job-order",
         title: "Kartu Job Order",
       },

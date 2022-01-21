@@ -57,6 +57,7 @@ import kartujoborder from "./kartujoborder";
 import terimapusatbydivisi from "./terimapusatbydivisi";
 import kirimpusatbydivisi from "./kirimpusatbydivisi";
 import mutasistockpusatbydivisi from "./mutasistockpusatbydivisi";
+import adminterimabatu from "./adminterimabatu";
 
 export default combineReducers({
   login,
@@ -116,5 +117,6 @@ export default combineReducers({
   terimapusatbydivisi,
   kirimpusatbydivisi,
   mutasistockpusatbydivisi,
+  adminterimabatu,
   form: formReducer,
 });

@@ -55,6 +55,7 @@ import kartujoborder from "./kartujoborder";
 import terimapusatbydivisi from "./terimapusatbydivisi";
 import kirimpusatbydivisi from "./kirimpusatbydivisi";
 import mutasistockpusatbydivisi from "./mutasistockpusatbydivisi";
+import adminterimabatu from "./adminterimabatu";
 
 const midd = [
   ...ui,
@@ -114,6 +115,7 @@ const midd = [
   ...terimapusatbydivisi,
   ...kirimpusatbydivisi,
   ...mutasistockpusatbydivisi,
+  ...adminterimabatu,
 ];
 
 export default midd;
