@@ -7,11 +7,9 @@ import ui from "../../../../../application/selectors/ui";
 import MutasiStockPusatByDivisi from "../../../../../application/selectors/mutasistockpusatbydivisi";
 import ExcelReport from "./excel/excelReport";
 import ExcelReportTarikKawat from "./excel/excelReportTarikKawat";
-import ExcelReportBatu from "./excel/excelReportBatu";
 import ExcelReportLebur from "./excel/exportReportLebur";
 import pdfReport from "./pdf/pdfReport";
 import pdfReportTarikKawat from "./pdf/pdfReportTarikKawat";
-import pdfReportBatu from "./pdf/pdfReportBatu";
 import pdfReportLebur from "./pdf/pdfReportLebur";
 import pdfReportOutstand from "./pdf/pdfReportOutstand";
 import service from "../../../../../infrastructure/services/index";
@@ -44,12 +42,6 @@ const BtnPrint = () => {
       } else {
         pdfReportTarikKawat(dataMutasiStockPusatByDivisi);
       }
-    } else if (divisi === "BATU") {
-      if (type === "OUTSTANDING") {
-        pdfReportOutstand(dataMutasiStockPusatByDivisi);
-      } else {
-        pdfReportBatu(dataMutasiStockPusatByDivisi);
-      }
     } else {
       if (type === "OUTSTANDING") {
         pdfReportOutstand(dataMutasiStockPusatByDivisi);
@@ -74,11 +66,6 @@ const BtnPrint = () => {
           />
         ) : divisi === "TARIK KAWAT" ? (
           <ExcelReportTarikKawat
-            dataExel={dataMutasiStockPusatByDivisi}
-            dataHead={data}
-          />
-        ) : divisi === "BATU" ? (
-          <ExcelReportBatu
             dataExel={dataMutasiStockPusatByDivisi}
             dataHead={data}
           />

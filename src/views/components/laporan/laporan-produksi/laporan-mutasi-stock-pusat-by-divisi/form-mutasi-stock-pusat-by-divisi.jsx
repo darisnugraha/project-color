@@ -94,12 +94,9 @@ let FormLaporanMutasiStockPusatByDivisi = (prop) => {
             <Option value="LEBUR" key="LEBUR">
               <span style={{ fontSize: "13px" }}>Lebur</span>
             </Option>
-            <Option value="BATU" key="BATU">
-              <span style={{ fontSize: "13px" }}>Batu</span>
-            </Option>
           </Field>
         </Col>
-        <Col offset={1} style={{ display: divisi === "BATU" && "none" }}>
+        <Col offset={1}>
           <Field
             name="kode_jenis_bahan"
             label={<span style={{ fontSize: "13px" }}>Kode Jenis Bahan</span>}
@@ -131,10 +128,7 @@ let FormLaporanMutasiStockPusatByDivisi = (prop) => {
         </Col>
         <Col
           offset={1}
-          style={{
-            display:
-              divisi === "BATU" || divisi === "HAND WORKING" ? "none" : "",
-          }}
+          style={{ display: divisi === "HAND WORKING" && "none" }}
         >
           <Field
             name="user"
@@ -155,7 +149,7 @@ let FormLaporanMutasiStockPusatByDivisi = (prop) => {
             </Option>
           </Field>
         </Col>
-        <Col offset={1} style={{ display: divisi === "BATU" && "none" }}>
+        <Col offset={1}>
           <Field
             name="type"
             label={<span style={{ fontSize: "13px" }}>Type</span>}

@@ -351,113 +351,6 @@ const TableLaporanMutasiStockPusatByDivisi = () => {
       align: "center",
     },
   ];
-  const columnsBatu = [
-    {
-      title: "Tanggal",
-      dataIndex: "tanggal",
-      key: "tanggal",
-      align: "center",
-    },
-    {
-      title: "Jam",
-      dataIndex: "jam",
-      key: "jam",
-      align: "center",
-    },
-    {
-      title: "No Job Order",
-      dataIndex: "no_job_order",
-      key: "no_job_order",
-      align: "center",
-    },
-    {
-      title: "Kode Barang",
-      dataIndex: "kode_barang",
-      key: "kode_barang",
-      align: "center",
-    },
-    {
-      title: "Nama Barang",
-      dataIndex: "nama_barang",
-      key: "nama_barang",
-      align: "center",
-    },
-    {
-      title: "Jenis Bahan",
-      dataIndex: "jenis_bahan",
-      key: "jenis_bahan",
-      align: "center",
-    },
-    {
-      title: "Terima",
-      key: "terima",
-      align: "center",
-      children: [
-        {
-          title: "Qty",
-          dataIndex: "jumlah_terima",
-          key: "jumlah_terima",
-          align: "center",
-        },
-        {
-          title: "Berat",
-          dataIndex: "berat_terima",
-          key: "berat_terima",
-          align: "center",
-        },
-      ],
-    },
-    {
-      title: "Rusak",
-      key: "rusak",
-      align: "center",
-      children: [
-        {
-          title: "Qty",
-          dataIndex: "jumlah_rusak",
-          key: "jumlah_rusak",
-          align: "center",
-        },
-        {
-          title: "Berat",
-          dataIndex: "berat_rusak",
-          key: "berat_rusak",
-          align: "center",
-        },
-      ],
-    },
-    {
-      title: "Kirim",
-      key: "kirim",
-      align: "center",
-      children: [
-        {
-          title: "Qty",
-          dataIndex: "jumlah_kirim",
-          key: "jumlah_kirim",
-          align: "center",
-        },
-        {
-          title: "Berat",
-          dataIndex: "berat_kirim",
-          key: "berat_kirim",
-          align: "center",
-        },
-      ],
-    },
-    {
-      title: "User",
-      dataIndex: "user",
-      key: "user",
-      align: "center",
-    },
-    {
-      title: "Keterangan",
-      dataIndex: "keterangan",
-      key: "keterangan",
-      align: "center",
-    },
-  ];
 
   return (
     <Table
@@ -467,8 +360,6 @@ const TableLaporanMutasiStockPusatByDivisi = () => {
           ? columnsHandworking
           : divisi === "TARIK KAWAT"
           ? columnsTarikKawat
-          : divisi === "BATU"
-          ? columnsBatu
           : columnsLebur
       }
       scroll={{ x: 1900, y: 1000 }}
